@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './App.css'
 
 import NavBar from './components/NavBar'
+import StoryContainer from './container/StoryContainer'
 
 class App extends Component {
   render() {
@@ -10,12 +11,12 @@ class App extends Component {
       <div>
         <NavBar />
         <h2>Word Nerds</h2>
-        <p className="App-intro">
-          yo yo oyo yo yoy o
-        </p>
+        <StoryContainer />
+        <p>above is everything rendered from StoryContainer</p>
+        <p>This is the App.js page.</p>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
