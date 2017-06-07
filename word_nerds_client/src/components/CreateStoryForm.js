@@ -10,18 +10,18 @@ class CreateStoryForm extends Component {
       characters: {
         hero: {
           name: 'HERO', //default
-          gender: '',
+          gender: '', //default ...null gives a warning.
         },
         shadow: {
           name: 'SHADOW', //default
-          gender: '',
+          gender: '', //default
         },
         friend: {
           name: 'FRIEND', //default
-          gender: '',
+          gender: '', //default
         }
       },
-    //   genres: ['random'], //make this an array to hold all selected genres??
+      genres: ['random'], //make this an array to hold all selected genres??
     //   //default genre is 'random', all others are not selected when random is selected.
      })
 
@@ -61,9 +61,9 @@ class CreateStoryForm extends Component {
 
   handleCreateStoryFormSubmit(event) {
     event.preventDefault()
-    console.log('CreateStoryForm submitted: ', this.state.story);
+    console.log('CreateStoryForm submitted: ', this.state.story)
     this.props.handleSubmit( this.state.story )
-    this.setState({story: ''})
+    this.setState({story: ''}) //why isn't this clearing form??
   }
 
 
@@ -72,10 +72,7 @@ class CreateStoryForm extends Component {
     return(
       <div className="CreateStoryForm-red">
         <h1>Create A Story</h1>
-        {/* <form onSubmit={props.handleCreateStory}> */}
         <form onSubmit={this.handleCreateStoryFormSubmit}>
-          {/* moving handleSubmit to Container, and passing it down as props to form */}
-        {/* <form onSubmit={this.handleSubmit.bind(this)}> */}
           <p>Choose genre: (select buttons here)</p>
 
           <label>
@@ -84,7 +81,7 @@ class CreateStoryForm extends Component {
               name="horror"
               type="checkbox"
               //checked={this.state.genres}
-              //onChange={this.handleGenreInputChange}
+              onChange={this.handleGenreInputChange}
             />
           </label>
           <br />
@@ -95,7 +92,7 @@ class CreateStoryForm extends Component {
               name="comedy"
               type="checkbox"
               //value={this.state.genres}
-              //onChange={this.handleGenreInputChange}
+              onChange={this.handleGenreInputChange}
             />
           </label>
           <br />
@@ -106,7 +103,8 @@ class CreateStoryForm extends Component {
               value="random"
               type="radio" //radio instead of checkbox; random selected means all other genres are unselected.
               //value={this.state.genres}
-              //onChange={this.handleGenreInputChange}
+              onChange={this.handleGenreInputChange}
+
             />
           </label>
 
@@ -115,18 +113,24 @@ class CreateStoryForm extends Component {
           Hero:
           <input
             type="text"
-            value={this.props.characters.hero.name}
-            onChange={ (event) => this.handleCharacterInputChange(event, 'hero')}
+            value={this.state.characters.hero.name}
+            // onChange={ (event) => this.handleCharacterInputChange(event, 'hero')}
+            onChange={this.handleCharacterInputChange.bind(this)}
+
           />
           Male:
           <input
-            value={this.props.characters.hero.gender}
+            value={this.state.characters.hero.gender}
             type="radio"
+            onChange={this.handleCharacterInputChange.bind(this)}
+
           />
           Female:
           <input
-            value={this.props.characters.hero.gender}
+            value={this.state.characters.hero.gender}
             type="radio"
+            onChange={this.handleCharacterInputChange.bind(this)}
+
           />
           <br/>
           <br/>
@@ -134,18 +138,22 @@ class CreateStoryForm extends Component {
           Shadow:
           <input
             type="text"
-            value={this.props.characters.shadow.name}
+            value={this.state.characters.shadow.name}
             onChange={this.handleCharacterInputChange.bind(this)}
           />
           Male:
           <input
-            value={this.props.characters.shadow.gender}
+            value={this.state.characters.shadow.gender}
             type="radio"
+            onChange={this.handleCharacterInputChange.bind(this)}
+
           />
           Female:
           <input
-            value={this.props.characters.shadow.gender}
+            value={this.state.characters.shadow.gender}
             type="radio"
+            onChange={this.handleCharacterInputChange.bind(this)}
+
           />
           <br/>
           <br/>
@@ -153,18 +161,18 @@ class CreateStoryForm extends Component {
           Friend:
           <input
             type="text"
-            value={this.props.characters.friend.name}
+            value={this.state.characters.friend.name}
             onChange={this.handleCharacterInputChange.bind(this)}
           />
           Male:
           <input
-            value={this.props.characters.friend.gender}
+            value={this.state.characters.friend.gender}
             type="radio"
             onChange={this.handleCharacterInputChange.bind(this)}
           />
           Female:
           <input
-            value={this.props.characters.friend.gender}
+            value={this.state.characters.friend.gender}
             type="radio"
             onChange={this.handleCharacterInputChange.bind(this)}
           />
@@ -175,8 +183,9 @@ class CreateStoryForm extends Component {
           Test Story, just a line of text for now:
           <input
             type="text"
-            value={this.state.input}
+            value={this.state.story} //this clears form but i get errors
             onChange={this.handleStoryChange}
+            //above should be on form, form should control it's changes, and send data to container
 
             // onChange={this.handleTestChange.bind(this)}
           />

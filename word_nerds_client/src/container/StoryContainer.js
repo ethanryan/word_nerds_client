@@ -8,31 +8,9 @@ class StoryContainer extends Component {
   constructor() {
     super()
     this.state = {
-      userInput: '', //testing userInput
-
       stories: [], //array of all the (user's) stories
 
-      story: '', //one story's content
-
-      title: '', //one story's title
-
-      characters: {
-        hero: {
-          name: 'HERO', //default
-          gender: '',
-        },
-        shadow: {
-          name: 'SHADOW', //default
-          gender: '',
-        },
-        friend: {
-          name: 'FRIEND', //default
-          gender: '',
-        }
-      }, //end of characters
-
-      genres: ['random'], //make this an array to hold all selected genres??
-      //default genre is 'random', all others are not selected when random is selected.
+      story: '', //one story's content <<<need this???
     }
   } //end of constructor
 
@@ -55,13 +33,6 @@ componentDidMount() {
   // })
 } //end of componentDidMount
 
-
-  // handleCreateStory(event) {
-  //   console.log('CreateStoryForm submitted: ', this.state.input);
-  //   event.preventDefault()
-  //   this.props.onSubmit( this.state.input )
-  //   this.setState({input: ''})
-  // }
 
 
   //create story form function:
@@ -148,8 +119,8 @@ createStory(content) {
     //body: JSON.stringify( {student: {name: name}} )
     body: JSON.stringify( {story: {
       content: content,
-      title: "HARDCODED TITLE",
-      user_id: 1
+      title: "HARDCODED TITLE", //default for now
+      user_id: 1 //this will be whatever the loggedin user's id is
     }} )
   }).then( res => res.json() )
 }
@@ -164,43 +135,6 @@ handleSubmit(content) {
     .then( story => this.setState( prevState =>  ({ stories: [...prevState.stories, story] }) ))
     .catch(err => console.log(err))
 }
-
-  ///////////getting this from last project:::::
-
-  // handleSubmit(id) {
-  //   return event => {
-  //     event.preventDefault()
-  //     console.log("story id: ", id)
-  //     const entry = this
-  //
-  //     fetch('http://localhost:3000/stories', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Accept': 'application/json',
-  //           'Content-Type': 'application/json'
-  //         },
-  //         body: JSON.stringify({story: {
-  //           // original_content: this.state.originalContent,
-  //           // title: this.state.title,
-  //           // translated_content: this.state.translatedContent
-  //         }})
-  //       })
-  //       .then(res => res.json())
-  //
-  //       .then(function(data){
-  //         //console.log('data: ', data);
-  //         entry.setState(prevState => {
-  //           return {
-  //             // stories: [...prevState.stories, data],
-  //             //stories: [...prevState.stories, data],
-  //             // originalContent: "",
-  //             // translatedContent: "",
-  //             // title: ""
-  //           }
-  //         })
-  //       })
-  //   }
-  // } //end of handleSubmit
 
 
 // handleSubmit(id) {
@@ -237,31 +171,7 @@ handleSubmit(content) {
 //
 //
 //     } else {
-//       fetch('http://localhost:3000/stories', {
-//         method: 'POST',
-//         headers: {
-//           'Accept': 'application/json',
-//           'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({story: {
-//           // original_content: this.state.originalContent,
-//           // title: this.state.title,
-//           // translated_content: this.state.translatedContent
-//         }})
-//       })
-//       .then(res => res.json())
-//       .then(function(data){
-//         //console.log('data: ', data);
-//         entry.setState(prevState => {
-//           return {
-//             // stories: [...prevState.stories, data],
-//             stories: [...prevState.stories, data],
-//             // originalContent: "",
-//             // translatedContent: "",
-//             // title: ""
-//           }
-//         })
-//       })
+        //console.log('ERROR ERROR ERROR')
 //     } //end of else
 //   }
 // } //end of handleSubmit
@@ -288,15 +198,11 @@ handleSubmit(content) {
           // handleSubmit={this.handleCreateStory.bind(this)}
           handleSubmit={this.handleSubmit.bind(this)}
           handleChange={this.handleChange.bind(this)}
-
-          userInput={this.state.userInput}
-          characters={this.state.characters}
         />
         <br></br>
         <EditStoryForm
           // onSubmit={this.handleEditStory.bind(this)}
           // onSubmit={this.handleEdit.bind(this)}
-          title={this.state.title}
         />
         <p>Below are all the stories from API, via StoryList component:</p>
         <StoryList
