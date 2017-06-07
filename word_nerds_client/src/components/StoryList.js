@@ -6,11 +6,15 @@ const StoryList = (props) => {
   //props.storyList below === an array of story Objects from my API
   //need .content key/value within each 'story' object
 
-  const eachStory = props.storyList.map(story => {return (
-    <h1>
-      <li>{story.content}</li>
-    </h1>
-) })
+  //adding index below so i stop getting warning message in console.
+  const eachStory = props.storyList.map( (story, index) =>
+      <li key={index}>
+        <h1>
+          {story.content}
+        </h1>
+      </li>
+  )
+
 
   return(
     <div className="StoryList-blue">
