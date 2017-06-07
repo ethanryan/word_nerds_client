@@ -49,7 +49,7 @@ handleCharacterInputChange(event) {
 
   render() {
     return(
-      <div>
+      <div className="CreateStoryForm-red">
         <h1>Create A Story</h1>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <p>Choose genre: (select buttons here)</p>
@@ -64,6 +64,7 @@ handleCharacterInputChange(event) {
               />
               </label>
               <br />
+
               <label>
               Comedy:
               <input
@@ -74,6 +75,7 @@ handleCharacterInputChange(event) {
               />
               </label>
               <br />
+
               <label>
               Random:
               <input
@@ -140,8 +142,6 @@ handleCharacterInputChange(event) {
             value={this.state.characters.friend.gender}
             type="radio"
           />
-          <br/>
-          <br/>
 
 
           <br/>

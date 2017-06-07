@@ -22,3 +22,28 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.StoryList-blue {
+  border: 2px solid blue;
+  background: white
+}
+
+.CreateStoryForm-red {
+  border: 2px solid red;
+  background: white
+}
+
+.NavBar-yellow {
+  border: 2px solid yellow;
+  background: white
+}
+
+.EditStoryForm-green {
+  border: 2px solid green;
+  background: white
+}
+
+.App-purple {
+  border: 5px solid purple;
+  background: lightgray
+}

@@ -28,8 +28,9 @@ class EditStoryForm extends Component {
 
   render() {
     return(
-      <div>
+      <div className="EditStoryForm-green">
         <h1>Edit Story</h1>
+        <h4>(Save, Edit, or Delete)</h4>
         <p>clicking Create Story above renders EditStory form</p>
         <p>users can add titles and edit stories before Saving (or deleting)</p>
         <form onSubmit={this.handleSubmit.bind(this)}>
