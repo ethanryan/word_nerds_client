@@ -188,6 +188,50 @@ handleSubmit(content) {
 //   })
 // } //end of handleEdit
 
+deleteStory(id) {
+  return fetch(`http://localhost:3000/stories/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      //'Authorization': localStorage.getItem('jwt')
+    },
+  }).then( res => res.json() )
+}
+
+// handleSubmit(content) {
+//   this.createStory(content) //this is calling function above, adding student to database
+//
+// //THEN doing the below, which adds student to page, along with other students.
+//     .then( story => this.setState( prevState =>  ({ stories: [...prevState.stories, story] }) ))
+//     .catch(err => console.log(err))
+// }
+
+// handleDelete(id){
+//   if (window.confirm("😱 You really want to delete this story?!")) {
+//     fetch(`http://localhost:3000/stories/${id}`, {
+//       method: 'DELETE',
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       }
+//     }).then(res => res.json())
+//     .then(data => this.setState({ stories: data }) )
+//   }
+// }
+
+handleDeleteStory(id) {
+  this.deleteStory(id) //calling function above
+
+    .then( () => {
+      this.setState( prevState => ({
+        stories: prevState.stories.filter( story => story.id !== id )
+      })
+    )
+  //  this.props.history.push('/stories')
+  })
+}
+
 
   render() {
     return(
@@ -201,11 +245,14 @@ handleSubmit(content) {
         />
         <br></br>
         <EditStoryForm
+          handleDeleteStory={this.handleDeleteStory.bind(this)}
           // onSubmit={this.handleEditStory.bind(this)}
           // onSubmit={this.handleEdit.bind(this)}
         />
         <p>Below are all the stories from API, via StoryList component:</p>
         <StoryList
+          handleDeleteStory={this.handleDeleteStory.bind(this)}
+
           storyList={this.state.stories}
         />
       </div>
