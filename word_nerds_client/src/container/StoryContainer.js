@@ -126,7 +126,7 @@ renderEditForm(id) {
 
   this.setState({
     stories: this.state.stories, //this doesn't change
-    story: editStory.content, //CHANGE content TO content <<<<<!!!!! (change that key name, content is better name than input)
+    story: editStory.content, //CHANGE story TO content!!!!! (attribute in API)
     title: editStory.title, //default title for stories
     storyID: editStory.id,
     editing: true //default is false
@@ -185,6 +185,9 @@ handleDeleteStory(id) {
           handleDeleteStory={this.handleDeleteStory.bind(this)}
 
           handleUpdateStory={this.handleUpdateStory.bind(this)}
+
+          handleChange={this.handleChange.bind(this)}
+          //handleChange so users can type
 
           // passing all state as props to EditStoryForm
           stories={this.state.stories}

@@ -145,7 +145,6 @@ class CreateStoryForm extends Component {
             value={this.state.characters.shadow.gender}
             type="radio"
             onChange={this.handleCharacterInputChange.bind(this)}
-
           />
           <br/>
           <br/>

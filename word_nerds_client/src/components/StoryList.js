@@ -16,9 +16,9 @@ const StoryList = (props) => {
   //   </li>
   // )
 
-  function handleEdit() {
-    console.log('edit button clicked')
-  }
+  // function handleEdit() {
+  //   console.log('edit button clicked')
+  // }
 
   //adding index below so i stop getting warning message in console.
   const eachStory = props.storyList.map( (story, index) =>
