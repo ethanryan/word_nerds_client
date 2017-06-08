@@ -9,8 +9,7 @@ class StoryContainer extends Component {
     super()
     this.state = {
       stories: [], //array of all the (user's) stories
-      ///below if for editing
-      story: '', //one story's content <<<need this???
+      story: '', //one story's content
       title: 'title here', //default title for stories
       storyID: 0, //default is zero
       editing: false //default is false
@@ -18,7 +17,6 @@ class StoryContainer extends Component {
   } //end of constructor
 
 
-  ///from last app::
 componentDidMount() {
   fetch('http://localhost:3000/stories', {
     method: 'GET',
@@ -37,12 +35,6 @@ componentDidMount() {
 } //end of componentDidMount
 
 
-handleChange(event) {
-  this.setState({userInput: event.target.value});
-}
-
-
-
 createStory(content) {
   return fetch("http://localhost:3000/stories", {
     headers: {
@@ -51,7 +43,6 @@ createStory(content) {
       //'Authorization': localStorage.getItem('jwt')
     },
     method: 'POST',
-    //body: JSON.stringify( {student: {name: name}} )
     body: JSON.stringify( {story: {
       content: content, //this has to be content, to match attributes on stories_controller on backend (same as below attributes)
       title: "default TITLE here", //default for now
@@ -60,21 +51,16 @@ createStory(content) {
   }).then( res => res.json() )
 }
 
-// .then( data => this.setState({
-//   stories: data //setting stories to data
-
 handleSubmit(story) {
   this.createStory(story) //this is calling function above, adding student to database
-
 //THEN doing the below, which adds student to page, along with other students.
     .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }) ))
     .catch(err => console.log(err))
 }
 
 
-updateStory(id) {
-  return fetch(`http://localhost:3000/stories/${id}`, {
-  // return fetch(`http://localhost:3000/stories/${story.id}`, {
+updateStory(story) {
+  return fetch(`http://localhost:3000/stories/${this.state.storyID}`, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json',
@@ -82,8 +68,8 @@ updateStory(id) {
       //'Authorization': localStorage.getItem('jwt')
     },
     body: JSON.stringify( {story: {
-        content: this.state.story, ///is this right? this is probably wrong....
-        title: 'THIS IS DEFAULT TITLE TEXT',
+        content: story, ///story! same as argument... from EditStoryForm, this is: 'this.state.input'
+        title: this.state.title,
         user_id: 1, //default for now
       }}
     ),
@@ -91,38 +77,25 @@ updateStory(id) {
 }
 
 
-
 handleUpdateStory(story) { //should this be storyID (or id) instead?
 console.log('handleUpdateStory story: ', story)
 
-  this.updateStory(story) //calling function above
-  .then( () => {
-    this.setState(prevState => {
-      return {
-        stories: prevState.stories.map(s => {
-          if (s.id === story.id) {
-            return story
-          } else {
-            return s
-          }
-        })
-      }
+  this.updateStory(story) //calling function above, updating story on database
+  .then( (response) => this.setState({
+      stories: response
+    }) )
+    this.setState({
+      story: '',
+      title: '',
     })
-    //this.props.history.push(`/students/${student.id}`)
-  })
 }
-
 
 ///changing 'id' to 'story' to see if that works....
 //below is 'id', no matter what you call it...
 renderEditForm(id) {
   let editStory = this.state.stories.find(story => story.id === id)
   console.log('editing story with id: ', id)
-  console.log('editing editStory.id: ', editStory.id)
-  console.log('editing editStory.title: ', editStory.title)
   console.log('editing editStory.content: ', editStory.content)
-  // console.log('editing story: ', story) //this was id...
-  // console.log('editStory.story: ', editStory.story)
 
   this.setState({
     stories: this.state.stories, //this doesn't change
@@ -132,7 +105,6 @@ renderEditForm(id) {
     editing: true //default is false
   })
 } //end of renderEditForm
-
 
 
 deleteStory(id) {
@@ -146,14 +118,6 @@ deleteStory(id) {
   }).then( res => res.json() )
   .catch(err => console.log(err))
 }
-
-// handleSubmit(content) {
-//   this.createStory(content) //this is calling function above, adding student to database
-//
-// //THEN doing the below, which adds student to page, along with other students.
-//     .then( story => this.setState( prevState =>  ({ stories: [...prevState.stories, story] }) ))
-//     .catch(err => console.log(err))
-// }
 
 
 handleDeleteStory(id) {
@@ -175,18 +139,13 @@ handleDeleteStory(id) {
       <div>
         {/* put below forms within Switch ?? */}
         <CreateStoryForm
-          // onSubmit={this.handleCreateStory.bind(this)}
-          // handleSubmit={this.handleCreateStory.bind(this)}
           handleSubmit={this.handleSubmit.bind(this)}
-          handleChange={this.handleChange.bind(this)}
         />
         <br></br>
         <EditStoryForm
           handleDeleteStory={this.handleDeleteStory.bind(this)}
 
           handleUpdateStory={this.handleUpdateStory.bind(this)}
-
-          handleChange={this.handleChange.bind(this)}
           //handleChange so users can type
 
           // passing all state as props to EditStoryForm
@@ -196,10 +155,8 @@ handleDeleteStory(id) {
           title={this.state.title}
           storyID={this.state.storyID}
           editing={this.state.editing}
-
-          // onSubmit={this.handleEditStory.bind(this)}
-          // onSubmit={this.handleEdit.bind(this)}
         />
+
         <p>Below are all the stories from API, via StoryList component:</p>
         <StoryList
           handleDeleteStory={this.handleDeleteStory.bind(this)}

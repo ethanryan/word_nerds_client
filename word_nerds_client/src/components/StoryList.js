@@ -5,20 +5,7 @@ import React from 'react'
 
 
 const StoryList = (props) => {
-  console.log('StoryList props: ', props)
-
-  //props.storyList below === an array of story Objects from my API
-  //need .content key/value within each 'story' object
-
-  // const nameEls = props.students.map( (student, i) =>
-  //   <li key={i}>
-  //     <Link to={`/students/${student.id}`}>{student.name}</Link>
-  //   </li>
-  // )
-
-  // function handleEdit() {
-  //   console.log('edit button clicked')
-  // }
+  // console.log('StoryList props: ', props)
 
   //adding index below so i stop getting warning message in console.
   const eachStory = props.storyList.map( (story, index) =>
