@@ -41,16 +41,8 @@ class CreateStoryForm extends Component {
 
   handleCharacterInputChange(event) {
     //code here
-
   }
 
-  // handleTestChange(event) { //this is testing creating new stories and adding them to database
-  //   //console.log('this: ', this);
-  //   //console.log('event: ', event);
-  //   this.setState({
-  //     input: event.target.value
-  //   })
-  // }
 
   handleStoryChange(event) {
     const story = event.target.value
@@ -63,7 +55,7 @@ class CreateStoryForm extends Component {
     event.preventDefault()
     console.log('CreateStoryForm submitted: ', this.state.story)
     this.props.handleSubmit( this.state.story )
-    this.setState({story: ''}) //why isn't this clearing form??
+    this.setState({story: ''}) //this clears form onSubmit
   }
 
 

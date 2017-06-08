@@ -1,7 +1,7 @@
 import React from 'react'
 
 // import { Route, Link, Switch } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 
 const StoryList = (props) => {
@@ -15,6 +15,10 @@ const StoryList = (props) => {
   //     <Link to={`/students/${student.id}`}>{student.name}</Link>
   //   </li>
   // )
+
+  function handleEdit() {
+    console.log('edit button clicked')
+  }
 
   //adding index below so i stop getting warning message in console.
   const eachStory = props.storyList.map( (story, index) =>
@@ -30,9 +34,17 @@ const StoryList = (props) => {
 
           <div>
             {/* <a href="#translatorBox" onClick={function(){props.edit(story.id)}}> Edit </a> */}
-            <a href="#edit" onClick={() => {props.edit(story.id)}}>Edit</a>
+
+            {/* <button onClick={handleEdit()}> Edit </button> */}
+            {/* <button onClick={() => this.handleEdit}> Edit </button> */}
+
+            <a href="#EditStoryForm" onClick={() => {props.renderEditForm(story.id)}}>Edit</a>
             <span>   </span>
-            <a href="#delete" onClick={() => {props.handleDeleteStory(story.id)}}>Delete</a>
+            <button
+              href="#delete"
+              onClick={() => {props.handleDeleteStory(story.id)}}>
+              Delete
+            </button>
           </div>
 
       </div>

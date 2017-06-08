@@ -9,8 +9,11 @@ class StoryContainer extends Component {
     super()
     this.state = {
       stories: [], //array of all the (user's) stories
-
+      ///below if for editing
       story: '', //one story's content <<<need this???
+      title: 'title here', //default title for stories
+      storyID: 0, //default is zero
+      editing: false //default is false
     }
   } //end of constructor
 
@@ -34,79 +37,11 @@ componentDidMount() {
 } //end of componentDidMount
 
 
-
-  //create story form function:
-  // handleCreateStory(event) {
-  // handleSubmit(event) {  //change this name back to handleCreateStory
-  //   // fetch('http://localhost:3000/stories', {
-  //   //   method: 'POST',
-  //   //   headers: {
-  //   //     'Accept': 'application/json',
-  //   //     'Content-Type': 'application/json',
-  //   //   },
-  //   //   body: JSON.stringify({
-  //   //     firstParam: 'yourValue',
-  //   //     secondParam: 'yourOtherValue',
-  //   //   })
-  //   // })
-  //   console.log('CreateStoryForm submitted: ', this.state.userInput)
-  //   event.preventDefault()
-  //   //this.handleSubmit( this.state.input ) //FIX THIS
-  //
-  //   this.setState({userInput: this.state.userInput})
-  //   //this.setState({userInput: ''}) //unset the form value
-  //
-  //   // this.setState( prevState => {
-  //   //   return {stories: [...prevState.stories, story]}
-  //   // })
-  // }  ///end of handleCreateStory
-
 handleChange(event) {
   this.setState({userInput: event.target.value});
 }
 
-  /////from React docs::
-  // fetch('https://mywebsite.com/endpoint/', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     firstParam: 'yourValue',
-  //     secondParam: 'yourOtherValue',
-  //   })
-  // })
 
-  //edit story form function:
-  // handleEditStory(story) { //now same as create story...
-  //   this.setState( prevState => {
-  //     return {
-  //       stories: [...prevState.stories, story]
-  //     }
-  //   })
-  // }
-
-  ////from student list lecture:
-
-// createStudent(name){
-//   return fetch("http://localhost:3000/api/v1/students", {
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//       //'Authorization': localStorage.getItem('jwt')
-//     },
-//     method: 'POST',
-//     body: JSON.stringify( {student: {name: name}} )
-//   }).then( res => res.json() )
-// }
-//
-// handleAddStudent(name){
-// createStudent(name) //this is calling function above, adding student to database
-// //THEN doing the below, which adds student to page, along with other students.
-//     .then( student => this.setState( prevState =>  ({ students: [...prevState.students, student] }) ))
-//     .catch(err => console.log(err))
-// }
 
 createStory(content) {
   return fetch("http://localhost:3000/stories", {
@@ -118,8 +53,8 @@ createStory(content) {
     method: 'POST',
     //body: JSON.stringify( {student: {name: name}} )
     body: JSON.stringify( {story: {
-      content: content,
-      title: "HARDCODED TITLE", //default for now
+      content: content, //this has to be content, to match attributes on stories_controller on backend (same as below attributes)
+      title: "default TITLE here", //default for now
       user_id: 1 //this will be whatever the loggedin user's id is
     }} )
   }).then( res => res.json() )
@@ -128,65 +63,77 @@ createStory(content) {
 // .then( data => this.setState({
 //   stories: data //setting stories to data
 
-handleSubmit(content) {
-  this.createStory(content) //this is calling function above, adding student to database
+handleSubmit(story) {
+  this.createStory(story) //this is calling function above, adding student to database
 
 //THEN doing the below, which adds student to page, along with other students.
-    .then( story => this.setState( prevState =>  ({ stories: [...prevState.stories, story] }) ))
+    .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }) ))
     .catch(err => console.log(err))
 }
 
 
-// handleSubmit(id) {
-//   return event => {
-//     event.preventDefault()
-//     console.log("story id: ", id)
-//     const entry = this
-//     if (this.state.stories.find(story => story.id === id)) {
-//       fetch(`http://localhost:3000/stories/${id}`, {
-//         method: 'PATCH',
-//         headers: {
-//           'Accept': 'application/json',
-//           'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({story: {
-//           // original_content: this.state.originalContent,
-//           // title: this.state.title,
-//           story: this.state.story, //????
-//           // translated_content: this.state.translatedContent
-//         }})
-//       })
-//       .then( res => res.json() )
-//       .then(function(data){
-//         entry.setState({
-//           // stories: data,
-//           stories: data,
-//           // storyID: 0,
-//           // originalContent: "",
-//           // translatedContent: "",
-//           // title: "",
-//           // editing: false
-//         })
-//       })
-//
-//
-//     } else {
-        //console.log('ERROR ERROR ERROR')
-//     } //end of else
-//   }
-// } //end of handleSubmit
+updateStory(id) {
+  return fetch(`http://localhost:3000/stories/${id}`, {
+  // return fetch(`http://localhost:3000/stories/${story.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      //'Authorization': localStorage.getItem('jwt')
+    },
+    body: JSON.stringify( {story: {
+        content: this.state.story, ///is this right? this is probably wrong....
+        title: 'THIS IS DEFAULT TITLE TEXT',
+        user_id: 1, //default for now
+      }}
+    ),
+  }).then( res => res.json() )
+}
 
 
-// handleEdit(id) {
-//   //let editStory = this.state.stories.find(story => story.id === id)
-//   this.setState({
-//     // originalContent: editStory.original_content,
-//     // translatedContent: editStory.translated_content,
-//     // title: editStory.title,
-//     // storyID: editStory.id,
-//     // editing: true
-//   })
-// } //end of handleEdit
+
+handleUpdateStory(story) { //should this be storyID (or id) instead?
+console.log('handleUpdateStory story: ', story)
+
+  this.updateStory(story) //calling function above
+  .then( () => {
+    this.setState(prevState => {
+      return {
+        stories: prevState.stories.map(s => {
+          if (s.id === story.id) {
+            return story
+          } else {
+            return s
+          }
+        })
+      }
+    })
+    //this.props.history.push(`/students/${student.id}`)
+  })
+}
+
+
+///changing 'id' to 'story' to see if that works....
+//below is 'id', no matter what you call it...
+renderEditForm(id) {
+  let editStory = this.state.stories.find(story => story.id === id)
+  console.log('editing story with id: ', id)
+  console.log('editing editStory.id: ', editStory.id)
+  console.log('editing editStory.title: ', editStory.title)
+  console.log('editing editStory.content: ', editStory.content)
+  // console.log('editing story: ', story) //this was id...
+  // console.log('editStory.story: ', editStory.story)
+
+  this.setState({
+    stories: this.state.stories, //this doesn't change
+    story: editStory.content, //CHANGE content TO content <<<<<!!!!! (change that key name, content is better name than input)
+    title: editStory.title, //default title for stories
+    storyID: editStory.id,
+    editing: true //default is false
+  })
+} //end of renderEditForm
+
+
 
 deleteStory(id) {
   return fetch(`http://localhost:3000/stories/${id}`, {
@@ -197,6 +144,7 @@ deleteStory(id) {
       //'Authorization': localStorage.getItem('jwt')
     },
   }).then( res => res.json() )
+  .catch(err => console.log(err))
 }
 
 // handleSubmit(content) {
@@ -207,29 +155,18 @@ deleteStory(id) {
 //     .catch(err => console.log(err))
 // }
 
-// handleDelete(id){
-//   if (window.confirm("😱 You really want to delete this story?!")) {
-//     fetch(`http://localhost:3000/stories/${id}`, {
-//       method: 'DELETE',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       }
-//     }).then(res => res.json())
-//     .then(data => this.setState({ stories: data }) )
-//   }
-// }
 
 handleDeleteStory(id) {
-  this.deleteStory(id) //calling function above
+  if (window.confirm("Are you sure you want to delete this story? 😱😱😱 ")) {
+
+    this.deleteStory(id) //calling function above
 
     .then( () => {
       this.setState( prevState => ({
         stories: prevState.stories.filter( story => story.id !== id )
-      })
-    )
-  //  this.props.history.push('/stories')
-  })
+      }) )
+    })
+  }//end if statement
 }
 
 
@@ -246,12 +183,25 @@ handleDeleteStory(id) {
         <br></br>
         <EditStoryForm
           handleDeleteStory={this.handleDeleteStory.bind(this)}
+
+          handleUpdateStory={this.handleUpdateStory.bind(this)}
+
+          // passing all state as props to EditStoryForm
+          stories={this.state.stories}
+          story={this.state.story}
+
+          title={this.state.title}
+          storyID={this.state.storyID}
+          editing={this.state.editing}
+
           // onSubmit={this.handleEditStory.bind(this)}
           // onSubmit={this.handleEdit.bind(this)}
         />
         <p>Below are all the stories from API, via StoryList component:</p>
         <StoryList
           handleDeleteStory={this.handleDeleteStory.bind(this)}
+
+          renderEditForm={this.renderEditForm.bind(this)}
 
           storyList={this.state.stories}
         />
