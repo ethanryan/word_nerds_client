@@ -12,7 +12,6 @@ class StoryContainer extends Component {
       story: '', //one story's content
       title: 'title here', //default title for stories
       storyID: 0, //default is zero
-      editing: false //default is false
     }
   } //end of constructor
 
@@ -82,13 +81,58 @@ console.log('handleUpdateStory story: ', story)
 
   this.updateStory(story) //calling function above, updating story on database
   .then( (response) => this.setState({
-      stories: response
+      stories: response //nasty nas
     }) )
     this.setState({
       story: '',
       title: '',
     })
 }
+
+
+///////need all this just to update title????
+///////need all this just to update title????
+///////need all this just to update title????
+///////need all this just to update title????
+
+updateTitle(title) {
+  return fetch(`http://localhost:3000/stories/${this.state.storyID}`, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      //'Authorization': localStorage.getItem('jwt')
+    },
+    body: JSON.stringify( {story: {
+        content: this.state.story, ///story! same as argument... from EditStoryForm, this is: 'this.state.input'
+        title: title,
+        user_id: 1, //default for now
+      }}
+    ),
+  }).then( res => res.json() )
+}
+
+
+handleUpdateTitle(title) { //should this be storyID (or id) instead?
+console.log('handleUpdateTitle title: ', title)
+
+  this.updateTitle(title) //calling function above, updating story on database
+  .then( (response) => this.setState({
+      stories: response //nasty nas
+    }) )
+    this.setState({
+      story: '',
+      title: '',
+    })
+}
+////////this can't be right....
+////////this can't be right....
+////////this can't be right....
+////////this can't be right....
+
+
+
+
 
 ///changing 'id' to 'story' to see if that works....
 //below is 'id', no matter what you call it...
@@ -102,7 +146,6 @@ renderEditForm(id) {
     story: editStory.content, //CHANGE story TO content!!!!! (attribute in API)
     title: editStory.title, //default title for stories
     storyID: editStory.id,
-    editing: true //default is false
   })
 } //end of renderEditForm
 
@@ -146,7 +189,8 @@ handleDeleteStory(id) {
           handleDeleteStory={this.handleDeleteStory.bind(this)}
 
           handleUpdateStory={this.handleUpdateStory.bind(this)}
-          //handleChange so users can type
+
+          handleUpdateTitle={this.handleUpdateTitle.bind(this)}
 
           // passing all state as props to EditStoryForm
           stories={this.state.stories}
@@ -154,7 +198,6 @@ handleDeleteStory(id) {
 
           title={this.state.title}
           storyID={this.state.storyID}
-          editing={this.state.editing}
         />
 
         <p>Below are all the stories from API, via StoryList component:</p>

@@ -30,14 +30,11 @@ class EditStoryForm extends Component {
   }
 
   handleStoryChange(event) {
-    //same as in CreateStoryForm
     console.log('EditStoryForm event: ', event)
     const story = event.target.value
     console.log('story from handleStoryChange: ', story);
-    ///commenting below out for now::::::
     this.setState({
       input: story //input instead of story for key
-      //input: event.target.value //input instead of story for key
     })
   }
 
@@ -46,15 +43,12 @@ class EditStoryForm extends Component {
     event.preventDefault()
     console.log('EditStoryForm submitted: this.props.story: ', this.props.story)
     console.log('EditStoryForm submitted: this.state.input: ', this.state.input)
-    //this.props.handleSubmit( this.state.input )
-    // this.props.handleUpdateStory( this.props.story )
 
-    // this.props.handleUpdateStory( this.state.input )
-    // this.props.handleUpdateStory( this.state.input ) ///may need to change
     this.props.handleUpdateStory( this.state.input ) ///may need to change
+    this.props.handleUpdateTitle( this.state.title ) ///may need to change
+//// **************will above line work, or break everything??????
+/////do i need a whole new function for handleUpdateTitle???
 
-    // this.props.handleUpdateFormSubmit( this.state.input ) //state.input is getting story from componentWillReceiveProps
-    // this.props.handleUpdateFormSubmit( this.props.storyID ) //passing storyID as a prop
     this.setState({input: ''}) //this should clear the form
   }
 
