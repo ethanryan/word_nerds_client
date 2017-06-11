@@ -24,7 +24,12 @@
 }
 
 .StoryList-blue {
-  border: 2px solid blue;
+  border: 1px solid blue;
+  background: pink
+}
+
+.Story-orange {
+  border: 1px solid orange;
   background: white
 }
 

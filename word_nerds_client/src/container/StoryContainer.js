@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import CreateStoryForm from '../components/CreateStoryForm'
 import EditStoryForm from '../components/EditStoryForm'
 import StoryList from '../components/StoryList'
+// import Story from '../components/Story'
 
 class StoryContainer extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class StoryContainer extends Component {
     this.state = {
       stories: [], //array of all the (user's) stories
       story: '', //one story's content
+      // story: [], //one story's content
       title: 'title here', //default title for stories
       storyID: 0, //default is zero
     }
@@ -43,7 +45,7 @@ createStory(content) {
     },
     method: 'POST',
     body: JSON.stringify( {story: {
-      content: content, //this has to be content, to match attributes on stories_controller on backend (same as below attributes)
+      //content: content, //this has to be content, to match attributes on stories_controller on backend (same as below attributes)
       title: "default TITLE here", //default for now
       user_id: 1 //this will be whatever the loggedin user's id is
     }} )
@@ -54,10 +56,15 @@ handleSubmit(story) {
   this.createStory(story) //this is calling function above, adding student to database
 //THEN doing the below, which adds student to page, along with other students.
     .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }) ))
-    .catch(err => console.log(err))
+    .catch(err => console.log(err)) //putting this below above line
+
+    //tried calling renderEditForm here, after/within handleSubmit...
+    // .then( this.renderEditForm(this.state.storyID).bind(this) ) //then render the story in the edit form
+    // this.renderEditForm(this.state.storyID).bind(this) //then render the story in the edit form
 }
 
 
+// updateStory(story, title) {
 updateStory(story) {
   return fetch(`http://localhost:3000/stories/${this.state.storyID}`, {
     method: 'PATCH',
@@ -69,6 +76,7 @@ updateStory(story) {
     body: JSON.stringify( {story: {
         content: story, ///story! same as argument... from EditStoryForm, this is: 'this.state.input'
         title: this.state.title,
+        // title: title,
         user_id: 1, //default for now
       }}
     ),
@@ -134,15 +142,15 @@ console.log('handleUpdateTitle title: ', title)
 
 
 
-///changing 'id' to 'story' to see if that works....
 //below is 'id', no matter what you call it...
 renderEditForm(id) {
   let editStory = this.state.stories.find(story => story.id === id)
   console.log('editing story with id: ', id)
-  console.log('editing editStory.content: ', editStory.content)
+  // console.log('editing editStory.content: ', editStory.content)
 
   this.setState({
     stories: this.state.stories, //this doesn't change
+    // story: editStory.content, //CHANGE story TO content!!!!! (attribute in API)
     story: editStory.content, //CHANGE story TO content!!!!! (attribute in API)
     title: editStory.title, //default title for stories
     storyID: editStory.id,
@@ -183,6 +191,11 @@ handleDeleteStory(id) {
         {/* put below forms within Switch ?? */}
         <CreateStoryForm
           handleSubmit={this.handleSubmit.bind(this)}
+
+          renderEditForm={this.renderEditForm.bind(this)}
+
+          storyID={this.state.storyID}
+
         />
         <br></br>
         <EditStoryForm
@@ -206,8 +219,15 @@ handleDeleteStory(id) {
 
           renderEditForm={this.renderEditForm.bind(this)}
 
-          storyList={this.state.stories}
+          stories={this.state.stories}
         />
+        {/* <Story
+          handleDeleteStory={this.handleDeleteStory.bind(this)}
+
+          renderEditForm={this.renderEditForm.bind(this)}
+
+          stories={this.state.stories}
+        /> */}
       </div>
     )
   }

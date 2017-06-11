@@ -6,7 +6,7 @@ class EditStoryForm extends Component {
     // console.log('props from EditStoryForm', props)
     super(props) //inheritance
 
-    this.state= {
+    this.state = {
       input: '',
       title: ''
     }
@@ -44,6 +44,7 @@ class EditStoryForm extends Component {
     console.log('EditStoryForm submitted: this.props.story: ', this.props.story)
     console.log('EditStoryForm submitted: this.state.input: ', this.state.input)
 
+    // this.props.handleUpdateStory( this.state.input, this.state.title ) ///may need to change
     this.props.handleUpdateStory( this.state.input ) ///may need to change
     this.props.handleUpdateTitle( this.state.title ) ///may need to change
 //// **************will above line work, or break everything??????
@@ -62,6 +63,8 @@ class EditStoryForm extends Component {
         <h1>Edit Story</h1>
         Title: <span className="EditStoryText-blue">{this.props.title}</span>
         <br></br>
+        <br></br>
+
         Story to edit: <span className="EditStoryText-blue">{this.props.story}</span>
 
         <h4>(Save, Edit, or Delete)</h4>
@@ -70,6 +73,7 @@ class EditStoryForm extends Component {
 
         <form onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
 
+      <br></br>
 
           Title:
           <input
@@ -84,10 +88,12 @@ class EditStoryForm extends Component {
 
           Story:
           <br></br>
+          {console.log('EditStoryForm this.state.input: ', this.state.input)}
+          {console.log('EditStoryForm this.state.input.split...: ', this.state.input.split('-----').map((paragraph, key) => {return <span key={key}>{paragraph}<br/><br/></span>}))}
 
           <textarea
             id="story-to-edit"
-            rows="4" cols="50"
+            rows="20" cols="100"
             type="textarea"
             value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
             placeholder="this is where the story content goes for editing"
@@ -96,7 +102,7 @@ class EditStoryForm extends Component {
 
           <br></br>
 
-          <input type="submit" value="Edit Story"/>
+          <input type="submit" value="Save Story"/>
         </form>
       </div>
     )

@@ -183,9 +183,25 @@ class CreateStoryForm extends Component {
 
           <br></br>
           <br></br>
+          {/* <a href="#EditStoryForm" onClick={() => {props.renderEditForm(story.id)}}>Edit</a> */}
+
+          {/* <a href="#EditStoryForm" type="submit" onClick={() => {this.props.renderEditForm(this.state.story)}}>Create Story</a> */}
+
+          {/* <button
+            href="#EditStoryForm"
+            type="submit" //this is the submit button
+            value="Create Story" //submit button text
+            // onClick={this.handlePollutionClick}
+
+            // onClick={() => {props.renderEditForm(story.id)}}
+            >
+              Create Story
+          </button> */}
+
           <input
             type="submit" //this is the submit button
             value="Create Story" //submit button text
+            // onClick={() => {this.props.renderEditForm(this.props.storyID)}}
           />
         </form>
       </div>
