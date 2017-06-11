@@ -45,7 +45,8 @@ const Story = (props) => {
           <br></br>
 
           <div>
-            <a href="#EditStoryForm"
+            <a
+              href="#EditStoryForm"
               onClick={() => {props.renderEditForm(story.id)}}>
               Edit
             </a>

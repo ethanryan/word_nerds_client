@@ -66,14 +66,34 @@ createStory(content) {
       //content: content, //this has to be content, to match attributes on stories_controller on backend (same as below attributes)
       title: "default TITLE here", //default for now
       user_id: 1 //this will be whatever the loggedin user's id is
-    }} )
+    }},
+    {characters: {
+      hero: {
+        name: this.state.characters.hero.name, //default
+        gender: '', //default ...null gives a warning.
+      },
+      shadow: {
+        name: this.state.characters.shadow.name, //default
+        gender: '', //default
+      },
+      friend: {
+        name: this.state.characters.friend.name, //default
+        gender: '', //default
+      }
+    }
+  }
+  )
   }).then( res => res.json() )
 }
 
+
+///want this function here in container too?
 replaceAll(string, find, replace) {
   // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
   return string.replace(new RegExp(find, 'g'), replace)
 }
+
+
 
 handleSubmit(story, characters) {
   this.createStory(story, characters) //this is calling function above, adding content to database
@@ -181,6 +201,9 @@ renderEditForm(id) {
     title: editStory.title, //default title for stories
     storyID: editStory.id,
   })
+
+  this.replaceAll(this.state.story, "HERO", "Spider-Man") //this doesn't work.
+
 } //end of renderEditForm
 
 

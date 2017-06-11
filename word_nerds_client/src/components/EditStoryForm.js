@@ -64,6 +64,9 @@ class EditStoryForm extends Component {
         Title: <span className="EditStoryText-blue">{this.props.title}</span>
         <br></br>
         <br></br>
+        Story ID: <span className="EditStoryText-blue">{this.props.storyID}</span>
+        <br></br>
+        <br></br>
 
         Story to edit: <span className="EditStoryText-blue">{this.props.story}</span>
 

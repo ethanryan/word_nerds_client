@@ -56,11 +56,68 @@ class CreateStoryForm extends Component {
   }
 
 
-/////////////////////,,,,,,,,,,,,,,,,,,,
-  // handleChangeFor = (this.props) = (event) => {
-  //   const { character } = this.state
-  //   ////keep working on thiss..........<<<<<<<--------------------
+
+/////////not working....., setState line...
+  // changeHeroName = (event) => {
+  //   const { characters } = this.state;
+  //   const newCharacterName = {
+  //     ...characters.hero,
+  //     name: event.target.value
+  //   };
+  //   this.setState({ characters: newCharacterName });
   // }
+
+
+
+  /////simple way, from here: https://stackoverflow.com/questions/35965275/how-do-i-edit-multiple-input-controlled-components-in-react
+
+
+  // changeFirstName = (event) => {
+  //   const { contact } = this.state;
+  //   const newContact = {
+  //     ...contact,
+  //     firstName: event.taret.value
+  //   };
+  //   this.setState({ contact: newContact });
+  // }
+  // changeLastName = (event) => {
+  //   const { contact } = this.state;
+  //   const newContact = {
+  //     ...contact,
+  //     lastName: event.taret.value
+  //   };
+  //   this.setState({ contact: newContact });
+  // }
+  // changePhone = (event) => {
+  //   const { contact } = this.state;
+  //   const newContact = {
+  //     ...contact,
+  //     phone: event.taret.value
+  //   };
+  //   this.setState({ contact: newContact });
+  // }
+  //
+  // render() {
+  //   return (
+  //     <div>
+  //       <input type="text" onChange={this.changeFirstName} value={this.state.contact.firstName}/>
+  //       <input type="text" onChange={this.changeLastName} value={this.state.contact.lastName}/>
+  //       <input type="text" onChange={this.changePhone} value={this.state.contact.phone}/>
+  //     </div>
+  //   );
+  // }
+
+
+/////////////////////,,,,,,,,,,,,,,,,,,,
+  // handleChangeFor = (characterName) = (event) => {
+  //   const { characters } = this.state
+  //   const newCharacterName = {
+  //       ...characters,
+  //       [characterName]: event.target.value
+  //     }
+  //     this.setState({ characters: newCharacterName })
+  //   }
+  ////keep working on thiss..........<<<<<<<--------------------
 
 
 //   handleChangeFor = (propertyName) = (event) => {
@@ -86,6 +143,7 @@ class CreateStoryForm extends Component {
 
   handleHeroInputChange(event) {
     const heroName = event.target.value
+    const currentState = this.state
     this.setState({
       characters: {
         hero: {
@@ -93,11 +151,11 @@ class CreateStoryForm extends Component {
           gender: '', //default ...null gives a warning.
         },
         shadow: {
-          name: 'SHADOW', //default
+          name: currentState.characters.shadow.name, //default
           gender: '', //default
         },
         friend: {
-          name: 'FRIEND', //default
+          name: currentState.characters.friend.name, //default
           gender: '', //default
         }
       },
@@ -105,17 +163,63 @@ class CreateStoryForm extends Component {
   }
 
 
+
     handleShadowInputChange(event) {
       const shadowName = event.target.value
+      const currentState = this.state
       this.setState({
         characters: {
+          hero: {
+            name: currentState.characters.hero.name, //default
+            gender: '', //default ...null gives a warning.
+          },
           shadow: {
             name: shadowName, //default
             gender: '', //default
           },
+          friend: {
+            name: currentState.characters.friend.name, //default
+            gender: '', //default
+          }
         },
       })
     }
+
+    handleFriendInputChange(event) {
+      const friendName = event.target.value
+      const currentState = this.state
+      this.setState({
+        characters: {
+          hero: {
+            name: currentState.characters.hero.name, //default
+            gender: '', //default ...null gives a warning.
+          },
+          shadow: {
+            name: currentState.characters.shadow.name, //default
+            gender: '', //default
+          },
+          friend: {
+            name: friendName, //default
+            gender: '', //default
+          }
+        },
+      })
+    }
+
+
+        // handleShadowInputChange(event) {
+        //   const shadowName = event.target.value
+        //   this.setState({
+        //     characters: {
+        //
+        //       shadow: {
+        //         name: shadowName, //default
+        //         gender: '', //default
+        //       },
+        //
+        //     },
+        //   })
+        // }
 
 
   handleStoryChange(event) {
@@ -147,7 +251,9 @@ class CreateStoryForm extends Component {
   }
 
 
+
   render() {
+    // let heroName=this.state.characters.hero.name
     return(
       <div className="CreateStoryForm-red">
         <h1>Create A Story</h1>
@@ -188,12 +294,25 @@ class CreateStoryForm extends Component {
 
           <p>Create characters: (input name fields and gender radio buttons here)</p>
 
+
+          {/* <input key="email_1" type="text" onChange={ (e) => { this.setState({ email_1: e.currentTarget.value }); } } /> */}
+
+
           Hero:
           <input
             type="text"
-            name="heroName"
+            key="heroName"
             value={this.state.characters.hero.name}
-            onChange={this.handleCharacterInputChange.bind(this)}
+            onChange={this.handleHeroInputChange.bind(this)}
+
+            // hero: {
+            //   name: 'HERO', //default
+            //   gender: '', //default ...null gives a warning.
+            // },
+            // onChange={ (e) => {   this.setState({ this.state.characters.hero.name = e.currentTarget.value }) } }
+            // onChange={ (e) => this.setState({ characters[hero]name: e.target.value }) }
+            // onChange={ (e) => { debugger } }
+            // onChange={this.handleCharacterInputChange.bind(this)}
           />
 
           Male:
@@ -218,7 +337,7 @@ class CreateStoryForm extends Component {
             type="text"
             name="shadowName"
             value={this.state.characters.shadow.name}
-            onChange={this.handleCharacterInputChange.bind(this)}
+            onChange={this.handleShadowInputChange.bind(this)}
           />
 
           Male:
@@ -243,7 +362,7 @@ class CreateStoryForm extends Component {
             type="text"
             name="friendName"
             value={this.state.characters.friend.name}
-            onChange={this.handleCharacterInputChange.bind(this)}
+            onChange={this.handleFriendInputChange.bind(this)}
           />
 
           Male:
@@ -260,27 +379,7 @@ class CreateStoryForm extends Component {
             onChange={this.handleCharacterInputChange.bind(this)}
           />
 
-          <br></br>
-          <br></br>
 
-          Testing Hero character name input:
-          <input
-            type="text"
-            name="heroName"
-            value={this.state.characters.hero.name} //this clears form but i get errors
-            onChange={this.handleHeroInputChange.bind(this)}
-            //above should be on form, form should control it's changes, and send data to container
-          />
-          <br></br>
-          <br></br>
-          Testing Shadow character name input:
-          <input
-            type="text"
-            name="shadowName"
-            value={this.state.characters.shadow.name} //this clears form but i get errors
-            onChange={this.handleCharacterInputChange.bind(this)}
-            //above should be on form, form should control it's changes, and send data to container
-          />
           <br></br>
           <br></br>
 
@@ -289,9 +388,9 @@ class CreateStoryForm extends Component {
           <br></br>
           The hero's name is: {this.state.characters.hero.name}
           <br></br>
-          The shadows's name is: {this.state.characters.shadow.name}
+          The shadow's name is: {this.state.characters.shadow.name}
           <br></br>
-          The friends's name is: {this.state.characters.friend.name}
+          The friend's name is: {this.state.characters.friend.name}
 
           {/* Test Story, just a line of text for now:
           <input
@@ -324,6 +423,13 @@ class CreateStoryForm extends Component {
             value="Create Story" //submit button text
             // onClick={() => {this.props.renderEditForm(this.props.storyID)}}
           />
+
+          {/* <a
+            type="submit"
+            href="#EditStoryForm"
+            onClick={() => {this.props.renderEditForm(1)}}>
+            Create Story
+          </a> */}
         </form>
       </div>
     )
