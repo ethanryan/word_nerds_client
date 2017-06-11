@@ -62,26 +62,27 @@ createStory(content) {
       //'Authorization': localStorage.getItem('jwt')
     },
     method: 'POST',
-    body: JSON.stringify( {story: {
+    body: JSON.stringify({story: {
       //content: content, //this has to be content, to match attributes on stories_controller on backend (same as below attributes)
       title: "default TITLE here", //default for now
       user_id: 1 //this will be whatever the loggedin user's id is
     }},
-    {characters: {
-      hero: {
-        name: this.state.characters.hero.name, //default
-        gender: '', //default ...null gives a warning.
-      },
-      shadow: {
-        name: this.state.characters.shadow.name, //default
-        gender: '', //default
-      },
-      friend: {
-        name: this.state.characters.friend.name, //default
-        gender: '', //default
-      }
-    }
-  }
+
+    //can i add in characters here in the post request?? do i need to do this to a separate route??
+    // {characters: {
+    //   hero: {
+    //     name: this.state.characters.hero.name, //default
+    //     gender: '', //default ...null gives a warning.
+    //   },
+    //   shadow: {
+    //     name: this.state.characters.shadow.name, //default
+    //     gender: '', //default
+    //   },
+    //   friend: {
+    //     name: this.state.characters.friend.name, //default
+    //     gender: '', //default
+    //   }
+    // }}
   )
   }).then( res => res.json() )
 }

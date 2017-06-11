@@ -32,7 +32,7 @@ class EditStoryForm extends Component {
   handleStoryChange(event) {
     console.log('EditStoryForm event: ', event)
     const story = event.target.value
-    console.log('story from handleStoryChange: ', story);
+    // console.log('story from handleStoryChange: ', story);
     this.setState({
       input: story //input instead of story for key
     })
@@ -42,7 +42,7 @@ class EditStoryForm extends Component {
   handleEditStoryFormSubmit(event) {
     event.preventDefault()
     console.log('EditStoryForm submitted: this.props.story: ', this.props.story)
-    console.log('EditStoryForm submitted: this.state.input: ', this.state.input)
+    // console.log('EditStoryForm submitted: this.state.input: ', this.state.input)
 
     // this.props.handleUpdateStory( this.state.input, this.state.title ) ///may need to change
     this.props.handleUpdateStory( this.state.input ) ///may need to change
