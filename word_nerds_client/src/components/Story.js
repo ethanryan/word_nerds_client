@@ -4,7 +4,11 @@ const Story = (props) => {
   console.log('Story props: ', props)
 
   const eachStory = props.stories.map( (story, index) =>
-      <div key={index} className="Story-orange">
+      <div
+        key={index}
+        className="Story-orange"
+        >
+
         <h1>
           Story Title: {story.title}
           {/* <Link to={`/stories/${story.id}`}>{story.content}</Link> */}
@@ -16,6 +20,10 @@ const Story = (props) => {
           {/* Story content: {story.content } */}
           {/* Story content: {story.content.innerHTML } */}
 
+          Story ID: {story.id}
+          <br></br>
+          <br></br>
+
           <strong>
             Story content:
           </strong>
@@ -25,14 +33,20 @@ const Story = (props) => {
           <br></br>
 
           {story.content.split('-----').map((paragraph, key) => {
-            return <span key={key}>{paragraph}<br/><br/></span>
+            return (
+            <span key={key}>
+              {paragraph}
+              <br/><br/>
+            </span>
+          )
           })}
 
           Story ID: {story.id}
           <br></br>
 
           <div>
-            <a href="#EditStoryForm" onClick={() => {props.renderEditForm(story.id)}}>
+            <a href="#EditStoryForm"
+              onClick={() => {props.renderEditForm(story.id)}}>
               Edit
             </a>
 
@@ -46,7 +60,8 @@ const Story = (props) => {
           </div>
 
       </div>
-  ).reverse() //so most recent story is on the top
+  )
+
 
   // <Switch>
   //   <Route path="/students/new" render={() => < StudentForm  onSubmit={ props.onSubmit }/>}/>
@@ -63,11 +78,12 @@ const Story = (props) => {
 
   return(
     <div>
-      <ul>{ eachStory }</ul>
+      <ul>{ eachStory.reverse() }</ul>
+        {/* reverse so most recent story is on the top  */}
       <p>each story can be clicked, which renders it in the EditStoryForm</p>
     </div>
   )
 
-}
+} //end of const Story
 
 export default Story

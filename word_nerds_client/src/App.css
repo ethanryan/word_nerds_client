@@ -30,7 +30,9 @@
 
 .Story-orange {
   border: 1px solid orange;
-  background: white
+  background: white;
+  width: 90%;
+  margin: 25px 0px 25px 0px;
 }
 
 .CreateStoryForm-red {

@@ -11,10 +11,28 @@ class StoryContainer extends Component {
     this.state = {
       stories: [], //array of all the (user's) stories
       story: '', //one story's content
+
+      characters: {
+        hero: {
+          name: 'HERO', //default
+          gender: '', //default ...null gives a warning.
+        },
+        shadow: {
+          name: 'SHADOW', //default
+          gender: '', //default
+        },
+        friend: {
+          name: 'FRIEND', //default
+          gender: '', //default
+        }
+      },
+
       // story: [], //one story's content
       title: 'title here', //default title for stories
       storyID: 0, //default is zero
     }
+    this.replaceAll = this.replaceAll.bind(this)
+
   } //end of constructor
 
 
@@ -52,10 +70,18 @@ createStory(content) {
   }).then( res => res.json() )
 }
 
-handleSubmit(story) {
-  this.createStory(story) //this is calling function above, adding student to database
+replaceAll(string, find, replace) {
+  // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+  return string.replace(new RegExp(find, 'g'), replace)
+}
+
+handleSubmit(story, characters) {
+  this.createStory(story, characters) //this is calling function above, adding content to database
 //THEN doing the below, which adds student to page, along with other students.
     .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }) ))
+
+    // .then(this.replaceAll(story, "HERO", "Spider-Man") )
+
     .catch(err => console.log(err)) //putting this below above line
 
     //tried calling renderEditForm here, after/within handleSubmit...
@@ -193,6 +219,8 @@ handleDeleteStory(id) {
           handleSubmit={this.handleSubmit.bind(this)}
 
           renderEditForm={this.renderEditForm.bind(this)}
+
+          story={this.state.story}
 
           storyID={this.state.storyID}
 

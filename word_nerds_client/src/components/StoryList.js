@@ -15,6 +15,9 @@ const StoryList = (props) => {
 
         stories={props.stories}
       />
+      <br></br>
+      <br></br>
+      
       <p>StoryList mounts and renders Story, which contains eachStory</p>
     </div>
   )
