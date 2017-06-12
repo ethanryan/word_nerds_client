@@ -1,7 +1,16 @@
 import React from 'react'
 
+
+
 const Story = (props) => {
   console.log('Story props: ', props)
+  console.log('Story props: ', props)
+
+  //putting this here for now...
+  function replaceAll(string, find, replace) {
+    // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+    return string.replace(new RegExp(find, 'g'), replace)
+  }
 
   const eachStory = props.stories.map( (story, index) =>
       <div
@@ -35,7 +44,7 @@ const Story = (props) => {
           {story.content.split('-----').map((paragraph, key) => {
             return (
             <span key={key}>
-              {paragraph}
+              {replaceAll(paragraph, "HERO", props.heroName)}
               <br/><br/>
             </span>
           )

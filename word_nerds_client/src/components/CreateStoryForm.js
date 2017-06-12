@@ -421,6 +421,7 @@ class CreateStoryForm extends Component {
           <input
             type="submit" //this is the submit button
             value="Create Story" //submit button text
+            onClick={() => {this.props.updateCharacterNames(this.state.characters.hero.name)}}
             // onClick={() => {this.props.renderEditForm(this.props.storyID)}}
           />
 

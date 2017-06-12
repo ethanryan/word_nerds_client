@@ -14,10 +14,13 @@ const StoryList = (props) => {
         renderEditForm={props.renderEditForm}
 
         stories={props.stories}
+
+        heroName={props.heroName}
+
       />
       <br></br>
       <br></br>
-      
+
       <p>StoryList mounts and renders Story, which contains eachStory</p>
     </div>
   )

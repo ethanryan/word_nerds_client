@@ -14,7 +14,7 @@ class StoryContainer extends Component {
 
       characters: {
         hero: {
-          name: 'HERO', //default
+          name: 'HERO', //default <<<<---- NEED container to receive this data from CreateStoryForm and pass it down to Story (this should replace all stories with new character names, but it's a start)
           gender: '', //default ...null gives a warning.
         },
         shadow: {
@@ -32,6 +32,7 @@ class StoryContainer extends Component {
       storyID: 0, //default is zero
     }
     this.replaceAll = this.replaceAll.bind(this)
+    this.updateCharacterNames = this.updateCharacterNames.bind(this)
 
   } //end of constructor
 
@@ -85,13 +86,6 @@ createStory(content) {
     // }}
   )
   }).then( res => res.json() )
-}
-
-
-///want this function here in container too?
-replaceAll(string, find, replace) {
-  // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-  return string.replace(new RegExp(find, 'g'), replace)
 }
 
 
@@ -235,6 +229,54 @@ handleDeleteStory(id) {
 }
 
 
+// handleHeroInputChange(event) {
+//   const heroName = event.target.value
+//   const currentState = this.state
+//   this.setState({
+//     characters: {
+//       hero: {
+//         name: heroName, //default
+//         gender: '', //default ...null gives a warning.
+//       },
+//       shadow: {
+//         name: currentState.characters.shadow.name, //default
+//         gender: '', //default
+//       },
+//       friend: {
+//         name: currentState.characters.friend.name, //default
+//         gender: '', //default
+//       }
+//     },
+//   })
+// }
+
+updateCharacterNames(characterNames) {
+  const heroName = characterNames
+  const currentState = this.state
+  this.setState({
+    characters: {
+      hero: {
+        name: heroName, //default
+        gender: '', //default ...null gives a warning.
+      },
+      shadow: {
+        name: currentState.characters.shadow.name, //default
+        gender: '', //default
+      },
+      friend: {
+        name: currentState.characters.friend.name, //default
+        gender: '', //default
+      }
+    },
+  })
+}
+
+///want this function here in container too?
+replaceAll(string, find, replace) {
+  // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+  return string.replace(new RegExp(find, 'g'), replace)
+}
+
   render() {
     return(
       <div>
@@ -243,6 +285,8 @@ handleDeleteStory(id) {
           handleSubmit={this.handleSubmit.bind(this)}
 
           renderEditForm={this.renderEditForm.bind(this)}
+
+          updateCharacterNames={this.updateCharacterNames.bind(this)}
 
           story={this.state.story}
 
@@ -272,6 +316,9 @@ handleDeleteStory(id) {
           renderEditForm={this.renderEditForm.bind(this)}
 
           stories={this.state.stories}
+
+          heroName={this.state.characters.hero.name}
+
         />
         {/* <Story
           handleDeleteStory={this.handleDeleteStory.bind(this)}
