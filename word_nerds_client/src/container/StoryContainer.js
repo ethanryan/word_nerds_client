@@ -66,8 +66,19 @@ createStory(content) {
     body: JSON.stringify({story: {
       //content: content, //this has to be content, to match attributes on stories_controller on backend (same as below attributes)
       title: "default TITLE here", //default for now
-      user_id: 1 //this will be whatever the loggedin user's id is
-    }},
+      user_id: 1, //this will be whatever the loggedin user's id is
+      // characters: [{ //,,,,,,characters or character???
+
+      characters: [{
+        // id: 1, //hero
+        name: this.state.characters.hero.name,
+        // name: "Steven Universe",
+        gender: "",
+        archetype: "hero",
+        // story_id: 1,
+      }],
+    },
+  },
 
     //can i add in characters here in the post request?? do i need to do this to a separate route??
     // {characters: {
@@ -75,14 +86,6 @@ createStory(content) {
     //     name: this.state.characters.hero.name, //default
     //     gender: '', //default ...null gives a warning.
     //   },
-    //   shadow: {
-    //     name: this.state.characters.shadow.name, //default
-    //     gender: '', //default
-    //   },
-    //   friend: {
-    //     name: this.state.characters.friend.name, //default
-    //     gender: '', //default
-    //   }
     // }}
   )
   }).then( res => res.json() )
@@ -196,9 +199,6 @@ renderEditForm(id) {
     title: editStory.title, //default title for stories
     storyID: editStory.id,
   })
-
-  this.replaceAll(this.state.story, "HERO", "Spider-Man") //this doesn't work.
-
 } //end of renderEditForm
 
 

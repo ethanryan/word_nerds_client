@@ -56,7 +56,6 @@ class CreateStoryForm extends Component {
   }
 
 
-
 /////////not working....., setState line...
   // changeHeroName = (event) => {
   //   const { characters } = this.state;
@@ -68,77 +67,7 @@ class CreateStoryForm extends Component {
   // }
 
 
-
   /////simple way, from here: https://stackoverflow.com/questions/35965275/how-do-i-edit-multiple-input-controlled-components-in-react
-
-
-  // changeFirstName = (event) => {
-  //   const { contact } = this.state;
-  //   const newContact = {
-  //     ...contact,
-  //     firstName: event.taret.value
-  //   };
-  //   this.setState({ contact: newContact });
-  // }
-  // changeLastName = (event) => {
-  //   const { contact } = this.state;
-  //   const newContact = {
-  //     ...contact,
-  //     lastName: event.taret.value
-  //   };
-  //   this.setState({ contact: newContact });
-  // }
-  // changePhone = (event) => {
-  //   const { contact } = this.state;
-  //   const newContact = {
-  //     ...contact,
-  //     phone: event.taret.value
-  //   };
-  //   this.setState({ contact: newContact });
-  // }
-  //
-  // render() {
-  //   return (
-  //     <div>
-  //       <input type="text" onChange={this.changeFirstName} value={this.state.contact.firstName}/>
-  //       <input type="text" onChange={this.changeLastName} value={this.state.contact.lastName}/>
-  //       <input type="text" onChange={this.changePhone} value={this.state.contact.phone}/>
-  //     </div>
-  //   );
-  // }
-
-
-/////////////////////,,,,,,,,,,,,,,,,,,,
-  // handleChangeFor = (characterName) = (event) => {
-  //   const { characters } = this.state
-  //   const newCharacterName = {
-  //       ...characters,
-  //       [characterName]: event.target.value
-  //     }
-  //     this.setState({ characters: newCharacterName })
-  //   }
-  ////keep working on thiss..........<<<<<<<--------------------
-
-
-//   handleChangeFor = (propertyName) = (event) => {
-//     const { contact } = this.state;
-//     const newContact = {
-//       ...contact,
-//       [propertyName]: event.taret.value
-//     };
-//     this.setState({ contact: newContact });
-//   }
-//
-//   render() {
-//     return (
-//       <div>
-//         <input type="text" onChange={this.handleChangeFor('firstName')} value={this.state.contact.firstName}/>
-//         <input type="text" onChange={this.handleChangeFor('lastName')} value={this.state.contact.lastName}/>
-//         <input type="text" onChange={this.handleChangeFor('phone')} value={this.state.contact.lastName}/>
-//       </div>
-//     );
-//   }
-// }
 
 
   handleHeroInputChange(event) {
@@ -233,9 +162,6 @@ class CreateStoryForm extends Component {
     event.preventDefault()
     console.log('CreateStoryForm submitted: ', this.state.story)
 
-    //below line not working, cuz no story exists yet to replace words in
-    this.replaceAll(this.state.story, "HERO", this.state.characters.hero.name )
-
     this.props.handleSubmit( this.state.story, this.state.characters )
 
     // this.props.handleSubmit( this.state.story )
@@ -247,7 +173,7 @@ class CreateStoryForm extends Component {
 
   replaceAll(string, find, replace) {
     // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-    return string.replace(new RegExp(find, 'g'), replace);
+    return string.replace(new RegExp(find, 'g'), replace)
   }
 
 
@@ -378,10 +304,6 @@ class CreateStoryForm extends Component {
             type="radio"
             onChange={this.handleCharacterInputChange.bind(this)}
           />
-
-
-          <br></br>
-          <br></br>
 
 
           <br></br>

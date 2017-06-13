@@ -1,9 +1,7 @@
 import React from 'react'
 
 
-
 const Story = (props) => {
-  console.log('Story props: ', props)
   console.log('Story props: ', props)
 
   //putting this here for now...
@@ -23,11 +21,6 @@ const Story = (props) => {
           {/* <Link to={`/stories/${story.id}`}>{story.content}</Link> */}
         </h1>
           {/* Story content: {story.paragraphs.map } */}
-          {/* below should be like above, not just a string of content, need more relational data persisting to database */}
-
-
-          {/* Story content: {story.content } */}
-          {/* Story content: {story.content.innerHTML } */}
 
           Story ID: {story.id}
           <br></br>
@@ -35,20 +28,31 @@ const Story = (props) => {
 
           <strong>
             Story content:
-          </strong>
-          (splitting and adding line breaks)
+          </strong> (splitting and adding line breaks)
 
           <br></br>
           <br></br>
 
-          {story.content.split('-----').map((paragraph, key) => {
+          {story.paragraphs.map((paragraph, key) => {
+            return (
+              <span key={key}>
+                {/* {paragraph.text} */}
+                {replaceAll(paragraph.text, "HERO", story.characters[0] ? story.characters[0].name : 'Hero')}
+                <br></br>
+                <br></br>
+              </span>
+            )
+          })}
+
+          {/* now doing above, below is the old way: */}
+          {/* {story.content.split('-----').map((paragraph, key) => {
             return (
             <span key={key}>
               {replaceAll(paragraph, "HERO", props.heroName)}
               <br/><br/>
             </span>
           )
-          })}
+          })} */}
 
           Story ID: {story.id}
           <br></br>

@@ -91,7 +91,7 @@ class EditStoryForm extends Component {
 
           Story:
           <br></br>
-          {console.log('EditStoryForm this.state.input: ', this.state.input)}
+          {/* {console.log('EditStoryForm this.state.input: ', this.state.input)} */}
           {console.log('EditStoryForm this.state.input.split...: ', this.state.input.split('-----').map((paragraph, key) => {return <span key={key}>{paragraph}<br/><br/></span>}))}
 
           <textarea
