@@ -5,10 +5,10 @@ const Story = (props) => {
   console.log('Story props: ', props)
 
   //putting this here for now...
-  function replaceAll(string, find, replace) {
-    // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-    return string.replace(new RegExp(find, 'g'), replace)
-  }
+  // function replaceAll(string, find, replace) {
+  //   // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+  //   return string.replace(new RegExp(find, 'g'), replace)
+  // }
 
   const eachStory = props.stories.map( (story, index) =>
       <div
@@ -33,26 +33,29 @@ const Story = (props) => {
           <br></br>
           <br></br>
 
-          {story.paragraphs.map((paragraph, key) => {
+          {/* {paragraph.text} */}
+          {/* {story.paragraphs.map((paragraph, key) => {
             return (
               <span key={key}>
-                {/* {paragraph.text} */}
                 {replaceAll(paragraph.text, "HERO", story.characters[0] ? story.characters[0].name : 'Hero')}
                 <br></br>
                 <br></br>
               </span>
             )
-          })}
+          })} */}
 
           {/* now doing above, below is the old way: */}
-          {/* {story.content.split('-----').map((paragraph, key) => {
+          {/* old way is better way???: */}
+          {story.content.split('-----').map((paragraph, key) => {
             return (
             <span key={key}>
-              {replaceAll(paragraph, "HERO", props.heroName)}
+              {paragraph}
+              {/* {replaceAll(paragraph, "HERO", props.heroName)} */}
+              {/* {replaceAll(paragraph, "HERO", story.characters[0] ? story.characters[0].name : 'Hero')} */}
               <br/><br/>
             </span>
           )
-          })} */}
+          })}
 
           Story ID: {story.id}
           <br></br>

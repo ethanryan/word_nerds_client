@@ -12,7 +12,7 @@ class StoryContainer extends Component {
       stories: [], //array of all the (user's) stories
       story: '', //one story's content
 
-      characters: {
+      characters: {  ///need all this, or could i just pass up an object?
         hero: {
           name: 'HERO', //default <<<<---- NEED container to receive this data from CreateStoryForm and pass it down to Story (this should replace all stories with new character names, but it's a start)
           gender: '', //default ...null gives a warning.
@@ -31,8 +31,10 @@ class StoryContainer extends Component {
       title: 'title here', //default title for stories
       storyID: 0, //default is zero
     }
-    this.replaceAll = this.replaceAll.bind(this)
-    this.updateCharacterNames = this.updateCharacterNames.bind(this)
+    // this.updateCharacterNames = this.updateCharacterNames.bind(this)
+    this.updateHero = this.updateHero.bind(this)
+    this.updateShadow = this.updateShadow.bind(this)
+    this.updateFriend = this.updateFriend.bind(this)
 
   } //end of constructor
 
@@ -56,6 +58,8 @@ componentDidMount() {
 
 
 createStory(content) {
+  console.log('content inside createStory: ', content)
+// createStory(characters) {
   return fetch("http://localhost:3000/stories", {
     headers: {
       'Accept': 'application/json',
@@ -65,40 +69,45 @@ createStory(content) {
     method: 'POST',
     body: JSON.stringify({story: {
       //content: content, //this has to be content, to match attributes on stories_controller on backend (same as below attributes)
-      title: "default TITLE here", //default for now
+      // title: "default TITLE here", //default for now
+      title: this.state.characters.hero.name + "'s story, v1", //default for now
       user_id: 1, //this will be whatever the loggedin user's id is
-      // characters: [{ //,,,,,,characters or character???
 
-      characters: [{
+      // characters: [this.state.characters], //this doesn't work
+      // characters: this.state.characters, //this doesn't work
+      characters: [
+        {
         // id: 1, //hero
         name: this.state.characters.hero.name,
-        // name: "Steven Universe",
         gender: "",
-        archetype: "hero",
+        archetype: "hero"
         // story_id: 1,
-      }],
-    },
-  },
+        },
 
-    //can i add in characters here in the post request?? do i need to do this to a separate route??
-    // {characters: {
-    //   hero: {
-    //     name: this.state.characters.hero.name, //default
-    //     gender: '', //default ...null gives a warning.
-    //   },
-    // }}
-  )
+        // {
+        // name: this.state.characters.shadow.name,
+        // gender: "",
+        // archetype: "shadow"
+        // },
+        // {
+        // name: this.state.characters.friend.name,
+        // gender: "",
+        // archetype: "friend"
+        // },
+      ],
+    },
+  }), ///////////
   }).then( res => res.json() )
 }
 
 
 
 handleSubmit(story, characters) {
+// handleSubmit(characters) {
   this.createStory(story, characters) //this is calling function above, adding content to database
+  // this.createStory(characters) //this is calling function above, adding content to database
 //THEN doing the below, which adds student to page, along with other students.
     .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }) ))
-
-    // .then(this.replaceAll(story, "HERO", "Spider-Man") )
 
     .catch(err => console.log(err)) //putting this below above line
 
@@ -183,9 +192,6 @@ console.log('handleUpdateTitle title: ', title)
 ////////this can't be right....
 
 
-
-
-
 //below is 'id', no matter what you call it...
 renderEditForm(id) {
   let editStory = this.state.stories.find(story => story.id === id)
@@ -200,6 +206,7 @@ renderEditForm(id) {
     storyID: editStory.id,
   })
 } //end of renderEditForm
+
 
 
 deleteStory(id) {
@@ -229,27 +236,9 @@ handleDeleteStory(id) {
 }
 
 
-// handleHeroInputChange(event) {
-//   const heroName = event.target.value
-//   const currentState = this.state
-//   this.setState({
-//     characters: {
-//       hero: {
-//         name: heroName, //default
-//         gender: '', //default ...null gives a warning.
-//       },
-//       shadow: {
-//         name: currentState.characters.shadow.name, //default
-//         gender: '', //default
-//       },
-//       friend: {
-//         name: currentState.characters.friend.name, //default
-//         gender: '', //default
-//       }
-//     },
-//   })
-// }
 
+
+///////////need to make this one function, for updating all the characters:::
 updateCharacterNames(characterNames) {
   const heroName = characterNames
   const currentState = this.state
@@ -271,11 +260,76 @@ updateCharacterNames(characterNames) {
   })
 }
 
-///want this function here in container too?
-replaceAll(string, find, replace) {
-  // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-  return string.replace(new RegExp(find, 'g'), replace)
+updateHero(characterNames) {
+  console.log('calling updateHero');
+
+  const heroName = characterNames
+  const currentState = this.state
+  this.setState({
+    characters: {
+      hero: {
+        name: heroName, //default
+        gender: '', //default ...null gives a warning.
+      },
+      shadow: {
+        name: currentState.characters.shadow.name, //default
+        gender: '', //default
+      },
+      friend: {
+        name: currentState.characters.friend.name, //default
+        gender: '', //default
+      }
+    },
+  })
 }
+
+updateShadow(characterNames) {
+  console.log('calling updateShadow');
+
+  const shadowName = characterNames
+  const currentState = this.state
+  this.setState({
+    characters: {
+      hero: {
+        name: currentState.characters.hero.name, //default
+        gender: '', //default ...null gives a warning.
+      },
+      shadow: {
+        name: shadowName, //default
+        gender: '', //default
+      },
+      friend: {
+        name: currentState.characters.friend.name, //default
+        gender: '', //default
+      }
+    },
+  })
+}
+
+updateFriend(characterNames) {
+  console.log('calling updateShadow');
+
+  const friendName = characterNames
+  const currentState = this.state
+  this.setState({
+    characters: {
+      hero: {
+        name: currentState.characters.hero.name, //default
+        gender: '', //default ...null gives a warning.
+      },
+      shadow: {
+        name: currentState.characters.shadow.name, //default
+        gender: '', //default
+      },
+      friend: {
+        name: friendName, //default
+        gender: '', //default
+      }
+    },
+  })
+}
+
+
 
   render() {
     return(
@@ -287,6 +341,9 @@ replaceAll(string, find, replace) {
           renderEditForm={this.renderEditForm.bind(this)}
 
           updateCharacterNames={this.updateCharacterNames.bind(this)}
+          updateHero={this.updateHero.bind(this)}
+          updateShadow={this.updateShadow.bind(this)}
+          updateFriend={this.updateFriend.bind(this)}
 
           story={this.state.story}
 
@@ -322,9 +379,7 @@ replaceAll(string, find, replace) {
         />
         {/* <Story
           handleDeleteStory={this.handleDeleteStory.bind(this)}
-
           renderEditForm={this.renderEditForm.bind(this)}
-
           stories={this.state.stories}
         /> */}
       </div>

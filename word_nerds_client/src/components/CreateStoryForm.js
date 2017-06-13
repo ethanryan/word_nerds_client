@@ -27,7 +27,7 @@ class CreateStoryForm extends Component {
 
      this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
      this.handleStoryChange = this.handleStoryChange.bind(this)
-     this.replaceAll = this.replaceAll.bind(this)
+    //  this.replaceAll = this.replaceAll.bind(this)
   } //end of constructor
 
   componentWillReceiveProps(props) { //need this lifecycle method to edit text in textarea
@@ -136,21 +136,6 @@ class CreateStoryForm extends Component {
     }
 
 
-        // handleShadowInputChange(event) {
-        //   const shadowName = event.target.value
-        //   this.setState({
-        //     characters: {
-        //
-        //       shadow: {
-        //         name: shadowName, //default
-        //         gender: '', //default
-        //       },
-        //
-        //     },
-        //   })
-        // }
-
-
   handleStoryChange(event) {
     const story = event.target.value
     this.setState({
@@ -160,8 +145,17 @@ class CreateStoryForm extends Component {
 
   handleCreateStoryFormSubmit(event) {
     event.preventDefault()
+
+    // () => {this.props.updateCharacterNames(this.state.characters.hero.name)}
+    // this.props.updateCharacterNames(this.state.characters.hero.name) //does this work??
+    //
+    // this.props.updateHero(this.state.characters.hero.name)
+    // this.props.updateShadow(this.state.characters.shadow.name)
+    // this.props.updateFriend(this.state.characters.friend.name)
+    // console.log('calling updateHero, updateShadow, updateFriend');
     console.log('CreateStoryForm submitted: ', this.state.story)
 
+    // this.props.handleSubmit( this.state.characters )
     this.props.handleSubmit( this.state.story, this.state.characters )
 
     // this.props.handleSubmit( this.state.story )
@@ -171,11 +165,15 @@ class CreateStoryForm extends Component {
 
   }
 
-  replaceAll(string, find, replace) {
-    // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-    return string.replace(new RegExp(find, 'g'), replace)
-  }
+  // replaceAll(string, find, replace) {
+  //   // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+  //   return string.replace(new RegExp(find, 'g'), replace)
+  // }
 
+  //
+  // onClick={() => {this.props.updateHero(this.state.characters.hero.name)}}
+  // onClick={() => {this.props.updateShadow(this.state.characters.shadow.name)}}
+  // onClick={() => {this.props.updateFriend(this.state.characters.friend.name)}}
 
 
   render() {
@@ -183,14 +181,19 @@ class CreateStoryForm extends Component {
     return(
       <div className="CreateStoryForm-red">
         <h1>Create A Story</h1>
-        <form onSubmit={this.handleCreateStoryFormSubmit}>
+        <form
+          onSubmit={this.handleCreateStoryFormSubmit}
+          // onClick={() => {this.props.updateCharacterNames(this.state.characters.hero.name)}}
+
+          >
+          {/* // onClick={() => {this.clickButton()}} */}
+
           <p>Choose genre: (select buttons here)</p>
 
           <label>
             Horror:
             <input
-              name="horror"
-              type="checkbox"
+              name="horror" type="checkbox"
               //checked={this.state.genres}
               onChange={this.handleGenreInputChange}
             />
@@ -200,8 +203,7 @@ class CreateStoryForm extends Component {
           <label>
             Comedy:
             <input
-              name="comedy"
-              type="checkbox"
+              name="comedy" type="checkbox"
               //value={this.state.genres}
               onChange={this.handleGenreInputChange}
             />
@@ -228,7 +230,8 @@ class CreateStoryForm extends Component {
           <input
             type="text"
             key="heroName"
-            value={this.state.characters.hero.name}
+            placeholder="HERO"
+            // value={this.state.characters.hero.name}
             onChange={this.handleHeroInputChange.bind(this)}
 
             // hero: {
@@ -262,7 +265,8 @@ class CreateStoryForm extends Component {
           <input
             type="text"
             name="shadowName"
-            value={this.state.characters.shadow.name}
+            placeholder="SHADOW"
+            // value={this.state.characters.shadow.name}
             onChange={this.handleShadowInputChange.bind(this)}
           />
 
@@ -287,7 +291,8 @@ class CreateStoryForm extends Component {
           <input
             type="text"
             name="friendName"
-            value={this.state.characters.friend.name}
+            placeholder="FRIEND"
+            // value={this.state.characters.friend.name}
             onChange={this.handleFriendInputChange.bind(this)}
           />
 
@@ -343,8 +348,8 @@ class CreateStoryForm extends Component {
           <input
             type="submit" //this is the submit button
             value="Create Story" //submit button text
+            // don't want this on click, want this on submit...
             onClick={() => {this.props.updateCharacterNames(this.state.characters.hero.name)}}
-            // onClick={() => {this.props.renderEditForm(this.props.storyID)}}
           />
 
           {/* <a
