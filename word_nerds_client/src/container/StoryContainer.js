@@ -84,16 +84,16 @@ createStory(content) {
         // story_id: 1,
         },
 
-        // {
-        // name: this.state.characters.shadow.name,
-        // gender: "",
-        // archetype: "shadow"
-        // },
-        // {
-        // name: this.state.characters.friend.name,
-        // gender: "",
-        // archetype: "friend"
-        // },
+        {
+        name: this.state.characters.shadow.name,
+        gender: "",
+        archetype: "shadow"
+        },
+        {
+        name: this.state.characters.friend.name,
+        gender: "",
+        archetype: "friend"
+        },
       ],
     },
   }), ///////////
@@ -240,7 +240,10 @@ handleDeleteStory(id) {
 
 ///////////need to make this one function, for updating all the characters:::
 updateCharacterNames(characterNames) {
-  const heroName = characterNames
+  console.log('updateCharacterNames is getting called, characterNames: ', characterNames);
+  const heroName = characterNames.hero.name
+  const shadowName = characterNames.shadow.name
+  const friendName = characterNames.friend.name
   const currentState = this.state
   this.setState({
     characters: {
@@ -249,11 +252,11 @@ updateCharacterNames(characterNames) {
         gender: '', //default ...null gives a warning.
       },
       shadow: {
-        name: currentState.characters.shadow.name, //default
+        name: shadowName, //default
         gender: '', //default
       },
       friend: {
-        name: currentState.characters.friend.name, //default
+        name: friendName, //default
         gender: '', //default
       }
     },

@@ -147,7 +147,7 @@ class CreateStoryForm extends Component {
     event.preventDefault()
 
     // () => {this.props.updateCharacterNames(this.state.characters.hero.name)}
-    // this.props.updateCharacterNames(this.state.characters.hero.name) //does this work??
+    this.props.updateCharacterNames(this.state.characters) //does this work??
     //
     // this.props.updateHero(this.state.characters.hero.name)
     // this.props.updateShadow(this.state.characters.shadow.name)
@@ -162,6 +162,8 @@ class CreateStoryForm extends Component {
     this.setState({story: ''}) //this clears form onSubmit
 
     console.log('this.state.characters.hero.name: ', this.state.characters.hero.name)
+    console.log('this.state.characters.shadow.name: ', this.state.characters.shadow.name)
+    console.log('this.state.characters.friend.name: ', this.state.characters.friend.name)
 
   }
 
@@ -245,18 +247,10 @@ class CreateStoryForm extends Component {
           />
 
           Male:
-          <input
-            value={this.state.characters.hero.gender}
-            type="radio"
-            onChange={this.handleCharacterInputChange.bind(this)}
-          />
+          <input value={this.state.characters.hero.gender} type="radio" onChange={this.handleCharacterInputChange.bind(this)} />
 
           Female:
-          <input
-            value={this.state.characters.hero.gender}
-            type="radio"
-            onChange={this.handleCharacterInputChange.bind(this)}
-          />
+          <input value={this.state.characters.hero.gender} type="radio" onChange={this.handleCharacterInputChange.bind(this)} />
 
           <br/>
           <br/>
@@ -271,45 +265,26 @@ class CreateStoryForm extends Component {
           />
 
           Male:
-          <input
-            value={this.state.characters.shadow.gender}
-            type="radio"
-            onChange={this.handleCharacterInputChange.bind(this)}
-          />
+          <input value={this.state.characters.shadow.gender} type="radio" onChange={this.handleCharacterInputChange.bind(this)} />
 
           Female:
-          <input
-            value={this.state.characters.shadow.gender}
-            type="radio"
-            onChange={this.handleCharacterInputChange.bind(this)}
-          />
+          <input value={this.state.characters.shadow.gender} type="radio" onChange={this.handleCharacterInputChange.bind(this)} />
 
           <br/>
           <br/>
 
           Friend:
           <input
-            type="text"
-            name="friendName"
-            placeholder="FRIEND"
+            type="text" name="friendName" placeholder="FRIEND"
             // value={this.state.characters.friend.name}
             onChange={this.handleFriendInputChange.bind(this)}
           />
 
           Male:
-          <input
-            value={this.state.characters.friend.gender}
-            type="radio"
-            onChange={this.handleCharacterInputChange.bind(this)}
-          />
+          <input value={this.state.characters.friend.gender} type="radio" onChange={this.handleCharacterInputChange.bind(this)} />
 
           Female:
-          <input
-            value={this.state.characters.friend.gender}
-            type="radio"
-            onChange={this.handleCharacterInputChange.bind(this)}
-          />
-
+          <input value={this.state.characters.friend.gender} type="radio" onChange={this.handleCharacterInputChange.bind(this)} />
 
           <br></br>
           <br></br>
@@ -319,45 +294,16 @@ class CreateStoryForm extends Component {
           <br></br>
           The friend's name is: {this.state.characters.friend.name}
 
-          {/* Test Story, just a line of text for now:
-          <input
-            type="text"
-            value={this.state.story} //this clears form but i get errors
-            onChange={this.handleStoryChange}
-            //above should be on form, form should control it's changes, and send data to container
-          /> */}
-
-
           <br></br>
           <br></br>
-          {/* <a href="#EditStoryForm" onClick={() => {props.renderEditForm(story.id)}}>Edit</a> */}
-
-          {/* <a href="#EditStoryForm" type="submit" onClick={() => {this.props.renderEditForm(this.state.story)}}>Create Story</a> */}
-
-          {/* <button
-            href="#EditStoryForm"
-            type="submit" //this is the submit button
-            value="Create Story" //submit button text
-            // onClick={this.handlePollutionClick}
-
-            // onClick={() => {props.renderEditForm(story.id)}}
-            >
-              Create Story
-          </button> */}
 
           <input
             type="submit" //this is the submit button
             value="Create Story" //submit button text
             // don't want this on click, want this on submit...
-            onClick={() => {this.props.updateCharacterNames(this.state.characters.hero.name)}}
+            // onClick={() => {this.props.updateCharacterNames(this.state.characters.hero.name)}}
           />
 
-          {/* <a
-            type="submit"
-            href="#EditStoryForm"
-            onClick={() => {this.props.renderEditForm(1)}}>
-            Create Story
-          </a> */}
         </form>
       </div>
     )
