@@ -146,36 +146,19 @@ class CreateStoryForm extends Component {
   handleCreateStoryFormSubmit(event) {
     event.preventDefault()
 
-    // () => {this.props.updateCharacterNames(this.state.characters.hero.name)}
     this.props.updateCharacterNames(this.state.characters) //does this work??
-    //
-    // this.props.updateHero(this.state.characters.hero.name)
-    // this.props.updateShadow(this.state.characters.shadow.name)
-    // this.props.updateFriend(this.state.characters.friend.name)
-    // console.log('calling updateHero, updateShadow, updateFriend');
+
     console.log('CreateStoryForm submitted: ', this.state.story)
 
     // this.props.handleSubmit( this.state.characters )
     this.props.handleSubmit( this.state.story, this.state.characters )
 
-    // this.props.handleSubmit( this.state.story )
     this.setState({story: ''}) //this clears form onSubmit
 
     console.log('this.state.characters.hero.name: ', this.state.characters.hero.name)
     console.log('this.state.characters.shadow.name: ', this.state.characters.shadow.name)
     console.log('this.state.characters.friend.name: ', this.state.characters.friend.name)
-
   }
-
-  // replaceAll(string, find, replace) {
-  //   // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-  //   return string.replace(new RegExp(find, 'g'), replace)
-  // }
-
-  //
-  // onClick={() => {this.props.updateHero(this.state.characters.hero.name)}}
-  // onClick={() => {this.props.updateShadow(this.state.characters.shadow.name)}}
-  // onClick={() => {this.props.updateFriend(this.state.characters.friend.name)}}
 
 
   render() {
@@ -215,18 +198,13 @@ class CreateStoryForm extends Component {
           <label>
             Random:
             <input
-              value="random"
-              type="radio" //radio instead of checkbox; random selected means all other genres are unselected.
+              value="random" type="radio" //radio instead of checkbox; random selected means all other genres are unselected.
               //value={this.state.genres}
               onChange={this.handleGenreInputChange}
             />
           </label>
 
           <p>Create characters: (input name fields and gender radio buttons here)</p>
-
-
-          {/* <input key="email_1" type="text" onChange={ (e) => { this.setState({ email_1: e.currentTarget.value }); } } /> */}
-
 
           Hero:
           <input
@@ -236,14 +214,6 @@ class CreateStoryForm extends Component {
             // value={this.state.characters.hero.name}
             onChange={this.handleHeroInputChange.bind(this)}
 
-            // hero: {
-            //   name: 'HERO', //default
-            //   gender: '', //default ...null gives a warning.
-            // },
-            // onChange={ (e) => {   this.setState({ this.state.characters.hero.name = e.currentTarget.value }) } }
-            // onChange={ (e) => this.setState({ characters[hero]name: e.target.value }) }
-            // onChange={ (e) => { debugger } }
-            // onChange={this.handleCharacterInputChange.bind(this)}
           />
 
           Male:

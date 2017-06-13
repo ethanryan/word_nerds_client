@@ -77,11 +77,9 @@ createStory(content) {
       // characters: this.state.characters, //this doesn't work
       characters: [
         {
-        // id: 1, //hero
         name: this.state.characters.hero.name,
         gender: "",
         archetype: "hero"
-        // story_id: 1,
         },
 
         {
@@ -89,6 +87,7 @@ createStory(content) {
         gender: "",
         archetype: "shadow"
         },
+
         {
         name: this.state.characters.friend.name,
         gender: "",
