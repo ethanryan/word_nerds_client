@@ -58,19 +58,29 @@ handleCharacterInputChange(event) {
 
 
 
-handleHeroInputChange(event) {
+handleHeroNameChange(event) {
   const heroName = event.target.value
   this.setState({
     hero: {
-      name: heroName, //default
-      gender: '', //default ...null gives a warning.
+      name: heroName,
+      gender: this.state.hero.gender,
+    }
+  })
+}
+
+handleHeroGenderChange(event) {
+  const heroGender = event.target.value
+  this.setState({
+    hero: {
+      name: this.state.hero.name,
+      gender: heroGender,
     }
   })
 }
 
 
 
-handleShadowInputChange(event) {
+handleShadowNameChange(event) {
   const shadowName = event.target.value
   this.setState({
     shadow: {
@@ -80,7 +90,7 @@ handleShadowInputChange(event) {
   })
 }
 
-handleFriendInputChange(event) {
+handleFriendNameChange(event) {
   const friendName = event.target.value
   this.setState({
     friend: {
@@ -89,6 +99,7 @@ handleFriendInputChange(event) {
     }
   })
 }
+
 
 
 handleCreateStoryFormSubmit(event) {
@@ -139,19 +150,22 @@ render() {
                   <h3>Create characters: </h3>
                   <Form.Field placeholder="HERO"
                     control='input' type="text" key="heroName" width={14}
-                    onChange={this.handleHeroInputChange.bind(this)} />
-                    <Form.Field label='male' control='input' type='radio' />
-                    <Form.Field label='female' control='input' type='radio' />
+                    onChange={this.handleHeroNameChange.bind(this)} />
+
+                    <div onChange={this.handleHeroGenderChange.bind(this)}>
+                    <Form.Field label='male' value="he" control='input' type='radio' />
+                    <Form.Field label='female' value="she" control='input' type='radio' />
+                  </div>
 
                     <Form.Field placeholder="SHADOW"
                       control='input' type="text" key="shadowName" width={14}
-                      onChange={this.handleShadowInputChange.bind(this)} />
+                      onChange={this.handleShadowNameChange.bind(this)} />
                       <Form.Field label='male' control='input' type='radio' />
                       <Form.Field label='female' control='input' type='radio' />
 
                       <Form.Field placeholder="FRIEND"
                         control='input' type="text" key="friendName" width={14}
-                        onChange={this.handleFriendInputChange.bind(this)} />
+                        onChange={this.handleFriendNameChange.bind(this)} />
                         <Form.Field label='male' control='input' type='radio' />
                         <Form.Field label='female' control='input' type='radio' />
 
@@ -255,7 +269,7 @@ type="text"
 key="heroName"
 placeholder="HERO"
 // value={this.state.characters.hero.name}
-onChange={this.handleHeroInputChange.bind(this)}
+onChange={this.handleHeroNameChange.bind(this)}
 />
 
 Male:

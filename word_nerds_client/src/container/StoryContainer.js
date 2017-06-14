@@ -5,7 +5,9 @@ import { Grid } from 'semantic-ui-react'
 import CreateStoryForm from '../components/CreateStoryForm'
 import EditStoryForm from '../components/EditStoryForm'
 import StoryList from '../components/StoryList'
-// import Story from '../components/Story'
+
+import { Switch, Route } from 'react-router-dom'
+
 
 class StoryContainer extends Component {
   constructor() {
@@ -40,6 +42,9 @@ componentDidMount() {
 } //end of componentDidMount
 
 
+
+
+
 createStory(content, characters) {
   console.log('content inside createStory: ', content)
 // createStory(characters) {
@@ -56,12 +61,10 @@ createStory(content, characters) {
       title: characters.hero.name + "'s story, v1", //default for now
       user_id: 1, //this will be whatever the loggedin user's id is
 
-      // characters: [this.state.characters], //this doesn't work
-      // characters: this.state.characters, //this doesn't work
       characters: [
         {
         name: characters.hero.name,
-        gender: "",
+        gender: characters.hero.gender,
         archetype: "hero"
         },
 
@@ -224,11 +227,22 @@ handleDeleteStory(id) {
       <div>
 
 
+        {/* <div>
+        <Switch>
+          <Route path="/login" render={() => <LoginForm handleLogin={this.handleLogin}/>} />
+          <Route path="/students" component={AuthedStudentsContainer} />
+          <Route exact path="/about" render={() => <h1>This is an app about dogs and students</h1>}/>
+        </Switch>
+      </div> */}
+
+
         {/* put below forms within Switch ?? */}
 
 
         <Grid>
           <Grid.Row>
+
+
             <Grid.Column width={10}>
               <CreateStoryForm
                 handleSubmit={this.handleSubmit.bind(this)}
@@ -239,7 +253,21 @@ handleDeleteStory(id) {
 
                 storyID={this.state.storyID}
               />
+            </Grid.Column>
 
+            <Grid.Column width={6}>
+              <StoryList
+                handleDeleteStory={this.handleDeleteStory.bind(this)}
+
+                renderEditForm={this.renderEditForm.bind(this)}
+
+                stories={this.state.stories}
+
+                // heroName={this.state.characters.hero.name}
+              />
+            </Grid.Column>
+
+            <Grid.Column width={10}>
               <EditStoryForm
                 handleDeleteStory={this.handleDeleteStory.bind(this)}
 
@@ -256,31 +284,10 @@ handleDeleteStory(id) {
             </Grid.Column>
 
 
-            <Grid.Column width={6}>
-              <StoryList
-                handleDeleteStory={this.handleDeleteStory.bind(this)}
 
-                renderEditForm={this.renderEditForm.bind(this)}
-
-                stories={this.state.stories}
-
-                // heroName={this.state.characters.hero.name}
-              />
-            </Grid.Column>
           </Grid.Row>
 
 
-
-          <Grid.Row>
-            <Grid.Column width={8}>
-
-            </Grid.Column>
-
-
-            <Grid.Column width={8}>
-
-            </Grid.Column>
-          </Grid.Row>
         </Grid>
 
       </div>

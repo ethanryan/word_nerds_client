@@ -5,7 +5,7 @@ import { Form } from 'semantic-ui-react'
 class EditStoryForm extends Component {
 
   constructor(props) {
-    // console.log('props from EditStoryForm', props)
+    console.log('props from EditStoryForm', props)
     super(props) //inheritance
 
     this.state = {
@@ -79,13 +79,21 @@ class EditStoryForm extends Component {
               value={this.state.title} //value of input field is state.title, coming from componentWillReceiveProps
               onChange={this.handleTitleChange}
             />
-            
+
             <Form.Field label='Edit Story'
               placeholder="this is where the story content goes for editing"
               control='textarea' rows='30'
               width={15}
               // cols="10"
               value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
+              // value={this.props.story.split('-----').map((paragraph, key) => {
+              //             return (
+              //             <span key={key}>
+              //               {paragraph}
+              //               <br/><br/>
+              //             </span>
+              //           )
+              //           })} //value of textarea is state.input, coming from componentWillReceiveProps
               onChange={this.handleStoryChange}
             />
 

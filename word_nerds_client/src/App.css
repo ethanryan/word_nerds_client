@@ -46,8 +46,10 @@
 
 .NavBar-yellow {
   border: 2px solid yellow;
-  background: white;
-  padding: 1px 0px 1px 75px;
+  /*background-color: black;*/
+  background-color: red;
+  @green;
+  padding: 1px 75px 1px 75px;
 }
 
 .EditStoryForm-green {
