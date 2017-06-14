@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { Form } from 'semantic-ui-react'
+
 class EditStoryForm extends Component {
 
   constructor(props) {
@@ -56,6 +58,37 @@ class EditStoryForm extends Component {
   render() {
     console.log('render is called in EditStory');
     return(
+
+
+      <div>
+          <div className="EditStoryForm-green">
+
+
+            <Form>
+              <Form.Group widths='equal'>
+                <Form.Field label='An HTML <input>' control='input' />
+                <Form.Field label='An HTML <select>' control='select'>
+                  <option value='male'>Male</option>
+                  <option value='female'>Female</option>
+                </Form.Field>
+              </Form.Group>
+              <Form.Group grouped>
+                <label>HTML radios</label>
+                <Form.Field label='This one' control='input' type='radio' name='htmlRadios' />
+                <Form.Field label='That one' control='input' type='radio' name='htmlRadios' />
+              </Form.Group>
+              <Form.Group grouped>
+                <label>HTML checkboxes</label>
+                <Form.Field label='This one' control='input' type='checkbox' />
+                <Form.Field label='That one' control='input' type='checkbox' />
+              </Form.Group>
+              <Form.Field label='An HTML <textarea>' control='textarea' rows='3' />
+              <Form.Field label='An HTML <button>' control='button'>
+                HTML Button
+              </Form.Field>
+            </Form>
+          </div>
+
       <div
         className="EditStoryForm-green"
         id="EditStoryForm" >
@@ -96,7 +129,7 @@ class EditStoryForm extends Component {
 
           <textarea
             id="story-to-edit"
-            rows="20" cols="100"
+            rows="10" cols="10"
             type="textarea"
             value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
             placeholder="this is where the story content goes for editing"
@@ -107,6 +140,7 @@ class EditStoryForm extends Component {
 
           <input type="submit" value="Save Story"/>
         </form>
+      </div>
       </div>
     )
   }

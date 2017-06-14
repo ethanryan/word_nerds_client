@@ -2,11 +2,18 @@ import React from 'react'
 
 import Story from './Story'
 
+import { Button } from 'semantic-ui-react'
+
+// const ButtonExampleButton = () => (
+
+
+// export default ButtonExampleButton
+
 const StoryList = (props) => {
 
   return(
     <div className="StoryList-blue">
-      {/* <Story /> */}
+
       <Story
         // passing StoryList props down to Story
         handleDeleteStory={props.handleDeleteStory}

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { Form } from 'semantic-ui-react'
+
 class CreateStoryForm extends Component {
 
   constructor(props) {
@@ -26,8 +28,6 @@ class CreateStoryForm extends Component {
      })
 
      this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
-     this.handleStoryChange = this.handleStoryChange.bind(this)
-    //  this.replaceAll = this.replaceAll.bind(this)
   } //end of constructor
 
   componentWillReceiveProps(props) { //need this lifecycle method to edit text in textarea
@@ -55,19 +55,6 @@ class CreateStoryForm extends Component {
     //    [event.target.name]: event.target.value })
   }
 
-
-/////////not working....., setState line...
-  // changeHeroName = (event) => {
-  //   const { characters } = this.state;
-  //   const newCharacterName = {
-  //     ...characters.hero,
-  //     name: event.target.value
-  //   };
-  //   this.setState({ characters: newCharacterName });
-  // }
-
-
-  /////simple way, from here: https://stackoverflow.com/questions/35965275/how-do-i-edit-multiple-input-controlled-components-in-react
 
 
   handleHeroInputChange(event) {
@@ -136,17 +123,11 @@ class CreateStoryForm extends Component {
     }
 
 
-  handleStoryChange(event) {
-    const story = event.target.value
-    this.setState({
-      story: story
-    })
-  }
 
   handleCreateStoryFormSubmit(event) {
     event.preventDefault()
 
-    this.props.updateCharacterNames(this.state.characters) //does this work??
+    this.props.updateCharacterNames(this.state.characters) //sending this.state.characters to container as argument
 
     console.log('CreateStoryForm submitted: ', this.state.story)
 
@@ -164,14 +145,67 @@ class CreateStoryForm extends Component {
   render() {
     // let heroName=this.state.characters.hero.name
     return(
-      <div className="CreateStoryForm-red">
-        <h1>Create A Story</h1>
-        <form
-          onSubmit={this.handleCreateStoryFormSubmit}
-          // onClick={() => {this.props.updateCharacterNames(this.state.characters.hero.name)}}
 
-          >
-          {/* // onClick={() => {this.clickButton()}} */}
+      /////
+<div>
+    <div className="CreateStoryForm-red">
+
+
+      <Form onSubmit={this.handleCreateStoryFormSubmit} >
+        <Form.Group grouped >
+          <h3>Create A Story</h3>
+          <h3>Choose genre: </h3>
+          <Form.Field label='Horror' control='input' type='checkbox' />
+          <Form.Field label='Comedy' control='input' type='checkbox' />
+          <Form.Field label='Random' control='input' type='radio' />
+        </Form.Group>
+
+        <Form.Group grouped >
+          <h3>Create characters: </h3>
+          <Form.Field placeholder="HERO"
+            control='input' type="text" key="heroName" width={6}
+            onChange={this.handleHeroInputChange.bind(this)} />
+            <div class="inline fields">
+          <Form.Field label='male' control='input' type='radio' />
+          <Form.Field label='female' control='input' type='radio' />
+</div>
+
+          <Form.Field placeholder="SHADOW"
+            control='input' type="text" key="shadowName" width={6}
+            onChange={this.handleShadowInputChange.bind(this)} />
+          <Form.Field label='male' control='input' type='radio' />
+          <Form.Field label='female' control='input' type='radio' />
+
+          <Form.Field placeholder="FRIEND"
+            control='input' type="text" key="friendName" width={6}
+            onChange={this.handleFriendInputChange.bind(this)} />
+          <Form.Field label='male' control='input' type='radio' />
+          <Form.Field label='female' control='input' type='radio' />
+
+        </Form.Group>
+
+        The hero's name is: {this.state.characters.hero.name}
+        <br></br>
+        The shadow's name is: {this.state.characters.shadow.name}
+        <br></br>
+        The friend's name is: {this.state.characters.friend.name}
+
+        <Form.Button content='Submit' primary/>
+        {/* <Button primary>Primary</Button> */}
+
+        {/* <Form.Field color="green"
+          // type="button"
+          type='submit'
+          control='button'>
+          Create Story
+        </Form.Field> */}
+      </Form>
+    </div>
+
+
+      {/* <div className="CreateStoryForm-red">
+        <h1>Create A Story</h1>
+        <form onSubmit={this.handleCreateStoryFormSubmit} >
 
           <p>Choose genre: (select buttons here)</p>
 
@@ -213,7 +247,6 @@ class CreateStoryForm extends Component {
             placeholder="HERO"
             // value={this.state.characters.hero.name}
             onChange={this.handleHeroInputChange.bind(this)}
-
           />
 
           Male:
@@ -270,11 +303,10 @@ class CreateStoryForm extends Component {
           <input
             type="submit" //this is the submit button
             value="Create Story" //submit button text
-            // don't want this on click, want this on submit...
-            // onClick={() => {this.props.updateCharacterNames(this.state.characters.hero.name)}}
           />
 
         </form>
+      </div> */}
       </div>
     )
   }

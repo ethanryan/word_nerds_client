@@ -17,7 +17,12 @@ const Story = (props) => {
         >
 
         <h1>
-          Story Title: {story.title}
+          {/* Story Title: {story.title} */}
+          <a
+            href="#EditStoryForm"
+            onClick={() => {props.renderEditForm(story.id)}}>
+            Story Title: {story.title}
+          </a>
           {/* <Link to={`/stories/${story.id}`}>{story.content}</Link> */}
         </h1>
           {/* Story content: {story.paragraphs.map } */}
@@ -25,6 +30,8 @@ const Story = (props) => {
           Story ID: {story.id}
           <br></br>
           <br></br>
+
+
 
           <strong>
             Story content:
@@ -61,13 +68,13 @@ const Story = (props) => {
           <br></br>
 
           <div>
-            <a
+            {/* <a
               href="#EditStoryForm"
               onClick={() => {props.renderEditForm(story.id)}}>
               Edit
             </a>
 
-            <span>   </span>
+            <span>   </span> */}
 
             <button
               href="#delete"

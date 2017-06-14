@@ -37,7 +37,8 @@
 
 .CreateStoryForm-red {
   border: 2px solid red;
-  background: white
+  background: white;
+  padding: 25px;
 }
 
 .NavBar-yellow {

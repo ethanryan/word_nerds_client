@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import { Grid } from 'semantic-ui-react'
+
 import CreateStoryForm from '../components/CreateStoryForm'
 import EditStoryForm from '../components/EditStoryForm'
 import StoryList from '../components/StoryList'
@@ -262,6 +264,8 @@ updateCharacterNames(characterNames) {
   })
 }
 
+
+///////make the three functions below one function, or get rid of them entirely by passing characterNames to container
 updateHero(characterNames) {
   console.log('calling updateHero');
 
@@ -336,54 +340,74 @@ updateFriend(characterNames) {
   render() {
     return(
       <div>
-        {/* put below forms within Switch ?? */}
-        <CreateStoryForm
-          handleSubmit={this.handleSubmit.bind(this)}
 
-          renderEditForm={this.renderEditForm.bind(this)}
 
-          updateCharacterNames={this.updateCharacterNames.bind(this)}
-          updateHero={this.updateHero.bind(this)}
-          updateShadow={this.updateShadow.bind(this)}
-          updateFriend={this.updateFriend.bind(this)}
+                {/* put below forms within Switch ?? */}
 
-          story={this.state.story}
 
-          storyID={this.state.storyID}
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={10}>
+              <CreateStoryForm
+                handleSubmit={this.handleSubmit.bind(this)}
 
-        />
-        <br></br>
-        <EditStoryForm
-          handleDeleteStory={this.handleDeleteStory.bind(this)}
+                renderEditForm={this.renderEditForm.bind(this)}
 
-          handleUpdateStory={this.handleUpdateStory.bind(this)}
+                updateCharacterNames={this.updateCharacterNames.bind(this)}
+                updateHero={this.updateHero.bind(this)}
+                updateShadow={this.updateShadow.bind(this)}
+                updateFriend={this.updateFriend.bind(this)}
 
-          handleUpdateTitle={this.handleUpdateTitle.bind(this)}
+                story={this.state.story}
 
-          // passing all state as props to EditStoryForm
-          stories={this.state.stories}
-          story={this.state.story}
+                storyID={this.state.storyID}
+              />
 
-          title={this.state.title}
-          storyID={this.state.storyID}
-        />
+              <EditStoryForm
+                handleDeleteStory={this.handleDeleteStory.bind(this)}
 
-        <p>Below are all the stories from API, via StoryList component:</p>
-        <StoryList
-          handleDeleteStory={this.handleDeleteStory.bind(this)}
+                handleUpdateStory={this.handleUpdateStory.bind(this)}
 
-          renderEditForm={this.renderEditForm.bind(this)}
+                handleUpdateTitle={this.handleUpdateTitle.bind(this)}
 
-          stories={this.state.stories}
+                // passing all state as props to EditStoryForm
+                stories={this.state.stories}
+                story={this.state.story}
 
-          heroName={this.state.characters.hero.name}
+                title={this.state.title}
+                storyID={this.state.storyID}
+              />
+            </Grid.Column>
 
-        />
-        {/* <Story
-          handleDeleteStory={this.handleDeleteStory.bind(this)}
-          renderEditForm={this.renderEditForm.bind(this)}
-          stories={this.state.stories}
-        /> */}
+
+            <Grid.Column width={6}>
+              <StoryList
+                handleDeleteStory={this.handleDeleteStory.bind(this)}
+
+                renderEditForm={this.renderEditForm.bind(this)}
+
+                stories={this.state.stories}
+
+                heroName={this.state.characters.hero.name}
+              />
+            </Grid.Column>
+          </Grid.Row>
+
+
+
+          <Grid.Row>
+            <Grid.Column width={8}>
+
+            </Grid.Column>
+
+
+
+            <Grid.Column width={8}>
+
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+
       </div>
     )
   }

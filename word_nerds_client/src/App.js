@@ -9,9 +9,10 @@ import StoryContainer from './container/StoryContainer'
 class App extends Component {
   render() {
     return (
+
       <div className="App-purple">
         <NavBar />
-        <h2>Word Nerds</h2>
+
         <StoryContainer />
         <p>above is everything rendered from StoryContainer -- both forms</p>
 
