@@ -16,7 +16,7 @@ const Story = (props) => {
         className="Story-orange"
         >
 
-        <h1>
+        <h2>
           {/* Story Title: {story.title} */}
           <a
             href="#EditStoryForm"
@@ -24,7 +24,7 @@ const Story = (props) => {
             Story Title: {story.title}
           </a>
           {/* <Link to={`/stories/${story.id}`}>{story.content}</Link> */}
-        </h1>
+        </h2>
           {/* Story content: {story.paragraphs.map } */}
 
           Story ID: {story.id}
@@ -57,8 +57,6 @@ const Story = (props) => {
             return (
             <span key={key}>
               {paragraph}
-              {/* {replaceAll(paragraph, "HERO", props.heroName)} */}
-              {/* {replaceAll(paragraph, "HERO", story.characters[0] ? story.characters[0].name : 'Hero')} */}
               <br/><br/>
             </span>
           )

@@ -2,12 +2,6 @@ import React from 'react'
 
 import Story from './Story'
 
-import { Button } from 'semantic-ui-react'
-
-// const ButtonExampleButton = () => (
-
-
-// export default ButtonExampleButton
 
 const StoryList = (props) => {
 

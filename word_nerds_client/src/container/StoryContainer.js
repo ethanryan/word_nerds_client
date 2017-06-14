@@ -14,29 +14,10 @@ class StoryContainer extends Component {
       stories: [], //array of all the (user's) stories
       story: '', //one story's content
 
-      characters: {  ///need all this, or could i just pass up an object?
-        hero: {
-          name: 'HERO', //default <<<<---- NEED container to receive this data from CreateStoryForm and pass it down to Story (this should replace all stories with new character names, but it's a start)
-          gender: '', //default ...null gives a warning.
-        },
-        shadow: {
-          name: 'SHADOW', //default
-          gender: '', //default
-        },
-        friend: {
-          name: 'FRIEND', //default
-          gender: '', //default
-        }
-      },
-
       // story: [], //one story's content
       title: 'title here', //default title for stories
       storyID: 0, //default is zero
     }
-    // this.updateCharacterNames = this.updateCharacterNames.bind(this)
-    this.updateHero = this.updateHero.bind(this)
-    this.updateShadow = this.updateShadow.bind(this)
-    this.updateFriend = this.updateFriend.bind(this)
 
   } //end of constructor
 
@@ -59,7 +40,7 @@ componentDidMount() {
 } //end of componentDidMount
 
 
-createStory(content) {
+createStory(content, characters) {
   console.log('content inside createStory: ', content)
 // createStory(characters) {
   return fetch("http://localhost:3000/stories", {
@@ -72,26 +53,26 @@ createStory(content) {
     body: JSON.stringify({story: {
       //content: content, //this has to be content, to match attributes on stories_controller on backend (same as below attributes)
       // title: "default TITLE here", //default for now
-      title: this.state.characters.hero.name + "'s story, v1", //default for now
+      title: characters.hero.name + "'s story, v1", //default for now
       user_id: 1, //this will be whatever the loggedin user's id is
 
       // characters: [this.state.characters], //this doesn't work
       // characters: this.state.characters, //this doesn't work
       characters: [
         {
-        name: this.state.characters.hero.name,
+        name: characters.hero.name,
         gender: "",
         archetype: "hero"
         },
 
         {
-        name: this.state.characters.shadow.name,
+        name: characters.shadow.name,
         gender: "",
         archetype: "shadow"
         },
 
         {
-        name: this.state.characters.friend.name,
+        name: characters.friend.name,
         gender: "",
         archetype: "friend"
         },
@@ -200,8 +181,6 @@ renderEditForm(id) {
   // console.log('editing editStory.content: ', editStory.content)
 
   this.setState({
-    stories: this.state.stories, //this doesn't change
-    // story: editStory.content, //CHANGE story TO content!!!!! (attribute in API)
     story: editStory.content, //CHANGE story TO content!!!!! (attribute in API)
     title: editStory.title, //default title for stories
     storyID: editStory.id,
@@ -239,110 +218,13 @@ handleDeleteStory(id) {
 
 
 
-///////////need to make this one function, for updating all the characters:::
-updateCharacterNames(characterNames) {
-  console.log('updateCharacterNames is getting called, characterNames: ', characterNames);
-  const heroName = characterNames.hero.name
-  const shadowName = characterNames.shadow.name
-  const friendName = characterNames.friend.name
-  const currentState = this.state
-  this.setState({
-    characters: {
-      hero: {
-        name: heroName, //default
-        gender: '', //default ...null gives a warning.
-      },
-      shadow: {
-        name: shadowName, //default
-        gender: '', //default
-      },
-      friend: {
-        name: friendName, //default
-        gender: '', //default
-      }
-    },
-  })
-}
-
-
-///////make the three functions below one function, or get rid of them entirely by passing characterNames to container
-updateHero(characterNames) {
-  console.log('calling updateHero');
-
-  const heroName = characterNames
-  const currentState = this.state
-  this.setState({
-    characters: {
-      hero: {
-        name: heroName, //default
-        gender: '', //default ...null gives a warning.
-      },
-      shadow: {
-        name: currentState.characters.shadow.name, //default
-        gender: '', //default
-      },
-      friend: {
-        name: currentState.characters.friend.name, //default
-        gender: '', //default
-      }
-    },
-  })
-}
-
-updateShadow(characterNames) {
-  console.log('calling updateShadow');
-
-  const shadowName = characterNames
-  const currentState = this.state
-  this.setState({
-    characters: {
-      hero: {
-        name: currentState.characters.hero.name, //default
-        gender: '', //default ...null gives a warning.
-      },
-      shadow: {
-        name: shadowName, //default
-        gender: '', //default
-      },
-      friend: {
-        name: currentState.characters.friend.name, //default
-        gender: '', //default
-      }
-    },
-  })
-}
-
-updateFriend(characterNames) {
-  console.log('calling updateShadow');
-
-  const friendName = characterNames
-  const currentState = this.state
-  this.setState({
-    characters: {
-      hero: {
-        name: currentState.characters.hero.name, //default
-        gender: '', //default ...null gives a warning.
-      },
-      shadow: {
-        name: currentState.characters.shadow.name, //default
-        gender: '', //default
-      },
-      friend: {
-        name: friendName, //default
-        gender: '', //default
-      }
-    },
-  })
-}
-
-
 
   render() {
     return(
       <div>
 
 
-                {/* put below forms within Switch ?? */}
+        {/* put below forms within Switch ?? */}
 
 
         <Grid>
@@ -352,11 +234,6 @@ updateFriend(characterNames) {
                 handleSubmit={this.handleSubmit.bind(this)}
 
                 renderEditForm={this.renderEditForm.bind(this)}
-
-                updateCharacterNames={this.updateCharacterNames.bind(this)}
-                updateHero={this.updateHero.bind(this)}
-                updateShadow={this.updateShadow.bind(this)}
-                updateFriend={this.updateFriend.bind(this)}
 
                 story={this.state.story}
 
@@ -371,7 +248,6 @@ updateFriend(characterNames) {
                 handleUpdateTitle={this.handleUpdateTitle.bind(this)}
 
                 // passing all state as props to EditStoryForm
-                stories={this.state.stories}
                 story={this.state.story}
 
                 title={this.state.title}
@@ -388,7 +264,7 @@ updateFriend(characterNames) {
 
                 stories={this.state.stories}
 
-                heroName={this.state.characters.hero.name}
+                // heroName={this.state.characters.hero.name}
               />
             </Grid.Column>
           </Grid.Row>
@@ -399,7 +275,6 @@ updateFriend(characterNames) {
             <Grid.Column width={8}>
 
             </Grid.Column>
-
 
 
             <Grid.Column width={8}>

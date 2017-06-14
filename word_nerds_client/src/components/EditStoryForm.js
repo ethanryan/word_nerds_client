@@ -49,8 +49,8 @@ class EditStoryForm extends Component {
     // this.props.handleUpdateStory( this.state.input, this.state.title ) ///may need to change
     this.props.handleUpdateStory( this.state.input ) ///may need to change
     this.props.handleUpdateTitle( this.state.title ) ///may need to change
-//// **************will above line work, or break everything??????
-/////do i need a whole new function for handleUpdateTitle???
+    //// **************will above line work, or break everything??????
+    /////do i need a whole new function for handleUpdateTitle???
 
     this.setState({input: ''}) //this should clear the form
   }
@@ -61,86 +61,53 @@ class EditStoryForm extends Component {
 
 
       <div>
-          <div className="EditStoryForm-green">
+        <div className="EditStoryForm-green">
+
+          <Form id="EditStoryForm" onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
+            <h3>Edit Story</h3>
+            <h1>Edit Story</h1>
+            Title: <span className="EditStoryText-blue"> {this.props.title}</span>
+            <br></br>
+            <br></br>
+            Story ID: <span className="EditStoryText-blue"> {this.props.storyID}</span>
+            <br></br>
+            <br></br>
+            <Form.Field label='Title'
+              placeholder="title here"
+              control='input'
+              width={15}
+              value={this.state.title} //value of input field is state.title, coming from componentWillReceiveProps
+              onChange={this.handleTitleChange}
+            />
+            
+            <Form.Field label='Edit Story'
+              placeholder="this is where the story content goes for editing"
+              control='textarea' rows='30'
+              width={15}
+              // cols="10"
+              value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
+              onChange={this.handleStoryChange}
+            />
 
 
-            <Form>
-              <Form.Group widths='equal'>
-                <Form.Field label='An HTML <input>' control='input' />
-                <Form.Field label='An HTML <select>' control='select'>
-                  <option value='male'>Male</option>
-                  <option value='female'>Female</option>
-                </Form.Field>
-              </Form.Group>
-              <Form.Group grouped>
-                <label>HTML radios</label>
-                <Form.Field label='This one' control='input' type='radio' name='htmlRadios' />
-                <Form.Field label='That one' control='input' type='radio' name='htmlRadios' />
-              </Form.Group>
-              <Form.Group grouped>
-                <label>HTML checkboxes</label>
-                <Form.Field label='This one' control='input' type='checkbox' />
-                <Form.Field label='That one' control='input' type='checkbox' />
-              </Form.Group>
-              <Form.Field label='An HTML <textarea>' control='textarea' rows='3' />
-              <Form.Field label='An HTML <button>' control='button'>
-                HTML Button
-              </Form.Field>
-            </Form>
-          </div>
+            {/* <textarea
+              id="story-to-edit"
+              rows="10" cols="10"
+              type="textarea"
+              value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
+              placeholder="this is where the story content goes for editing"
+              onChange={this.handleStoryChange}
+            /> */}
 
-      <div
-        className="EditStoryForm-green"
-        id="EditStoryForm" >
+            <Form.Button content='Save Story' type="submit" primary/>
 
-        <h1>Edit Story</h1>
-        Title: <span className="EditStoryText-blue">{this.props.title}</span>
-        <br></br>
-        <br></br>
-        Story ID: <span className="EditStoryText-blue">{this.props.storyID}</span>
-        <br></br>
-        <br></br>
+          </Form>
+        </div>
 
-        Story to edit: <span className="EditStoryText-blue">{this.props.story}</span>
 
-        <h4>(Save, Edit, or Delete)</h4>
-        <p>clicking Create Story above renders EditStory form</p>
-        <p>users can add titles and edit stories before Saving (or deleting)</p>
+        {/* ///////old form below */}
 
-        <form onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
 
-      <br></br>
-
-          Title:
-          <input
-            type="text"
-            placeholder="title here"
-            value={this.state.title} //value of input field is state.title, coming from componentWillReceiveProps
-            onChange={this.handleTitleChange}
-          />
-
-      <br></br>
-      <br></br>
-
-          Story:
-          <br></br>
-          {/* {console.log('EditStoryForm this.state.input: ', this.state.input)} */}
-          {console.log('EditStoryForm this.state.input.split...: ', this.state.input.split('-----').map((paragraph, key) => {return <span key={key}>{paragraph}<br/><br/></span>}))}
-
-          <textarea
-            id="story-to-edit"
-            rows="10" cols="10"
-            type="textarea"
-            value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
-            placeholder="this is where the story content goes for editing"
-            onChange={this.handleStoryChange}
-          />
-
-          <br></br>
-
-          <input type="submit" value="Save Story"/>
-        </form>
-      </div>
       </div>
     )
   }
