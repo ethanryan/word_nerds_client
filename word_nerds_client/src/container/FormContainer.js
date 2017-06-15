@@ -19,7 +19,7 @@ class FormContainer extends Component {
       <div>
 
       <Switch>
-        <Route path='/' render={() => <CreateStoryForm
+        <Route exact path='/' render={() => <CreateStoryForm
           handleSubmit={this.props.handleSubmit}
           renderEditForm={this.props.renderEditForm}
           story={this.props.story}

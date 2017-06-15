@@ -34,7 +34,6 @@ class EditStoryForm extends Component {
   handleStoryChange(event) {
     console.log('EditStoryForm event: ', event)
     const story = event.target.value
-    // console.log('story from handleStoryChange: ', story);
     this.setState({
       input: story //input instead of story for key
     })
@@ -44,14 +43,9 @@ class EditStoryForm extends Component {
   handleEditStoryFormSubmit(event) {
     event.preventDefault()
     console.log('EditStoryForm submitted: this.props.story: ', this.props.story)
-    // console.log('EditStoryForm submitted: this.state.input: ', this.state.input)
-
-    // this.props.handleUpdateStory( this.state.input, this.state.title ) ///may need to change
     this.props.handleUpdateStory( this.state.input ) ///may need to change
     this.props.handleUpdateTitle( this.state.title ) ///may need to change
-    //// **************will above line work, or break everything??????
     /////do i need a whole new function for handleUpdateTitle???
-
     this.setState({input: ''}) //this should clear the form
   }
 
@@ -84,7 +78,6 @@ class EditStoryForm extends Component {
               placeholder="this is where the story content goes for editing"
               control='textarea' rows='30'
               width={15}
-              // cols="10"
               value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
               // value={this.props.story.split('-----').map((paragraph, key) => {
               //             return (
@@ -97,24 +90,10 @@ class EditStoryForm extends Component {
               onChange={this.handleStoryChange}
             />
 
-
-            {/* <textarea
-              id="story-to-edit"
-              rows="10" cols="10"
-              type="textarea"
-              value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
-              placeholder="this is where the story content goes for editing"
-              onChange={this.handleStoryChange}
-            /> */}
-
             <Form.Button content='Save Story' type="submit" primary/>
 
           </Form>
         </div>
-
-
-        {/* ///////old form below */}
-
 
       </div>
     )

@@ -43,7 +43,6 @@ const Story = (props) => {
           <br></br>
 
 
-
           <strong>
             Story content:
           </strong> (splitting and adding line breaks)
@@ -77,13 +76,6 @@ const Story = (props) => {
           <br></br>
 
           <div>
-            {/* <a
-              href="#EditStoryForm"
-              onClick={() => {props.renderEditForm(story.id)}}>
-              Edit
-            </a>
-
-            <span>   </span> */}
 
             <button
               href="#delete"
@@ -95,75 +87,13 @@ const Story = (props) => {
       </div>
   )
 
-
-  // <Switch>
-  //   <Route path="/students/new" render={() => < StudentForm  onSubmit={ props.onSubmit }/>}/>
-  //   <Route exact path="/students/:id" render={ ({match}) => {
-  //     const student = props.students.find(student => student.id === parseInt(match.params.id))
-  //     return < StudentShow student={student} onDelete={ props.onDelete }/>
-  //   } }/>
-  //   <Route path="/students/:id/edit" render={({match}) => {
-  //     const student = props.students.find( s => s.id === parseInt(match.params.id))
-  //     return < StudentEdit student={student} onSubmit={ props.onUpdate } />
-  //   }} />
-  // </Switch>
-
-
   return(
     <div>
       <ul>{ eachStory.reverse() }</ul>
-        {/* reverse so most recent story is on the top  */}
-        {/* <Route path="/students/:id/edit" render={({match}) => {
-          const student = props.students.find( s => s.id === parseInt(match.params.id))
-          return <StudentEdit student={student} onSubmit={ props.onUpdate } />
-        }} /> */}
-        <Switch>
-          <Route path="/stories/:id/edit"
 
-          render={({match}) => {
-
-
-            // const story = props.stories.find( s => s.id === parseInt(match.params.id))
-            // const story = props.stories.find( s => s.id === id)
-
-
-            //   const student = props.students.find( s => s.id === parseInt(match.params.id))
-            //   return <StudentEdit student={student} onSubmit={ props.onUpdate } />
-            // }} />
-            return <EditStoryForm
-              // storyID={story.id}
-            />
-          }} />
-        </Switch>
       <p>each story can be clicked, which renders it in the EditStoryForm</p>
     </div>
   )
-
-  {/* <div>
-    <div className='col-md-4'>
-      <ul>
-        { nameEls }
-      </ul>
-      <Switch>
-        <Route path="/students/new" />
-        <Route path="/students" render={() => <Link to="/students/new">Add Student</Link>} />
-      </Switch>
-    </div>
-
-    <div className='col-md-8'>
-      <Switch>
-        <Route path="/students/new" render={() => <StudentForm onSubmit={ props.onSubmit }/>}/>
-        <Route exact path="/students/:id" render={ ({match}) => {
-          const student = props.students.find(student => student.id === parseInt(match.params.id))
-          return <StudentShow student={student} onDelete={ props.onDelete }/>
-        } }/>
-        <Route path="/students/:id/edit" render={({match}) => {
-          const student = props.students.find( s => s.id === parseInt(match.params.id))
-          return <StudentEdit student={student} onSubmit={ props.onUpdate } />
-        }} />
-      </Switch>
-    </div>
-  </div> */}
 
 } //end of const Story
 

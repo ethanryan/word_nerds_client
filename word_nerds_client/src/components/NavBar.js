@@ -22,9 +22,9 @@ class NavBar extends Component {
       <Menu secondary color={'green'} >
         <Menu.Item name='home' active={activeItem === 'home'}
           onClick={this.handleItemClick}
-          Link to={`/`}
-          Route path='/' render={() => <StoryContainer /> }
         />
+        {/* <Route path="/" component={StoryContainer}/> */}
+        
           {/* Route path='/' render={() => <CreateStoryForm /> } */}
 
         {/* <Menu.Item name='create story' active={activeItem === 'messages'} onClick={this.handleItemClick} />
