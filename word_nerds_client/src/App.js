@@ -3,8 +3,6 @@ import React, { Component } from 'react'
 import './App.css'
 
 import NavBar from './components/NavBar'
-import CreateStoryForm from './components/CreateStoryForm'
-import EditStoryForm from './components/EditStoryForm'
 
 import StoryContainer from './container/StoryContainer'
 

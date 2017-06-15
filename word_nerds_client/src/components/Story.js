@@ -1,22 +1,20 @@
 import React from 'react'
 
-import CreateStoryForm from './CreateStoryForm'
-import EditStoryForm from './EditStoryForm'
-import StoryList from './StoryList'
-
-import { Route, Link, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const Story = (props) => {
-  console.log('Story props: ', props)
-
-  //putting this here for now...
-  // function replaceAll(string, find, replace) {
-  //   // return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-  //   return string.replace(new RegExp(find, 'g'), replace)
-  // }
+  // console.log('Story props: ', props)
 
   const eachStory = props.stories.map( (story, index) =>
+
+  <div>
+
+{/* delete below console log once editing with line breaks is working */}
+  <div>
+    {  console.log('log inside eachStory: ', story.content)}
+  </div>
+
       <div key={index} className="Story-orange">
 
         <h2>
@@ -80,6 +78,7 @@ const Story = (props) => {
           </div>
 
       </div>
+        </div>
   )
 
   return(

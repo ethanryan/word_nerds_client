@@ -9,8 +9,8 @@ class EditStoryForm extends Component {
     super(props) //inheritance
 
     this.state = {
-      input: '',
-      title: ''
+      input: props.story.content, //default props!
+      title: props.story.title
     }
     // this.handleEditStoryFormSubmit = this.handleEditStoryFormSubmit.bind(this)
     this.handleStoryChange = this.handleStoryChange.bind(this)
@@ -19,8 +19,8 @@ class EditStoryForm extends Component {
 
   componentWillReceiveProps(props) { //need this lifecycle method to edit text in textarea
     this.setState({
-      input: props.story,
-      title: props.title
+      input: props.story.content,
+      title: props.story.title
     })
   }
 
@@ -51,15 +51,14 @@ class EditStoryForm extends Component {
 
   render() {
     console.log('render is called in EditStory');
+    console.log('from EditStoryForm, this.state.input: ', this.state.input);
     return(
-
 
       <div>
         <div className="EditStoryForm-green">
 
           <Form id="EditStoryForm" onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
             <h3>Edit Story</h3>
-            <h1>Edit Story</h1>
             Title: <span className="EditStoryText-blue"> {this.props.title}</span>
             <br></br>
             <br></br>
@@ -79,14 +78,17 @@ class EditStoryForm extends Component {
               control='textarea' rows='30'
               width={15}
               value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
-              // value={this.props.story.split('-----').map((paragraph, key) => {
-              //             return (
-              //             <span key={key}>
-              //               {paragraph}
-              //               <br/><br/>
-              //             </span>
-              //           )
-              //           })} //value of textarea is state.input, coming from componentWillReceiveProps
+
+              // value={this.state.input.split('-----').map((paragraph, key) => {
+              //   return (
+              //   <span key={key}>
+              //     {paragraph}
+              //     <br/><br/>
+              //   </span>
+              // )
+              // })}
+
+              //value of textarea is state.input, coming from componentWillReceiveProps
               onChange={this.handleStoryChange}
             />
 
@@ -99,5 +101,16 @@ class EditStoryForm extends Component {
     )
   }
 }
+
+EditStoryForm.defaultProps = {
+  story: '', //need this so props aren't null
+  title: ''
+}
+
+
+
+// StudentEdit.defaultProps = {
+//   student: {name: ''}
+// }
 
 export default EditStoryForm

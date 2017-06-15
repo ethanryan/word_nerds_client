@@ -4,9 +4,7 @@ import { Grid } from 'semantic-ui-react'
 
 import StoryList from '../components/StoryList'
 
-import FormContainer from './FormContainer'
-import { Switch, Route } from 'react-router-dom'
-
+import StoryPage from '../components/StoryPage'
 
 class StoryContainer extends Component {
   constructor() {
@@ -62,14 +60,26 @@ createStory(content, characters) {
 
         {
         name: characters.shadow.name,
-        gender: "",
+        gender: characters.shadow.gender,
         archetype: "shadow"
         },
 
         {
         name: characters.friend.name,
-        gender: "",
+        gender: characters.friend.gender,
         archetype: "friend"
+        },
+
+        {
+        name: characters.lover.name,
+        gender: characters.lover.gender,
+        archetype: "lover"
+        },
+
+        {
+        name: characters.mentor.name,
+        gender: characters.mentor.gender,
+        archetype: "mentor"
         },
       ],
     },
@@ -217,21 +227,21 @@ handleDeleteStory(id) {
           <Grid.Row>
 
             <Grid.Column width={10}>
-              <FormContainer
+              <StoryPage
                 //props for CreateStoryForm
                 handleSubmit={this.handleSubmit.bind(this)}
                 renderEditForm={this.renderEditForm.bind(this)}
-                story={this.state.story}
-                storyID={this.state.storyID}
 
                 //props for EditStoryForm
                 handleDeleteStory={this.handleDeleteStory.bind(this)}
                 handleUpdateStory={this.handleUpdateStory.bind(this)}
                 handleUpdateTitle={this.handleUpdateTitle.bind(this)}
-                // passing all state as props to EditStoryForm
                 story={this.state.story}
                 title={this.state.title}
                 storyID={this.state.storyID}
+
+                //props for AllStories
+                stories={this.state.stories}
               />
             </Grid.Column>
 
