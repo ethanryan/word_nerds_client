@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Input, Menu } from 'semantic-ui-react'
-// import { Switch, Route } from 'react-router-dom'
 
-// import {App} from '../App'
-// import CreateStoryForm from './CreateStoryForm'
-// import EditStoryForm from './EditStoryForm'
+import StoryContainer from '../container/StoryContainer'
+
+import { Route, Link, Switch } from 'react-router-dom'
+
 
 
 // Word Nerds -- NavBar here, Login, Signup
@@ -18,14 +18,22 @@ class NavBar extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu secondary className="NavBar-yellow" color={'green'} >
-        <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
+      <div className="NavBar-yellow">
+      <Menu secondary color={'green'} >
+        <Menu.Item name='home' active={activeItem === 'home'}
+          onClick={this.handleItemClick}
+          Link to={`/`}
+          Route path='/' render={() => <StoryContainer /> }
+        />
+          {/* Route path='/' render={() => <CreateStoryForm /> } */}
+
         {/* <Menu.Item name='create story' active={activeItem === 'messages'} onClick={this.handleItemClick} />
         <Menu.Item name='all stories' active={activeItem === 'friends'} onClick={this.handleItemClick} /> */}
         <Menu.Menu position='right' >
           <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
         </Menu.Menu>
       </Menu>
+    </div>
     )
   }
 }

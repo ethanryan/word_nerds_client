@@ -45,9 +45,8 @@
 }
 
 .NavBar-yellow {
-  border: 2px solid yellow;
-  /*background-color: black;*/
-  background-color: red;
+  border: 2px solid gray;
+  background-color: yellow;
   @green;
   padding: 1px 75px 1px 75px;
 }

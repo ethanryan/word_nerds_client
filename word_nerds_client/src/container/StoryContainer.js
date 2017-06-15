@@ -2,10 +2,9 @@ import React, {Component} from 'react'
 
 import { Grid } from 'semantic-ui-react'
 
-import CreateStoryForm from '../components/CreateStoryForm'
-import EditStoryForm from '../components/EditStoryForm'
 import StoryList from '../components/StoryList'
 
+import FormContainer from './FormContainer'
 import { Switch, Route } from 'react-router-dom'
 
 
@@ -242,18 +241,25 @@ handleDeleteStory(id) {
         <Grid>
           <Grid.Row>
 
-
             <Grid.Column width={10}>
-              <CreateStoryForm
+              <FormContainer
+                //props for CreateStoryForm
                 handleSubmit={this.handleSubmit.bind(this)}
-
                 renderEditForm={this.renderEditForm.bind(this)}
-
                 story={this.state.story}
+                storyID={this.state.storyID}
 
+                //props for EditStoryForm
+                handleDeleteStory={this.handleDeleteStory.bind(this)}
+                handleUpdateStory={this.handleUpdateStory.bind(this)}
+                handleUpdateTitle={this.handleUpdateTitle.bind(this)}
+                // passing all state as props to EditStoryForm
+                story={this.state.story}
+                title={this.state.title}
                 storyID={this.state.storyID}
               />
             </Grid.Column>
+
 
             <Grid.Column width={6}>
               <StoryList
@@ -262,32 +268,11 @@ handleDeleteStory(id) {
                 renderEditForm={this.renderEditForm.bind(this)}
 
                 stories={this.state.stories}
-
-                // heroName={this.state.characters.hero.name}
               />
             </Grid.Column>
-
-            <Grid.Column width={10}>
-              <EditStoryForm
-                handleDeleteStory={this.handleDeleteStory.bind(this)}
-
-                handleUpdateStory={this.handleUpdateStory.bind(this)}
-
-                handleUpdateTitle={this.handleUpdateTitle.bind(this)}
-
-                // passing all state as props to EditStoryForm
-                story={this.state.story}
-
-                title={this.state.title}
-                storyID={this.state.storyID}
-              />
-            </Grid.Column>
-
 
 
           </Grid.Row>
-
-
         </Grid>
 
       </div>
