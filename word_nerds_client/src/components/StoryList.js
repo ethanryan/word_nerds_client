@@ -11,11 +11,8 @@ const StoryList = (props) => {
       <Story
         // passing StoryList props down to Story
         handleDeleteStory={props.handleDeleteStory}
-
         renderEditForm={props.renderEditForm}
-
         stories={props.stories}
-
         heroName={props.heroName}
 
       />

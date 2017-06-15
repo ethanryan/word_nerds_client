@@ -23,10 +23,8 @@ const Story = (props) => {
           Story Title: {story.title}
         </h2>
 
-          This is the link: <Link to={`/stories/${story.id}/edit`}>{story.title}</Link>
+          This is the link: <Link to={`/stories/${story.id}/edit`} onClick={() => props.renderEditForm(story.id)}>{story.title}</Link>
           <br></br>
-
-          <Route path='/edit' render={ () => <Link to={props.renderEditForm(story.id)}>{story.title}</Link> } />
 
           <br></br>
 
