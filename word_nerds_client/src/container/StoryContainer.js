@@ -14,12 +14,9 @@ class StoryContainer extends Component {
     this.state = {
       stories: [], //array of all the (user's) stories
       story: '', //one story's content
-
-      // story: [], //one story's content
       title: 'title here', //default title for stories
       storyID: 0, //default is zero
     }
-
   } //end of constructor
 
 
@@ -42,8 +39,6 @@ componentDidMount() {
 
 
 
-
-
 createStory(content, characters) {
   console.log('content inside createStory: ', content)
 // createStory(characters) {
@@ -55,8 +50,6 @@ createStory(content, characters) {
     },
     method: 'POST',
     body: JSON.stringify({story: {
-      //content: content, //this has to be content, to match attributes on stories_controller on backend (same as below attributes)
-      // title: "default TITLE here", //default for now
       title: characters.hero.name + "'s story, v1", //default for now
       user_id: 1, //this will be whatever the loggedin user's id is
 
@@ -80,7 +73,7 @@ createStory(content, characters) {
         },
       ],
     },
-  }), ///////////
+  }),
   }).then( res => res.json() )
 }
 
@@ -94,10 +87,6 @@ handleSubmit(story, characters) {
     .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }) ))
 
     .catch(err => console.log(err)) //putting this below above line
-
-    //tried calling renderEditForm here, after/within handleSubmit...
-    // .then( this.renderEditForm(this.state.storyID).bind(this) ) //then render the story in the edit form
-    // this.renderEditForm(this.state.storyID).bind(this) //then render the story in the edit form
 }
 
 
@@ -136,10 +125,6 @@ console.log('handleUpdateStory story: ', story)
 
 
 ///////need all this just to update title????
-///////need all this just to update title????
-///////need all this just to update title????
-///////need all this just to update title????
-
 updateTitle(title) {
   return fetch(`http://localhost:3000/stories/${this.state.storyID}`, {
     method: 'PATCH',
@@ -171,24 +156,18 @@ console.log('handleUpdateTitle title: ', title)
     })
 }
 ////////this can't be right....
-////////this can't be right....
-////////this can't be right....
-////////this can't be right....
 
 
 //below is 'id', no matter what you call it...
 renderEditForm(id) {
   let editStory = this.state.stories.find(story => story.id === id)
   console.log('editing story with id: ', id)
-  // console.log('editing editStory.content: ', editStory.content)
-
   this.setState({
     story: editStory.content, //CHANGE story TO content!!!!! (attribute in API)
     title: editStory.title, //default title for stories
     storyID: editStory.id,
   })
 } //end of renderEditForm
-
 
 
 deleteStory(id) {
@@ -218,13 +197,9 @@ handleDeleteStory(id) {
 }
 
 
-
-
-
   render() {
     return(
       <div>
-
 
         {/* <div>
         <Switch>
@@ -264,13 +239,10 @@ handleDeleteStory(id) {
             <Grid.Column width={6}>
               <StoryList
                 handleDeleteStory={this.handleDeleteStory.bind(this)}
-
                 renderEditForm={this.renderEditForm.bind(this)}
-
                 stories={this.state.stories}
               />
             </Grid.Column>
-
 
           </Grid.Row>
         </Grid>

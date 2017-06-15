@@ -23,9 +23,6 @@ const Story = (props) => {
           Story Title: {story.title}
         </h2>
 
-        <br></br>
-        <br></br>
-
           This is the link: <Link to={`/stories/${story.id}/edit`}>{story.title}</Link>
           <br></br>
 
