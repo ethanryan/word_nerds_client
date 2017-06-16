@@ -46,6 +46,14 @@
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
 
+.StoryShow-red {
+  border: 2px solid red;
+  background: white;
+  padding: 15px 0px 15px 25px;
+  margin: 5px 0px 5px 20px;
+  /*top, right, bottom, left*/
+}
+
 .App-purple {
   border: 5px solid purple;
   background: lightgray

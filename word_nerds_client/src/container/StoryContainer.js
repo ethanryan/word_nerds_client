@@ -84,7 +84,7 @@ handleSubmit(story, characters) {
 }
 
 
-updateStory(story) {
+updateStory(updatedStory) {
   return fetch(`http://localhost:3000/stories/${this.state.storyID}`, {
     method: 'PATCH',
     headers: {
@@ -93,8 +93,9 @@ updateStory(story) {
       //'Authorization': localStorage.getItem('jwt')
     },
     body: JSON.stringify( {story: {
-        content: story,
-        title: this.state.title,
+        content: updatedStory.input,
+        // content: story,
+        title: updatedStory.title,
         user_id: 1, //default for now
       }}
     ),
@@ -102,16 +103,16 @@ updateStory(story) {
 }
 
 
-handleUpdateStory(story) {
-console.log('handleUpdateStory story: ', story)
+handleUpdateStory(updatedStory) {
+console.log('handleUpdateStory story: ', updatedStory)
 
-  this.updateStory(story) //calling function above, updating story on database
+  this.updateStory(updatedStory) //calling function above, updating story on database
   .then( (response) => this.setState({
       stories: response //nasty nas
     }) )
     this.setState({
-      story: '',
-      title: '',
+      story: updatedStory.story,
+      title: updatedStory.title,
     })
 }
 
@@ -135,31 +136,29 @@ updateTitle(title) {
 }
 
 
-handleUpdateTitle(title) { //should this be storyID (or id) instead?
+handleUpdateTitle(title) {
 console.log('handleUpdateTitle title: ', title)
 
-  this.updateTitle(title) //calling function above, updating story on database
+  this.updateTitle(title)
   .then( (response) => this.setState({
-      stories: response //nasty nas
+      stories: response
     }) )
     this.setState({
       story: '',
       title: '',
     })
 }
-////////this can't be right....
 
 
-//below is 'id', no matter what you call it...
 renderEditForm(id) {
   let editStory = this.state.stories.find(story => story.id === id)
   console.log('editing story with id: ', id)
   this.setState({
-    story: editStory.content, //CHANGE story TO content!!!!! (attribute in API)
-    title: editStory.title, //default title for stories
+    story: editStory.content,
+    title: editStory.title,
     storyID: editStory.id,
   })
-} //end of renderEditForm
+}
 
 
 deleteStory(id) {

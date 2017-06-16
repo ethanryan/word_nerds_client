@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 
 import { Form } from 'semantic-ui-react'
 
-import Markov from './Markov'
-
+// import Markov from './Markov'
 
 class EditStoryForm extends Component {
 
@@ -57,6 +56,9 @@ class EditStoryForm extends Component {
   }
 
   render() {
+
+    let wordCount = this.state.input.split(' ').length
+
     console.log('render is called in EditStory');
     console.log('from EditStoryForm, this.state.input: ', this.state.input);
     return(
@@ -72,7 +74,7 @@ class EditStoryForm extends Component {
             Story ID: <span className="EditStoryText-blue"> {this.props.story.id}</span>
             <br></br>
             <br></br>
-            Story length: {this.state.input.split(' ').length}
+            Story length: <span className="EditStoryText-blue"> {wordCount}</span>
             <br></br>
             <br></br>
             <Form.Field label='Title'
