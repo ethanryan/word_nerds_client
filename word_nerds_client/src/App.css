@@ -46,6 +46,10 @@
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
 
+.EditStoryForm-linebreaks {
+  white-space: pre-wrap; /*this is to preserve line breaks added by users*/
+}
+
 .StoryShow-red {
   border: 2px solid red;
   background: white;

@@ -141,25 +141,15 @@ deleteStory(id) {
 
 handleDeleteStory(id) {
   if (window.confirm("Are you sure you want to delete this story? 😱😱😱 ")) {
-
-    this.deleteStory(id) //calling function above
-
+    this.deleteStory(id)
     .then( () => {
       this.setState( prevState => ({
         stories: prevState.stories.filter( story => story.id !== id )
       }) )
     })
-  }//end if statement
+  }
 }
 
-
-////////////////trying this for visualizing text
-// const displacy = new displaCyENT('http://localhost:8000', {
-//     container: '#displacy',
-//     defaultText: 'When Sebastian Thrun started working on self-driving cars at Google in 2007, few people outside of the company took him seriously.',
-//     defaultEnts: ['person', 'org', 'date']
-// });
-// //////////
 
   render() {
     return(

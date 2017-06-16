@@ -55,6 +55,11 @@ class EditStoryForm extends Component {
 
     console.log('render is called in EditStory');
     console.log('from EditStoryForm, this.state.input: ', this.state.input);
+
+    let x = this.state.input
+    // debugger
+    let paragraphs = this.state.input.split('-----').join('\n\n')
+
     return(
 
       <div>
@@ -82,18 +87,42 @@ class EditStoryForm extends Component {
 
 
             <Form.Field label='Edit Story'
+              className="EditStoryForm-linebreaks"
               placeholder="this is where the story content goes for editing"
-              control='textarea' rows='30'
+              control='textarea' rows='15'
               width={15}
-              value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
+              // value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
 
-              // value={this.state.input.split('-----').map((paragraph, key) => {
+
+              value={paragraphs}
+              // value={this.state.input.split('-----').join(<div><br/><br/></div>)}
+
+              // value={this.state.input.split('-----').map((item) => {
               //   return (
-              //   <span key={key}>
+              //     <span>
+              //       {item}
+              //       <br/><br/>
+              //       <br/><br/>
+              //     </span>
+              //   )
+              // })}
+
+              // {story.content.split('-----').map((paragraph) => {
+              //   return (
+              //   <span key={paragraph.id}>
               //     {paragraph}
               //     <br/><br/>
               //   </span>
               // )
+              // })}
+
+              // {this.props.section.text.split(“\n”).map(function(item) {
+              //   return (
+              //     <span>
+              //       {item}
+              //       <br/>
+              //     </span>
+              //   )
               // })}
 
               onChange={this.handleStoryChange}
