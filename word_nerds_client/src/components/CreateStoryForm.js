@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-
 import { Form } from 'semantic-ui-react'
-
 import { Grid } from 'semantic-ui-react'
-
 
 class CreateStoryForm extends Component {
 
@@ -13,53 +10,39 @@ class CreateStoryForm extends Component {
     this.state=({ //organizing this so it's not nested, but post request will be nested
     story: '',
     hero: {
-      name: 'HERO', //default
-      gender: '', //default ...null gives a warning.
+      name: 'HERO',
+      gender: '',
     },
     shadow: {
-      name: 'SHADOW', //default
-      gender: '', //default
+      name: 'SHADOW',
+      gender: '',
     },
     friend: {
-      name: 'FRIEND', //default
-      gender: '', //default
+      name: 'FRIEND',
+      gender: '',
     },
     lover: {
-      name: 'LOVER', //default
-      gender: '', //default
+      name: 'LOVER',
+      gender: '',
     },
     mentor: {
-      name: 'MENTOR', //default
-      gender: '', //default
+      name: 'MENTOR',
+      gender: '',
     },
-    genres: ['random'], //make this an array to hold all selected genres??
-    //   //default genre is 'random', all others are not selected when random is selected.
+    genres: ['random'],
   })
-
   this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
 } //end of constructor
 
-componentWillReceiveProps(props) { //need this lifecycle method to edit text in textarea
-  this.setState({
-    story: props.story
-    // title: props.title
-  })
-}
-
-//via Dan Abramov: https://codepen.io/gaearon/pen/wgedvV?editors=0010
-handleGenreInputChange(event) {
-  // const target = event.target;
-  // const value = target.type === 'checkbox' ? target.checked : target.value;
-  // const name = target.name;
-  // this.setState({
-  //   [name]: value ////redo this whole function
-  // });
-}
+// componentWillReceiveProps(props) { //need this lifecycle method to edit text in textarea
+//   this.setState({
+//     story: props.story
+//   })
+// }
 
 handleCharacterInputChange(event) {
   //abstract each character, so just one function
 }
-
 
 
 handleHeroNameChange(event) {
@@ -81,7 +64,6 @@ handleHeroGenderChange(event) {
     }
   })
 }
-
 
 
 handleShadowNameChange(event) {
@@ -165,7 +147,6 @@ handleMentorGenderChange(event) {
 }
 
 
-
 handleCreateStoryFormSubmit(event) {
   event.preventDefault()
   const characters = {
@@ -175,7 +156,6 @@ handleCreateStoryFormSubmit(event) {
     lover: this.state.lover,
     mentor: this.state.mentor
   }
-  // this.props.updateCharacterNames(characters) //sending this.state.characters to container as argument
   console.log('CreateStoryForm submitted: ', this.state.story)
   this.props.handleSubmit( this.state.story, characters )
   this.setState({story: ''}) //this clears form onSubmit

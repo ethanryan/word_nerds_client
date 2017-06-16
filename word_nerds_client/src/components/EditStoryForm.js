@@ -6,16 +6,15 @@ class EditStoryForm extends Component {
 
   constructor(props) {
     console.log('props from EditStoryForm', props)
-    super(props) //inheritance
+    super(props)
 
     this.state = {
-      input: props.story.content, //default props!
+      input: props.story.content,
       title: props.story.title
     }
-    // this.handleEditStoryFormSubmit = this.handleEditStoryFormSubmit.bind(this)
     this.handleStoryChange = this.handleStoryChange.bind(this)
     this.handleTitleChange = this.handleTitleChange.bind(this)
-  } //end of constructor
+  }
 
   componentWillReceiveProps(props) { //need this lifecycle method to edit text in textarea
     this.setState({
@@ -32,19 +31,24 @@ class EditStoryForm extends Component {
   }
 
   handleStoryChange(event) {
-    console.log('EditStoryForm event: ', event)
     const story = event.target.value
     this.setState({
-      input: story //input instead of story for key
+      input: story
     })
   }
 
 
+////make this calling one function, not handleUpdateStory and handleUpdateTitle
   handleEditStoryFormSubmit(event) {
     event.preventDefault()
+    const updatedStory = {
+      input: this.state.input,
+      title: this.state.title
+    }
     console.log('EditStoryForm submitted: this.props.story: ', this.props.story)
-    this.props.handleUpdateStory( this.state.input ) ///may need to change
-    this.props.handleUpdateTitle( this.state.title ) ///may need to change
+    this.props.handleUpdateStory( updatedStory )
+    // this.props.handleUpdateStory( this.state.input ) ///may need to change
+    // this.props.handleUpdateTitle( this.state.title ) ///may need to change
     /////do i need a whole new function for handleUpdateTitle???
     this.setState({input: ''}) //this should clear the form
   }
@@ -59,10 +63,10 @@ class EditStoryForm extends Component {
 
           <Form id="EditStoryForm" onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
             <h3>Edit Story</h3>
-            Title: <span className="EditStoryText-blue"> {this.props.title}</span>
+            Title: <span className="EditStoryText-blue"> {this.state.title}</span>
             <br></br>
             <br></br>
-            Story ID: <span className="EditStoryText-blue"> {this.props.storyID}</span>
+            Story ID: <span className="EditStoryText-blue"> {this.props.story.id}</span>
             <br></br>
             <br></br>
             <Form.Field label='Title'
@@ -88,7 +92,6 @@ class EditStoryForm extends Component {
               // )
               // })}
 
-              //value of textarea is state.input, coming from componentWillReceiveProps
               onChange={this.handleStoryChange}
             />
 
@@ -106,11 +109,5 @@ EditStoryForm.defaultProps = {
   story: '', //need this so props aren't null
   title: ''
 }
-
-
-
-// StudentEdit.defaultProps = {
-//   student: {name: ''}
-// }
 
 export default EditStoryForm
