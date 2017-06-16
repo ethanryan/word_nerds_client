@@ -19,7 +19,7 @@
   border: 1px solid orange;
   background: white;
   /*width: 95%;*/
-  margin: 0px 90px 5px 0px;
+  margin: 0px 40px 5px 0px;
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
 
@@ -35,7 +35,7 @@
   border: 2px solid gray;
   background-color: yellow;
   @green;
-  padding: 1px 75px 1px 75px;
+  padding: 1px 5px 1px 5px;
 }
 
 .EditStoryForm-green {

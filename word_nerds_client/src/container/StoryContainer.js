@@ -189,6 +189,14 @@ handleDeleteStory(id) {
 }
 
 
+////////////////trying this for visualizing text
+// const displacy = new displaCyENT('http://localhost:8000', {
+//     container: '#displacy',
+//     defaultText: 'When Sebastian Thrun started working on self-driving cars at Google in 2007, few people outside of the company took him seriously.',
+//     defaultEnts: ['person', 'org', 'date']
+// });
+// //////////
+
   render() {
     return(
       <div>

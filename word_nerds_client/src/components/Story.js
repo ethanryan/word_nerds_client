@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
 const Story = (props) => {
 
-  const eachStory = props.stories.map( (story, index) =>
+  const eachStory = props.stories.map( (story) =>
 
-      <div key={index} className="Story-orange">
+      <div key={story.id} className="Story-orange">
 
         <h2>
           Story Title: {story.title}
@@ -20,6 +21,11 @@ const Story = (props) => {
           <br></br>
 
           Story ID: {story.id}
+          <br></br>
+          <br></br>
+
+
+          Story length: {story.content.split(' ').length}
           <br></br>
           <br></br>
 
@@ -58,6 +64,7 @@ const Story = (props) => {
 
           Story ID: {story.id}
           <br></br>
+
 
           <div>
             <button

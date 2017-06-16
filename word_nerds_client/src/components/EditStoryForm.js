@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 
 import { Form } from 'semantic-ui-react'
 
+import Markov from './Markov'
+
+
 class EditStoryForm extends Component {
 
   constructor(props) {
@@ -37,7 +40,7 @@ class EditStoryForm extends Component {
     })
   }
 
-
+//////////FINISH FIXING THIS FUNCTION <<<----------
 ////make this calling one function, not handleUpdateStory and handleUpdateTitle
   handleEditStoryFormSubmit(event) {
     event.preventDefault()
@@ -69,6 +72,9 @@ class EditStoryForm extends Component {
             Story ID: <span className="EditStoryText-blue"> {this.props.story.id}</span>
             <br></br>
             <br></br>
+            Story length: {this.state.input.split(' ').length}
+            <br></br>
+            <br></br>
             <Form.Field label='Title'
               placeholder="title here"
               control='input'
@@ -76,6 +82,8 @@ class EditStoryForm extends Component {
               value={this.state.title} //value of input field is state.title, coming from componentWillReceiveProps
               onChange={this.handleTitleChange}
             />
+
+
 
             <Form.Field label='Edit Story'
               placeholder="this is where the story content goes for editing"
@@ -106,8 +114,8 @@ class EditStoryForm extends Component {
 }
 
 EditStoryForm.defaultProps = {
-  story: '', //need this so props aren't null
-  title: ''
+  story: 'story content here', //need this so props aren't null
+  title: 'story title here'
 }
 
 export default EditStoryForm
