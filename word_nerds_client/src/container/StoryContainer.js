@@ -94,7 +94,6 @@ updateStory(updatedStory) {
     },
     body: JSON.stringify( {story: {
         content: updatedStory.input,
-        // content: story,
         title: updatedStory.title,
         user_id: 1, //default for now
       }}
@@ -105,7 +104,6 @@ updateStory(updatedStory) {
 
 handleUpdateStory(updatedStory) {
 console.log('handleUpdateStory story: ', updatedStory)
-
   this.updateStory(updatedStory) //calling function above, updating story on database
   .then( (response) => this.setState({
       stories: response //nasty nas
@@ -113,39 +111,6 @@ console.log('handleUpdateStory story: ', updatedStory)
     this.setState({
       story: updatedStory.story,
       title: updatedStory.title,
-    })
-}
-
-
-///////need all this just to update title????
-updateTitle(title) {
-  return fetch(`http://localhost:3000/stories/${this.state.storyID}`, {
-    method: 'PATCH',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      //'Authorization': localStorage.getItem('jwt')
-    },
-    body: JSON.stringify( {story: {
-        content: this.state.story, ///story! same as argument... from EditStoryForm, this is: 'this.state.input'
-        title: title,
-        user_id: 1, //default for now
-      }}
-    ),
-  }).then( res => res.json() )
-}
-
-
-handleUpdateTitle(title) {
-console.log('handleUpdateTitle title: ', title)
-
-  this.updateTitle(title)
-  .then( (response) => this.setState({
-      stories: response
-    }) )
-    this.setState({
-      story: '',
-      title: '',
     })
 }
 
@@ -211,7 +176,6 @@ handleDeleteStory(id) {
                 //props for EditStoryForm
                 handleDeleteStory={this.handleDeleteStory.bind(this)}
                 handleUpdateStory={this.handleUpdateStory.bind(this)}
-                handleUpdateTitle={this.handleUpdateTitle.bind(this)}
                 story={this.state.story}
                 title={this.state.title}
 

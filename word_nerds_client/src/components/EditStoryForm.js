@@ -39,20 +39,14 @@ class EditStoryForm extends Component {
     })
   }
 
-//////////FINISH FIXING THIS FUNCTION <<<----------
-////make this calling one function, not handleUpdateStory and handleUpdateTitle
   handleEditStoryFormSubmit(event) {
     event.preventDefault()
     const updatedStory = {
       input: this.state.input,
       title: this.state.title
     }
-    console.log('EditStoryForm submitted: this.props.story: ', this.props.story)
-    this.props.handleUpdateStory( updatedStory )
-    // this.props.handleUpdateStory( this.state.input ) ///may need to change
-    // this.props.handleUpdateTitle( this.state.title ) ///may need to change
-    /////do i need a whole new function for handleUpdateTitle???
-    this.setState({input: ''}) //this should clear the form
+    this.props.handleUpdateStory(updatedStory)
+    this.setState({input: ''})
   }
 
   render() {

@@ -23,7 +23,6 @@ const StoryPage = (props) => {
           return <EditStoryForm
             story={story}
             handleUpdateStory={props.handleUpdateStory}
-            handleUpdateTitle={props.handleUpdateTitle}
            />
         }} />
 
