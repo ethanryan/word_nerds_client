@@ -87,25 +87,9 @@ handleSubmit(story, characters) {
   this.createStory(story, characters) //calling function above, adding content to database
   // .then( story => console.log("STORYYYY", story) )
     .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }
-
-
-
-      // .then(
-      //                 () => {
-      //                     this.setState({ isLoading: false });
-      //                     this.props.history.push('/stories');
-      //                 },
-
-      // .then(
-      //                 (story) => {
-      //                     this.props.history.push('/stories')
-      //                 },
-
-      // this.context.history.push('/stories')
-      // (story) => this.props.history.push(`/stories/${story.id}/edit`)
      ) )
-
    )
+   this.props.history.push('/stories') //redirect to all stories
     // .catch(err => console.log(err))
 }
 
@@ -138,6 +122,7 @@ console.log('handleUpdateStory story: ', updatedStory)
       story: updatedStory.story,
       title: updatedStory.title,
     })
+    this.props.history.push('/stories') //redirect to all stories page
 }
 
 
@@ -174,6 +159,7 @@ handleDeleteStory(id) {
       }) )
     })
   }
+  this.props.history.push('/stories') //redirect to all stories
 }
 
 
