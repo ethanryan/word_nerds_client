@@ -2,21 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Story = (props) => {
+const OneStory = (props) => {
 
   const eachStory = props.stories.map( (story) =>
 
-      <div key={story.id} className="Story-orange">
+      <div key={story.id} className="OneStory-orange">
 
         <h2>
           Story Title: {story.title}
         </h2>
 
-          This is the link: <Link to={`/stories/${story.id}/edit`} onClick={() => props.renderEditForm(story.id)}>{story.title}</Link>
-          <br></br>
-          <br></br>
-
-          This is the href: <a href="#EditStoryForm" onClick={() => {props.renderEditForm(story.id)}}>{story.title}</a>
+          Edit this story:
+          <Link className='btn btn-primary' to={`/stories/${story.id}/edit`} onClick={() => props.renderEditForm(story.id)}>{story.title}</Link>
           <br></br>
           <br></br>
 
@@ -88,4 +85,4 @@ const Story = (props) => {
 
 }
 
-export default Story
+export default OneStory

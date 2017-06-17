@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 
 import { Form } from 'semantic-ui-react'
 
-import { Link } from 'react-router-dom'
-
 // import Markov from './Markov'
 
 class EditStoryForm extends Component {
@@ -26,6 +24,15 @@ class EditStoryForm extends Component {
       title: props.story.title
     })
   }
+
+  // handleInputChange(event) {
+  //   const storyChange = event.target.value
+  //   this.setState((state, props) => {
+  //     return {
+  //       input: Object.assign({}, props.story.content, {name: name})
+  //     }
+  //   })
+  // }
 
   handleTitleChange(event) {
     const title = event.target.value
@@ -53,21 +60,20 @@ class EditStoryForm extends Component {
 
   render() {
 
-
     console.log('render is called in EditStory');
     console.log('from EditStoryForm, this.state.input: ', this.state.input);
 
     // debugger
 
-    // let wordCount = (this.state.input.split(' ').length ? this.state.input : 0)
-    let wordCount = (this.state.input.split(' ').length)
+    let wordCount = (this.state.input ? this.state.input.split(' ').length : 0)
+    // let wordCount = (this.state.input.split(' ').length)
 
-    let paragraphs = this.state.input.split('-----').join('\n\n')
+    let paragraphs = (this.state.input ? this.state.input.split('-----').join('\n\n') : "paragraphs will go here")
 
     return(
 
       <div>
-        <div className="EditStoryForm-green">
+        <div className="EditStoryForm-blue">
 
           <Form id="EditStoryForm" onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
             <h3>Edit Story</h3>

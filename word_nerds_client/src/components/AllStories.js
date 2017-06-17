@@ -1,14 +1,13 @@
 import React from 'react'
 
-import Story from './Story'
-
+import OneStory from './OneStory'
 
 const AllStories = (props) => {
 
   return(
-    <div className="AllStories-black">
+    <div className="AllStories-green">
 
-      <Story
+      <OneStory
         handleDeleteStory={props.handleDeleteStory}
         renderEditForm={props.renderEditForm}
         stories={props.stories}
@@ -17,7 +16,6 @@ const AllStories = (props) => {
       <br></br>
 
       <p>AllStories mounts and renders Story, which contains eachStory</p>
-      <p>(it's just like StoryList, but renders where the forms are)</p>
     </div>
   )
 }

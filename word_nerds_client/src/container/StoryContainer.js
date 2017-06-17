@@ -1,14 +1,9 @@
 import React, {Component} from 'react'
 
-import { Grid } from 'semantic-ui-react'
-
 import { withRouter } from 'react-router-dom'
-
-// import { withRouter } from 'react-router'
 
 // import { Router, Route, Switch } from 'react-router'
 
-import StoryList from '../components/StoryList'
 import StoryPage from '../components/StoryPage'
 
 class StoryContainer extends Component {
@@ -95,7 +90,7 @@ handleSubmit(story, characters) {
 
 
 updateStory(updatedStory) {
-  return fetch(`http://localhost:3000/stories/${this.state.storyID}`, {
+  return fetch(`http://localhost:3000/stories/${this.state.storyID}`, { //getting storyID from renderEditForm function below....
     method: 'PATCH',
     headers: {
       'Accept': 'application/json',
@@ -125,7 +120,7 @@ console.log('handleUpdateStory story: ', updatedStory)
     this.props.history.push('/stories') //redirect to all stories page
 }
 
-
+/////need to integrate this with above function, so it's all one function, handleUpdateStory
 renderEditForm(id) {
   let editStory = this.state.stories.find(story => story.id === id)
   console.log('editing story with id: ', id)
@@ -135,6 +130,8 @@ renderEditForm(id) {
     storyID: editStory.id,
   })
 }
+///////delete this function from the app, combine it with function above, so just one updatedStory function....
+
 
 
 deleteStory(id) {
@@ -164,20 +161,17 @@ handleDeleteStory(id) {
 
 
   render() {
-    const { match, location, history } = this.props
-    const { redirect } = this.state
+    const { location } = this.props
     return(
       <div>
 
         <div>You are now at {location.pathname}</div>
-        <Grid>
-          <Grid.Row>
-
-            <Grid.Column width={10}>
-              <StoryPage
+        <StoryPage
                 //props for CreateStoryForm
                 handleSubmit={this.handleSubmit.bind(this)}
+
                 renderEditForm={this.renderEditForm.bind(this)}
+                ///NEED TO DELETE renderEditForm from whole app, once I've integrated it with updateStory
 
                 //props for EditStoryForm
                 handleDeleteStory={this.handleDeleteStory.bind(this)}
@@ -187,21 +181,7 @@ handleDeleteStory(id) {
 
                 //props for AllStories
                 stories={this.state.stories}
-              />
-            </Grid.Column>
-
-
-            <Grid.Column width={6}>
-              <StoryList
-                handleDeleteStory={this.handleDeleteStory.bind(this)}
-                renderEditForm={this.renderEditForm.bind(this)}
-                stories={this.state.stories}
-              />
-            </Grid.Column>
-
-          </Grid.Row>
-        </Grid>
-
+                />
       </div>
     )
   }

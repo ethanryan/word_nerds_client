@@ -30,7 +30,7 @@ class CreateStoryForm extends Component {
       gender: '',
     },
     genres: ['random'],
-    nerd: "🤓"
+    nerd: <span role="img" aria-label="emoji">🤓</span>
   })
   this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
 } //end of constructor
@@ -53,7 +53,7 @@ handleHeroNameChange(event) {
       name: heroName,
       gender: this.state.hero.gender,
     },
-    nerd: "😄"
+    nerd: <span role="img" aria-label="emoji">😄</span>
   })
 }
 
@@ -64,7 +64,7 @@ handleHeroGenderChange(event) {
       name: this.state.hero.name,
       gender: heroGender,
     },
-    nerd: "😄"
+    nerd: <span role="img" aria-label="emoji">😄</span>
   })
 }
 
@@ -76,7 +76,7 @@ handleShadowNameChange(event) {
       name: shadowName,
       gender: this.state.shadow.gender,
     },
-    nerd: "😨"
+    nerd: <span role="img" aria-label="emoji">😨</span>
   })
 }
 
@@ -87,7 +87,7 @@ handleShadowGenderChange(event) {
       name: this.state.shadow.name,
       gender: shadowGender,
     },
-    nerd: "😨"
+    nerd: <span role="img" aria-label="emoji">😨</span>
   })
 }
 
@@ -98,7 +98,7 @@ handleFriendNameChange(event) {
       name: friendName,
       gender: this.state.friend.gender,
     },
-    nerd: "😎"
+    nerd: <span role="img" aria-label="emoji">😎</span>
   })
 }
 
@@ -109,7 +109,7 @@ handleFriendGenderChange(event) {
       name: this.state.friend.name,
       gender: friendGender,
     },
-    nerd: "😎"
+    nerd: <span role="img" aria-label="emoji">😎</span>
   })
 }
 
@@ -120,7 +120,7 @@ handleLoverNameChange(event) {
       name: loverName,
       gender: this.state.lover.gender,
     },
-    nerd: "😘"
+    nerd: <span role="img" aria-label="emoji">😘</span>
   })
 }
 
@@ -131,7 +131,7 @@ handleLoverGenderChange(event) {
       name: this.state.lover.name,
       gender: loverGender,
     },
-    nerd: "😘"
+    nerd: <span role="img" aria-label="emoji">😘</span>
   })
 }
 
@@ -142,7 +142,7 @@ handleMentorNameChange(event) {
       name: mentorName,
       gender: this.state.mentor.gender,
     },
-    nerd: "🤓"
+    nerd: <span role="img" aria-label="emoji">🤓</span>
   })
 }
 
@@ -153,7 +153,7 @@ handleMentorGenderChange(event) {
       name: this.state.mentor.name,
       gender: mentorGender,
     },
-    nerd: "🤓"
+    nerd: <span role="img" aria-label="emoji">🤓</span>
   })
 }
 
@@ -236,7 +236,7 @@ render() {
                 </Grid.Column>
 
                 <Grid.Column width={3}>
-                  <h3>    ♂️   ♀️  </h3>
+                  <h3>    <span role="img" aria-label="emoji">♂️   ♀️</span> </h3>
                   <h3>Genders </h3>
                   <br></br>
 
@@ -282,7 +282,7 @@ render() {
 
 
                 <Grid.Column width={7}>
-                  <h3>             📚 <span name="nerd">{this.state.nerd}</span> 📚 </h3>
+                  <h3>            <span role="img" aria-label="emoji"> 📚 {this.state.nerd} 📚 </span></h3>
                   <h3>           Summary</h3>
                   <br></br>
 
