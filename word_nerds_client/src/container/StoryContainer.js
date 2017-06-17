@@ -16,64 +16,64 @@ class StoryContainer extends Component {
     }
   }
 
-componentDidMount() {
-  fetch('http://localhost:3000/stories', {
-    method: 'GET',
-  })
-  .then( response => response.json() )
+  componentDidMount() {
+    fetch('http://localhost:3000/stories', {
+      method: 'GET',
+    })
+    .then( response => response.json() )
 
-  .then( data => this.setState({
-    stories: data
-  }) )
-}
+    .then( data => this.setState({
+      stories: data
+    }) )
+  }
 
 
-createStory(content, characters) {
-  console.log('content inside createStory: ', content)
-  return fetch("http://localhost:3000/stories", {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      //'Authorization': localStorage.getItem('jwt')
-    },
-    method: 'POST',
-    body: JSON.stringify({story: {
-      title: characters.hero.name + "'s story, v1",
-      user_id: 1, //default for now
+  createStory(content, characters) {
+    console.log('content inside createStory: ', content)
+    return fetch("http://localhost:3000/stories", {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        //'Authorization': localStorage.getItem('jwt')
+      },
+      method: 'POST',
+      body: JSON.stringify({story: {
+        title: characters.hero.name + "'s story, v1",
+        user_id: 1, //default for now
 
-      characters: [
-        {
-        name: characters.hero.name,
-        gender: characters.hero.gender,
-        archetype: "hero"
-        },
+        characters: [
+          {
+            name: characters.hero.name,
+            gender: characters.hero.gender,
+            archetype: "hero"
+          },
 
-        {
-        name: characters.shadow.name,
-        gender: characters.shadow.gender,
-        archetype: "shadow"
-        },
+          {
+            name: characters.shadow.name,
+            gender: characters.shadow.gender,
+            archetype: "shadow"
+          },
 
-        {
-        name: characters.friend.name,
-        gender: characters.friend.gender,
-        archetype: "friend"
-        },
+          {
+            name: characters.friend.name,
+            gender: characters.friend.gender,
+            archetype: "friend"
+          },
 
-        {
-        name: characters.lover.name,
-        gender: characters.lover.gender,
-        archetype: "lover"
-        },
+          {
+            name: characters.lover.name,
+            gender: characters.lover.gender,
+            archetype: "lover"
+          },
 
-        {
-        name: characters.mentor.name,
-        gender: characters.mentor.gender,
-        archetype: "mentor"
-        },
-      ],
-    },
-  }),
+          {
+            name: characters.mentor.name,
+            gender: characters.mentor.gender,
+            archetype: "mentor"
+          },
+        ],
+      },
+    }),
   }).then( res => res.json() )
 }
 
@@ -81,11 +81,12 @@ createStory(content, characters) {
 handleSubmit(story, characters) {
   this.createStory(story, characters) //calling function above, adding content to database
   // .then( story => console.log("STORYYYY", story) )
-    .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }
-     ) )
-   )
-   this.props.history.push('/stories') //redirect to all stories
-    // .catch(err => console.log(err))
+  .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }
+  ) )
+)
+// this.props.history.push(`/stories/${story.id}/edit`) //redirect to edit form
+this.props.history.push(`/stories`) //redirect to all stories
+// .catch(err => console.log(err))
 }
 
 
@@ -98,26 +99,26 @@ updateStory(updatedStory) {
       //'Authorization': localStorage.getItem('jwt')
     },
     body: JSON.stringify( {story: {
-        content: updatedStory.input,
-        title: updatedStory.title,
-        user_id: 1, //default for now
-      }}
-    ),
-  }).then( res => res.json() )
+      content: updatedStory.input,
+      title: updatedStory.title,
+      user_id: 1, //default for now
+    }}
+  ),
+}).then( res => res.json() )
 }
 
 
 handleUpdateStory(updatedStory) {
-console.log('handleUpdateStory updatedStory and updateStory.id: ', updatedStory,  updatedStory.id)
+  console.log('handleUpdateStory updatedStory and updateStory.id: ', updatedStory,  updatedStory.id)
   this.updateStory(updatedStory) //calling function above, updating story on database
   .then( (response) => this.setState({
-      stories: response //nasty nas
-    }) )
-    this.setState({
-      story: updatedStory.story,
-      title: updatedStory.title,
-    })
-    this.props.history.push('/stories') //redirect to all stories page
+    stories: response //nasty nas
+  }) )
+  this.setState({
+    story: updatedStory.story,
+    title: updatedStory.title,
+  })
+  this.props.history.push(`/stories/${updatedStory.id}`) //redirect to all stories page
 }
 
 
@@ -147,28 +148,28 @@ handleDeleteStory(id) {
 }
 
 
-  render() {
-    const { location } = this.props
-    return(
-      <div>
+render() {
+  const { location } = this.props
+  return(
+    <div>
 
-        <div>You are now at {location.pathname}</div>
-        <StoryPage
-                //props for CreateStoryForm
-                handleSubmit={this.handleSubmit.bind(this)}
+      <div>You are now at {location.pathname}</div>
+      <StoryPage
+        //props for CreateStoryForm
+        handleSubmit={this.handleSubmit.bind(this)}
 
-                //props for EditStoryForm
-                handleDeleteStory={this.handleDeleteStory.bind(this)}
-                handleUpdateStory={this.handleUpdateStory.bind(this)}
-                story={this.state.story}
-                title={this.state.title}
+        //props for EditStoryForm
+        handleDeleteStory={this.handleDeleteStory.bind(this)}
+        handleUpdateStory={this.handleUpdateStory.bind(this)}
+        story={this.state.story}
+        title={this.state.title}
 
-                //props for AllStories
-                stories={this.state.stories}
-                />
-      </div>
-    )
-  }
+        //props for AllStories
+        stories={this.state.stories}
+      />
+    </div>
+  )
+}
 }
 
 export default withRouter(StoryContainer)

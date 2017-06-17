@@ -1,32 +1,48 @@
 import React from 'react'
+
+import { Image, Grid } from 'semantic-ui-react'
+
 import { Link } from 'react-router-dom'
 
 
+// const ImageExampleImage = () => (
+//   <Image src='/assets/images/wireframe/image.png' size='small' />
+// )
+
+
 const StoryShow = (props) => {
+  console.log('StoryShow props: ', props);
 
   return(
     <div>
 
           <div className="StoryShow-purple">
 
+              <Grid centered columns={2}>
+                  <Grid.Column>
+                    <Image src='http://i1.kym-cdn.com/photos/images/facebook/000/061/294/1106514-cool_story_bro_super.jpg' size='small' />
+                  </Grid.Column>
+              </Grid>
+
+            <h1>PICTURE HERE FOR THIS STORY!!</h1>
+
             <h2>
-              Story Title: {props.title}
+              Story Title: {props.story.title ? props.story.title : 0 }
             </h2>
 
-
-              This is the link to the EditStoryForm to edit this story:
+              Edit this story:
               <Link className='btn btn-primary'
-                to={`/stories/${props.id}/edit`}
-              >{props.title}</Link>
+                to={`/stories/${props.story.id}/edit`}
+              > {props.story.title}</Link>
               <br></br>
               <br></br>
 
-              Story ID: {props.id}
+              Story ID: {props.story.id}
               <br></br>
               <br></br>
 
 
-              Story length: {props.story.split(' ').length}
+              Story length: {props.story.content ? props.story.content.split(' ').length : 0}
               <br></br>
               <br></br>
 
@@ -54,7 +70,7 @@ const StoryShow = (props) => {
 
 
 
-              {props.story.split('-----').map((paragraph) => {
+              {props.story.content.split('-----').map((paragraph) => {
                 return (
                 <span key={paragraph.id}>
                   {paragraph}
@@ -63,14 +79,14 @@ const StoryShow = (props) => {
               )
               })}
 
-              Story ID: {props.id}
+              Story ID: {props.story.id}
               <br></br>
 
 
               <div>
                 <button
                   href="#delete"
-                  onClick={() => {props.handleDeleteStory(props.id)}}>
+                  onClick={() => {props.handleDeleteStory(props.story.id)}}>
                   Delete
                 </button>
               </div>
@@ -84,10 +100,10 @@ const StoryShow = (props) => {
 }
 
 StoryShow.defaultProps = {
-  story: 'story content here', //need this so props aren't null
+  content: 'story content here', //need this so props aren't null
   title: 'story title here',
+  story: {title: 'title', 'content': 'words words ----- word words words'},
   stories: [{title: 'title', 'content': 'words words ----- word words words'}]
-
 }
 
 export default StoryShow

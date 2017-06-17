@@ -14,7 +14,7 @@ const OneStory = (props) => {
 
           Edit this story:
           <Link className='btn btn-primary' to={`/stories/${story.id}/edit`}
-          >{story.title}</Link>
+          > {story.title}</Link>
           <br></br>
           <br></br>
 

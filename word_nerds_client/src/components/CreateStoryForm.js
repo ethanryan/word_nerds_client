@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Form } from 'semantic-ui-react'
-import { Grid } from 'semantic-ui-react'
+import { Form, Grid } from 'semantic-ui-react'
 
 class CreateStoryForm extends Component {
 
