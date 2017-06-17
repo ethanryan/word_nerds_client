@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { Form } from 'semantic-ui-react'
 
+import { Link } from 'react-router-dom'
+
 // import Markov from './Markov'
 
 class EditStoryForm extends Component {
@@ -51,13 +53,15 @@ class EditStoryForm extends Component {
 
   render() {
 
-    let wordCount = this.state.input.split(' ').length
 
     console.log('render is called in EditStory');
     console.log('from EditStoryForm, this.state.input: ', this.state.input);
 
-    let x = this.state.input
     // debugger
+
+    // let wordCount = (this.state.input.split(' ').length ? this.state.input : 0)
+    let wordCount = (this.state.input.split(' ').length)
+
     let paragraphs = this.state.input.split('-----').join('\n\n')
 
     return(
@@ -73,7 +77,7 @@ class EditStoryForm extends Component {
             Story ID: <span className="EditStoryText-blue"> {this.props.story.id}</span>
             <br></br>
             <br></br>
-            Story length: <span className="EditStoryText-blue"> {wordCount}</span>
+            Word count: <span className="EditStoryText-blue"> {wordCount}</span>
             <br></br>
             <br></br>
             <Form.Field label='Title'
@@ -92,43 +96,13 @@ class EditStoryForm extends Component {
               control='textarea' rows='15'
               width={15}
               // value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
-
-
               value={paragraphs}
-              // value={this.state.input.split('-----').join(<div><br/><br/></div>)}
-
-              // value={this.state.input.split('-----').map((item) => {
-              //   return (
-              //     <span>
-              //       {item}
-              //       <br/><br/>
-              //       <br/><br/>
-              //     </span>
-              //   )
-              // })}
-
-              // {story.content.split('-----').map((paragraph) => {
-              //   return (
-              //   <span key={paragraph.id}>
-              //     {paragraph}
-              //     <br/><br/>
-              //   </span>
-              // )
-              // })}
-
-              // {this.props.section.text.split(“\n”).map(function(item) {
-              //   return (
-              //     <span>
-              //       {item}
-              //       <br/>
-              //     </span>
-              //   )
-              // })}
-
               onChange={this.handleStoryChange}
             />
 
-            <Form.Button content='Save Story' type="submit" primary/>
+            {/* <Link to={'/stories'}> */}
+              <Form.Button content='Save Story' type="submit" primary/>
+            {/* </Link> */}
 
           </Form>
         </div>

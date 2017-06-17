@@ -172,8 +172,9 @@ render() {
           <Grid.Row>
             <Grid.Column width={6}>
 
+              <h3>           Create A Story </h3>
+              <h3>      Characters Names</h3>
               <Form onSubmit={this.handleCreateStoryFormSubmit} >
-                  <h3>Create A Story</h3>
                   {/* <Form.Group grouped >
                   <h3>Choose genre: </h3>
                   <Form.Field label='Horror' control='input' type='checkbox' />
@@ -182,68 +183,96 @@ render() {
                 </Form.Group> */}
 
                 <Form.Group grouped class="inline fields" >
-                  <h3>Create characters: </h3>
+
+                  <br></br>
+
                   <Form.Field placeholder="HERO"
                     control='input' type="text" key="heroName" width={14}
                     onChange={this.handleHeroNameChange.bind(this)} />
-                    <div onChange={this.handleHeroGenderChange.bind(this)}>
-                    <Form.Field label='male' value="male" control='input' type='radio' />
-                    <Form.Field label='female' value="female" control='input' type='radio' />
-                  </div>
+
+                    <br></br>
 
                     <Form.Field placeholder="SHADOW"
                       control='input' type="text" key="shadowName" width={14}
                       onChange={this.handleShadowNameChange.bind(this)} />
-                      <div onChange={this.handleShadowGenderChange.bind(this)}>
-                      <Form.Field label='male' value="male" control='input' type='radio' />
-                      <Form.Field label='female' value="female" control='input' type='radio' />
-                    </div>
+
+                      <br></br>
 
                       <Form.Field placeholder="FRIEND"
                         control='input' type="text" key="friendName" width={14}
                         onChange={this.handleFriendNameChange.bind(this)} />
-                        <div onChange={this.handleFriendGenderChange.bind(this)}>
-                        <Form.Field label='male' value="male" control='input' type='radio' />
-                        <Form.Field label='female' value="female" control='input' type='radio' />
-                      </div>
+
+                        <br></br>
 
                       <Form.Field placeholder="LOVER"
                         control='input' type="text" key="loverName" width={14}
                         onChange={this.handleLoverNameChange.bind(this)} />
-                        <div onChange={this.handleLoverGenderChange.bind(this)}>
-                          <Form.Field label='male' value="male" control='input' type='radio' />
-                          <Form.Field label='female' value="female" control='input' type='radio' />
-                      </div>
+
+                        <br></br>
 
                       <Form.Field placeholder="MENTOR"
                         control='input' type="text" key="mentorName" width={14}
                         onChange={this.handleMentorNameChange.bind(this)} />
-                        <div onChange={this.handleMentorGenderChange.bind(this)}>
-                          <Form.Field label='male' value="male" control='input' type='radio' />
-                          <Form.Field label='female' value="female" control='input' type='radio' />
-                      </div>
 
+                        <br></br>
+                        <br></br>
 
                         <Form.Button content='Submit' type="submit" primary/>
-                        {/* <Button primary>Primary</Button> */}
 
-                        {/* <Form.Field color="green"
-                        // type="button"
-                        type='submit'
-                        control='button'>
-                        Create Story
-                      </Form.Field> */}
                     </Form.Group>
                   </Form>
+
+                </Grid.Column>
+
+                <Grid.Column width={3}>
+                  <h3>    ♂️   ♀️  </h3>
+                  <h3>Genders </h3>
+                  <br></br>
+
+                  <div onChange={this.handleHeroGenderChange.bind(this)}>
+                  <Form.Field label='male' value="male" control='input' type='radio' />
+                  <Form.Field label='female' value="female" control='input' type='radio' />
+                  </div>
+
+                  <br></br>
+                  <br></br>
+
+                  <div onChange={this.handleShadowGenderChange.bind(this)}>
+                  <Form.Field label='male' value="male" control='input' type='radio' />
+                  <Form.Field label='female' value="female" control='input' type='radio' />
+                  </div>
+
+                  <br></br>
+                  <br></br>
+
+                  <div onChange={this.handleFriendGenderChange.bind(this)}>
+                  <Form.Field label='male' value="male" control='input' type='radio' />
+                  <Form.Field label='female' value="female" control='input' type='radio' />
+                </div>
+
+                <br></br>
+                <br></br>
+
+                <div onChange={this.handleLoverGenderChange.bind(this)}>
+                  <Form.Field label='male' value="male" control='input' type='radio' />
+                  <Form.Field label='female' value="female" control='input' type='radio' />
+              </div>
+
+              <br></br>
+              <br></br>
+
+              <div onChange={this.handleMentorGenderChange.bind(this)}>
+                <Form.Field label='male' value="male" control='input' type='radio' />
+                <Form.Field label='female' value="female" control='input' type='radio' />
+            </div>
 
 
                 </Grid.Column>
 
 
-                <Grid.Column width={10}>
-                  <br></br>
-                  <br></br>
-                  <br></br>
+                <Grid.Column width={7}>
+                  <h3>             📚 🤓 📚 </h3>
+                  <h3>           Summary</h3>
                   <br></br>
 
                   {/* You chose: {this.state.genres}
@@ -253,10 +282,10 @@ render() {
                   <br></br>
                   <br></br> */}
 
+
                   The hero's name is: {this.state.hero.name}
                   <br></br>
                   The hero's pronoun is: {this.state.hero.gender}
-                  <br></br>
                   <br></br>
                   <br></br>
                   <br></br>
@@ -267,12 +296,10 @@ render() {
                   <br></br>
                   <br></br>
                   <br></br>
-                  <br></br>
 
                   The friend's name is: {this.state.friend.name}
                   <br></br>
                   The friend's pronoun is: {this.state.friend.gender}
-                  <br></br>
                   <br></br>
                   <br></br>
                   <br></br>
@@ -283,12 +310,10 @@ render() {
                   <br></br>
                   <br></br>
                   <br></br>
-                  <br></br>
 
                   The mentor's name is: {this.state.mentor.name}
                   <br></br>
                   The mentor's pronoun is: {this.state.mentor.gender}
-                  <br></br>
                   <br></br>
                   <br></br>
                   <br></br>

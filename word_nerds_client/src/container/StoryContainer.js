@@ -2,6 +2,12 @@ import React, {Component} from 'react'
 
 import { Grid } from 'semantic-ui-react'
 
+import { withRouter } from 'react-router-dom'
+
+// import { withRouter } from 'react-router'
+
+import { Router, Route, Switch } from 'react-router'
+
 import StoryList from '../components/StoryList'
 import StoryPage from '../components/StoryPage'
 
@@ -12,6 +18,7 @@ class StoryContainer extends Component {
       stories: [],
       story: '',
       title: 'title here',
+      redirect: false, //trying to redirect, passing this as a prop to CreateStoryForm
     }
   }
 
@@ -79,8 +86,11 @@ createStory(content, characters) {
 
 handleSubmit(story, characters) {
   this.createStory(story, characters) //calling function above, adding content to database
-    .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }) ))
-    .catch(err => console.log(err))
+  // .then( story => console.log("STORYYYY", story) )
+    .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story], redirect: true }
+      // (story) => this.props.history.push(`/stories/${story.id}/edit`)
+     ) ) )
+    // .catch(err => console.log(err))
 }
 
 
@@ -152,8 +162,12 @@ handleDeleteStory(id) {
 
 
   render() {
+    const { match, location, history } = this.props
+    const { redirect } = this.state
     return(
       <div>
+
+        <div>You are now at {location.pathname}</div>
         <Grid>
           <Grid.Row>
 
@@ -162,6 +176,7 @@ handleDeleteStory(id) {
                 //props for CreateStoryForm
                 handleSubmit={this.handleSubmit.bind(this)}
                 renderEditForm={this.renderEditForm.bind(this)}
+                redirect={this.state.redirect}
 
                 //props for EditStoryForm
                 handleDeleteStory={this.handleDeleteStory.bind(this)}
@@ -191,4 +206,4 @@ handleDeleteStory(id) {
   }
 }
 
-export default StoryContainer
+export default withRouter(StoryContainer)

@@ -9,12 +9,30 @@ import { Switch, Route } from 'react-router-dom'
 
 const StoryPage = (props) => {
 
+//   redirectToEditForm() {
+//   if (props.redirect) {
+//     return (
+//       <div>
+//         <Redirect to={`/stories/${props.story.id}/edit`}/>
+//       </div>
+//     );
+//   } else {
+//     return (
+//       <Route exact path='/' render={() => <CreateStoryForm
+//         handleSubmit={props.handleSubmit}
+//       />} />
+//     );
+//   }
+// }
+
     return (
+
       <div>
       <Switch>
         <Route exact path='/' render={() => <CreateStoryForm
           handleSubmit={props.handleSubmit}
         />} />
+         {/* { this.redirectToEditForm() } */}
 
         <Route
           path='/stories/:id/edit'
