@@ -30,6 +30,7 @@ class CreateStoryForm extends Component {
       gender: '',
     },
     genres: ['random'],
+    nerd: "🤓"
   })
   this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
 } //end of constructor
@@ -51,7 +52,8 @@ handleHeroNameChange(event) {
     hero: {
       name: heroName,
       gender: this.state.hero.gender,
-    }
+    },
+    nerd: "😄"
   })
 }
 
@@ -61,7 +63,8 @@ handleHeroGenderChange(event) {
     hero: {
       name: this.state.hero.name,
       gender: heroGender,
-    }
+    },
+    nerd: "😄"
   })
 }
 
@@ -72,7 +75,8 @@ handleShadowNameChange(event) {
     shadow: {
       name: shadowName,
       gender: this.state.shadow.gender,
-    }
+    },
+    nerd: "😨"
   })
 }
 
@@ -82,7 +86,8 @@ handleShadowGenderChange(event) {
     shadow: {
       name: this.state.shadow.name,
       gender: shadowGender,
-    }
+    },
+    nerd: "😨"
   })
 }
 
@@ -92,7 +97,8 @@ handleFriendNameChange(event) {
     friend: {
       name: friendName,
       gender: this.state.friend.gender,
-    }
+    },
+    nerd: "😎"
   })
 }
 
@@ -102,7 +108,8 @@ handleFriendGenderChange(event) {
     friend: {
       name: this.state.friend.name,
       gender: friendGender,
-    }
+    },
+    nerd: "😎"
   })
 }
 
@@ -112,7 +119,8 @@ handleLoverNameChange(event) {
     lover: {
       name: loverName,
       gender: this.state.lover.gender,
-    }
+    },
+    nerd: "😘"
   })
 }
 
@@ -122,7 +130,8 @@ handleLoverGenderChange(event) {
     lover: {
       name: this.state.lover.name,
       gender: loverGender,
-    }
+    },
+    nerd: "😘"
   })
 }
 
@@ -132,7 +141,8 @@ handleMentorNameChange(event) {
     mentor: {
       name: mentorName,
       gender: this.state.mentor.gender,
-    }
+    },
+    nerd: "🤓"
   })
 }
 
@@ -142,7 +152,8 @@ handleMentorGenderChange(event) {
     mentor: {
       name: this.state.mentor.name,
       gender: mentorGender,
-    }
+    },
+    nerd: "🤓"
   })
 }
 
@@ -271,7 +282,7 @@ render() {
 
 
                 <Grid.Column width={7}>
-                  <h3>             📚 🤓 📚 </h3>
+                  <h3>             📚 <span name="nerd">{this.state.nerd}</span> 📚 </h3>
                   <h3>           Summary</h3>
                   <br></br>
 
@@ -314,7 +325,6 @@ render() {
                   The mentor's name is: {this.state.mentor.name}
                   <br></br>
                   The mentor's pronoun is: {this.state.mentor.gender}
-                  <br></br>
                   <br></br>
                   <br></br>
 

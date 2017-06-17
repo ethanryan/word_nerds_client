@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 
 // import { withRouter } from 'react-router'
 
-import { Router, Route, Switch } from 'react-router'
+// import { Router, Route, Switch } from 'react-router'
 
 import StoryList from '../components/StoryList'
 import StoryPage from '../components/StoryPage'
@@ -18,7 +18,6 @@ class StoryContainer extends Component {
       stories: [],
       story: '',
       title: 'title here',
-      redirect: false, //trying to redirect, passing this as a prop to CreateStoryForm
     }
   }
 
@@ -87,9 +86,26 @@ createStory(content, characters) {
 handleSubmit(story, characters) {
   this.createStory(story, characters) //calling function above, adding content to database
   // .then( story => console.log("STORYYYY", story) )
-    .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story], redirect: true }
+    .then( story => this.setState( prevState => ({ stories: [...prevState.stories, story] }
+
+
+
+      // .then(
+      //                 () => {
+      //                     this.setState({ isLoading: false });
+      //                     this.props.history.push('/stories');
+      //                 },
+
+      // .then(
+      //                 (story) => {
+      //                     this.props.history.push('/stories')
+      //                 },
+
+      // this.context.history.push('/stories')
       // (story) => this.props.history.push(`/stories/${story.id}/edit`)
-     ) ) )
+     ) )
+
+   )
     // .catch(err => console.log(err))
 }
 
@@ -176,7 +192,6 @@ handleDeleteStory(id) {
                 //props for CreateStoryForm
                 handleSubmit={this.handleSubmit.bind(this)}
                 renderEditForm={this.renderEditForm.bind(this)}
-                redirect={this.state.redirect}
 
                 //props for EditStoryForm
                 handleDeleteStory={this.handleDeleteStory.bind(this)}
