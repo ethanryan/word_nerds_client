@@ -9,7 +9,6 @@ const AllStories = (props) => {
 
       <OneStory
         handleDeleteStory={props.handleDeleteStory}
-        renderEditForm={props.renderEditForm}
         stories={props.stories}
       />
       <br></br>

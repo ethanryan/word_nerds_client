@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 class NavBar extends Component {
   state = { activeItem: 'home' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (event, { name }) => this.setState({ activeItem: name })
 
   render() {
     const { activeItem } = this.state
@@ -16,6 +16,7 @@ class NavBar extends Component {
       <div className="NavBar-yellow">
       <Menu secondary color={'green'} >
         <Link to="/"><Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} /></Link>
+
         <Link to="/stories"><Menu.Item name='stories' active={activeItem === 'stories'} onClick={this.handleItemClick} /></Link>
 
         <Menu.Menu position='right' >

@@ -15,7 +15,9 @@ const StoryShow = (props) => {
 
 
               This is the link to the EditStoryForm to edit this story:
-              <Link className='btn btn-primary' to={`/stories/${props.id}/edit`} onClick={() => props.renderEditForm(props.id)}>{props.title}</Link>
+              <Link className='btn btn-primary'
+                to={`/stories/${props.id}/edit`}
+              >{props.title}</Link>
               <br></br>
               <br></br>
 

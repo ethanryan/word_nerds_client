@@ -65,7 +65,6 @@ return (
                 return <StoryShow
                   story={story}
                   handleDeleteStory={props.handleDeleteStory}
-                  renderEditForm={props.renderEditForm}
                   // want it to be able to send user to EditStoryForm
                 />
               }} />
@@ -85,7 +84,6 @@ return (
                   path='/stories'
                   render={() => <AllStories
                   handleDeleteStory={props.handleDeleteStory}
-                  renderEditForm={props.renderEditForm}
                   stories={props.stories}
                 />} />
 

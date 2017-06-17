@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { Form } from 'semantic-ui-react'
+// import { Button } from 'semantic-ui-react'
 
 // import Markov from './Markov'
 
@@ -52,11 +53,21 @@ class EditStoryForm extends Component {
     event.preventDefault()
     const updatedStory = {
       input: this.state.input,
-      title: this.state.title
+      title: this.state.title,
+      id: this.props.story.id
     }
     this.props.handleUpdateStory(updatedStory)
     this.setState({input: ''})
   }
+
+
+  allCaps(str) {
+    // str.toUpperCase()
+    console.log('alphabet'.toUpperCase())
+  }
+
+  // allCaps = (event, { input }) => this.setState({ input: input.toUpperCase() })
+
 
   render() {
 
@@ -64,6 +75,8 @@ class EditStoryForm extends Component {
     console.log('from EditStoryForm, this.state.input: ', this.state.input);
 
     // debugger
+
+    // let str = (this.state.input ? this.state.input : "whatever null stringface")
 
     let wordCount = (this.state.input ? this.state.input.split(' ').length : 0)
     // let wordCount = (this.state.input.split(' ').length)
@@ -108,7 +121,13 @@ class EditStoryForm extends Component {
 
             {/* <Link to={'/stories'}> */}
               <Form.Button content='Save Story' type="submit" primary/>
-            {/* </Link> */}
+
+              <div>
+                <button
+                  onClick={() => {this.allCaps() }}>
+                  ALL CAPS
+                </button>
+              </div>
 
           </Form>
         </div>

@@ -13,7 +13,8 @@ const OneStory = (props) => {
         </h2>
 
           Edit this story:
-          <Link className='btn btn-primary' to={`/stories/${story.id}/edit`} onClick={() => props.renderEditForm(story.id)}>{story.title}</Link>
+          <Link className='btn btn-primary' to={`/stories/${story.id}/edit`}
+          >{story.title}</Link>
           <br></br>
           <br></br>
 

@@ -90,7 +90,7 @@ handleSubmit(story, characters) {
 
 
 updateStory(updatedStory) {
-  return fetch(`http://localhost:3000/stories/${this.state.storyID}`, { //getting storyID from renderEditForm function below....
+  return fetch(`http://localhost:3000/stories/${updatedStory.id}`, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json',
@@ -108,7 +108,7 @@ updateStory(updatedStory) {
 
 
 handleUpdateStory(updatedStory) {
-console.log('handleUpdateStory story: ', updatedStory)
+console.log('handleUpdateStory updatedStory and updateStory.id: ', updatedStory,  updatedStory.id)
   this.updateStory(updatedStory) //calling function above, updating story on database
   .then( (response) => this.setState({
       stories: response //nasty nas
@@ -119,19 +119,6 @@ console.log('handleUpdateStory story: ', updatedStory)
     })
     this.props.history.push('/stories') //redirect to all stories page
 }
-
-/////need to integrate this with above function, so it's all one function, handleUpdateStory
-renderEditForm(id) {
-  let editStory = this.state.stories.find(story => story.id === id)
-  console.log('editing story with id: ', id)
-  this.setState({
-    story: editStory.content,
-    title: editStory.title,
-    storyID: editStory.id,
-  })
-}
-///////delete this function from the app, combine it with function above, so just one updatedStory function....
-
 
 
 deleteStory(id) {
@@ -169,9 +156,6 @@ handleDeleteStory(id) {
         <StoryPage
                 //props for CreateStoryForm
                 handleSubmit={this.handleSubmit.bind(this)}
-
-                renderEditForm={this.renderEditForm.bind(this)}
-                ///NEED TO DELETE renderEditForm from whole app, once I've integrated it with updateStory
 
                 //props for EditStoryForm
                 handleDeleteStory={this.handleDeleteStory.bind(this)}
