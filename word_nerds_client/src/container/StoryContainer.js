@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
 
+import NavBar from '../components/NavBar'
+
+import LoginSignUp from '../container/LoginSignUp'
+
 import { withRouter } from 'react-router-dom'
 
 // import { Router, Route, Switch } from 'react-router'
@@ -13,6 +17,7 @@ class StoryContainer extends Component {
       stories: [],
       story: '',
       title: 'title here',
+      user: ''
     }
   }
 
@@ -147,13 +152,50 @@ handleDeleteStory(id) {
   this.props.history.push('/stories') //redirect to all stories
 }
 
+handleLogin(params) {
+  // fetch("http://localhost:3000/api/v1/sign_in", {
+  fetch("http://localhost:3000/sign_in", {
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  method: 'POST',
+  body: JSON.stringify(params)
+  })
+  .then( res => res.json() )
+  .then( resp => { console.log('Log In Response: ', resp)
+  localStorage.setItem("token", resp.token)
+  this.setState({
+    user: resp.user
+  }),this.props.history.push('/')
+  })
+}
+
+logout() {
+    this.setState({
+      user: null
+    })
+    localStorage.clear()
+    // console.log('logout', this.state.current_user);
+  }
+
 
 render() {
   const { location } = this.props
+
+  if(localStorage.getItem('token')) {
+
   return(
     <div>
 
       <div>You are now at {location.pathname}</div>
+
+      <NavBar
+        title="Word Nerds"
+        color="yellow"
+        logout={this.logout.bind(this)}
+      />
+
       <StoryPage
         //props for CreateStoryForm
         handleSubmit={this.handleSubmit.bind(this)}
@@ -167,8 +209,21 @@ render() {
         //props for AllStories
         stories={this.state.stories}
       />
+
     </div>
   )
+}
+else {
+  return(
+    <div>
+      <NavBar title="Word Nerds" color="yellow" />
+      
+      <LoginSignUp handleLogin={this.handleLogin.bind(this)} />
+    </div>
+  )
+
+}
+
 }
 }
 
