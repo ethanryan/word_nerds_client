@@ -72,6 +72,12 @@ const OneStory = (props) => {
             </button>
           </div>
 
+          Edit this story: (make this a button)
+          <Link className='btn btn-primary' to={`/stories/${story.id}/edit`}
+          > {story.title}</Link>
+          <br></br>
+          <br></br>
+
       </div>
   )
 
