@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class LoginForm extends Component {
 
-  constructor(){
+  constructor() {
     super()
     this.state = {
       name: '',
@@ -11,13 +11,13 @@ class LoginForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(prop, value){
+  handleChange(prop, value) {
     this.setState({
       [prop]: value
     })
   }
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault()
     this.props.handleLogin(this.state)
   }

@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 
 import NavBar from '../components/NavBar'
 
+import axios from 'axios'
+
+
 import LoginSignUp from '../container/LoginSignUp'
 
 import { withRouter } from 'react-router-dom'
@@ -29,6 +32,14 @@ class StoryContainer extends Component {
 
     .then( data => this.setState({
       stories: data
+    }) )
+
+    fetch('http://localhost:3000/users', {
+      method: 'GET',
+    })
+    .then (response => response.json() )
+    .then (user => this.setState({
+      user: user
     }) )
   }
 
@@ -155,12 +166,12 @@ handleDeleteStory(id) {
 handleLogin(params) {
   // fetch("http://localhost:3000/api/v1/sign_in", {
   fetch("http://localhost:3000/sign_in", {
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  method: 'POST',
-  body: JSON.stringify(params)
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(params)
   })
   .then( res => res.json() )
   .then( resp => { console.log('Log In Response: ', resp)
@@ -168,61 +179,79 @@ handleLogin(params) {
   this.setState({
     user: resp.user
   }),this.props.history.push('/')
-  })
+})
+}
+
+handleSignUp() {
+  // axios.post('http://localhost:3000/api/v1/users', {
+  axios.post('http://localhost:3000/users', {
+    user: {
+      name: this.state.name,
+      password: this.state.password
+    }
+  }).then(res => { console.log('Sign Up Response: ', res )
+  localStorage.setItem("token", res.data.token)
+  this.props.history.push('/')
+}).catch( e => console.log('error from handleSignUp', e.response) )
 }
 
 logout() {
-    this.setState({
-      user: null
-    })
-    localStorage.clear()
-    // console.log('logout', this.state.current_user);
-  }
+  this.setState({
+    user: null
+  })
+  localStorage.clear()
+  // console.log('logout', this.state.current_user);
+}
 
 
 render() {
+  console.log('state: ', this.state);
   const { location } = this.props
 
   if(localStorage.getItem('token')) {
 
-  return(
-    <div>
+    // debugger
 
-      <div>You are now at {location.pathname}</div>
+    return(
+      <div>
 
-      <NavBar
-        title="Word Nerds"
-        color="yellow"
-        logout={this.logout.bind(this)}
-      />
+        <div>You are now at {location.pathname}</div>
 
-      <StoryPage
-        //props for CreateStoryForm
-        handleSubmit={this.handleSubmit.bind(this)}
+        <NavBar
+          title="Word Nerds"
+          color="yellow"
+          logout={this.logout.bind(this)}
+        />
 
-        //props for EditStoryForm
-        handleDeleteStory={this.handleDeleteStory.bind(this)}
-        handleUpdateStory={this.handleUpdateStory.bind(this)}
-        story={this.state.story}
-        title={this.state.title}
+        <div> Welcome {this.state.user ? this.state.user[0].name : null}</div>
 
-        //props for AllStories
-        stories={this.state.stories}
-      />
+        <StoryPage
+          //props for CreateStoryForm
+          handleSubmit={this.handleSubmit.bind(this)}
 
-    </div>
-  )
-}
-else {
-  return(
-    <div>
-      <NavBar title="Word Nerds" color="yellow" />
-      
-      <LoginSignUp handleLogin={this.handleLogin.bind(this)} />
-    </div>
-  )
+          //props for EditStoryForm
+          handleDeleteStory={this.handleDeleteStory.bind(this)}
+          handleUpdateStory={this.handleUpdateStory.bind(this)}
+          story={this.state.story}
+          title={this.state.title}
 
-}
+          //props for AllStories
+          stories={this.state.stories}
+        />
+
+      </div>
+    )
+  }
+  else {
+    return(
+      <div>
+        <NavBar />
+
+        <LoginSignUp handleLogin={this.handleLogin.bind(this)} />
+      </div>
+    )
+
+  }
 
 }
 }

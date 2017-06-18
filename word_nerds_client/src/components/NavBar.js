@@ -9,8 +9,11 @@ import { Link } from 'react-router-dom'
 // const colorsA = ['red', 'orange', 'yellow', 'olive', 'green', 'teal']
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props)
   // state = { activeA: colorsA[0] }
-  state = { activeItem: 'home' }
+  this.state = { activeItem: 'home' }
+}
 
   // handleAClick = (event, { name }) => this.setState({ activeA: name })
 
@@ -35,7 +38,8 @@ class NavBar extends Component {
 
       <Menu
         // secondary color={'yellow'}
-        inverted>
+        inverted
+        >
 
         <Link to="/">
         <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
@@ -45,6 +49,7 @@ class NavBar extends Component {
 
 
         <Menu.Menu position='right' >
+
           {/* <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} /> */}
           <Link to="/"><Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.props.logout} /></Link>
 
