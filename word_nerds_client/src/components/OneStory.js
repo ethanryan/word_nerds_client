@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
+
 
 
 const OneStory = (props) => {
@@ -9,11 +11,11 @@ const OneStory = (props) => {
       <div key={story.id} className="OneStory-orange">
 
         <h2>
-          Story Title: {story.title}
+          Title: {story.title}
         </h2>
 
           Edit this story:
-          <Link className='btn btn-primary' to={`/stories/${story.id}/edit`}
+          <Link to={`/stories/${story.id}/edit`}
           > {story.title}</Link>
           <br></br>
           <br></br>
@@ -63,21 +65,20 @@ const OneStory = (props) => {
 
           Story ID: {story.id}
           <br></br>
-
-
-          <div>
-            <button
-              href="#delete"
-              onClick={() => {props.handleDeleteStory(story.id)}}>
-              Delete
-            </button>
-          </div>
-
-          Edit this story: (make this a button)
-          <Link className='btn btn-primary' to={`/stories/${story.id}/edit`}
-          > {story.title}</Link>
           <br></br>
-          <br></br>
+
+          <Link to={`/stories/${story.id}/edit`}>
+            <Button color='green' compact>Edit Story
+            </Button>
+          </Link>
+          {/* <Button.Group floated='right'> */}
+
+            <Button color='red' compact floated='right'
+              onClick={() => {props.handleDeleteStory(story.id)}}>Delete
+            </Button>
+
+            <br></br>
+            <br></br>
 
       </div>
   )

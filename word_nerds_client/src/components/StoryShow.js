@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Image, Grid } from 'semantic-ui-react'
+import { Image, Grid, Button } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom'
 
@@ -27,7 +27,7 @@ const StoryShow = (props) => {
             <h1>PICTURE HERE FOR THIS STORY!!</h1>
 
             <h2>
-              Story Title: {props.story.title ? props.story.title : 0 }
+              Title: {props.story.title ? props.story.title : 0 }
             </h2>
 
               Edit this story:
@@ -61,19 +61,13 @@ const StoryShow = (props) => {
               Story ID: {props.story.id}
               <br></br>
 
+              <Link to={`/stories/${props.story.id}/edit`}>
+                <Button color='green' compact>Edit Story
+                </Button>
+              </Link>
 
-              <div>
-                <button
-                  href="#delete"
-                  onClick={() => {props.handleDeleteStory(props.story.id)}}>
-                  Delete
-                </button>
-              </div>
-
-              Edit this story:
-              <Link className='btn btn-primary'
-                to={`/stories/${props.story.id}/edit`}
-              > {props.story.title}</Link>
+              <Button color='red' floated='right' compact
+                onClick={() => {props.handleDeleteStory(props.story.id)}}>Delete</Button>
               <br></br>
               <br></br>
 

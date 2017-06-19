@@ -214,10 +214,10 @@ render() {
 
         <Grid>
           <Grid.Row>
-            <Grid.Column width={5}>
+            <Grid.Column width={4}>
 
-              <h3>           Create A Story </h3>
-              <h3>      Characters Names</h3>
+              <h3>Create A Story</h3>
+              <h3>Characters</h3>
               <Form onSubmit={this.handleCreateStoryFormSubmit} >
                   {/* <Form.Group grouped >
                   <h3>Choose genre: </h3>
@@ -226,45 +226,41 @@ render() {
                   <Form.Field label='Random' control='input' type='radio' />
                 </Form.Group> */}
 
-                <Form.Group grouped class="inline fields" >
-
-                  <br></br>
+                <Form.Group grouped class="inline fields">
 
                   <Form.Field placeholder="HERO"
-                    control='input' type="text" key="heroName" width={14}
+                    control='input' type="text" key="heroName" width={16}
                     onChange={this.handleHeroNameChange.bind(this)} />
 
                     <br></br>
 
                     <Form.Field placeholder="SHADOW"
-                      control='input' type="text" key="shadowName" width={14}
+                      control='input' type="text" key="shadowName" width={16}
                       onChange={this.handleShadowNameChange.bind(this)} />
 
                       <br></br>
 
                       <Form.Field placeholder="FRIEND"
-                        control='input' type="text" key="friendName" width={14}
+                        control='input' type="text" key="friendName" width={16}
                         onChange={this.handleFriendNameChange.bind(this)} />
 
                         <br></br>
 
                       <Form.Field placeholder="LOVER"
-                        control='input' type="text" key="loverName" width={14}
+                        control='input' type="text" key="loverName" width={16}
                         onChange={this.handleLoverNameChange.bind(this)} />
 
                         <br></br>
 
                       <Form.Field placeholder="MENTOR"
-                        control='input' type="text" key="mentorName" width={14}
+                        control='input' type="text" key="mentorName" width={16}
                         onChange={this.handleMentorNameChange.bind(this)} />
 
                         <br></br>
 
                         <Form.Field placeholder="TRICKSTER"
-                          control='input' type="text" key="tricksterName" width={14}
+                          control='input' type="text" key="tricksterName" width={16}
                           onChange={this.handleTricksterNameChange.bind(this)} />
-
-                          <br></br>
 
                         <Form.Button content='Submit' type="submit" primary/>
 
@@ -272,36 +268,35 @@ render() {
                   </Form>
                 </Grid.Column>
 
-                <Grid.Column width={1}>
-                  <h3>.</h3>
-                  <h3>.</h3>
+                <Grid.Column centered width={1}>
+                  <h3>{" "}</h3>
+                  <h3>{" "}</h3>
                   <br></br>
-                  <br></br>
-                  <span role="img" aria-label="emoji" >{(this.state.hero.name !== 'HERO') ? this.state.hero.nerd : null}</span>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <span role="img" aria-label="emoji" >{(this.state.shadow.name !== 'SHADOW') ? this.state.shadow.nerd : null}</span>
+                  <span role="img" aria-label="emoji">{(this.state.hero.name !== 'HERO') ? this.state.hero.nerd : null}</span>
                   <br></br>
                   <br></br>
                   <br></br>
+                  <span role="img" aria-label="emoji">{(this.state.shadow.name !== 'SHADOW') ? this.state.shadow.nerd : null}</span>
                   <br></br>
-                  <span role="img" aria-label="emoji" >{(this.state.friend.name !== 'FRIEND') ? this.state.friend.nerd : null}</span>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <span role="img" aria-label="emoji">{(this.state.friend.name !== 'FRIEND') ? this.state.friend.nerd : null}</span>
                   <br></br>
                   <br></br>
                   <br></br>
                   <br></br>
 
-                  <span role="img" aria-label="emoji" >{(this.state.lover.name !== 'LOVER') ? this.state.lover.nerd : null}</span>
+                  <span role="img" aria-label="emoji">{(this.state.lover.name !== 'LOVER') ? this.state.lover.nerd : null}</span>
                   <br></br>
                   <br></br>
                   <br></br>
                   <br></br>
-                  <span role="img" aria-label="emoji" >{(this.state.mentor.name !== 'MENTOR') ? this.state.mentor.nerd : null}</span>
+                  <span role="img" aria-label="emoji">{(this.state.mentor.name !== 'MENTOR') ? this.state.mentor.nerd : null}</span>
                   <br></br>
                   <br></br>
                   <br></br>
-                  <span role="img" aria-label="emoji" >{(this.state.trickster.name !== 'TRICKSTER') ? this.state.trickster.nerd : null}</span>
+                  <span role="img" aria-label="emoji">{(this.state.trickster.name !== 'TRICKSTER') ? this.state.trickster.nerd : null}</span>
                   <br></br>
 
                 </Grid.Column>
@@ -309,9 +304,8 @@ render() {
                 {/* </Grid.Column> */}
 
                 <Grid.Column width={3}>
-                  <h3>    <span role="img" aria-label="emoji">♂️   ♀️</span> </h3>
-                  <h3>Genders </h3>
-                  <br></br>
+                  <h3>  <span role="img" aria-label="emoji">♂️   ♀️</span></h3>
+                  <h3>Genders</h3>
 
                   <div onChange={this.handleHeroGenderChange.bind(this)}>
                   <Form.Field label='male' value="male" control='input' type='radio' />
@@ -363,7 +357,6 @@ render() {
                 <Grid.Column width={7}>
                   <h3>            <span role="img" aria-label="emoji"> 📚 {this.state.nerd} 📚 </span></h3>
                   <h3>           Summary</h3>
-                  <br></br>
 
                   {/* You chose: {this.state.genres}
                   <br></br>

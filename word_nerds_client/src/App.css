@@ -34,7 +34,7 @@
   border: 2px solid red;
   background: white;
   padding: 15px 0px 15px 25px;
-  margin: 5px 0px 5px 20px;
+  margin: 5px 0px 5px 15px;
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
   /*top, right, bottom, left*/
 }
@@ -49,7 +49,7 @@
 .EditStoryForm-blue {
   border: 2px solid blue;
   background: white;
-  padding: 15px 0px 15px 25px;
+  padding: 15px 5px 15px 15px;
   margin: 5px 0px 5px 20px;
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
@@ -61,7 +61,7 @@
 .StoryShow-purple {
   border: 2px solid purple;
   background: white;
-  padding: 15px 0px 15px 25px;
+  padding: 15px 25px 15px 25px;
   margin: 5px 0px 5px 20px;
   /*top, right, bottom, left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/

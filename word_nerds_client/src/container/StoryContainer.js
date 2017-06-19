@@ -220,7 +220,7 @@ render() {
     return(
       <div>
 
-        <div>You are now at {location.pathname}</div>
+        {/* <div>You are now at {location.pathname}</div> */}
 
         <NavBar
           title="Word Nerds"
@@ -228,7 +228,7 @@ render() {
           logout={this.logout.bind(this)}
         />
 
-        <div> Welcome {this.state.user ? this.state.user[0].name : null}</div>
+        {/* <div> Welcome {this.state.user ? this.state.user[0].name : null}</div> */}
 
         <StoryPage
           //props for CreateStoryForm

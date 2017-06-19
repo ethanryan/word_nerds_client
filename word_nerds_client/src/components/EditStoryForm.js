@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Form } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 // import { Button } from 'semantic-ui-react'
 
 // import Markov from './Markov'
@@ -25,15 +25,6 @@ class EditStoryForm extends Component {
       title: props.story.title
     })
   }
-
-  // handleInputChange(event) {
-  //   const storyChange = event.target.value
-  //   this.setState((state, props) => {
-  //     return {
-  //       input: Object.assign({}, props.story.content, {name: name})
-  //     }
-  //   })
-  // }
 
   handleTitleChange(event) {
     const title = event.target.value
@@ -108,7 +99,6 @@ class EditStoryForm extends Component {
             />
 
 
-
             <Form.Field label='Edit Story'
               className="EditStoryForm-linebreaks"
               placeholder="this is where the story content goes for editing"
@@ -119,15 +109,18 @@ class EditStoryForm extends Component {
               onChange={this.handleStoryChange}
             />
 
-            {/* <Link to={'/stories'}> */}
-              <Form.Button content='Save Story' type="submit" primary/>
+<div>
+  <Button.Group floated='right'>
+    <Button color='red'
+      compact
+      onClick={() => {this.props.handleDeleteStory(this.props.story.id)}}>Delete</Button>
+    </Button.Group>
+  <Button.Group>
+    <Form.Button content='Save Story'
+    type="submit" primary compact/>
+  </Button.Group>
 
-              <div>
-                <button
-                  onClick={() => {this.allCaps() }}>
-                  ALL CAPS
-                </button>
-              </div>
+</div>
 
           </Form>
         </div>

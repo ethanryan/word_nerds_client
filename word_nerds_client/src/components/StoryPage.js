@@ -5,7 +5,7 @@ import EditStoryForm from './EditStoryForm'
 import AllStories from './AllStories'
 import StoryShow from './StoryShow'
 
-import { Grid } from 'semantic-ui-react'
+import { Grid, Button } from 'semantic-ui-react'
 
 import { Switch, Route, Link } from 'react-router-dom'
 
@@ -17,7 +17,7 @@ const StoryPage = (props) => {
   <div key={story.id} className="EachStoryInSideBar-pink">
 
     <h2>
-      Story Title: {story.title}
+      Title: {story.title}
     </h2>
 
     <Link className='btn btn-primary' to={`/stories/${story.id}/edit`}>Edit Story</Link>
@@ -32,13 +32,13 @@ const StoryPage = (props) => {
     <br></br>
     <br></br>
 
-    <div>
-      <button
-        href="#delete"
-        onClick={() => {props.handleDeleteStory(story.id)}}>
-        Delete
-      </button>
-    </div>
+    <Link to={`/stories/${story.id}/edit`}>
+      <Button color='green' compact>Edit Story
+      </Button>
+    </Link>
+
+      <Button color='red' compact floated='right'
+        onClick={() => {props.handleDeleteStory(story.id)}}>Delete</Button>
   </div>
 )
 
