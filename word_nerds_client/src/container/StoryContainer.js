@@ -87,6 +87,11 @@ class StoryContainer extends Component {
             gender: characters.mentor.gender,
             archetype: "mentor"
           },
+          {
+            name: characters.trickster.name,
+            gender: characters.trickster.gender,
+            archetype: "trickster"
+          },
         ],
       },
     }),

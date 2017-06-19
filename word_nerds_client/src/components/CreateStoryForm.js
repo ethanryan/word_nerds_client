@@ -28,6 +28,10 @@ class CreateStoryForm extends Component {
       name: 'MENTOR',
       gender: '',
     },
+    trickster: {
+      name: 'TRICKSTER',
+      gender: '',
+    },
     genres: ['random'],
     nerd: <span role="img" aria-label="emoji">🤓</span>
   })
@@ -156,6 +160,28 @@ handleMentorGenderChange(event) {
   })
 }
 
+handleTricksterNameChange(event) {
+  const tricksterName = event.target.value
+  this.setState({
+    trickster: {
+      name: tricksterName,
+      gender: this.state.trickster.gender,
+    },
+    nerd: <span role="img" aria-label="emoji">trickster emoji</span>
+  })
+}
+
+handleTricksterGenderChange(event) {
+  const tricksterGender = event.target.value
+  this.setState({
+    trickster: {
+      name: this.state.trickster.name,
+      gender: tricksterGender,
+    },
+    nerd: <span role="img" aria-label="emoji">trickster emoji</span>
+  })
+}
+
 
 handleCreateStoryFormSubmit(event) {
   event.preventDefault()
@@ -164,7 +190,8 @@ handleCreateStoryFormSubmit(event) {
     shadow: this.state.shadow,
     friend: this.state.friend,
     lover: this.state.lover,
-    mentor: this.state.mentor
+    mentor: this.state.mentor,
+    trickster: this.state.trickster
   }
   console.log('CreateStoryForm submitted: ', this.state.story)
   this.props.handleSubmit( this.state.story, characters )
@@ -227,6 +254,13 @@ render() {
                         <br></br>
                         <br></br>
 
+                        <Form.Field placeholder="TRICKSTER"
+                          control='input' type="text" key="tricksterName" width={14}
+                          onChange={this.handleTricksterNameChange.bind(this)} />
+
+                          <br></br>
+                          <br></br>
+
                         <Form.Button content='Submit' type="submit" primary/>
 
                     </Form.Group>
@@ -276,6 +310,14 @@ render() {
                 <Form.Field label='female' value="female" control='input' type='radio' />
             </div>
 
+            <br></br>
+            <br></br>
+
+            <div onChange={this.handleTricksterGenderChange.bind(this)}>
+              <Form.Field label='male' value="male" control='input' type='radio' />
+              <Form.Field label='female' value="female" control='input' type='radio' />
+          </div>
+
 
                 </Grid.Column>
 
@@ -295,35 +337,41 @@ render() {
 
                   The hero's name is: {this.state.hero.name}
                   <br></br>
-                  The hero's pronoun is: {this.state.hero.gender}
+                  The hero's gender is: {this.state.hero.gender}
                   <br></br>
                   <br></br>
                   <br></br>
 
                   The shadow's name is: {this.state.shadow.name}
                   <br></br>
-                  The shadow's pronoun is: {this.state.shadow.gender}
+                  The shadow's gender is: {this.state.shadow.gender}
                   <br></br>
                   <br></br>
                   <br></br>
 
                   The friend's name is: {this.state.friend.name}
                   <br></br>
-                  The friend's pronoun is: {this.state.friend.gender}
+                  The friend's gender is: {this.state.friend.gender}
                   <br></br>
                   <br></br>
                   <br></br>
 
                   The lover's name is: {this.state.lover.name}
                   <br></br>
-                  The lover's pronoun is: {this.state.lover.gender}
+                  The lover's gender is: {this.state.lover.gender}
                   <br></br>
                   <br></br>
                   <br></br>
 
                   The mentor's name is: {this.state.mentor.name}
                   <br></br>
-                  The mentor's pronoun is: {this.state.mentor.gender}
+                  The mentor's gender is: {this.state.mentor.gender}
+                  <br></br>
+                  <br></br>
+
+                  The trickster's name is: {this.state.trickster.name}
+                  <br></br>
+                  The trickster's gender is: {this.state.trickster.gender}
                   <br></br>
                   <br></br>
 
