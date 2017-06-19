@@ -32,8 +32,8 @@ const OneStory = (props) => {
 
           <strong>
             Story content:
-          </strong> (splitting and adding line breaks)
-
+          </strong>
+          
           <br></br>
           <br></br>
 

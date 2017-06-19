@@ -15,50 +15,52 @@ class NavBar extends Component {
   this.state = { activeItem: 'home' }
 }
 
+
+getInitialState() {
+  return {
+    bgColor: 'red'
+  }
+}
+
   // handleAClick = (event, { name }) => this.setState({ activeA: name })
 
-  handleItemClick = (event, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (event, { name }) => this.setState({ activeItem: name, bgColor: 'blue' })
 
   render() {
     // const { activeA } = this.state
     const { activeItem } = this.state
 
     return (
-      <div>
-
-      {/* <div>
-        <Menu inverted>
-        {colorsA.map(c => (
-          <Menu.Item key={c} name={c} active={activeA === c} color={c} onClick={this.handleAClick} />
-        ))}
-      </Menu>
-    </div> */}
 
     <div>
 
-      <Menu
-        // secondary color={'yellow'}
-        inverted
-        >
-
+      <Menu inverted pointing secondary color={'purple'}>
         <Link to="/">
-        <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
+        <Menu.Item name='home'
+          active={activeItem === 'home'}
+
+          // style={{backgroundColor:this.state.bgColor}}
+          onClick={this.handleItemClick} />
       </Link>
 
-        <Link to="/stories"><Menu.Item name='stories' active={activeItem === 'stories'} onClick={this.handleItemClick} /></Link>
+        <Link to="/stories"><Menu.Item name='stories'
+          active={activeItem === 'stories'}
+          // style={{backgroundColor:this.state.bgColor}}
+          onClick={this.handleItemClick} /></Link>
 
 
-        <Menu.Menu position='right' >
+        <Menu.Menu position='right'>
 
           {/* <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} /> */}
-          <Link to="/"><Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.props.logout} /></Link>
+          <Link to="/"><Menu.Item name='logout'
+            active={activeItem === 'logout'}
+            // style={{backgroundColor:this.state.bgColor}}
+            onClick={this.props.logout} /></Link>
 
           {/* <Link to="/" onClick={this.props.logout}>Logout</Link> */}
         </Menu.Menu>
       </Menu>
     </div>
-
-  </div>
     )
   }
 }
