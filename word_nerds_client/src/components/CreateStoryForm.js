@@ -11,26 +11,32 @@ class CreateStoryForm extends Component {
     hero: {
       name: 'HERO',
       gender: '',
+      nerd: ''
     },
     shadow: {
       name: 'SHADOW',
       gender: '',
+      nerd: ''
     },
     friend: {
       name: 'FRIEND',
       gender: '',
+      nerd: ''
     },
     lover: {
       name: 'LOVER',
       gender: '',
+      nerd: ''
     },
     mentor: {
       name: 'MENTOR',
       gender: '',
+      nerd: ''
     },
     trickster: {
       name: 'TRICKSTER',
       gender: '',
+      nerd: ''
     },
     genres: ['random'],
     nerd: <span role="img" aria-label="emoji">🤓</span>
@@ -55,8 +61,8 @@ handleHeroNameChange(event) {
     hero: {
       name: heroName,
       gender: this.state.hero.gender,
+      nerd: <span role="img" aria-label="emoji">😄</span>
     },
-    nerd: <span role="img" aria-label="emoji">😄</span>
   })
 }
 
@@ -66,8 +72,8 @@ handleHeroGenderChange(event) {
     hero: {
       name: this.state.hero.name,
       gender: heroGender,
+      nerd: this.state.hero.nerd,
     },
-    nerd: <span role="img" aria-label="emoji">😄</span>
   })
 }
 
@@ -78,8 +84,9 @@ handleShadowNameChange(event) {
     shadow: {
       name: shadowName,
       gender: this.state.shadow.gender,
+      nerd: <span role="img" aria-label="emoji">😨</span>
+      // nerd: <span role="img" aria-label="emoji">😈</span>
     },
-    nerd: <span role="img" aria-label="emoji">😨</span>
   })
 }
 
@@ -89,8 +96,8 @@ handleShadowGenderChange(event) {
     shadow: {
       name: this.state.shadow.name,
       gender: shadowGender,
+      nerd: this.state.shadow.nerd,
     },
-    nerd: <span role="img" aria-label="emoji">😨</span>
   })
 }
 
@@ -100,8 +107,8 @@ handleFriendNameChange(event) {
     friend: {
       name: friendName,
       gender: this.state.friend.gender,
+      nerd: <span role="img" aria-label="emoji">😎</span>
     },
-    nerd: <span role="img" aria-label="emoji">😎</span>
   })
 }
 
@@ -111,8 +118,8 @@ handleFriendGenderChange(event) {
     friend: {
       name: this.state.friend.name,
       gender: friendGender,
+      nerd: this.state.friend.nerd,
     },
-    nerd: <span role="img" aria-label="emoji">😎</span>
   })
 }
 
@@ -122,8 +129,8 @@ handleLoverNameChange(event) {
     lover: {
       name: loverName,
       gender: this.state.lover.gender,
+      nerd: <span role="img" aria-label="emoji">😘</span>
     },
-    nerd: <span role="img" aria-label="emoji">😘</span>
   })
 }
 
@@ -133,8 +140,8 @@ handleLoverGenderChange(event) {
     lover: {
       name: this.state.lover.name,
       gender: loverGender,
+      nerd: this.state.lover.nerd,
     },
-    nerd: <span role="img" aria-label="emoji">😘</span>
   })
 }
 
@@ -144,8 +151,8 @@ handleMentorNameChange(event) {
     mentor: {
       name: mentorName,
       gender: this.state.mentor.gender,
+      nerd: <span role="img" aria-label="emoji">🤓</span>
     },
-    nerd: <span role="img" aria-label="emoji">🤓</span>
   })
 }
 
@@ -155,8 +162,8 @@ handleMentorGenderChange(event) {
     mentor: {
       name: this.state.mentor.name,
       gender: mentorGender,
+      nerd: this.state.mentor.nerd,
     },
-    nerd: <span role="img" aria-label="emoji">🤓</span>
   })
 }
 
@@ -166,8 +173,8 @@ handleTricksterNameChange(event) {
     trickster: {
       name: tricksterName,
       gender: this.state.trickster.gender,
+      nerd: <span role="img" aria-label="emoji">😜</span>
     },
-    nerd: <span role="img" aria-label="emoji">trickster emoji</span>
   })
 }
 
@@ -177,8 +184,8 @@ handleTricksterGenderChange(event) {
     trickster: {
       name: this.state.trickster.name,
       gender: tricksterGender,
+      nerd: this.state.trickster.nerd,
     },
-    nerd: <span role="img" aria-label="emoji">trickster emoji</span>
   })
 }
 
@@ -207,7 +214,7 @@ render() {
 
         <Grid>
           <Grid.Row>
-            <Grid.Column width={6}>
+            <Grid.Column width={5}>
 
               <h3>           Create A Story </h3>
               <h3>      Characters Names</h3>
@@ -252,21 +259,54 @@ render() {
                         onChange={this.handleMentorNameChange.bind(this)} />
 
                         <br></br>
-                        <br></br>
 
                         <Form.Field placeholder="TRICKSTER"
                           control='input' type="text" key="tricksterName" width={14}
                           onChange={this.handleTricksterNameChange.bind(this)} />
 
                           <br></br>
-                          <br></br>
 
                         <Form.Button content='Submit' type="submit" primary/>
 
                     </Form.Group>
                   </Form>
+                </Grid.Column>
+
+                <Grid.Column width={1}>
+                  <h3>.</h3>
+                  <h3>.</h3>
+                  <br></br>
+                  <br></br>
+                  <span role="img" aria-label="emoji" >{(this.state.hero.name !== 'HERO') ? this.state.hero.nerd : null}</span>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <span role="img" aria-label="emoji" >{(this.state.shadow.name !== 'SHADOW') ? this.state.shadow.nerd : null}</span>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <span role="img" aria-label="emoji" >{(this.state.friend.name !== 'FRIEND') ? this.state.friend.nerd : null}</span>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+
+                  <span role="img" aria-label="emoji" >{(this.state.lover.name !== 'LOVER') ? this.state.lover.nerd : null}</span>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <span role="img" aria-label="emoji" >{(this.state.mentor.name !== 'MENTOR') ? this.state.mentor.nerd : null}</span>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <span role="img" aria-label="emoji" >{(this.state.trickster.name !== 'TRICKSTER') ? this.state.trickster.nerd : null}</span>
+                  <br></br>
 
                 </Grid.Column>
+
+                {/* </Grid.Column> */}
 
                 <Grid.Column width={3}>
                   <h3>    <span role="img" aria-label="emoji">♂️   ♀️</span> </h3>
@@ -303,14 +343,12 @@ render() {
               </div>
 
               <br></br>
-              <br></br>
 
               <div onChange={this.handleMentorGenderChange.bind(this)}>
                 <Form.Field label='male' value="male" control='input' type='radio' />
                 <Form.Field label='female' value="female" control='input' type='radio' />
             </div>
 
-            <br></br>
             <br></br>
 
             <div onChange={this.handleTricksterGenderChange.bind(this)}>
@@ -359,7 +397,6 @@ render() {
                   The lover's name is: {this.state.lover.name}
                   <br></br>
                   The lover's gender is: {this.state.lover.gender}
-                  <br></br>
                   <br></br>
                   <br></br>
 

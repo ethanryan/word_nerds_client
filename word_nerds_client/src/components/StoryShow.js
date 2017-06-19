@@ -68,9 +68,21 @@ const StoryShow = (props) => {
               {/* old way is better way???: */}
 
 
+              {/* {story.content.split('-----').map((paragraph) => {
+                return (
+                <span key={paragraph.id}>
+                  {paragraph}
+                  <br/><br/>
+                </span>
+              )
+              })} */}
+
+              props.story.content:
+              {props.story.content}
 
 
-              {props.story.content.split('-----').map((paragraph) => {
+                props.story.content, mapped over:
+                {props.story.content.split('-----').map((paragraph) => {
                 return (
                 <span key={paragraph.id}>
                   {paragraph}
