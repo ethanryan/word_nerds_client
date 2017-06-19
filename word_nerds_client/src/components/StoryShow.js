@@ -42,7 +42,7 @@ const StoryShow = (props) => {
               <br></br>
 
 
-              Story length: {props.story.content ? props.story.content.split(' ').length : 0}
+              Word count: {props.story.content ? props.story.content.split(' ').length : 0}
               <br></br>
               <br></br>
 
@@ -92,11 +92,8 @@ const StoryShow = (props) => {
               </div>
 
           </div>
-      )
-
     </div>
   )
-
 }
 
 StoryShow.defaultProps = {

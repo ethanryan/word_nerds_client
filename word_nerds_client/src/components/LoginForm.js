@@ -22,7 +22,7 @@ class LoginForm extends Component {
     this.props.handleLogin(this.state)
   }
 
-  render(){
+  render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Username</label>

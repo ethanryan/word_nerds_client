@@ -23,7 +23,8 @@ const OneStory = (props) => {
           <br></br>
 
 
-          Story length: {story.content.split(' ').length}
+          Word count: {story.content ? story.content.split(' ').length : 0}
+
           <br></br>
           <br></br>
 

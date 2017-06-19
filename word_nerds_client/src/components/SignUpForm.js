@@ -1,5 +1,7 @@
 import React from 'react'
+
 import axios from 'axios'
+
 import {withRouter} from "react-router-dom";
 
 class SignUp extends React.Component {
@@ -11,18 +13,18 @@ class SignUp extends React.Component {
     }
   }
 
-//   handleSignUp() {
-//     // axios.post('http://localhost:3000/api/v1/users', {
-//     axios.post('http://localhost:3000/users', {
-//       user: {
-//         name: this.state.name,
-//         password: this.state.password
-//       }
-//     }).then(res => { console.log('Sign Up Response: ', res )
-//     localStorage.setItem("token", res.data.token)
-//     this.props.history.push('/')
-//   }).catch( e => console.log('error from handleSignUp', e.response) )
-// }
+  handleSignUp() {
+    // axios.post('http://localhost:3000/api/v1/users', {
+    axios.post('http://localhost:3000/users', {
+      user: {
+        name: this.state.name,
+        password: this.state.password
+      }
+    }).then(res => { console.log('Sign Up Response: ', res )
+    localStorage.setItem("token", res.data.token)
+    this.props.history.push('/')
+  }).catch( e => console.log('error from handleSignUp', e.response) )
+}
 
 handleChange(prop, value) {
   this.setState({
@@ -48,6 +50,7 @@ render() {
 
         <input type='submit' value='Sign Up'/>
       </form>
+      <br></br><br></br>
     </div>
   )
 }
