@@ -37,6 +37,7 @@
   margin: 5px 0px 5px 15px;
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
   /*top, right, bottom, left*/
+  line-height: 1.1;
 }
 
 .NavBar-yellow {

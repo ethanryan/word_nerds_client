@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Grid } from 'semantic-ui-react'
+import { Form, Grid, Container } from 'semantic-ui-react'
 
 class CreateStoryForm extends Component {
 
@@ -242,7 +242,9 @@ render() {
             </Grid.Column>
 
             <Grid.Column width={7}>
-              <span role="img" aria-label="emoji"> 📚 {this.state.nerd} 📚 </span>
+              <h3>
+                <span role="img" aria-label="emoji"> 📚 {this.state.nerd} 📚 </span>
+              </h3>
               <h3>
                 Summary
               </h3>
@@ -270,12 +272,12 @@ render() {
             </Grid.Column>
 
             <Grid.Column width={7}>
-                The hero's name is: {this.state.hero.name}
-                <br></br>
-                The hero's gender is: {this.state.hero.gender}
+              The hero's name is: {this.state.hero.name}
+              <br></br>
+              <br></br>
+              The hero's gender is: {this.state.hero.gender}
             </Grid.Column>
           </Grid.Row>
-
 
 
 
@@ -300,6 +302,7 @@ render() {
 
             <Grid.Column width={7}>
               The shadow's name is: {this.state.shadow.name}
+              <br></br>
               <br></br>
               The shadow's gender is: {this.state.shadow.gender}
             </Grid.Column>
@@ -330,6 +333,7 @@ render() {
             <Grid.Column width={7}>
                 The friend's name is: {this.state.friend.name}
                 <br></br>
+                <br></br>
                 The friend's gender is: {this.state.friend.gender}
             </Grid.Column>
           </Grid.Row>
@@ -359,6 +363,7 @@ render() {
             <Grid.Column width={7}>
               The lover's name is: {this.state.lover.name}
               <br></br>
+              <br></br>
               The lover's gender is: {this.state.lover.gender}
             </Grid.Column>
           </Grid.Row>
@@ -386,6 +391,7 @@ render() {
 
             <Grid.Column width={7}>
                 The mentor's name is: {this.state.mentor.name}
+                <br></br>
                 <br></br>
                 The mentor's gender is: {this.state.mentor.gender}
             </Grid.Column>
@@ -415,6 +421,7 @@ render() {
 
             <Grid.Column width={7}>
                 The trickster's name is: {this.state.trickster.name}
+                <br></br>
                 <br></br>
                 The trickster's gender is: {this.state.trickster.gender}
             </Grid.Column>
