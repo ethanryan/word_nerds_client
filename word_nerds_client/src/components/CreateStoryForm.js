@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Form, Grid, Table } from 'semantic-ui-react'
+import { Form, Grid } from 'semantic-ui-react'
+// import { Form, Grid, Table } from 'semantic-ui-react'
 
 class CreateStoryForm extends Component {
 
@@ -310,7 +311,7 @@ render() {
                   </Form>
                 </Grid.Column>
 
-                <Grid.Column centered width={1}>
+                <Grid.Column width={1}>
                   <h3>{" "}</h3>
                   <h3>{" "}</h3>
                   <br></br>

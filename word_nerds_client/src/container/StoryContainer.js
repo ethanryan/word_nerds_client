@@ -184,7 +184,8 @@ handleLogin(params) {
   localStorage.setItem("token", resp.token)
   this.setState({
     user: resp.user
-  }),this.props.history.push('/')
+  })
+  this.props.history.push('/')
 })
 }
 
@@ -213,7 +214,7 @@ logout() {
 render() {
   console.log('state: ', this.state);
   console.log('state.stories.genres: ', this.state.stories.genres);
-  const { location } = this.props
+  // const { location } = this.props
 
   if(localStorage.getItem('token')) {
 
