@@ -20,7 +20,8 @@ class StoryContainer extends Component {
       stories: [],
       story: '',
       title: 'title here',
-      user: ''
+      user: '',
+      genres: [] //trying this
     }
   }
 
@@ -211,6 +212,7 @@ logout() {
 
 render() {
   console.log('state: ', this.state);
+  console.log('state.stories.genres: ', this.state.stories.genres);
   const { location } = this.props
 
   if(localStorage.getItem('token')) {

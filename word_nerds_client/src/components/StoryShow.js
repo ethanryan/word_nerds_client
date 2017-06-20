@@ -24,8 +24,6 @@ const StoryShow = (props) => {
                   </Grid.Column>
               </Grid>
 
-            <h1>PICTURE HERE FOR THIS STORY!!</h1>
-
             <h2>
               Title: {props.story.title ? props.story.title : 0 }
             </h2>
@@ -43,6 +41,9 @@ const StoryShow = (props) => {
 
 
               Word count: {props.story.content ? props.story.content.split(' ').length : 0}
+              <br></br>
+              <br></br>
+              Genres: {props.story.content ? props.story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
               <br></br>
               <br></br>
 

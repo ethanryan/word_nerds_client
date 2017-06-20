@@ -11,6 +11,7 @@ import { Switch, Route, Link } from 'react-router-dom'
 
 
 const StoryPage = (props) => {
+  console.log('storyPage props: ', props);
 
   const SideBar = props.stories.map( (story) =>
 
@@ -29,6 +30,10 @@ const StoryPage = (props) => {
     <br></br>
 
     Word count: {story.content ? story.content.split(' ').length : 0}
+    <br></br>
+    <br></br>
+
+    Genres: {story.content ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
     <br></br>
     <br></br>
 

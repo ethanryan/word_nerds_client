@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import { Form, Button } from 'semantic-ui-react'
-// import { Button } from 'semantic-ui-react'
 
 // import Markov from './Markov'
 
@@ -63,7 +62,7 @@ class EditStoryForm extends Component {
   render() {
 
     console.log('render is called in EditStory');
-    console.log('from EditStoryForm, this.state.input: ', this.state.input);
+    // console.log('from EditStoryForm, this.state.input: ', this.state.input);
 
     // debugger
 
@@ -73,6 +72,8 @@ class EditStoryForm extends Component {
     // let wordCount = (this.state.input.split(' ').length)
 
     let paragraphs = (this.state.input ? this.state.input.split('-----').join('\n\n') : "paragraphs will go here")
+
+    // let genres = (story.content ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0)
 
     return(
 
@@ -90,6 +91,10 @@ class EditStoryForm extends Component {
             Word count: <span className="EditStoryText-blue"> {wordCount}</span>
             <br></br>
             <br></br>
+            {/* Genres: {genres} */}
+            <br></br>
+            <br></br>
+
             <Form.Field label='Title'
               placeholder="title here"
               control='input'
@@ -132,7 +137,8 @@ class EditStoryForm extends Component {
 
 EditStoryForm.defaultProps = {
   story: 'story content here', //need this so props aren't null
-  title: 'story title here'
+  title: 'story title here',
+  genres: 'genres here'
 }
 
 export default EditStoryForm

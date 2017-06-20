@@ -6,6 +6,7 @@ import { Button } from 'semantic-ui-react'
 
 const OneStory = (props) => {
 
+  // debugger
   const eachStory = props.stories.map( (story) =>
 
       <div key={story.id} className="OneStory-orange">
@@ -26,14 +27,16 @@ const OneStory = (props) => {
 
 
           Word count: {story.content ? story.content.split(' ').length : 0}
-
+          <br></br>
+          <br></br>
+          Genres: {story.content ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
           <br></br>
           <br></br>
 
           <strong>
             Story content:
           </strong>
-          
+
           <br></br>
           <br></br>
 
