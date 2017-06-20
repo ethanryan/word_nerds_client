@@ -73,7 +73,7 @@ class EditStoryForm extends Component {
 
     let paragraphs = (this.state.input ? this.state.input.split('-----').join('\n\n') : "paragraphs will go here")
 
-    // let genres = (story.content ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0)
+    let genres = (this.props.story.genres ? this.props.story.genres.map((genre) => {return (genre.name) }).join(', ') : 0)
 
     return(
 
@@ -91,7 +91,7 @@ class EditStoryForm extends Component {
             Word count: <span className="EditStoryText-blue"> {wordCount}</span>
             <br></br>
             <br></br>
-            {/* Genres: {genres} */}
+            Genres: {genres}
             <br></br>
             <br></br>
 
