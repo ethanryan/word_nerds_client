@@ -95,6 +95,27 @@ class EditStoryForm extends Component {
             <br></br>
             <br></br>
 
+            Plots:  {this.props.story.content ? this.props.story.plots.map((plot) => {
+                    let plotTitle = plot.title
+                    return (plotTitle
+                      .replace("Halloween", "🔪")
+                      .replace("Alien", "👽")
+                      .replace("The Matrix", "⏰")
+                      .replace("Star Wars", "🚀")
+                      .replace("E.T.", "📞")
+                      .replace("Terminator", "🤖")
+                      .replace("Die Hard", "🔫")
+                      .replace("Thelma and Louise", "🚘")
+                      .replace("Home Alone", "😂")
+                      .replace("Beauty and the Beast", "🦊")
+                      .replace("La Strada", "💔")
+                      .replace("The Piano", "💙")
+                  )
+                }).join('   ') : 0}
+
+            <br></br>
+            <br></br>
+
             <Form.Field label='Title'
               placeholder="title here"
               control='input'
