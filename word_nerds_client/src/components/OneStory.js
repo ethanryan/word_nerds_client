@@ -74,8 +74,6 @@ const OneStory = (props) => {
           {/* old way is better way???: */}
 
 
-
-
           {story.content.split('-----').map((paragraph) => {
             return (
             <span key={paragraph.id}>

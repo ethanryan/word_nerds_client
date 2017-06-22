@@ -59,6 +59,33 @@ class EditStoryForm extends Component {
   // allCaps = (event, { input }) => this.setState({ input: input.toUpperCase() })
 
 
+
+
+
+  //Search for images via Flickr
+// function searchFlickr()	{
+//     $.getJSON("https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+//     {
+//       tags: this.state.title,
+//       tagmode: "any",
+//       format: "json",
+//       per_page: 1
+//     },
+//
+//     function(data) {
+//       $.each(data.items, function(i, item) {
+//
+//         //remove the last img from results, before prepending new image
+//         $("#results img:last-child").remove();
+//
+//         //prepend new image
+//         $("<img/>").empty().attr("src", item.media.m).prependTo("#results");
+//         if ( i == 0 ) return false;
+//        })
+//     })
+//   }
+// searchFlickr() //calls function, searchFlickr
+
   render() {
 
     console.log('render is called in EditStory');
@@ -95,7 +122,7 @@ class EditStoryForm extends Component {
             <br></br>
             <br></br>
 
-            Plots:  {this.props.story.content ? this.props.story.plots.map((plot) => {
+            Plots:  {this.props.story.plots ? this.props.story.plots.map((plot) => {
                     let plotTitle = plot.title
                     return (plotTitle
                       .replace("Halloween", "🔪")
@@ -158,8 +185,7 @@ class EditStoryForm extends Component {
 
 EditStoryForm.defaultProps = {
   story: 'story content here', //need this so props aren't null
-  title: 'story title here',
-  genres: 'genres here'
+  title: 'story title here'
 }
 
 export default EditStoryForm

@@ -140,7 +140,9 @@ return (
   StoryPage.defaultProps = {
     story: 'story content here', //need this so props aren't null
     title: 'story title here',
-    stories: [{title: 'title', 'content': 'words words ----- word words words'}]
+    genres: 'story genres here',
+    plots: 'story plots here',
+    stories: [{title: 'title', 'content': 'words words ----- word words words', genres: 'story genres here', plots: 'story plots here'}]
   }
 
 
