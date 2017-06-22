@@ -2,7 +2,10 @@ import React from 'react'
 
 import OneStory from './OneStory'
 
+
 const AllStories = (props) => {
+
+  ///add scrollToTop function here
 
   return(
     <div className="AllStories-green">
@@ -13,6 +16,8 @@ const AllStories = (props) => {
       />
       <br></br>
       <br></br>
+      {/* <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> */}
+
 
       <p>AllStories mounts and renders Story, which contains eachStory</p>
     </div>

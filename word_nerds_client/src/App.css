@@ -76,3 +76,13 @@
 .EditStoryText-blue {
   color: blue;
 }
+
+.blinkProse {
+      animation: blinkProse 4s ease-out -2s;
+      -webkit-animation: blinkProse 4s ease-out -2s;
+    }
+    @keyframes blinkProse {
+      to {
+          background-color: #FF00FF;
+      }
+    }

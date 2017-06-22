@@ -213,7 +213,7 @@ logout() {
 
 render() {
   console.log('state: ', this.state);
-  console.log('state.stories.genres: ', this.state.stories.genres);
+  // console.log('state.stories.genres: ', this.state.stories.genres);
   // const { location } = this.props
 
   if(localStorage.getItem('token')) {
