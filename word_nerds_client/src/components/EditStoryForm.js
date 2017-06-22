@@ -70,8 +70,9 @@ handleRandomFirstSentence() {
   let oneVerb = randomVerbs[Math.floor(Math.random() * randomVerbs.length)]
   let oneObject = randomObjects[Math.floor(Math.random() * randomObjects.length)]
   let randomSentence = oneNoun + oneVerb + oneObject
-  // console.log('random noun: ', oneNoun)  //.concat to input
-  this.setState({input: randomSentence + " " + this.state.input})
+
+  // this.setState({input: randomSentence + " " + this.state.input}) //preserves changes, but adds new sentence to beginning
+  this.setState({input: randomSentence + " " + this.props.story.content}) //replaces first sentence, but renders original story, without user changes
 }
 
 handleRandomLastSentence() {
@@ -83,33 +84,6 @@ handleRandomLastSentence() {
   this.setState({input: this.props.story.content + " " + randomSentence})
 }
 
-////////////////////////////////
-
-
-
-  //Search for images via Flickr
-// function searchFlickr()	{
-//     $.getJSON("https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
-//     {
-//       tags: this.state.title,
-//       tagmode: "any",
-//       format: "json",
-//       per_page: 1
-//     },
-//
-//     function(data) {
-//       $.each(data.items, function(i, item) {
-//
-//         //remove the last img from results, before prepending new image
-//         $("#results img:last-child").remove();
-//
-//         //prepend new image
-//         $("<img/>").empty().attr("src", item.media.m).prependTo("#results");
-//         if ( i == 0 ) return false;
-//        })
-//     })
-//   }
-// searchFlickr() //calls function, searchFlickr
 
   render() {
 
@@ -128,8 +102,6 @@ handleRandomLastSentence() {
     let genres = (this.props.story.genres ? this.props.story.genres.map((genre) => {return (genre.name) }).join(', ') : 0)
 
     return(
-
-    <div>
         <div className="EditStoryForm-blue">
 
           <Form id="EditStoryForm" onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
@@ -195,25 +167,27 @@ handleRandomLastSentence() {
                 </Button.Group>
 
               <Button.Group>
-                <Form.Button content='Save Story'
-                type="submit" primary compact/>
-              </Button.Group>
+                <Form.Button
+                  content='Save Story'
+                  type="submit"
+                  primary compact/>
 
+              <Form.Button color='purple'
+                  compact
+                  type="button"
+                  content='First Line'
+                  onClick={() => {this.handleRandomFirstSentence()}}/>
 
+                <Form.Button color='orange'
+                  compact
+                  type="button"
+                  content='Last Line'
+                  onClick={() => {this.handleRandomLastSentence()}}/>
+                </Button.Group>
             </div>
+
           </Form>
-
-          <Button color='purple'
-            compact
-            onClick={() => {this.handleRandomFirstSentence()}}>Intro</Button>
-
-            <Button color='orange'
-              compact
-              onClick={() => {this.handleRandomLastSentence()}}>Outro</Button>
         </div>
-
-      </div>
-
     )
   }
 }
