@@ -5,12 +5,14 @@
 .SideBar-blue {
   border: 2px solid blue;
   border-radius: 25px;
-  background: white;
+  /*background: white;*/
+  background: pink;
   /*margin: 5px 10px 5px 0px;*/
 }
 
 .SideBar-header {
   text-align: center;
+  color: purple;
 }
 
 .SideBar-button {
