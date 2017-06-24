@@ -152,7 +152,7 @@ handleRandomLastSentence() {
             <Form.Field label='Edit Story'
               className="EditStoryForm-linebreaks"
               placeholder="this is where the story content goes for editing"
-              control='textarea' rows='15'
+              control='textarea' rows='35'
               width={15}
               // value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
               value={paragraphs}
