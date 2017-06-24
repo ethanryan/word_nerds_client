@@ -20,7 +20,7 @@ const StoryPage = (props) => {
 
   const SideBar = props.stories.map( (story) =>
 
-  <div key={story.id} className="EachStoryInSideBar-pink">
+  <div key={story.id} className="EachStoryInSideBar-purple">
 
     <h2>
       Title: {story.title}

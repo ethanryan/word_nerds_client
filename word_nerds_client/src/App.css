@@ -3,10 +3,10 @@
 }
 
 .SideBar-blue {
-  border: 2px solid blue;
+  /*border: 2px solid blue;*/
   border-radius: 25px;
-  /*background: white;*/
-  background: pink;
+  background: lightgray;
+  /*background: pink;*/
   /*margin: 5px 10px 5px 0px;*/
 }
 
@@ -36,13 +36,13 @@
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
 
-.EachStoryInSideBar-pink {
-  border: 3px solid pink;
+.EachStoryInSideBar-purple {
+  border: 3px solid purple;
   border-radius: 25px;
   background: white;
   padding: 10px;
   /*width: 95%;*/
-  margin: 0px 40px 5px 0px;
+  margin: 25px 40px 5px 0px;
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
 
