@@ -13,6 +13,11 @@ import { Switch, Route, Link } from 'react-router-dom'
 const StoryPage = (props) => {
   console.log('storyPage props: ', props);
 
+
+  let size = 3
+
+  // var items = list.slice(0, size).map(i => {
+
   const SideBar = props.stories.map( (story) =>
 
   <div key={story.id} className="EachStoryInSideBar-pink">
@@ -120,9 +125,20 @@ return (
 
             <Grid.Column width={6}>
 
+
               <div className="SideBar-blue">
-                <ul>{ SideBar.reverse() }</ul>
-                <p>each SideBar item can be clicked, which renders it in the EditStoryForm</p>
+                <div className="SideBar-header">
+                  <h2>Recent Stories</h2>
+                </div>
+                <ul>{ SideBar.reverse().slice(0, size) }</ul>
+                {/* //limiting sidebar to just three stories (size = 3), and adding link to all stories */}
+
+              <div className="SideBar-button">
+                <Link to={'/stories'}>
+                <Button color='blue' compact>All Stories</Button>
+              </Link>
+              </div>
+
               </div>
 
             </Grid.Column>

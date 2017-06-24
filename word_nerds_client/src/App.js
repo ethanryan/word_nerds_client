@@ -13,9 +13,10 @@ class App extends Component {
       <div className="App-purple">
 
         <StoryContainer />
-        <p>above is everything rendered from StoryContainer -- both forms</p>
+        {/* <p>above is everything rendered from StoryContainer -- both forms</p> */}
 
-        <p>This is the App.js page.</p>
+        {/* <p>This is the App.js page.</p> */}
+        <div className="App-footer">WordNerds Story Generator</div>
 
     </div>
   )

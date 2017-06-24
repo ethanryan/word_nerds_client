@@ -171,7 +171,7 @@ handleRandomLastSentence() {
                   content='Save Story'
                   type="submit"
                   primary compact/>
-
+..
               <Form.Button color='purple'
                   compact
                   type="button"

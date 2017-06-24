@@ -3,8 +3,17 @@
 }
 
 .SideBar-blue {
-  border: 1px solid blue;
+  border: 2px solid blue;
+  background: white;
   /*margin: 5px 10px 5px 0px;*/
+}
+
+.SideBar-header {
+  text-align: center;
+}
+
+.SideBar-button {
+  text-align: center;
 }
 
 .AllStories-green {
@@ -25,6 +34,8 @@
 .EachStoryInSideBar-pink {
   border: 3px solid pink;
   background: white;
+  border-radius: 25px;
+  padding: 10px;
   /*width: 95%;*/
   margin: 0px 40px 5px 0px;
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
@@ -73,10 +84,17 @@
   background: lightgray
 }
 
+.App-footer {
+  background: purple;
+  text-align: center;
+  color: yellow;
+}
+
 .EditStoryText-blue {
   color: blue;
 }
 
+/*not using below class, can delete:*/
 .blinkProse {
       animation: blinkProse 4s ease-out -2s;
       -webkit-animation: blinkProse 4s ease-out -2s;

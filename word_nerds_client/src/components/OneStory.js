@@ -58,21 +58,7 @@ const OneStory = (props) => {
 
           <br></br>
           <br></br>
-
-          {/* {paragraph.text} */}
-          {/* {story.paragraphs.map((paragraph, key) => {
-            return (
-              <span key={key}>
-                {replaceAll(paragraph.text, "HERO", story.characters[0] ? story.characters[0].name : 'Hero')}
-                <br></br>
-                <br></br>
-              </span>
-            )
-          })} */}
-
-          {/* now doing above, below is the old way: */}
-          {/* old way is better way???: */}
-
+          
 
           {story.content.split('-----').map((paragraph) => {
             return (

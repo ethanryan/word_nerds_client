@@ -39,13 +39,11 @@ const StoryShow = (props) => {
               <br></br>
               <br></br>
 
+
               Genres: {props.story.content ? props.story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
               <br></br>
               <br></br>
-{/*
-              Plots: {props.story.content ? props.story.plots.map((plot) => {return (plot.title) }).join(', ') : 0}
-              <br></br>
-              <br></br> */}
+
 
               Plots:  {props.story.content ? props.story.plots.map((plot) => {
                       let plotTitle = plot.title
@@ -70,7 +68,7 @@ const StoryShow = (props) => {
               <br></br>
 
               <strong>
-                Story content:
+              Story content:
               </strong>
 
               <br></br>
@@ -103,7 +101,7 @@ StoryShow.defaultProps = {
   content: 'story content here', //need this so props aren't null
   title: 'story title here',
   story: {title: 'title', 'content': 'words words ----- word words words', genres: ['genres here'], plots: [{title: "Halloween"}]},
-  stories: [{title: 'title', 'content': 'words words ----- word words words'}]
+  // stories: [{title: 'title', 'content': 'words words ----- word words words'}]
 }
 
 export default StoryShow
