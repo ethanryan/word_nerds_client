@@ -27,18 +27,6 @@ const StoryShow = (props) => {
   // }
 
 
-
-  // let GoogleImageSearchResults =
-  //   (function() {
-  //     var cx = '018050256633849340962:zvrqetqkh78'; //my google search engine ID
-  //     var gcse = document.createElement('script');
-  //     gcse.type = 'text/javascript';
-  //     gcse.async = true;
-  //     gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-  //     var s = document.getElementsByTagName('script')[0];
-  //     s.parentNode.insertBefore(gcse, s);
-  //   })();
-
     let CoolStoryBro = 'http://i1.kym-cdn.com/photos/images/facebook/000/061/294/1106514-cool_story_bro_super.jpg'
 
   // let GoogleImage = (<gcse:search></gcse:search>)

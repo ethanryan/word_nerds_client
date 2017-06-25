@@ -20,7 +20,7 @@ class StoryContainer extends Component {
     this.state = {
       stories: [],
       story: '',
-      title: 'title here',
+      title: 'cool story title here',
       user: '',
       image: '', //adding this
       genres: [] //trying this
