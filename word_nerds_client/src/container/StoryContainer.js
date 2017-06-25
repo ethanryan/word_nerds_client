@@ -16,14 +16,17 @@ import StoryPage from '../components/StoryPage'
 class StoryContainer extends Component {
   constructor() {
     super()
+    console.log('StoryContainer props: ', this.props);
     this.state = {
       stories: [],
       story: '',
       title: 'title here',
       user: '',
+      image: '', //adding this
       genres: [] //trying this
     }
   }
+
 
   componentDidMount() {
     fetch('http://localhost:3000/stories', {
@@ -144,6 +147,22 @@ handleUpdateStory(updatedStory) {
 }
 
 
+componentWillReceiveProps() { //this makes pic say something about 'title', cuz it's getting the default title...
+  let cx = `018050256633849340962:zvrqetqkh78`
+  let query = this.state.title
+  let googleAPIkey = 'AIzaSyDPtQPW0z01peIpOp7tpzIRHtbSG3M11m4'
+
+  fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&cx=${cx}&searchType=image&key=${googleAPIkey}`, {
+    method: 'GET',
+  })
+  .then (response => response.json() )
+
+  .then (image => this.setState({
+    image: image.items[0].link
+  }) )
+}
+
+
 deleteStory(id) {
   return fetch(`http://localhost:3000/stories/${id}`, {
     method: 'DELETE',
@@ -242,6 +261,7 @@ render() {
           handleUpdateStory={this.handleUpdateStory.bind(this)}
           story={this.state.story}
           title={this.state.title}
+          image={this.state.image}
 
           //props for AllStories
           stories={this.state.stories}

@@ -5,17 +5,65 @@ import { Image, Grid, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 
+
 const StoryShow = (props) => {
   console.log('StoryShow props: ', props);
+
+
+  // function ImageFromGoogleAPI() {
+  //   let cx = `018050256633849340962:zvrqetqkh78`
+  //   let query = props.story.title
+  //   let googleAPIkey = 'AIzaSyDPtQPW0z01peIpOp7tpzIRHtbSG3M11m4'
+  //
+  //   fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&cx=${cx}&searchType=image&key=${googleAPIkey}`, {
+  //     method: 'GET',
+  //   })
+  //   .then (response => response.json() )
+  //   // console.log('response from google api:', this.response )
+  //
+  //   .then (image => this.setState({
+  //     image: image.items[0].link
+  //   }) )
+  // }
+
+
+
+  // let GoogleImageSearchResults =
+  //   (function() {
+  //     var cx = '018050256633849340962:zvrqetqkh78'; //my google search engine ID
+  //     var gcse = document.createElement('script');
+  //     gcse.type = 'text/javascript';
+  //     gcse.async = true;
+  //     gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+  //     var s = document.getElementsByTagName('script')[0];
+  //     s.parentNode.insertBefore(gcse, s);
+  //   })();
+
+    let CoolStoryBro = 'http://i1.kym-cdn.com/photos/images/facebook/000/061/294/1106514-cool_story_bro_super.jpg'
+
+  // let GoogleImage = (<gcse:search></gcse:search>)
+  // let GoogleImageHere = (<gcseSearch>pic here</gcseSearch>)
+  // let GoogleImageHere = (<gcseSearch>{this.props.image}</gcseSearch>)
 
   return(
     <div>
 
           <div className="StoryShow-purple">
 
+            <div>
+{/* {GoogleImageSearchResults} */}
+            </div>
+
+            <div>
+{/* {GoogleImageHere} */}
+            </div>
+
               <Grid centered columns={2}>
                   <Grid.Column>
-                    <Image src='http://i1.kym-cdn.com/photos/images/facebook/000/061/294/1106514-cool_story_bro_super.jpg' size='small' />
+                    <Image src={props.image ? props.image : CoolStoryBro} size='medium' />
+                    {/* <Image src={ImageFromGoogleAPI} size='medium' /> */}
+                    <Image src='http://i1.kym-cdn.com/photos/images/facebook/000/061/294/1106514-cool_story_bro_super.jpg'
+                      size='small' />
                   </Grid.Column>
               </Grid>
 
@@ -100,8 +148,10 @@ const StoryShow = (props) => {
 StoryShow.defaultProps = {
   content: 'story content here', //need this so props aren't null
   title: 'story title here',
-  story: {title: 'title', 'content': 'words words ----- word words words', genres: ['genres here'], plots: [{title: "Halloween"}]},
-  // stories: [{title: 'title', 'content': 'words words ----- word words words'}]
+  // image: 'story image here',
+  story: {title: 'title', 'content': 'words words ----- word words words',
+  // image: 'image here',
+  genres: ['genres here'], plots: [{title: "Halloween"}]},
 }
 
 export default StoryShow

@@ -25,7 +25,8 @@ class EditStoryForm extends Component {
 
     this.state = {
       input: props.story.content,
-      title: props.story.title
+      title: props.story.title,
+      // image: '' //adding this
     }
     this.handleStoryChange = this.handleStoryChange.bind(this)
     this.handleTitleChange = this.handleTitleChange.bind(this)
@@ -63,6 +64,21 @@ class EditStoryForm extends Component {
     this.setState({input: ''})
   }
 
+  // componentDidMount() {
+  //   let cx = `018050256633849340962:zvrqetqkh78`
+  //   let query = this.state.title
+  //   let googleAPIkey = 'AIzaSyDPtQPW0z01peIpOp7tpzIRHtbSG3M11m4'
+  //
+  //   fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&cx=${cx}&searchType=image&key=${googleAPIkey}`, {
+  //     method: 'GET',
+  //   })
+  //   .then (response => response.json() )
+  //   // console.log('response from google api:', this.response )
+  //
+  //   .then (image => this.setState({
+  //     image: image.items[0].link
+  //   }) )
+  // }
 /////////////////////////////////////////
 
 handleRandomFirstSentence() {
@@ -193,8 +209,8 @@ handleRandomLastSentence() {
 }
 
 EditStoryForm.defaultProps = {
-  story: 'story content here', //need this so props aren't null
-  title: 'story title here'
+  story: 'EditStory content here', //need this so props aren't null
+  title: 'EditStory title here'
 }
 
 export default EditStoryForm

@@ -11,12 +11,10 @@ import { Switch, Route, Link } from 'react-router-dom'
 
 
 const StoryPage = (props) => {
-  console.log('storyPage props: ', props);
+  console.log('StoryPage props: ', props);
 
 
   let size = 3
-
-  // var items = list.slice(0, size).map(i => {
 
   const SideBar = props.stories.map( (story) =>
 
@@ -96,6 +94,7 @@ return (
                 const story = props.stories.find( s => s.id === parseInt(match.params.id, 10))
                 return <StoryShow
                   story={story}
+                  image={props.image} //for now, then will change this... just want to see if i can show the image of a pizza...
                   handleDeleteStory={props.handleDeleteStory}
                   // want it to be able to send user to EditStoryForm
                 />
@@ -156,9 +155,12 @@ return (
   StoryPage.defaultProps = {
     story: 'story content here', //need this so props aren't null
     title: 'story title here',
+    // image: 'story image here',
     genres: 'story genres here',
     plots: 'story plots here',
-    stories: [{title: 'title', 'content': 'words words ----- word words words', genres: 'story genres here', plots: 'story plots here'}]
+    stories: [{title: 'title', 'content': 'words words ----- word words words',
+    // image: 'imagggggeeee',
+    genres: 'story genres here', plots: 'story plots here'}]
   }
 
 
