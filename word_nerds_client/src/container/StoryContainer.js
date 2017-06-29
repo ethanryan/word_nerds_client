@@ -24,7 +24,9 @@ class StoryContainer extends Component {
       user: '',
       image: '',
       genres: [],
-      baseUrl: 'http://localhost:3000' //can't make this global variable so putting it here
+      baseUrl: 'http://localhost' //can't make this global variable so putting it here
+      // baseUrl: 'http://localhost:3000' //can't make this global variable so putting it here
+      // use above baseUrl for local build, and above, without :3000, for website
     }
   }
 
@@ -152,20 +154,22 @@ handleUpdateStory(updatedStory) {
 
 
 // componentWillUpdate() { //breaks app, calls tons of pics at once...
-componentWillReceiveProps() { //gets pic for LAST story, not current story
-  let cx = `018050256633849340962:zvrqetqkh78`
-  let query = this.state.title
-  let googleAPIkey = 'AIzaSyDPtQPW0z01peIpOp7tpzIRHtbSG3M11m4'
 
-  fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&cx=${cx}&searchType=image&key=${googleAPIkey}`, {
-    method: 'GET',
-  })
-  .then (response => response.json() )
-
-  .then (image => this.setState({
-    image: image.items[0].link
-  }) )
-}
+////this is kind of working, but breaks after a while, cuz i hit my limit...
+// componentWillReceiveProps() { //gets pic for LAST story, not current story
+//   let cx = `018050256633849340962:zvrqetqkh78`
+//   let query = this.state.title
+//   let googleAPIkey = 'AIzaSyDPtQPW0z01peIpOp7tpzIRHtbSG3M11m4'
+//
+//   fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&cx=${cx}&searchType=image&key=${googleAPIkey}`, {
+//     method: 'GET',
+//   })
+//   .then (response => response.json() )
+//
+//   .then (image => this.setState({
+//     image: image.items[0].link
+//   }) )
+// }
 
 
 deleteStory(id) {
