@@ -22,14 +22,18 @@ class StoryContainer extends Component {
       story: '',
       title: 'cool story title here',
       user: '',
-      image: '', //adding this
-      genres: [] //trying this
+      image: '',
+      genres: [],
+      baseUrl: 'http://localhost:3000' //can't make this global variable so putting it here
     }
   }
 
+//removing :3000 from all urls.
+
 
   componentDidMount() {
-    fetch('http://localhost:3000/stories', {
+    fetch(`${this.state.baseUrl}/stories`, {
+    // fetch(`http://localhost:3000/stories`, {
       method: 'GET',
     })
     .then( response => response.json() )
@@ -38,7 +42,7 @@ class StoryContainer extends Component {
       stories: data
     }) )
 
-    fetch('http://localhost:3000/users', {
+    fetch(`${this.state.baseUrl}/users`, {
       method: 'GET',
     })
     .then (response => response.json() )
@@ -50,7 +54,7 @@ class StoryContainer extends Component {
 
   createStory(content, characters) {
     console.log('content inside createStory: ', content)
-    return fetch("http://localhost:3000/stories", {
+    return fetch(`${this.state.baseUrl}/stories`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -116,7 +120,7 @@ this.props.history.push(`/stories`) //redirect to all stories
 
 
 updateStory(updatedStory) {
-  return fetch(`http://localhost:3000/stories/${updatedStory.id}`, {
+  return fetch(`${this.state.baseUrl}/stories/${updatedStory.id}`, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json',
@@ -147,7 +151,8 @@ handleUpdateStory(updatedStory) {
 }
 
 
-componentWillReceiveProps() { //this makes pic say something about 'title', cuz it's getting the default title...
+// componentWillUpdate() { //breaks app, calls tons of pics at once...
+componentWillReceiveProps() { //gets pic for LAST story, not current story
   let cx = `018050256633849340962:zvrqetqkh78`
   let query = this.state.title
   let googleAPIkey = 'AIzaSyDPtQPW0z01peIpOp7tpzIRHtbSG3M11m4'
@@ -164,7 +169,7 @@ componentWillReceiveProps() { //this makes pic say something about 'title', cuz 
 
 
 deleteStory(id) {
-  return fetch(`http://localhost:3000/stories/${id}`, {
+  return fetch(`${this.state.baseUrl}/stories/${id}`, {
     method: 'DELETE',
     headers: {
       'Accept': 'application/json',
@@ -190,7 +195,7 @@ handleDeleteStory(id) {
 
 handleLogin(params) {
   // fetch("http://localhost:3000/api/v1/sign_in", {
-  fetch("http://localhost:3000/sign_in", {
+  fetch(`${this.state.baseUrl}/sign_in`, {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -209,8 +214,8 @@ handleLogin(params) {
 }
 
 handleSignUp() {
-  // axios.post('http://localhost:3000/api/v1/users', {
-  axios.post('http://localhost:3000/users', {
+  // axios.post(`${this.localhost}/api/v1/users', {
+  axios.post(`${this.state.baseUrl}/users`, {
     user: {
       name: this.state.name,
       password: this.state.password

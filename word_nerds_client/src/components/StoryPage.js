@@ -13,7 +13,6 @@ import { Switch, Route, Link } from 'react-router-dom'
 const StoryPage = (props) => {
   console.log('StoryPage props: ', props);
 
-
   let size = 3
 
   const SideBar = props.stories.map( (story) =>
