@@ -24,8 +24,8 @@ class StoryContainer extends Component {
       user: '',
       image: '',
       genres: [],
-      baseUrl: 'http://localhost' //can't make this global variable so putting it here
-      // baseUrl: 'http://localhost:3000' //can't make this global variable so putting it here
+      // baseUrl: 'http://localhost' //can't make this global variable so putting it here
+      baseUrl: 'http://localhost:3000' //can't make this global variable so putting it here
       // use above baseUrl for local build, and above, without :3000, for website
     }
   }
@@ -73,25 +73,21 @@ class StoryContainer extends Component {
             gender: characters.hero.gender,
             archetype: "hero"
           },
-
           {
             name: characters.shadow.name,
             gender: characters.shadow.gender,
             archetype: "shadow"
           },
-
           {
             name: characters.friend.name,
             gender: characters.friend.gender,
             archetype: "friend"
           },
-
           {
             name: characters.lover.name,
             gender: characters.lover.gender,
             archetype: "lover"
           },
-
           {
             name: characters.mentor.name,
             gender: characters.mentor.gender,

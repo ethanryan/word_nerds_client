@@ -254,7 +254,7 @@ render() {
           <Grid.Row>
             <Grid.Column width={5}>
                 <Form.Field placeholder="HERO"
-                  control='input' type="text" key="heroName" width={16}
+                  control="input" type="text" key="heroName" width={16}
                   onChange={this.handleHeroNameChange.bind(this)} />
             </Grid.Column>
 
@@ -266,8 +266,8 @@ render() {
 
             <Grid.Column width={3}>
                 <div onChange={this.handleHeroGenderChange.bind(this)}>
-                <Form.Field label='male' value="male" control='input' type='radio' />
-                <Form.Field label='female' value="female" control='input' type='radio' />
+                <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
+                <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
                 </div>
             </Grid.Column>
 
@@ -284,7 +284,7 @@ render() {
           <Grid.Row>
             <Grid.Column width={5}>
               <Form.Field placeholder="SHADOW"
-                control='input' type="text" key="shadowName" width={16}
+                control="input" type="text" key="shadowName" width={16}
                 onChange={this.handleShadowNameChange.bind(this)} />
             </Grid.Column>
 
@@ -295,8 +295,8 @@ render() {
 
             <Grid.Column width={3}>
               <div onChange={this.handleShadowGenderChange.bind(this)}>
-                <Form.Field label='male' value="male" control='input' type='radio' />
-                <Form.Field label='female' value="female" control='input' type='radio' />
+                <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
+                <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
               </div>
             </Grid.Column>
 
@@ -314,7 +314,7 @@ render() {
           <Grid.Row>
             <Grid.Column width={5}>
               <Form.Field placeholder="FRIEND"
-                control='input' type="text" key="friendName" width={16}
+                control="input" type="text" key="friendName" width={16}
                 onChange={this.handleFriendNameChange.bind(this)} />
             </Grid.Column>
 
@@ -325,8 +325,8 @@ render() {
 
             <Grid.Column width={3}>
                 <div onChange={this.handleFriendGenderChange.bind(this)}>
-                <Form.Field label='male' value="male" control='input' type='radio' />
-                <Form.Field label='female' value="female" control='input' type='radio' />
+                <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
+                <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
               </div>
             </Grid.Column>
 
@@ -344,7 +344,7 @@ render() {
           <Grid.Row>
             <Grid.Column width={5}>
               <Form.Field placeholder="LOVER"
-                control='input' type="text" key="loverName" width={16}
+                control="input" type="text" key="loverName" width={16}
                 onChange={this.handleLoverNameChange.bind(this)} />
             </Grid.Column>
 
@@ -355,8 +355,8 @@ render() {
 
             <Grid.Column width={3}>
               <div onChange={this.handleLoverGenderChange.bind(this)}>
-                <Form.Field label='male' value="male" control='input' type='radio' />
-                <Form.Field label='female' value="female" control='input' type='radio' />
+                <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
+                <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
             </div>
             </Grid.Column>
 
@@ -373,7 +373,7 @@ render() {
           <Grid.Row>
             <Grid.Column width={5}>
               <Form.Field placeholder="MENTOR"
-                control='input' type="text" key="mentorName" width={16}
+                control="input" type="text" key="mentorName" width={16}
                 onChange={this.handleMentorNameChange.bind(this)} />
             </Grid.Column>
 
@@ -384,8 +384,8 @@ render() {
 
             <Grid.Column width={3}>
               <div onChange={this.handleMentorGenderChange.bind(this)}>
-                <Form.Field label='male' value="male" control='input' type='radio' />
-                <Form.Field label='female' value="female" control='input' type='radio' />
+                <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
+                <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
               </div>
             </Grid.Column>
 
@@ -403,7 +403,7 @@ render() {
           <Grid.Row>
             <Grid.Column width={5}>
                 <Form.Field placeholder="TRICKSTER"
-                  control='input' type="text" key="tricksterName" width={16}
+                  control="input" type="text" key="tricksterName" width={16}
                   onChange={this.handleTricksterNameChange.bind(this)} />
             </Grid.Column>
 
@@ -414,8 +414,8 @@ render() {
 
             <Grid.Column width={3}>
             <div onChange={this.handleTricksterGenderChange.bind(this)}>
-              <Form.Field label='male' value="male" control='input' type='radio' />
-              <Form.Field label='female' value="female" control='input' type='radio' />
+              <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
+              <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
             </div>
             </Grid.Column>
 
@@ -434,9 +434,9 @@ render() {
               <Form onSubmit={this.handleCreateStoryFormSubmit} > */}
                   {/* <Form.Group grouped >
                   <h3>Choose genre: </h3>
-                  <Form.Field label='Horror' control='input' type='checkbox' />
-                  <Form.Field label='Comedy' control='input' type='checkbox' />
-                  <Form.Field label='Random' control='input' type='radio' />
+                  <Form.Field label='Horror' control="input" type='checkbox' />
+                  <Form.Field label='Comedy' control="input" type='checkbox' />
+                  <Form.Field label='Random' control="input" type="radio" name="alone" />
                 </Form.Group> */}
 
                   {/* You chose: {this.state.genres} */}
