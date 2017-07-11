@@ -32,8 +32,7 @@ const StoryShow = (props) => {
                   <Grid.Column>
                     <Image src={props.image ? props.image : CoolStoryBro} size='medium' />
                     {/* <Image src={ImageFromGoogleAPI} size='medium' /> */}
-                    <Image src='http://i1.kym-cdn.com/photos/images/facebook/000/061/294/1106514-cool_story_bro_super.jpg'
-                      size='small' />
+
                   </Grid.Column>
               </Grid>
 
