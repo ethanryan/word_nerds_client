@@ -24,9 +24,10 @@ class StoryContainer extends Component {
       user: '',
       image: '',
       genres: [],
+      // note: use 'http://localhost:3000' baseUrl for local build, and 'http://localhost', without :3000, for website
+
       // baseUrl: 'http://localhost' //can't make this global variable so putting it here
       baseUrl: 'http://localhost:3000' //can't make this global variable so putting it here
-      // use above baseUrl for local build, and above, without :3000, for website
     }
   }
 
