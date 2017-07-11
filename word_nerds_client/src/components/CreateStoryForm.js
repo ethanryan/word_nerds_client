@@ -436,7 +436,7 @@ render() {
                   <h3>Choose genre: </h3>
                   <Form.Field label='Horror' control="input" type='checkbox' />
                   <Form.Field label='Comedy' control="input" type='checkbox' />
-                  <Form.Field label='Random' control="input" type="radio" name="alone" />
+                  <Form.Field label='Random' control="input" type='radio' />
                 </Form.Group> */}
 
                   {/* You chose: {this.state.genres} */}
