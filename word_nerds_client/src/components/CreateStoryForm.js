@@ -266,8 +266,8 @@ render() {
 
             <Grid.Column width={3}>
                 <div onChange={this.handleHeroGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
-                <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
+                <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
+                <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
                 </div>
             </Grid.Column>
 
@@ -295,8 +295,8 @@ render() {
 
             <Grid.Column width={3}>
               <div onChange={this.handleShadowGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
-                <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
+                <Form.Field label="male" value="male" control="input" type="radio" name="alone2" />
+                <Form.Field label="female" value="female" control="input" type="radio" name="alone2" />
               </div>
             </Grid.Column>
 
@@ -325,8 +325,8 @@ render() {
 
             <Grid.Column width={3}>
                 <div onChange={this.handleFriendGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
-                <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
+                <Form.Field label="male" value="male" control="input" type="radio" name="alone3" />
+                <Form.Field label="female" value="female" control="input" type="radio" name="alone3" />
               </div>
             </Grid.Column>
 
@@ -355,8 +355,8 @@ render() {
 
             <Grid.Column width={3}>
               <div onChange={this.handleLoverGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
-                <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
+                <Form.Field label="male" value="male" control="input" type="radio" name="alone4" />
+                <Form.Field label="female" value="female" control="input" type="radio" name="alone4" />
             </div>
             </Grid.Column>
 
@@ -384,8 +384,8 @@ render() {
 
             <Grid.Column width={3}>
               <div onChange={this.handleMentorGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
-                <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
+                <Form.Field label="male" value="male" control="input" type="radio" name="alone5" />
+                <Form.Field label="female" value="female" control="input" type="radio" name="alone5" />
               </div>
             </Grid.Column>
 
@@ -414,8 +414,8 @@ render() {
 
             <Grid.Column width={3}>
             <div onChange={this.handleTricksterGenderChange.bind(this)}>
-              <Form.Field label="male" value="male" control="input" type="radio" name="alone" />
-              <Form.Field label="female" value="female" control="input" type="radio" name="alone" />
+              <Form.Field label="male" value="male" control="input" type="radio" name="alone6" />
+              <Form.Field label="female" value="female" control="input" type="radio" name="alone6" />
             </div>
             </Grid.Column>
 
