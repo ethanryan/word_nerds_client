@@ -24,10 +24,10 @@ class StoryContainer extends Component {
       user: '',
       image: '',
       genres: [],
-      // note: use 'http://localhost:3000' baseUrl for local build, and 'http://localhost', without :3000, for website
+      // note: use 'http://localhost:3000' baseUrl for local build, and 'http://localhost', without :3000, for website... or https://word-nerds-api.herokuapp.com for production
 
       // baseUrl: 'http://localhost' //can't make this global variable so putting it here
-      baseUrl: 'http://localhost:3000' //can't make this global variable so putting it here
+      baseUrl: 'http://localhost:3000'
     }
   }
 
@@ -37,6 +37,12 @@ class StoryContainer extends Component {
   componentDidMount() {
     fetch(`${this.state.baseUrl}/stories`, {
     // fetch(`http://localhost:3000/stories`, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'mode': 'no-cors',
+      //'Authorization': localStorage.getItem('jwt')
+    },
       method: 'GET',
     })
     .then( response => response.json() )
@@ -46,6 +52,12 @@ class StoryContainer extends Component {
     }) )
 
     fetch(`${this.state.baseUrl}/users`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'mode': 'no-cors',
+        //'Authorization': localStorage.getItem('jwt')
+      },
       method: 'GET',
     })
     .then (response => response.json() )
