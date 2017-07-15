@@ -9,13 +9,16 @@ class SignUp extends React.Component {
     super()
     this.state = {
       name: '',
-      password: ''
+      password: '',
+      baseUrl: 'https://word-nerds-api.herokuapp.com'
     }
   }
 
   handleSignUp() {
     // axios.post('http://localhost:3000/api/v1/users', {
-    axios.post('http://localhost:3000/users', {
+
+    // axios.post('http://localhost:3000/users', { //for running locally
+    axios.post(this.state.baseUrl, { //for running on heroku
       user: {
         name: this.state.name,
         password: this.state.password

@@ -24,10 +24,14 @@ class StoryContainer extends Component {
       user: '',
       image: '',
       genres: [],
-      // note: use 'http://localhost:3000' baseUrl for local build, and 'http://localhost', without :3000, for website... or https://word-nerds-api.herokuapp.com for production
+      // note: use 'http://localhost:3000' baseUrl for local build, and 'http://localhost', without :3000, for website...
+      //or https://word-nerds-api.herokuapp.com for production
+
+      baseUrl: 'https://word-nerds-api.herokuapp.com' //for production
 
       // baseUrl: 'http://localhost' //can't make this global variable so putting it here
-      baseUrl: 'http://localhost:3000'
+      // baseUrl: 'http://localhost' //can't make this global variable so putting it here
+      // baseUrl: 'http://localhost:3000'
     }
   }
 
