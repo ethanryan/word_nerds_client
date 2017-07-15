@@ -290,6 +290,7 @@ render() {
 
             <Grid.Column width={1}>
               {" "}
+              {" "}
               <span role="img" aria-label="emoji">{(this.state.shadow.name !== 'SHADOW') ? this.state.shadow.nerd : null}</span>
             </Grid.Column>
 
@@ -319,6 +320,7 @@ render() {
             </Grid.Column>
 
             <Grid.Column width={1}>
+              {" "}
               {" "}
               <span role="img" aria-label="emoji">{(this.state.friend.name !== 'FRIEND') ? this.state.friend.nerd : null}</span>
             </Grid.Column>
@@ -350,6 +352,7 @@ render() {
 
             <Grid.Column width={1}>
               {" "}
+              {" "}
               <span role="img" aria-label="emoji">{(this.state.lover.name !== 'LOVER') ? this.state.lover.nerd : null}</span>
             </Grid.Column>
 
@@ -378,6 +381,7 @@ render() {
             </Grid.Column>
 
             <Grid.Column width={1}>
+              {" "}
               {" "}
               <span role="img" aria-label="emoji">{(this.state.mentor.name !== 'MENTOR') ? this.state.mentor.nerd : null}</span>
             </Grid.Column>
@@ -408,6 +412,7 @@ render() {
             </Grid.Column>
 
             <Grid.Column width={1}>
+              {" "}
               {" "}
               <span role="img" aria-label="emoji">{(this.state.trickster.name !== 'TRICKSTER') ? this.state.trickster.nerd : null}</span>
             </Grid.Column>
