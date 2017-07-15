@@ -13,8 +13,10 @@ class LoginSignUp extends React.Component {
           // handleSignUp={this.props.handleSignUp}
         />
         <LoginForm handleLogin={this.props.handleLogin} />
-        login as 'bob', password 'bob'
+
+        <h1>login as 'bob', password 'bob'</h1>
         signup form not working at the moment.
+        
       </div>
     )
   }
