@@ -30,20 +30,35 @@ class LoginForm extends Component {
 
 
 
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <Form.Field>
-          <label>First Name</label>
-          <input placeholder='First Name' />
+          <label>Username</label>
+          <input placeholder='Username'
+            value={this.state.name}
+            onChange={ e => this.handleChange('name', e.target.value)}
+          />
         </Form.Field>
         <Form.Field>
-          <label>Last Name</label>
-          <input placeholder='Last Name' />
+          <label>Password</label>
+          <input placeholder='Password'
+            value={this.state.password}
+            onChange={ e => this.handleChange('password', e.target.value)}
+          />
         </Form.Field>
 
-        <Button type='submit'>Submit</Button>
+        <Form.Button content='Submit' type="submit" primary />
+
       </Form>
 
-
+    {/* <div>
+      <form onSubmit={this.handleSubmit}>
+        <label>Username</label>
+        <input type='text' value={this.state.name} onChange={ e => this.handleChange('name', e.target.value)}/>
+        <label>Password</label>
+        <input type='password' value={this.state.password} onChange={ e => this.handleChange('password', e.target.value)} />
+        <input type='submit' value='Log In' />
+      </form>
+    </div> */}
 
     </div>
     )
