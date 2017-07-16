@@ -46,7 +46,7 @@ class LoginForm extends Component {
           />
         </Form.Field>
 
-        <Form.Button content='Submit' type="submit" primary />
+        <Form.Button content='Log In' type="submit" primary />
 
       </Form>
 
