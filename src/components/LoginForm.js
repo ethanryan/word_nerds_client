@@ -29,6 +29,8 @@ class LoginForm extends Component {
 
       <div className="LoginForm-red">
 
+        <h1>Returning User</h1>
+        
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>
           <label>Username</label>
