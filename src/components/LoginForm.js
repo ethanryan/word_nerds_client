@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { Button, Checkbox, Form } from 'semantic-ui-react'
+
 class LoginForm extends Component {
 
   constructor() {
@@ -24,6 +26,20 @@ class LoginForm extends Component {
 
   render() {
     return (
+
+      <Form>
+        <Form.Field>
+          <label>First Name</label>
+          <input placeholder='First Name' />
+        </Form.Field>
+        <Form.Field>
+          <label>Last Name</label>
+          <input placeholder='Last Name' />
+        </Form.Field>
+
+        <Button type='submit'>Submit</Button>
+      </Form>
+
       <form onSubmit={this.handleSubmit}>
         <label>Username</label>
         <input type='text' value={this.state.name} onChange={ e => this.handleChange('name', e.target.value)}/>
@@ -36,3 +52,27 @@ class LoginForm extends Component {
 }
 
 export default LoginForm
+
+
+///////
+
+
+// import React from 'react'
+// import { Button, Checkbox, Form } from 'semantic-ui-react'
+//
+// const FormExampleForm = () => (
+//   <Form>
+//     <Form.Field>
+//       <label>First Name</label>
+//       <input placeholder='First Name' />
+//     </Form.Field>
+//     <Form.Field>
+//       <label>Last Name</label>
+//       <input placeholder='Last Name' />
+//     </Form.Field>
+//
+//     <Button type='submit'>Submit</Button>
+//   </Form>
+// )
+//
+// export default FormExampleForm
