@@ -1,6 +1,8 @@
 # word_nerds_client
 React frontend for story generator
 
+<iframe src="https://giphy.com/embed/cJYcBe9TCLpT2" width="480" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cJYcBe9TCLpT2">via GIPHY</a></p>
+
 demo gif:
 https://giphy.com/gifs/cJYcBe9TCLpT2/html5
 
