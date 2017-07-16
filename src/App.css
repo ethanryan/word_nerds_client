@@ -55,8 +55,19 @@
   background: white;
   padding: 15px 0px 15px 25px;
   margin: 5px 0px 5px 15px;
-  white-space: pre-wrap; /*this is to preserve line breaks added by users*/
   /*top, right, bottom, left*/
+  white-space: pre-wrap; /*this is to preserve line breaks added by users*/
+  line-height: 1.1;
+}
+
+.LoginForm-red {
+  border: 2px solid red;
+  border-radius: 25px;
+  background: white;
+  padding: 15px 25px 15px 25px;
+  margin: 5px 15px 5px 15px;
+  /*top, right, bottom, left*/
+  white-space: pre-wrap;
   line-height: 1.1;
 }
 
