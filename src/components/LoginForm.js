@@ -26,9 +26,8 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div>
-
-
+      
+      <div className="CreateStoryForm-red">
 
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>
