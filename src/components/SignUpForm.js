@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { withRouter } from 'react-router-dom'
 
-import { Form } from 'semantic-ui-react'
+import { Form, Grid } from 'semantic-ui-react'
 
 class SignUp extends React.Component {
   constructor() {
@@ -45,17 +45,21 @@ render() {
   return(
     <div className="SignUpForm-blue">
 
-    <h1>New User - Sign Up Form</h1>
-
     <Form onSubmit={ e => this.handleSubmit(e)}>
-      <Form.Field width={6}>
+
+      <Grid columns={1} centered>
+        <Grid.Column width={6}>
+
+          <h1>New User - Sign Up Form</h1>
+
+      <Form.Field>
         <label>Username</label>
         <input placeholder='Username' autoFocus
           value={this.state.name}
           onChange={ e => this.handleChange('name', e.target.value)}
         />
       </Form.Field>
-      <Form.Field width={6}>
+      <Form.Field>
         <label>Password</label>
         <input placeholder='Password'
           type='password'
@@ -65,6 +69,9 @@ render() {
       </Form.Field>
 
       <Form.Button content='Sign Up' color='green' type="submit" />
+
+      </Grid.Column>
+      </Grid>
 
     </Form>
   </div>
