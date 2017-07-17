@@ -42,6 +42,7 @@ class LoginForm extends Component {
         <Form.Field width={6}>
           <label>Password</label>
           <input placeholder='Password'
+            type='password'
             value={this.state.password}
             onChange={ e => this.handleChange('password', e.target.value)}
           />
