@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Form } from 'semantic-ui-react'
+import { Form, Grid } from 'semantic-ui-react'
 
 class LoginForm extends Component {
 
@@ -28,17 +28,22 @@ class LoginForm extends Component {
     return(
       <div className="LoginForm-red">
 
-      <h1>Returning User - Login Form</h1>
-
       <Form onSubmit={this.handleSubmit}>
-        <Form.Field width={6}>
+
+        <Grid columns={1} centered>
+          <Grid.Column width={6}>
+
+            <h1>Returning User - Login Form</h1>
+
+        <Form.Field>
           <label>Username</label>
           <input placeholder='Username' autoFocus
             value={this.state.name}
             onChange={ e => this.handleChange('name', e.target.value)}
           />
         </Form.Field>
-        <Form.Field width={6}>
+
+        <Form.Field>
           <label>Password</label>
           <input placeholder='Password'
             type='password'
@@ -48,6 +53,9 @@ class LoginForm extends Component {
         </Form.Field>
 
         <Form.Button content='Log In' type="submit" primary />
+
+      </Grid.Column>
+      </Grid>
 
       </Form>
     </div>
