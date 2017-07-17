@@ -20,7 +20,7 @@ class LoginSignUp extends React.Component {
               // handleSignUp={this.props.handleSignUp}
             />} />
 
-          <Route path='/' // ... or '/login' ???
+          <Route path='/'
             render={() => <LoginForm
               handleLogin={this.props.handleLogin}
             />} />
