@@ -21,6 +21,7 @@
 
 .login-signup-link-options {
   text-align: center;
+  background-color: white;
 }
 
 .OneStory-orange {
@@ -64,8 +65,8 @@
   line-height: 1.1;
 }
 
-.LoginForm-red {
-  border: 2px solid red;
+.LoginForm-orange {
+  border: 2px solid orange;
   border-radius: 25px;
   background: white;
   padding: 15px 25px 15px 25px;

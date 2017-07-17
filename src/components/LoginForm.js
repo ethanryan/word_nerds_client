@@ -26,7 +26,7 @@ class LoginForm extends Component {
 
   render() {
     return(
-      <div className="LoginForm-red">
+      <div className="LoginForm-orange">
 
       <Form onSubmit={this.handleSubmit}>
 
