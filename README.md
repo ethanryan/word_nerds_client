@@ -1,6 +1,8 @@
 # word_nerds_client
 React frontend for story generator
 
+![word nerds demo](https://media.giphy.com/media/cJYcBe9TCLpT2/giphy.gif)
+
 demo gif:
 https://giphy.com/gifs/cJYcBe9TCLpT2/html5
 
