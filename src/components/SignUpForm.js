@@ -10,6 +10,7 @@ class SignUp extends React.Component {
   constructor() {
     super()
     this.state = {
+      email_address: '',
       name: '',
       password: '',
       baseUrl: 'https://word-nerds-api.herokuapp.com'
@@ -21,6 +22,7 @@ class SignUp extends React.Component {
     // axios.post('http://localhost:3000/users', { //for running locally
     axios.post(`${this.state.baseUrl}/users`, { //for running on heroku
       user: {
+        email_address: this.state.email_address,
         name: this.state.name,
         password: this.state.password
       }
@@ -53,12 +55,21 @@ render() {
           <h1>New User - Sign Up Form</h1>
 
       <Form.Field>
+        <label>Email Address</label>
+        <input placeholder='Email Address' autoFocus
+          value={this.state.email_address}
+          onChange={ e => this.handleChange('email_address', e.target.value)}
+        />
+      </Form.Field>
+
+      <Form.Field>
         <label>Username</label>
-        <input placeholder='Username' autoFocus
+        <input placeholder='Username'
           value={this.state.name}
           onChange={ e => this.handleChange('name', e.target.value)}
         />
       </Form.Field>
+
       <Form.Field>
         <label>Password</label>
         <input placeholder='Password'
