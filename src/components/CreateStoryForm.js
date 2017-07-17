@@ -253,7 +253,7 @@ render() {
 
           <Grid.Row>
             <Grid.Column width={5}>
-                <Form.Field placeholder="HERO"
+                <Form.Field placeholder="HERO" autoFocus
                   control="input" type="text" key="heroName" width={16}
                   onChange={this.handleHeroNameChange.bind(this)} />
             </Grid.Column>

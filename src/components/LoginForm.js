@@ -34,7 +34,7 @@ class LoginForm extends Component {
       <Form onSubmit={this.handleSubmit}>
         <Form.Field width={6}>
           <label>Username</label>
-          <input placeholder='Username'
+          <input placeholder='Username' autoFocus
             value={this.state.name}
             onChange={ e => this.handleChange('name', e.target.value)}
           />
