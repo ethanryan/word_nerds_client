@@ -71,6 +71,17 @@
   line-height: 1.1;
 }
 
+.SignUpForm-blue {
+  border: 2px solid blue;
+  border-radius: 25px;
+  background: white;
+  padding: 15px 25px 15px 25px;
+  margin: 5px 15px 5px 15px;
+  /*top, right, bottom, left*/
+  white-space: pre-wrap;
+  line-height: 1.1;
+}
+
 .NavBar-yellow {
   border: 2px solid gray;
   border-radius: 25px;

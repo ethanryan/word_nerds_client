@@ -2,7 +2,9 @@ import React from 'react'
 
 import axios from 'axios'
 
-import {withRouter} from "react-router-dom";
+import { withRouter } from 'react-router-dom'
+
+import { Form } from 'semantic-ui-react'
 
 class SignUp extends React.Component {
   constructor() {
@@ -42,19 +44,31 @@ handleSubmit(e) {
 
 render() {
   return(
-    <div>
-      <form onSubmit={ e => this.handleSubmit(e)}>
+    <div className="SignUpForm-blue">
 
-        <label>Name</label>
-        <input type='text' value={this.state.name} onChange={ e => this.handleChange('name', e.target.value)}/>
+    <h1>New User - Sign Up Form</h1>
 
+    <Form onSubmit={this.handleSubmit}>
+      <Form.Field width={6}>
+        <label>Username</label>
+        <input placeholder='Username' autoFocus
+          value={this.state.name}
+          onChange={ e => this.handleChange('name', e.target.value)}
+        />
+      </Form.Field>
+      <Form.Field width={6}>
         <label>Password</label>
-        <input type='password' value={this.state.password} onChange={ e => this.handleChange('password', e.target.value)}/>
+        <input placeholder='Password'
+          type='password'
+          value={this.state.password}
+          onChange={ e => this.handleChange('password', e.target.value)}
+        />
+      </Form.Field>
 
-        <input type='submit' value='Sign Up'/>
-      </form>
-      <br></br><br></br>
-    </div>
+      <Form.Button content='Sign Up' color='green' type="submit" />
+
+    </Form>
+  </div>
   )
 }
 }
