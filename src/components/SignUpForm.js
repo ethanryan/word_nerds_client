@@ -17,10 +17,9 @@ class SignUp extends React.Component {
   }
 
   handleSignUp() {
-    // axios.post('http://localhost:3000/api/v1/users', {
-
+    // axios.post('http://localhost:3000/api/v1/users', { //for reference
     // axios.post('http://localhost:3000/users', { //for running locally
-    axios.post(this.state.baseUrl, { //for running on heroku
+    axios.post(`${this.state.baseUrl}/users`, { //for running on heroku
       user: {
         name: this.state.name,
         password: this.state.password
@@ -48,7 +47,7 @@ render() {
 
     <h1>New User - Sign Up Form</h1>
 
-    <Form onSubmit={this.handleSubmit}>
+    <Form onSubmit={ e => this.handleSubmit(e)}>
       <Form.Field width={6}>
         <label>Username</label>
         <input placeholder='Username' autoFocus
