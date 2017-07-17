@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 
 class LoginForm extends Component {
 
@@ -30,16 +30,16 @@ class LoginForm extends Component {
       <div className="LoginForm-red">
 
         <h1>Returning User</h1>
-        
+
       <Form onSubmit={this.handleSubmit}>
-        <Form.Field>
+        <Form.Field width={6}>
           <label>Username</label>
           <input placeholder='Username'
             value={this.state.name}
             onChange={ e => this.handleChange('name', e.target.value)}
           />
         </Form.Field>
-        <Form.Field>
+        <Form.Field width={6}>
           <label>Password</label>
           <input placeholder='Password'
             value={this.state.password}
