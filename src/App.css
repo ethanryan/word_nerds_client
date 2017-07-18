@@ -48,7 +48,6 @@
   border-radius: 25px;
   background: white;
   padding: 10px;
-  /*width: 95%;*/
   margin: 25px 40px 5px 0px;
   /*margin: top right bottom left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
@@ -65,6 +64,15 @@
   line-height: 1.1;
 }
 
+.LoginSignUp-divs {
+  margin:0 auto; /*this plus a width centers the divs*/
+  width: 60%;
+}
+
+.center-h1 {
+    text-align: center;
+}
+
 .LoginForm-orange {
   border: 2px solid orange;
   border-radius: 25px;
@@ -72,8 +80,6 @@
   padding: 15px 25px 15px 25px;
   margin: 5px 15px 5px 15px;
   /*top, right, bottom, left*/
-  white-space: pre-wrap;
-  line-height: 1.1;
 }
 
 .SignUpForm-blue {
@@ -83,9 +89,8 @@
   padding: 15px 25px 15px 25px;
   margin: 5px 15px 5px 15px;
   /*top, right, bottom, left*/
-  white-space: pre-wrap;
-  line-height: 1.1;
 }
+
 
 .NavBar-yellow {
   border: 2px solid gray;

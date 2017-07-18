@@ -26,14 +26,11 @@ class LoginForm extends Component {
 
   render() {
     return(
-      <div className="LoginForm-orange">
+      <div className="LoginSignUp-divs">
 
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit} className="LoginForm-orange">
 
-        <Grid columns={1} centered>
-          <Grid.Column width={6}>
-
-            <h1>Returning User - Login Form</h1>
+        <h1 className="center-h1">Returning User - Login Form</h1>
 
         <Form.Field>
           <label>Username</label>
@@ -53,9 +50,6 @@ class LoginForm extends Component {
         </Form.Field>
 
         <Form.Button content='Log In' type="submit" primary />
-
-      </Grid.Column>
-      </Grid>
 
       </Form>
 
