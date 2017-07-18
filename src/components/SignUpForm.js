@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { withRouter } from 'react-router-dom'
 
-import { Form, Grid } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 
 class SignUp extends React.Component {
   constructor() {
