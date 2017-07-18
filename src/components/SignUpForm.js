@@ -45,14 +45,11 @@ handleSubmit(e) {
 
 render() {
   return(
-    <div className="SignUpForm-blue">
+    <div className="LoginSignUp-divs">
 
-    <Form onSubmit={ e => this.handleSubmit(e)}>
+    <Form onSubmit={ e => this.handleSubmit(e)} className="SignUpForm-blue">
 
-      <Grid columns={1} centered>
-        <Grid.Column width={6}>
-
-          <h1>New User - Sign Up Form</h1>
+      <h1 className="center-h1">New User - Sign Up Form</h1>
 
       <Form.Field>
         <label>Email Address</label>
@@ -80,9 +77,6 @@ render() {
       </Form.Field>
 
       <Form.Button content='Sign Up' color='green' type="submit" />
-
-      </Grid.Column>
-      </Grid>
 
     </Form>
   </div>
