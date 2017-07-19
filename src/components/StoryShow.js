@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom'
 
 const StoryShow = (props) => {
   console.log('StoryShow props: ', props);
+  console.log('StoryShow props.story.id: ', props.story.id);
+  console.log('StoryShow props.story.user.name: ', props.story.user.name);
 
   let CoolStoryBro = 'http://i1.kym-cdn.com/photos/images/facebook/000/061/294/1106514-cool_story_bro_super.jpg'
 
@@ -48,6 +50,15 @@ const StoryShow = (props) => {
               <br></br>
 
               Story ID: {props.story.id}
+              <br></br>
+              <br></br>
+
+              Story Creator: {props.story.user.name}
+              <br></br>
+              (need to add authentication,<br></br>
+                log out 'bob',<br></br>
+                use JWT - JSON Web Tokens)<br></br>
+
               <br></br>
               <br></br>
 
