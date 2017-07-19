@@ -12,10 +12,12 @@ import { withRouter } from 'react-router-dom'
 
 import StoryPage from '../components/StoryPage'
 
+const baseUrl = 'https://word-nerds-api.herokuapp.com'
+
 class StoryContainer extends Component {
   constructor() {
     super()
-    console.log('StoryContainer props: ', this.props);
+    // console.log('StoryContainer props: ', this.props);
     this.state = {
       stories: [],
       story: '',
@@ -26,7 +28,7 @@ class StoryContainer extends Component {
       // note: use 'http://localhost:3000' baseUrl for local build, and 'http://localhost', without :3000, for website...
       //or https://word-nerds-api.herokuapp.com for production
 
-      baseUrl: 'https://word-nerds-api.herokuapp.com' //for production
+      // baseUrl: 'https://word-nerds-api.herokuapp.com' //for production
 
       // baseUrl: 'http://localhost' //can't make this global variable so putting it here
       // baseUrl: 'http://localhost' //can't make this global variable so putting it here
@@ -38,7 +40,7 @@ class StoryContainer extends Component {
 
 
   componentDidMount() {
-    fetch(`${this.state.baseUrl}/stories`, {
+    fetch(`${baseUrl}/stories`, {
     // fetch(`http://localhost:3000/stories`, {
     headers: {
       'Accept': 'application/json',
@@ -54,7 +56,7 @@ class StoryContainer extends Component {
       stories: data
     }) )
 
-    fetch(`${this.state.baseUrl}/users`, {
+    fetch(`${baseUrl}/users`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -72,7 +74,7 @@ class StoryContainer extends Component {
 
   createStory(content, characters) {
     console.log('content inside createStory: ', content)
-    return fetch(`${this.state.baseUrl}/stories`, {
+    return fetch(`${baseUrl}/stories`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -134,7 +136,7 @@ this.props.history.push(`/stories`) //redirect to all stories
 
 
 updateStory(updatedStory) {
-  return fetch(`${this.state.baseUrl}/stories/${updatedStory.id}`, {
+  return fetch(`${baseUrl}/stories/${updatedStory.id}`, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json',
@@ -185,7 +187,7 @@ handleUpdateStory(updatedStory) {
 
 
 deleteStory(id) {
-  return fetch(`${this.state.baseUrl}/stories/${id}`, {
+  return fetch(`${baseUrl}/stories/${id}`, {
     method: 'DELETE',
     headers: {
       'Accept': 'application/json',
@@ -211,7 +213,7 @@ handleDeleteStory(id) {
 
 handleLogin(params) {
   // fetch("http://localhost:3000/api/v1/sign_in", {
-  fetch(`${this.state.baseUrl}/sign_in`, {
+  fetch(`${baseUrl}/sign_in`, {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -231,7 +233,7 @@ handleLogin(params) {
 
 handleSignUp() {
   // axios.post(`${this.localhost}/api/v1/users', {
-  axios.post(`${this.state.baseUrl}/users`, {
+  axios.post(`${baseUrl}/users`, {
     user: {
       name: this.state.name,
       password: this.state.password
@@ -252,7 +254,7 @@ logout() {
 
 
 render() {
-  console.log('state: ', this.state);
+  console.log('state from StoryContainer: ', this.state);
   // console.log('state.stories.genres: ', this.state.stories.genres);
   // const { location } = this.props
 

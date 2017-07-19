@@ -6,6 +6,8 @@ import { withRouter } from 'react-router-dom'
 
 import { Form } from 'semantic-ui-react'
 
+const baseUrl = 'https://word-nerds-api.herokuapp.com'
+
 class SignUp extends React.Component {
   constructor() {
     super()
@@ -13,14 +15,14 @@ class SignUp extends React.Component {
       email_address: '',
       name: '',
       password: '',
-      baseUrl: 'https://word-nerds-api.herokuapp.com'
+      // baseUrl: 'https://word-nerds-api.herokuapp.com'
     }
   }
 
   handleSignUp() {
     // axios.post('http://localhost:3000/api/v1/users', { //for reference
     // axios.post('http://localhost:3000/users', { //for running locally
-    axios.post(`${this.state.baseUrl}/users`, { //for running on heroku
+    axios.post(`${baseUrl}/users`, { //for running on heroku
       user: {
         email_address: this.state.email_address,
         name: this.state.name,
