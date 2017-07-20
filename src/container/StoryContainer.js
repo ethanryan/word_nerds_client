@@ -8,31 +8,22 @@ import LoginSignUp from '../container/LoginSignUp'
 
 import { withRouter } from 'react-router-dom'
 
-// import { Router, Route, Switch } from 'react-router'
-
 import StoryPage from '../components/StoryPage'
 
-const baseUrl = 'https://word-nerds-api.herokuapp.com'
+const baseUrl = 'https://word-nerds-api.herokuapp.com' //for production
+// note: use 'http://localhost:3000' baseUrl for local build (development)
 
 class StoryContainer extends Component {
   constructor() {
     super()
-    // console.log('StoryContainer props: ', this.props);
+    console.log('StoryContainer props: ', this.props);
     this.state = {
       stories: [],
       story: '',
       title: 'cool story title here',
       user: '',
       image: '',
-      genres: [],
-      // note: use 'http://localhost:3000' baseUrl for local build, and 'http://localhost', without :3000, for website...
-      //or https://word-nerds-api.herokuapp.com for production
-
-      // baseUrl: 'https://word-nerds-api.herokuapp.com' //for production
-
-      // baseUrl: 'http://localhost' //can't make this global variable so putting it here
-      // baseUrl: 'http://localhost' //can't make this global variable so putting it here
-      // baseUrl: 'http://localhost:3000'
+      genres: []
     }
   }
 
@@ -254,7 +245,7 @@ logout() {
 
 
 render() {
-  console.log('state from StoryContainer: ', this.state);
+  console.log('state: ', this.state);
   // console.log('state.stories.genres: ', this.state.stories.genres);
   // const { location } = this.props
 

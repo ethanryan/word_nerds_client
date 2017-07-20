@@ -14,8 +14,7 @@ class SignUp extends React.Component {
     this.state = {
       email_address: '',
       name: '',
-      password: '',
-      // baseUrl: 'https://word-nerds-api.herokuapp.com'
+      password: ''
     }
   }
 
