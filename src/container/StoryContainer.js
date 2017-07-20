@@ -1,14 +1,11 @@
 import React, {Component} from 'react'
 
-import NavBar from '../components/NavBar'
-
-import axios from 'axios'
-
-import LoginSignUp from '../container/LoginSignUp'
-
 import { withRouter } from 'react-router-dom'
 
+import NavBar from '../components/NavBar'
 import StoryPage from '../components/StoryPage'
+
+import LoginSignUp from '../container/LoginSignUp'
 
 const baseUrl = 'https://word-nerds-api.herokuapp.com' //for production
 // note: use 'http://localhost:3000' baseUrl for local build (development)
@@ -26,8 +23,6 @@ class StoryContainer extends Component {
       genres: []
     }
   }
-
-//removing :3000 from all urls.
 
 
   componentDidMount() {
@@ -222,18 +217,6 @@ handleLogin(params) {
 })
 }
 
-handleSignUp() {
-  // axios.post(`${this.localhost}/api/v1/users', {
-  axios.post(`${baseUrl}/users`, {
-    user: {
-      name: this.state.name,
-      password: this.state.password
-    }
-  }).then(res => { console.log('Sign Up Response: ', res )
-  localStorage.setItem("token", res.data.token)
-  this.props.history.push('/')
-}).catch( e => console.log('error from handleSignUp', e.response) )
-}
 
 logout() {
   this.setState({
