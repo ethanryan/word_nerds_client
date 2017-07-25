@@ -1,5 +1,7 @@
 [submodule "scott-code"]
+# [submodule "scott-code/word_nerds_client"]
 	path = scott-code
+	# path = scott-code/word_nerds_client
 	# url = git@github.com:szrharrison/ethanryan.git
 	url = git://github.com/szrharrison/ethanryan.git
 	# url = git://github.com/facebook/three20.git
