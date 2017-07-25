@@ -1,6 +1,3 @@
-[submodule "scott"]
-	path = scott
-	url = https://github.com/szrharrison/ethanryan
 [submodule "scott-code"]
 	path = scott-code
 	# url = git@github.com:szrharrison/ethanryan.git
