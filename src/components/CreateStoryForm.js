@@ -4,7 +4,7 @@ import { Form, Grid } from 'semantic-ui-react'
 class CreateStoryForm extends Component {
 
   constructor(props) {
-    // console.log('props from CreateStoryForm', props)
+    console.log('props from CreateStoryForm', props)
     super(props)
     this.state=({ //organizing this so it's not nested, but post request will be nested
     story: '',
@@ -201,7 +201,7 @@ handleCreateStoryFormSubmit(event) {
     trickster: this.state.trickster
   }
   console.log('CreateStoryForm submitted: ', this.state.story)
-  this.props.handleSubmit( this.state.story, characters )
+  this.props.handleSubmit( characters )
   this.setState({story: ''}) //this clears form onSubmit
 }
 
@@ -213,7 +213,7 @@ render() {
 
       <div className="CreateStoryForm-red">
         <Form onSubmit={this.handleCreateStoryFormSubmit} >
-          <Form.Group grouped className="inline fields">
+          <Form.Group grouped class="inline fields">
 
 <Grid
   // celled='internally'
