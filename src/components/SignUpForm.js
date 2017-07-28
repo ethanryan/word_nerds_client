@@ -1,37 +1,23 @@
 import React from 'react'
-
-import axios from 'axios'
-
 import { withRouter } from 'react-router-dom'
-
 import { Form } from 'semantic-ui-react'
 
-const baseUrl = 'https://word-nerds-api.herokuapp.com'
+import * as api from '../api'
 
 class SignUp extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      email_address: '',
-      name: '',
-      password: ''
-    }
+  state = {
+    email_address: '',
+    name: '',
+    password: ''
   }
 
   handleSignUp() {
-    // axios.post('http://localhost:3000/api/v1/users', { //for reference
-    // axios.post('http://localhost:3000/users', { //for running locally
-    axios.post(`${baseUrl}/users`, { //for running on heroku
-      user: {
-        email_address: this.state.email_address,
-        name: this.state.name,
-        password: this.state.password
-      }
-    }).then(res => { console.log('Sign Up Response: ', res )
-    localStorage.setItem("token", res.data.token)
-    this.props.history.push('/')
-  }).catch( e => console.log('error from handleSignUp', e.response) )
-}
+    api.signUp(this.state.name, this.state.password)
+      .then(res => {
+        localStorage.setItem("jwt", res.token)
+        this.props.history.push('/')
+      })
+  }
 
 handleChange(prop, value) {
   this.setState({
