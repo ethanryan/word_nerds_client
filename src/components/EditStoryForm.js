@@ -20,8 +20,7 @@ var randomObjects = [
 class EditStoryForm extends Component {
 
   constructor(props) {
-    console.log('props from EditStoryForm', props)
-    super(props)
+    super()
 
     this.state = {
       input: props.story.content,
