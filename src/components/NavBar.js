@@ -36,26 +36,35 @@ getInitialState() {
 
       <Menu inverted pointing secondary color={'purple'}>
         <Link to="/">
-        <Menu.Item name='home'
-          active={activeItem === 'home'}
+          <Menu.Item
+            name='home'
+            active={activeItem === 'home'}
+            // style={{backgroundColor:this.state.bgColor}}
+            onClick={this.handleItemClick}
+          />
+        </Link>
 
-          // style={{backgroundColor:this.state.bgColor}}
-          onClick={this.handleItemClick} />
-      </Link>
-
-        <Link to="/stories"><Menu.Item name='stories'
-          active={activeItem === 'stories'}
-          // style={{backgroundColor:this.state.bgColor}}
-          onClick={this.handleItemClick} /></Link>
+        <Link to="/stories">
+          <Menu.Item
+            name='stories'
+            active={activeItem === 'stories'}
+            // style={{backgroundColor:this.state.bgColor}}
+            onClick={this.handleItemClick}
+          />
+        </Link>
 
 
         <Menu.Menu position='right'>
 
           {/* <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} /> */}
-          <Link to="/"><Menu.Item name='logout'
-            active={activeItem === 'logout'}
-            // style={{backgroundColor:this.state.bgColor}}
-            onClick={this.props.logout} /></Link>
+          <Link to="/">
+            <Menu.Item
+              name='logout'
+              active={activeItem === 'logout'}
+              // style={{backgroundColor:this.state.bgColor}}
+              onClick={this.props.logout}
+            />
+          </Link>
 
           {/* <Link to="/" onClick={this.props.logout}>Logout</Link> */}
         </Menu.Menu>
