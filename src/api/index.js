@@ -1,5 +1,5 @@
 // const baseUrl = 'http://localhost:3000'
-const baseUrl = 'https://word-nerds-api.herokuapp.com/'
+const baseUrl = 'https://word-nerds-api.herokuapp.com'
 
 export function getStories() {
   return fetch(`${baseUrl}/stories`, {
