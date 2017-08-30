@@ -69,6 +69,12 @@
   width: 60%;
 }
 
+.nerdy {
+  margin:0 auto; /*this plus a width centers the gif*/
+  width: 50%;
+  text-align: center;
+}
+
 .center-h1 {
     text-align: center;
 }
@@ -124,7 +130,7 @@
 
 .App-purple {
   border: 5px solid purple;
-  background: lightgray;
+  background: rgba(246, 252, 255, 1); /* the nerd gif's light blue background color */
 }
 
 .App-footer {

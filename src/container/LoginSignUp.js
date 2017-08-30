@@ -2,6 +2,7 @@ import React from 'react'
 
 import SignUpForm from '../components/SignUpForm'
 import LoginForm from '../components/LoginForm'
+import nerdy from '../components/nerdy.gif'
 
 import { Switch, Route, Link } from 'react-router-dom'
 
@@ -12,6 +13,10 @@ class LoginSignUp extends React.Component {
 
     return(
       <div>
+
+      <div className="nerdy">
+        <img src={nerdy} className="nerdy" alt="nerdy gif"/>
+      </div>
 
         <Switch>
 
