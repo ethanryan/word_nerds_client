@@ -30,6 +30,8 @@ class LoginForm extends Component {
 
       <Form onSubmit={this.handleSubmit} className="LoginForm-orange">
 
+      <img src="/components/nerdy.gif" />
+
         <h1 className="center-h1">Returning User - Login Form</h1>
 
         <Form.Field>
