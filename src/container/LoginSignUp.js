@@ -4,6 +4,8 @@ import SignUpForm from '../components/SignUpForm'
 import LoginForm from '../components/LoginForm'
 import nerdy from '../components/nerdy.gif'
 
+import { Grid } from 'semantic-ui-react'
+
 import { Switch, Route, Link } from 'react-router-dom'
 
 class LoginSignUp extends React.Component {
@@ -14,29 +16,44 @@ class LoginSignUp extends React.Component {
     return(
       <div>
 
-      <div className="nerdy">
-        <img src={nerdy} className="nerdy" alt="nerdy gif"/>
-      </div>
+      <Grid>
+        <Grid.Row>
 
-        <Switch>
 
-          <Route exact path='/register'
-            render={() => <SignUpForm
-              // handleSignUp={this.props.handleSignUp}
-            />} />
+          <Grid.Column width={8}>
+          <br></br>
+          <br></br>
+          <br></br>
+            <div className="nerdy">
+              <img src={nerdy} className="nerdy" alt="nerdy gif"/>
 
-          <Route path='/'
-            render={() => <LoginForm
-              handleLogin={this.props.handleLogin}
-            />} />
+              <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
+            </div>
 
-        </Switch>
+          </Grid.Column>
 
-        <h1 className='login-signup-link-options'>
-          <Link to={`/login`}>Login</Link>  |  <Link to={`/register`}>Sign Up</Link>
-        </h1>
+          <Grid.Column width={8}>
 
-        <br></br>
+          <h1 className='login-signup-link-options'>
+          <Link to={`/login`} className='hoverYellow'>Login</Link>  |  <Link to={`/register`} className='hoverYellow'>Sign Up</Link>
+          </h1>
+
+          <Switch>
+
+            <Route exact path='/register'
+              render={() => <SignUpForm
+                // handleSignUp={this.props.handleSignUp}
+              />} />
+
+            <Route path='/'
+              render={() => <LoginForm
+                handleLogin={this.props.handleLogin}
+              />} />
+
+          </Switch>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
 
       </div>
     )

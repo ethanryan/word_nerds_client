@@ -21,7 +21,7 @@
 
 .login-signup-link-options {
   text-align: center;
-  background-color: white;
+  background-color: rgba(246, 252, 255, 1); /* the nerd gif's light blue background color */
 }
 
 .OneStory-orange {
@@ -65,8 +65,9 @@
 }
 
 .LoginSignUp-divs {
-  margin:0 auto; /*this plus a width centers the divs*/
-  width: 60%;
+  margin: 0 auto; /*this plus a width centers the divs*/
+  margin-right: 200px;
+  width: 100%;
 }
 
 .nerdy {
@@ -137,12 +138,58 @@
   background: purple;
   text-align: center;
   color: yellow;
+  margin-top: 25%; /*to stick footer to bottom of page, for now... will fix this later*/
 }
 
 .EditStoryText-blue {
   color: blue;
 }
 
+
+
+/*--------- changing WordNerds on hover -----------*/
+
+/* changing WordNerds color on hover */
+.hoverYellow:hover {background: yellow;}
+
+/* Pulse Grow */
+ @-webkit-keyframes pulse-grow {
+    to {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+}
+@keyframes pulse-grow {
+    to {
+        -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+}
+.pulse-grow {
+    display: inline-block;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.pulse-grow:hover {
+    -webkit-animation-name: pulse-grow;
+    animation-name: pulse-grow;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+
+
+
+/*not using below class, can delete:*/
+/*not using below class, can delete:*/
 /*not using below class, can delete:*/
 .blinkProse {
       animation: blinkProse 4s ease-out -2s;
