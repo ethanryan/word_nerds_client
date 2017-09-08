@@ -35,6 +35,7 @@ class LoginForm extends Component {
         <Form.Field>
           <label>Username</label>
           <input placeholder='Username' autoFocus
+            defaultValue='bob'
             value={this.state.name}
             onChange={ e => this.handleChange('name', e.target.value)}
           />
@@ -44,6 +45,7 @@ class LoginForm extends Component {
           <label>Password</label>
           <input placeholder='Password'
             type='password'
+            defaultValue='bob'
             value={this.state.password}
             onChange={ e => this.handleChange('password', e.target.value)}
           />
