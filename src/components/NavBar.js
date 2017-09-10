@@ -56,6 +56,11 @@ getInitialState() {
 
         <Menu.Menu position='right'>
 
+
+          <Menu.Item
+            name='Username: '
+          />
+
           {/* <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} /> */}
           <Link to="/">
             <Menu.Item

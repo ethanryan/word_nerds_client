@@ -13,11 +13,12 @@ class StoryContainer extends Component {
   constructor() {
     super()
     console.log('StoryContainer props: ', this.props);
+    console.log('StoryContainer state: ', this.state);
     this.state = {
       stories: [],
-      story: '',
+      story: 'cool story here',
       title: 'cool story title here',
-      user: '',
+      user: 'story user here',
       image: '',
       genres: []
     }

@@ -8,7 +8,7 @@ const AllStories = (props) => {
   ///add scrollToTop function here
 
   return(
-    <div className="AllStories-green">
+    <div key={props.id} className="AllStories-green">
 
       <OneStory
         handleDeleteStory={props.handleDeleteStory}

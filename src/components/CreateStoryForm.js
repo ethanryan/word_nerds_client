@@ -213,7 +213,7 @@ render() {
 
       <div className="CreateStoryForm-red">
         <Form onSubmit={this.handleCreateStoryFormSubmit} >
-          <Form.Group grouped class="inline fields">
+          <Form.Group grouped className="inline fields">
 
 <Grid
   // celled='internally'

@@ -20,7 +20,11 @@ const OneStory = (props) => {
           <br></br>
           <br></br>
 
-          Story ID: {story.id}
+          Story ID: {story.id ? story.id : 0}
+          <br></br>
+          <br></br>
+
+          Story Creator: {story.user.name ? story.user.name : "name goes here"}
           <br></br>
           <br></br>
 
@@ -58,16 +62,18 @@ const OneStory = (props) => {
 
           <br></br>
           <br></br>
-          
 
-          {story.content.split('-----').map((paragraph) => {
+
+          {story.content ? story.content.split('-----').map((paragraph) => {
             return (
-            <span key={paragraph.id}>
+            <div key={paragraph.id}>
+            <span>
               {paragraph}
               <br/><br/>
             </span>
+          </div>
           )
-          })}
+        }) : 0}
 
           Story ID: {story.id}
           <br></br>

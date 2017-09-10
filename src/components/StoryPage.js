@@ -15,7 +15,8 @@ const StoryPage = (props) => {
 
   let size = 3
 
-  const SideBar = props.stories.map( (story) =>
+  // const SideBar = props.stories.map( (story) =>
+  let SideBar = props.stories.map( (story) =>
 
   <div key={story.id} className="EachStoryInSideBar-purple">
 
@@ -27,7 +28,11 @@ const StoryPage = (props) => {
     <br></br>
     <br></br>
 
-    Story ID: {story.id}
+    Story ID: {story.id ? story.id : 0}
+    <br></br>
+    <br></br>
+
+    Story Creator: {story.user.name ? story.user.name : "name goes here"}
     <br></br>
     <br></br>
 
