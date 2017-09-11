@@ -22,34 +22,31 @@ class NavBar extends Component {
     <div>
       <Menu inverted secondary pointing color='yellow'>
 
-        <Link to="/">
           <Menu.Item
+            as={Link} to="/"
             name='Word Nerds'
             active={activeItem === 'Word Nerds'}
             color={'purple'}
             onClick={this.handleItemClick}
           />
-        </Link>
 
         <Menu.Menu position='right'>
 
-          <Link to={`/login`}>
             <Menu.Item
+              as={Link} to="/login"
               name='Login'
               active={activeItem === 'Login'}
               color={'purple'}
               onClick={this.handleItemClick}
             />
-          </Link>
 
-          <Link to={`/register`}>
             <Menu.Item
+              as={Link} to="/register"
               name='Sign Up'
               active={activeItem === 'Sign Up'}
               color={'purple'}
               onClick={this.handleItemClick}
             />
-          </Link>
 
         </Menu.Menu>
       </Menu>

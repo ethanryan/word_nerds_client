@@ -16,8 +16,6 @@ import LoginSignUp from '../container/LoginSignUp'
 class StoryContainer extends Component {
   constructor() {
     super()
-    console.log('StoryContainer props: ', this.props);
-    console.log('StoryContainer state: ', this.state);
     this.state = {
       stories: [],
       story: 'cool story here',
@@ -100,6 +98,9 @@ class StoryContainer extends Component {
 
 render() {
   if(localStorage.getItem('jwt')) {
+    console.log('jwt: ', this.jwt);
+    console.log('props from StoryContainer: ', this.props);
+    console.log('state from StoryContainer: ', this.state);
     return(
       <div>
         <NavBar
@@ -109,6 +110,9 @@ render() {
           logout={this.logout.bind(this)}
         />
         <StoryPage
+          //props for welcome
+          user={this.state.user}
+
           //props for CreateStoryForm
           handleSubmit={this.handleSubmit.bind(this)}
 

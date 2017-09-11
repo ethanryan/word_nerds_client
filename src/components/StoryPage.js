@@ -11,9 +11,9 @@ import { Switch, Route, Link } from 'react-router-dom'
 
 
 const StoryPage = (props) => {
-  // console.log('StoryPage props: ', props);
+  console.log('StoryPage props: ', props);
 
-  let size = 3
+  let size = 2
 
   const SideBar = props.stories.map( (story) =>
 
@@ -127,13 +127,17 @@ return (
 
             <Grid.Column width={6}>
 
-
               <div className="SideBar-blue">
+
+                <h1>
+                  Welcome, User: ...
+                </h1>
+
                 <div className="SideBar-header">
                   <h2>Recent Stories</h2>
                 </div>
                 <ul>{ SideBar.reverse().slice(0, size) }</ul>
-                {/* //limiting sidebar to just three stories (size = 3), and adding link to all stories */}
+                {/* //limiting sidebar to just two stories (size = 2), and adding link to all stories */}
 
               <div className="SideBar-button">
                 <Link to={'/stories'}>

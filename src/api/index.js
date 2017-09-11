@@ -9,7 +9,7 @@ export function getStories() {
       'Authorization': localStorage.getItem('jwt')
     },
     mode: 'cors',
-    method: 'GET'
+    method: 'GET',
   }).then( response => response.json() )
 }
 
@@ -38,7 +38,7 @@ export function createStory(characters) {
     body: JSON.stringify({
       story: {
         title: characters.hero.name + "'s story, v1",
-        user_id: 1, //default for now
+        user_id: 1, //default for now <<------------------- change this!!!
         characters: [
           {
             name: characters.hero.name,
@@ -89,7 +89,7 @@ export function updateStory(updatedStory) {
       story: {
         content: updatedStory.input,
         title: updatedStory.title,
-        user_id: 1 //default for now
+        user_id: 1 //default for now <<------------------- change this!!!
       }
     }),
   }).then( res => res.json() )
