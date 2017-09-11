@@ -30,6 +30,8 @@ getInitialState() {
     // const { activeA } = this.state
     const { activeItem } = this.state
 
+    console.log('NavBar props: ', this.props);
+
     return (
 
     <div>
@@ -58,7 +60,7 @@ getInitialState() {
 
 
           <Menu.Item
-            name='Username: '
+            name='Username here'
           />
 
           {/* <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} /> */}

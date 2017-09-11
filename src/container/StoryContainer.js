@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
+
 import { withRouter } from 'react-router-dom'
 
 import * as api from '../api'
+
 import NavBar from '../components/NavBar'
-import LoginSignUp from '../container/LoginSignUp'
+import NavBarLoginSignUp from '../components/NavBarLoginSignUp'
 import StoryPage from '../components/StoryPage'
+
+import LoginSignUp from '../container/LoginSignUp'
 
 
 // import { Router, Route, Switch } from 'react-router'
@@ -18,7 +22,7 @@ class StoryContainer extends Component {
       stories: [],
       story: 'cool story here',
       title: 'cool story title here',
-      user: 'story user here',
+      user: 'user here',
       image: '',
       genres: []
     }
@@ -101,6 +105,7 @@ render() {
         <NavBar
           title="Word Nerds"
           color="yellow"
+          user={this.state.user}
           logout={this.logout.bind(this)}
         />
         <StoryPage
@@ -123,7 +128,7 @@ render() {
   else {
     return(
       <div>
-        <NavBar />
+        <NavBarLoginSignUp />
 
         <LoginSignUp handleLogin={this.handleLogin.bind(this)} />
       </div>
