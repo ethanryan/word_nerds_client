@@ -21,6 +21,7 @@ class StoryContainer extends Component {
       story: 'cool story here',
       title: 'cool story title here',
       user: 'user here',
+      // current_user: 'current_user here',
       image: '',
       genres: []
     }
@@ -37,6 +38,11 @@ class StoryContainer extends Component {
       .then (user => this.setState({
         user: user
       }) )
+
+    // api.getCurrentUser()
+    //   .then (current_user => this.setState({
+    //     current_user: current_user
+    //   }) )
   }
 
   handleSubmit(characters) {
@@ -98,20 +104,19 @@ class StoryContainer extends Component {
 
 render() {
   if(localStorage.getItem('jwt')) {
-    console.log('jwt: ', this.jwt);
-    console.log('props from StoryContainer: ', this.props);
+    // console.log('jwt: ', this.jwt);
+    // console.log('props from StoryContainer: ', this.props);
     console.log('state from StoryContainer: ', this.state);
     return(
       <div>
         <NavBar
           title="Word Nerds"
-          color="yellow"
-          user={this.state.user}
+          current_user={this.state.user.name}
           logout={this.logout.bind(this)}
         />
         <StoryPage
           //props for welcome
-          user={this.state.user}
+          current_user={this.state.user.name}
 
           //props for CreateStoryForm
           handleSubmit={this.handleSubmit.bind(this)}

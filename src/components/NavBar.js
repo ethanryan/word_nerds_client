@@ -8,7 +8,9 @@ import { Link } from 'react-router-dom'
 class NavBar extends Component {
   constructor(props) {
     super(props)
-    this.state = { activeItem: 'home' }
+    this.state = {
+      activeItem: 'home',
+      current_user: this.props.current_user }
   }
 
   handleItemClick = (event, { name }) => this.setState({ activeItem: name })
@@ -17,6 +19,9 @@ class NavBar extends Component {
     const { activeItem } = this.state
 
     console.log('NavBar state: ', this.state);
+    console.log('NavBar props: ', this.props);
+
+    let current_user = this.state.current_user
 
     return (
 
@@ -41,6 +46,10 @@ class NavBar extends Component {
 
 
           <Menu.Menu position='right'>
+
+            <Menu.Item>
+              {`User: ${current_user}`}
+            </Menu.Item>
 
             <Menu.Item
               as={Link} to="/"

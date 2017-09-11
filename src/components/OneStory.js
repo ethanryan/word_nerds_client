@@ -11,7 +11,7 @@ const OneStory = (props) => {
       <div key={story.id} className="OneStory-orange">
 
         <h2>
-          Title: {story.title}
+          Title: {story.title ? story.title : "story title here"}
         </h2>
 
           Edit this story:
@@ -56,13 +56,14 @@ const OneStory = (props) => {
 
           <br></br>
           <br></br>
+
+
           <strong>
             Story content:
           </strong>
 
           <br></br>
           <br></br>
-
 
           {story.content ? story.content.split('-----').map((paragraph) => {
             return (
@@ -75,18 +76,21 @@ const OneStory = (props) => {
           )
         }) : 0}
 
-          Story ID: {story.id}
+          Story ID: {story.id ? story.id : 0}
           <br></br>
           <br></br>
 
           <Link to={`/stories/${story.id}/edit`}>
-            <Button color='green' compact>Edit Story
+            <Button color='green' compact>
+              Edit Story
             </Button>
           </Link>
           {/* <Button.Group floated='right'> */}
 
-            <Button color='red' compact floated='right'
-              onClick={() => {props.handleDeleteStory(story.id)}}>Delete
+            <Button color='red' compact
+              floated='right'
+              onClick={() => {props.handleDeleteStory(story.id)}}>
+              Delete
             </Button>
 
             <br></br>

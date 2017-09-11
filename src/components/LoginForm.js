@@ -25,7 +25,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    // console.log('hello from LoginForm');
+    console.log('LoginForm state: ', this.state);
     return(
       <div className="LoginSignUp-divs">
 

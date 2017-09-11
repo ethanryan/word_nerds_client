@@ -118,6 +118,22 @@ export function logIn(params) {
   }).then( res => res.json() )
 }
 
+// trying this to get current_user
+// export function getCurrentUser() {
+//   return fetch(`${baseUrl}/sign_in`, {
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       'Authorization': localStorage.getItem('jwt')
+//     },
+//     mode: 'cors',
+//     method: 'GET',
+//   })
+//   .then (response => response.json() )
+// }
+// trying this to get current_user
+
+
 export function signUp(name, password) {
   return fetch(`${baseUrl}/users`, {
     method: 'POST',

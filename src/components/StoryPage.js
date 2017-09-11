@@ -11,16 +11,16 @@ import { Switch, Route, Link } from 'react-router-dom'
 
 
 const StoryPage = (props) => {
-  console.log('StoryPage props: ', props);
+  // console.log('StoryPage props: ', props);
 
   let size = 2
 
   const SideBar = props.stories.map( (story) =>
 
-  <div key={story.id} className="EachStoryInSideBar-purple">
+  <div key={story.id ? story.id : 0} className="EachStoryInSideBar-purple">
 
     <h2>
-      Title: {story.title}
+      Title: {story.title ? story.title : "story title here"}
     </h2>
 
     <Link className='btn btn-primary' to={`/stories/${story.id}/edit`}>Edit Story</Link>
@@ -128,10 +128,6 @@ return (
             <Grid.Column width={6}>
 
               <div className="SideBar-blue">
-
-                <h1>
-                  Welcome, User: ...
-                </h1>
 
                 <div className="SideBar-header">
                   <h2>Recent Stories</h2>

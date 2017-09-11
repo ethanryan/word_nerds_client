@@ -11,14 +11,13 @@ import { Switch, Route, Link } from 'react-router-dom'
 class LoginSignUp extends React.Component {
 
   render() {
-    // console.log('LogInSignUp props', this.props)
+    console.log('LogInSignUp props', this.props)
 
     return(
       <div>
 
       <Grid>
         <Grid.Row>
-
 
           <Grid.Column width={8}>
           <br></br>
@@ -32,11 +31,13 @@ class LoginSignUp extends React.Component {
 
           </Grid.Column>
 
+
           <Grid.Column width={8}>
 
           <h1 className='login-signup-link-options'>
           <Link to={`/login`} className='hoverYellow'>Login</Link>  |  <Link to={`/register`} className='hoverYellow'>Sign Up</Link>
           </h1>
+
 
           <Switch>
 

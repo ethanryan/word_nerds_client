@@ -4,7 +4,7 @@ import { Form, Grid } from 'semantic-ui-react'
 class CreateStoryForm extends Component {
 
   constructor(props) {
-    console.log('props from CreateStoryForm', props)
+    // console.log('props from CreateStoryForm', props)
     super(props)
     this.state=({ //organizing this so it's not nested, but post request will be nested
     story: '',
