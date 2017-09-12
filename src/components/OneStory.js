@@ -14,24 +14,26 @@ const OneStory = (props) => {
 
   <Card fluid>
 
-    <Card.Content header={story.title ? story.title : "story title here"}
-      as={Link} to={`/stories/${story.id}/edit`} color="blue"/>
+      <Card.Content>
+        <Card.Header>
+          Story Title:
+          <Link to={`/stories/${story.id}/edit`}> {story.title}</Link>
 
-      <Card.Header>
-        Story Title: {story.title ? story.title : "story title here"}
-      </Card.Header>
+        </Card.Header>
+      </Card.Content>
 
-      <Card.Meta>
+      <Card.Content>
+        <Card.Meta>
         Story ID: {story.id ? story.id : 0}
-      </Card.Meta>
+        <br></br>
 
-      <Card.Meta>
-        Story Creator: {story.user.name ? story.user.name : "name goes here"}
-      </Card.Meta>
+        Creator: {story.user.name ? story.user.name : "name goes here"}
+        <br></br>
 
-      <Card.Meta>
-        Word Count: {story.content ? story.content.split(' ').length : 0}
-      </Card.Meta>
+          Word Count: {story.content ? story.content.split(' ').length : 0}
+        </Card.Meta>
+
+      </Card.Content>
 
       <Card.Content>
         Genres: {story.content ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
@@ -55,11 +57,6 @@ const OneStory = (props) => {
             .replace("The Piano", "💙")
           )
         }).join('   ') : 0}
-      </Card.Content>
-
-      <Card.Content>
-        Story Content:
-        <Link to={`/stories/${story.id}/edit`}> {story.title}</Link>
       </Card.Content>
 
       <Card.Content extra>

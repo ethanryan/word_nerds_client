@@ -5,7 +5,7 @@ import EditStoryForm from './EditStoryForm'
 import AllStories from './AllStories'
 import StoryShow from './StoryShow'
 
-import { Grid, Button } from 'semantic-ui-react'
+import { Grid, Button, Card } from 'semantic-ui-react'
 
 import { Switch, Route, Link } from 'react-router-dom'
 
@@ -19,7 +19,66 @@ const StoryPage = (props) => {
 
   <div key={story.id ? story.id : 0} className="EachStoryInSideBar-purple">
 
-    <h2>
+    <Card fluid>
+
+        <Card.Content>
+          <Card.Header>
+            Story Title:
+            <Link to={`/stories/${story.id}/edit`}> {story.title}</Link>
+
+          </Card.Header>
+        </Card.Content>
+
+        <Card.Content>
+          <Card.Meta>
+          Story ID: {story.id ? story.id : 0}
+          <br></br>
+
+          Creator: {story.user.name ? story.user.name : "name goes here"}
+          <br></br>
+
+            Word Count: {story.content ? story.content.split(' ').length : 0}
+          </Card.Meta>
+
+        </Card.Content>
+
+        <Card.Content>
+          Genres: {story.content ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
+        </Card.Content>
+
+        <Card.Content>
+          Plots:  {story.content ? story.plots.map((plot) => {
+            let plotTitle = plot.title
+            return (plotTitle
+              .replace("Halloween", "🔪")
+              .replace("Alien", "👽")
+              .replace("The Matrix", "⏰")
+              .replace("Star Wars", "🚀")
+              .replace("E.T.", "📞")
+              .replace("Terminator", "🤖")
+              .replace("Die Hard", "🔫")
+              .replace("Thelma and Louise", "🚘")
+              .replace("Home Alone", "😂")
+              .replace("Beauty and the Beast", "🦊")
+              .replace("La Strada", "💔")
+              .replace("The Piano", "💙")
+            )
+          }).join('   ') : 0}
+        </Card.Content>
+
+        <Card.Content extra>
+        <div className='ui two buttons'>
+          <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`}
+            >View</Button>
+
+          <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
+            >Delete</Button>
+        </div>
+      </Card.Content>
+
+      </Card>
+
+    {/* <h2>
       Title: {story.title ? story.title : "story title here"}
     </h2>
 
@@ -71,7 +130,8 @@ const StoryPage = (props) => {
     </Link>
 
       <Button color='red' compact floated='right'
-        onClick={() => {props.handleDeleteStory(story.id)}}>Delete</Button>
+        onClick={() => {props.handleDeleteStory(story.id)}}>Delete</Button> */}
+
   </div>
 )
 
