@@ -1,5 +1,7 @@
 import React from 'react'
 
+import nerdy from '../components/nerdy.gif'
+
 import CreateStoryForm from './CreateStoryForm'
 import EditStoryForm from './EditStoryForm'
 import AllStories from './AllStories'
@@ -127,6 +129,19 @@ return (
                 />} />
 
               </Switch>
+            </Grid.Column>
+
+
+            <Grid.Column width={6}>
+            <br></br>
+            <br></br>
+            <br></br>
+              <div className="nerdy">
+                <img src={nerdy} className="nerdy" alt="nerdy gif"/>
+
+                <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
+              </div>
+
             </Grid.Column>
 
 
