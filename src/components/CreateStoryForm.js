@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Form, Grid } from 'semantic-ui-react'
+
+import { Form, Header, Divider } from 'semantic-ui-react'
+// import { Radio } from 'semantic-ui-react'
 
 class CreateStoryForm extends Component {
 
@@ -209,252 +211,204 @@ handleCreateStoryFormSubmit(event) {
 render() {
 
   return(
-    <div>
 
-      <div className="CreateStoryForm-red">
-        <Form onSubmit={this.handleCreateStoryFormSubmit} >
-          <Form.Group grouped className="inline fields">
+    <div className="CreateStoryForm-red">
 
-<Grid
-  // celled='internally'
-  >
+      <Form onSubmit={this.handleCreateStoryFormSubmit}>
 
-          <Grid.Row centered>
-            <Grid.Column width={5}>
-              <h3>Create A Story</h3>
-              <h3>
-                Characters
-              </h3>
-            </Grid.Column>
+        <Header as='h3' textAlign='center'>
+          Create a Story
+        </Header>
 
-            <Grid.Column width={1}>
-              <h3>{" "}</h3>
-              <h3>{" "}</h3>
-            </Grid.Column>
+        <Form.Group>
+          <Form.Field label="Hero Name" placeholder="HERO"
+            autoFocus
+            width={6}
+            control="input" type="text" key="heroName"
+            onChange={this.handleHeroNameChange.bind(this)} />
 
-            <Grid.Column width={3}>
-              <h3>
-                <span role="img" aria-label="emoji">♂️   ♀️</span>
-              </h3>
-              <h3>
-                Genders
-              </h3>
-            </Grid.Column>
-
-            <Grid.Column width={7}>
-              <h3>
-                <span role="img" aria-label="emoji"> 📚 {this.state.nerd} 📚 </span>
-              </h3>
-              <h3>
-                Summary
-              </h3>
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-            <Grid.Column width={5}>
-                <Form.Field placeholder="HERO" autoFocus
-                  control="input" type="text" key="heroName" width={16}
-                  onChange={this.handleHeroNameChange.bind(this)} />
-            </Grid.Column>
-
-            <Grid.Column width={1}>
-              {" "}
-              {" "}
-              <span role="img" aria-label="emoji">{(this.state.hero.name !== 'HERO') ? this.state.hero.nerd : null}</span>
-            </Grid.Column>
-
-            <Grid.Column width={3}>
-                <div onChange={this.handleHeroGenderChange.bind(this)}>
+            <Form.Field
+              width={4}>
+              <label>Hero Gender</label>
+              <div onChange={this.handleHeroGenderChange.bind(this)}>
                 <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
                 <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
-                </div>
-            </Grid.Column>
+              </div>
+            </Form.Field>
 
-            <Grid.Column width={7}>
-              The hero's name is: {this.state.hero.name}
-              <br></br>
-              <br></br>
-              The hero's gender is: {this.state.hero.gender}
-            </Grid.Column>
-          </Grid.Row>
+            <Form.Field
+              width={6}>
+              <label>
+                <span role="img" aria-label="emoji">
+                  {(this.state.hero.name !== 'HERO') ? this.state.hero.nerd : null}
+                </span>  Hero Summary</label>
 
+                name: {this.state.hero.name}
+                <br></br>
+                gender: {this.state.hero.gender}
+              </Form.Field>
+            </Form.Group>
 
+            <Divider />
 
-          <Grid.Row>
-            <Grid.Column width={5}>
-              <Form.Field placeholder="SHADOW"
-                control="input" type="text" key="shadowName" width={16}
+            <Form.Group>
+              <Form.Field label="Shadow Name" placeholder="SHADOW"
+                width={6}
+                control="input" type="text" key="shadowName"
                 onChange={this.handleShadowNameChange.bind(this)} />
-            </Grid.Column>
 
-            <Grid.Column width={1}>
-              {" "}
-              {" "}
-              <span role="img" aria-label="emoji">{(this.state.shadow.name !== 'SHADOW') ? this.state.shadow.nerd : null}</span>
-            </Grid.Column>
+              <Form.Field
+                width={4}>
+                <label>Shadow Gender</label>
+                <div onChange={this.handleShadowGenderChange.bind(this)}>
+                  <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
+                  <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
+                </div>
+              </Form.Field>
 
-            <Grid.Column width={3}>
-              <div onChange={this.handleShadowGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" type="radio" name="alone2" />
-                <Form.Field label="female" value="female" control="input" type="radio" name="alone2" />
-              </div>
-            </Grid.Column>
+                <Form.Field
+                  width={6}>
+                  <label>
+                    <span role="img" aria-label="emoji">
+                      {(this.state.shadow.name !== 'SHADOW') ? this.state.shadow.nerd : null}
+                    </span>  Shadow Summary</label>
 
-            <Grid.Column width={7}>
-              The shadow's name is: {this.state.shadow.name}
-              <br></br>
-              <br></br>
-              The shadow's gender is: {this.state.shadow.gender}
-            </Grid.Column>
-          </Grid.Row>
+                    name: {this.state.shadow.name}
+                    <br></br>
+                    gender: {this.state.shadow.gender}
+                  </Form.Field>
+                </Form.Group>
+
+                <Divider />
+
+                <Form.Group>
+                  <Form.Field label="Friend Name" placeholder="FRIEND"
+                    width={6}
+                    control="input" type="text" key="friendName"
+                    onChange={this.handleFriendNameChange.bind(this)} />
+
+                    <Form.Field
+                      width={4}>
+                      <label>Friend Gender</label>
+                      <div onChange={this.handleFriendGenderChange.bind(this)}>
+                        <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
+                        <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
+                      </div>
+                    </Form.Field>
+
+                    <Form.Field
+                      width={6}>
+                      <label>
+                        <span role="img" aria-label="emoji">
+                          {(this.state.friend.name !== 'FRIEND') ? this.state.friend.nerd : null}
+                        </span>  Friend Summary</label>
+
+                        name: {this.state.friend.name}
+                        <br></br>
+                        gender: {this.state.friend.gender}
+                      </Form.Field>
+                    </Form.Group>
+
+                    <Divider />
+
+                    <Form.Group>
+                      <Form.Field label="Lover Name" placeholder="LOVER"
+                        width={6}
+                        control="input" type="text" key="loverName"
+                        onChange={this.handleLoverNameChange.bind(this)} />
+
+                        <Form.Field
+                          width={4}>
+                          <label>Lover Gender</label>
+                          <div onChange={this.handleLoverGenderChange.bind(this)}>
+                            <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
+                            <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
+                          </div>
+                        </Form.Field>
+
+                        <Form.Field
+                          width={6}>
+                          <label>
+                            <span role="img" aria-label="emoji">
+                              {(this.state.lover.name !== 'LOVER') ? this.state.lover.nerd : null}
+                            </span>  Lover Summary</label>
+
+                            name: {this.state.lover.name}
+                            <br></br>
+                            gender: {this.state.lover.gender}
+                          </Form.Field>
+                        </Form.Group>
+
+                        <Divider />
+
+                        <Form.Group>
+                          <Form.Field label="Mentor Name" placeholder="MENTOR"
+                            width={6}
+                            control="input" type="text" key="mentorName"
+                            onChange={this.handleMentorNameChange.bind(this)} />
+
+                            <Form.Field
+                              width={4}>
+                              <label>Mentor Gender</label>
+                              <div onChange={this.handleMentorGenderChange.bind(this)}>
+                                <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
+                                <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
+                              </div>
+                            </Form.Field>
+
+                            <Form.Field
+                              width={6}>
+                              <label>
+                                <span role="img" aria-label="emoji">
+                                  {(this.state.mentor.name !== 'MENTOR') ? this.state.mentor.nerd : null}
+                                </span>  Mentor Summary</label>
+
+                                name: {this.state.mentor.name}
+                                <br></br>
+                                gender: {this.state.mentor.gender}
+                              </Form.Field>
+                            </Form.Group>
+
+                            <Divider />
+
+                            <Form.Group>
+                              <Form.Field label="Trickster Name" placeholder="TRICKSTER"
+                                width={6}
+                                control="input" type="text" key="TricksterName"
+                                onChange={this.handleTricksterNameChange.bind(this)} />
+
+                                <Form.Field
+                                  width={4}>
+                                  <label>Trickster Gender</label>
+                                  <div onChange={this.handleTricksterGenderChange.bind(this)}>
+                                    <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
+                                    <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
+                                  </div>
+                                </Form.Field>
+
+                                <Form.Field
+                                  width={6}>
+                                  <label>
+                                    <span role="img" aria-label="emoji">
+                                      {(this.state.trickster.name !== 'TRICKSTER') ? this.state.trickster.nerd : null}
+                                    </span>  Trickster Summary</label>
+
+                                    name: {this.state.trickster.name}
+                                    <br></br>
+                                    gender: {this.state.trickster.gender}
+                                  </Form.Field>
+                                </Form.Group>
 
 
+                                <Divider />
 
+                                <Form.Button content='Submit' type="submit" primary/>
 
-          <Grid.Row>
-            <Grid.Column width={5}>
-              <Form.Field placeholder="FRIEND"
-                control="input" type="text" key="friendName" width={16}
-                onChange={this.handleFriendNameChange.bind(this)} />
-            </Grid.Column>
+                              </Form>
 
-            <Grid.Column width={1}>
-              {" "}
-              {" "}
-              <span role="img" aria-label="emoji">{(this.state.friend.name !== 'FRIEND') ? this.state.friend.nerd : null}</span>
-            </Grid.Column>
+                            </div>
+                          )
+                        }
+                      }
 
-            <Grid.Column width={3}>
-                <div onChange={this.handleFriendGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" type="radio" name="alone3" />
-                <Form.Field label="female" value="female" control="input" type="radio" name="alone3" />
-              </div>
-            </Grid.Column>
-
-            <Grid.Column width={7}>
-                The friend's name is: {this.state.friend.name}
-                <br></br>
-                <br></br>
-                The friend's gender is: {this.state.friend.gender}
-            </Grid.Column>
-          </Grid.Row>
-
-
-
-
-          <Grid.Row>
-            <Grid.Column width={5}>
-              <Form.Field placeholder="LOVER"
-                control="input" type="text" key="loverName" width={16}
-                onChange={this.handleLoverNameChange.bind(this)} />
-            </Grid.Column>
-
-            <Grid.Column width={1}>
-              {" "}
-              {" "}
-              <span role="img" aria-label="emoji">{(this.state.lover.name !== 'LOVER') ? this.state.lover.nerd : null}</span>
-            </Grid.Column>
-
-            <Grid.Column width={3}>
-              <div onChange={this.handleLoverGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" type="radio" name="alone4" />
-                <Form.Field label="female" value="female" control="input" type="radio" name="alone4" />
-            </div>
-            </Grid.Column>
-
-            <Grid.Column width={7}>
-              The lover's name is: {this.state.lover.name}
-              <br></br>
-              <br></br>
-              The lover's gender is: {this.state.lover.gender}
-            </Grid.Column>
-          </Grid.Row>
-
-
-
-          <Grid.Row>
-            <Grid.Column width={5}>
-              <Form.Field placeholder="MENTOR"
-                control="input" type="text" key="mentorName" width={16}
-                onChange={this.handleMentorNameChange.bind(this)} />
-            </Grid.Column>
-
-            <Grid.Column width={1}>
-              {" "}
-              {" "}
-              <span role="img" aria-label="emoji">{(this.state.mentor.name !== 'MENTOR') ? this.state.mentor.nerd : null}</span>
-            </Grid.Column>
-
-            <Grid.Column width={3}>
-              <div onChange={this.handleMentorGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" type="radio" name="alone5" />
-                <Form.Field label="female" value="female" control="input" type="radio" name="alone5" />
-              </div>
-            </Grid.Column>
-
-            <Grid.Column width={7}>
-                The mentor's name is: {this.state.mentor.name}
-                <br></br>
-                <br></br>
-                The mentor's gender is: {this.state.mentor.gender}
-            </Grid.Column>
-         </Grid.Row>
-
-
-
-
-          <Grid.Row>
-            <Grid.Column width={5}>
-                <Form.Field placeholder="TRICKSTER"
-                  control="input" type="text" key="tricksterName" width={16}
-                  onChange={this.handleTricksterNameChange.bind(this)} />
-            </Grid.Column>
-
-            <Grid.Column width={1}>
-              {" "}
-              {" "}
-              <span role="img" aria-label="emoji">{(this.state.trickster.name !== 'TRICKSTER') ? this.state.trickster.nerd : null}</span>
-            </Grid.Column>
-
-            <Grid.Column width={3}>
-            <div onChange={this.handleTricksterGenderChange.bind(this)}>
-              <Form.Field label="male" value="male" control="input" type="radio" name="alone6" />
-              <Form.Field label="female" value="female" control="input" type="radio" name="alone6" />
-            </div>
-            </Grid.Column>
-
-            <Grid.Column width={7}>
-                The trickster's name is: {this.state.trickster.name}
-                <br></br>
-                <br></br>
-                The trickster's gender is: {this.state.trickster.gender}
-            </Grid.Column>
-          </Grid.Row>
-
-          {/* <Form.Button content='Submit' type="submit" primary/> */}
-    {/* </Form> */}
-
-            {/* <Grid.Column width={4}>
-              <Form onSubmit={this.handleCreateStoryFormSubmit} > */}
-                  {/* <Form.Group grouped >
-                  <h3>Choose genre: </h3>
-                  <Form.Field label='Horror' control="input" type='checkbox' />
-                  <Form.Field label='Comedy' control="input" type='checkbox' />
-                  <Form.Field label='Random' control="input" type='radio' />
-                </Form.Group> */}
-
-                  {/* You chose: {this.state.genres} */}
-    </Grid>
-
-    <Form.Button content='Submit' type="submit" primary/>
-
-</Form.Group>
-</Form>
-  </div>
-</div>
-)
-}
-}
-
-export default CreateStoryForm
+                      export default CreateStoryForm
