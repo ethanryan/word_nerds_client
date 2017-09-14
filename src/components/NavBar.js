@@ -10,7 +10,8 @@ class NavBar extends Component {
     super(props)
     this.state = {
       activeItem: 'home',
-      current_user: this.props.current_user }
+      current_user: this.props.current_user
+    }
   }
 
   handleItemClick = (event, { name }) => this.setState({ activeItem: name })
@@ -21,7 +22,7 @@ class NavBar extends Component {
     console.log('NavBar state: ', this.state);
     console.log('NavBar props: ', this.props);
 
-    let current_user = this.state.current_user
+    // let current_user = this.state.current_user
 
     return (
 
@@ -48,7 +49,8 @@ class NavBar extends Component {
           <Menu.Menu position='right'>
 
             <Menu.Item>
-              {`User: ${current_user}`}
+              {`User: ${this.props.current_user}`}
+              {/* {`User: ${current_user}`} */}
             </Menu.Item>
 
             <Menu.Item

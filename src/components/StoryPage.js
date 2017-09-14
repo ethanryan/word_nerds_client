@@ -13,7 +13,7 @@ import { Switch, Route, Link } from 'react-router-dom'
 
 
 const StoryPage = (props) => {
-  // console.log('StoryPage props: ', props);
+  console.log('StoryPage props: ', props);
 
   let size = 2
 
@@ -45,11 +45,11 @@ const StoryPage = (props) => {
         </Card.Content>
 
         <Card.Content>
-          Genres: {story.content ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
+          Genres: {story.genres ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
         </Card.Content>
 
         <Card.Content>
-          Plots:  {story.content ? story.plots.map((plot) => {
+          Plots:  {story.plots ? story.plots.map((plot) => {
             let plotTitle = plot.title
             return (plotTitle
               .replace("Halloween", "🔪")
@@ -182,7 +182,16 @@ return (
     genres: 'story genres here',
     plots: 'story plots here',
     stories: [
-      {title: 'title here', 'content': 'words words ----- word words words', genres: 'story genres here', plots: 'story plots here'}
+      {
+        characters: 'story characters here',
+        content: 'words words ----- word words words',
+        genres: [{one_genre: 'story genres here'}],
+        id: 'story ID here',
+        paragraphs: 'story paragraphs here',
+        plots: [{title: 'Halloween'}],
+        title: 'title here',
+        user: 'user here'
+    },
     ]
   }
 

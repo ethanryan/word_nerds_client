@@ -17,7 +17,19 @@ class StoryContainer extends Component {
   constructor() {
     super()
     this.state = {
-      stories: [],
+      // stories: [],
+      stories: [
+        {
+          characters: 'story characters here',
+          content: 'words words ----- word words words',
+          genres: [{one_genre: 'story genres here'}],
+          id: 'story ID here',
+          paragraphs: 'story paragraphs here',
+          plots: [{title: 'Halloween'}],
+          title: 'title here',
+          user: 'user here'
+      },
+    ],
       // stories: [{title: 'title here', 'content': 'words words ----- word words words', genres: 'story genres here', plots: 'story plots here', user: 'user here'}],
       story: 'cool story here',
       title: 'cool story title here',
