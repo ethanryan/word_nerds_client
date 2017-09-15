@@ -7,80 +7,82 @@ import EditStoryForm from './EditStoryForm'
 import AllStories from './AllStories'
 import StoryShow from './StoryShow'
 
-import { Grid, Button, Card } from 'semantic-ui-react'
+// import { Grid, Button, Card } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
-import { Switch, Route, Link } from 'react-router-dom'
+// import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 
 const StoryPage = (props) => {
   console.log('StoryPage props: ', props);
 
-  let size = 2
+  // let size = 2
 
-  const SideBar = props.stories.map( (story) =>
-
-  <div key={story.id ? story.id : 0} className="EachStoryInSideBar-purple">
-
-    <Card fluid>
-
-        <Card.Content>
-          <Card.Header>
-            Story Title:
-            <Link to={`/stories/${story.id}/edit`}> {story.title}</Link>
-
-          </Card.Header>
-        </Card.Content>
-
-        <Card.Content>
-          <Card.Meta>
-          Story ID: {story.id ? story.id : 0}
-          <br></br>
-
-          Creator: {story.user.name ? story.user.name : "name goes here"}
-          <br></br>
-
-          Word Count: {story.content ? story.content.split(' ').length : 0}
-          </Card.Meta>
-
-        </Card.Content>
-
-        <Card.Content>
-          Genres: {story.genres ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
-        </Card.Content>
-
-        <Card.Content>
-          Plots:  {story.plots ? story.plots.map((plot) => {
-            let plotTitle = plot.title
-            return (plotTitle
-              .replace("Halloween", "🔪")
-              .replace("Alien", "👽")
-              .replace("The Matrix", "⏰")
-              .replace("Star Wars", "🚀")
-              .replace("E.T.", "📞")
-              .replace("Terminator", "🤖")
-              .replace("Die Hard", "🔫")
-              .replace("Thelma and Louise", "🚘")
-              .replace("Home Alone", "😂")
-              .replace("Beauty and the Beast", "🦊")
-              .replace("La Strada", "💔")
-              .replace("The Piano", "💙")
-            )
-          }).join('   ') : 0}
-        </Card.Content>
-
-        <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`}
-            >View</Button>
-
-          <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
-            >Delete</Button>
-        </div>
-      </Card.Content>
-
-      </Card>
-  </div>
-)
+//   const SideBar = props.stories.map( (story) =>
+//
+//   <div key={story.id ? story.id : 0} className="EachStoryInSideBar-purple">
+//
+//     <Card fluid>
+//
+//         <Card.Content>
+//           <Card.Header>
+//             Story Title:
+//             <Link to={`/stories/${story.id}/edit`}> {story.title}</Link>
+//
+//           </Card.Header>
+//         </Card.Content>
+//
+//         <Card.Content>
+//           <Card.Meta>
+//           Story ID: {story.id ? story.id : 0}
+//           <br></br>
+//
+//           Creator: {story.user.name ? story.user.name : "name goes here"}
+//           <br></br>
+//
+//           Word Count: {story.content ? story.content.split(' ').length : 0}
+//           </Card.Meta>
+//
+//         </Card.Content>
+//
+//         <Card.Content>
+//           Genres: {story.genres ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
+//         </Card.Content>
+//
+//         <Card.Content>
+//           Plots:  {story.plots ? story.plots.map((plot) => {
+//             let plotTitle = plot.title
+//             return (plotTitle
+//               .replace("Halloween", "🔪")
+//               .replace("Alien", "👽")
+//               .replace("The Matrix", "⏰")
+//               .replace("Star Wars", "🚀")
+//               .replace("E.T.", "📞")
+//               .replace("Terminator", "🤖")
+//               .replace("Die Hard", "🔫")
+//               .replace("Thelma and Louise", "🚘")
+//               .replace("Home Alone", "😂")
+//               .replace("Beauty and the Beast", "🦊")
+//               .replace("La Strada", "💔")
+//               .replace("The Piano", "💙")
+//             )
+//           }).join('   ') : 0}
+//         </Card.Content>
+//
+//         <Card.Content extra>
+//         <div className='ui two buttons'>
+//           <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`}
+//             >View</Button>
+//
+//           <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
+//             >Delete</Button>
+//         </div>
+//       </Card.Content>
+//
+//       </Card>
+//   </div>
+// )
 
 return (
   <div>
@@ -88,7 +90,7 @@ return (
     <Grid>
       <Grid.Row>
 
-        <Grid.Column width={10}>
+        <Grid.Column width={12}>
 
           {/* <all the switches within StoryPage, forms, show, index, etc.../> */}
 
@@ -104,7 +106,7 @@ return (
                 const story = props.stories.find( s => s.id === parseInt(match.params.id, 10))
                 return <StoryShow
                   story={story}
-                  image={props.image} //for now, then will change this... just want to see if i can show the image of a pizza...
+                  image={props.image}
                   handleDeleteStory={props.handleDeleteStory}
                   // want it to be able to send user to EditStoryForm
                 />
@@ -132,7 +134,7 @@ return (
             </Grid.Column>
 
 
-            <Grid.Column width={6}>
+            <Grid.Column width={4}>
             <br></br>
             <br></br>
             <br></br>
@@ -183,14 +185,14 @@ return (
     plots: 'story plots here',
     stories: [
       {
-        characters: 'story characters here',
+        characters: 'story characters StoryPage defaultProps',
         content: 'words words ----- word words words',
         genres: [{one_genre: 'story genres here'}],
         id: 'story ID here',
         paragraphs: 'story paragraphs here',
         plots: [{title: 'Halloween'}],
         title: 'title here',
-        user: 'user here'
+        user: {name: 'username here'}
     },
     ]
   }

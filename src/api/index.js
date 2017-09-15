@@ -1,5 +1,8 @@
-// const baseUrl = 'http://localhost:3000'
-const baseUrl = 'https://word-nerds-api.herokuapp.com'
+// for local server rails api:
+const baseUrl = 'http://localhost:3000'
+
+// for hosted heroku api:
+// const baseUrl = 'https://word-nerds-api.herokuapp.com'
 
 export function getStories() {
   return fetch(`${baseUrl}/stories`, {
@@ -15,6 +18,19 @@ export function getStories() {
 
 export function getUsers() {
   return fetch(`${baseUrl}/users`, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('jwt')
+    },
+    mode: 'cors',
+    method: 'GET',
+  })
+  .then (response => response.json() )
+}
+
+export function getCurrentUser() {
+  return fetch(`${baseUrl}/users/current_user`, {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -117,21 +133,6 @@ export function logIn(params) {
     body: JSON.stringify(params)
   }).then( res => res.json() )
 }
-
-// trying this to get current_user
-// export function getCurrentUser() {
-//   return fetch(`${baseUrl}/sign_in`, {
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//       'Authorization': localStorage.getItem('jwt')
-//     },
-//     mode: 'cors',
-//     method: 'GET',
-//   })
-//   .then (response => response.json() )
-// }
-// trying this to get current_user
 
 
 export function signUp(name, password) {

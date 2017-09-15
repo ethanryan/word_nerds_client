@@ -8,10 +8,7 @@ import { Link } from 'react-router-dom'
 class NavBar extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      activeItem: 'home',
-      current_user: this.props.current_user
-    }
+    this.state = {activeItem: 'home'}
   }
 
   handleItemClick = (event, { name }) => this.setState({ activeItem: name })
@@ -19,8 +16,8 @@ class NavBar extends Component {
   render() {
     const { activeItem } = this.state
 
-    console.log('NavBar state: ', this.state);
-    console.log('NavBar props: ', this.props);
+    // console.log('NavBar state: ', this.state);
+    // console.log('NavBar props: ', this.props);
 
     // let current_user = this.state.current_user
 
@@ -49,7 +46,7 @@ class NavBar extends Component {
           <Menu.Menu position='right'>
 
             <Menu.Item>
-              {`User: ${this.props.current_user}`}
+              {`User: ${this.props.current_user ? this.props.current_user : "current_user here"}`}
               {/* {`User: ${current_user}`} */}
             </Menu.Item>
 

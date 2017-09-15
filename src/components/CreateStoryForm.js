@@ -223,12 +223,14 @@ render() {
         <Form.Group>
           <Form.Field label="Hero Name" placeholder="HERO"
             autoFocus
-            width={6}
             control="input" type="text" key="heroName"
             onChange={this.handleHeroNameChange.bind(this)} />
 
-            <Form.Field
-              width={4}>
+          <Divider />
+
+          {/* <Form.Group unstackable widths={2}> */}
+          <Form.Group>
+            <Form.Field>
               <label>Hero Gender</label>
               <div onChange={this.handleHeroGenderChange.bind(this)}>
                 <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
@@ -236,8 +238,7 @@ render() {
               </div>
             </Form.Field>
 
-            <Form.Field
-              width={6}>
+            <Form.Field>
               <label>
                 <span role="img" aria-label="emoji">
                   {(this.state.hero.name !== 'HERO') ? this.state.hero.nerd : null}
@@ -248,7 +249,10 @@ render() {
                 gender: {this.state.hero.gender}
               </Form.Field>
             </Form.Group>
+          </Form.Group>
 
+
+            <Divider />
             <Divider />
 
             <Form.Group>

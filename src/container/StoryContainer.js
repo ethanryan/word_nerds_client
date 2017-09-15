@@ -28,7 +28,7 @@ class StoryContainer extends Component {
           plots: [{title: 'Halloween'}],
           title: 'title here',
           user: 'user here'
-      },
+      }
     ],
       // stories: [{title: 'title here', 'content': 'words words ----- word words words', genres: 'story genres here', plots: 'story plots here', user: 'user here'}],
       story: 'cool story here',
@@ -49,13 +49,13 @@ class StoryContainer extends Component {
 
     api.getUsers()
       .then (user => this.setState({
-        user: user
+        users: user
       }) )
 
-    // api.getCurrentUser()
-    //   .then (current_user => this.setState({
-    //     current_user: current_user
-    //   }) )
+    api.getCurrentUser()
+      .then (user => this.setState({
+        user: user.user
+      }) )
   }
 
   handleSubmit(characters) {
@@ -124,12 +124,12 @@ render() {
       <div>
         <NavBar
           title="Word Nerds"
-          current_user={this.state.user.name}
+          current_user={this.state.user ? this.state.user.name : "current_user here"}
           logout={this.logout.bind(this)}
         />
         <StoryPage
           //props for welcome
-          current_user={this.state.user.name}
+          // current_user={this.state.user.name}
 
           //props for CreateStoryForm
           handleSubmit={this.handleSubmit.bind(this)}
