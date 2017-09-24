@@ -64,6 +64,16 @@
   line-height: 1.1;
 }
 
+.CreateStoryForm-red :not(.genderRadio) .field {
+  padding-bottom: 5%;
+  background-color: lightblue;
+}
+
+.CreateStoryForm-red .field .genderRadio * {
+  margin-bottom: unset;
+  background-color: pink;
+}
+
 .LoginSignUp-divs {
   margin: 0 auto; /*this plus a width centers the divs*/
   margin-right: 200px;

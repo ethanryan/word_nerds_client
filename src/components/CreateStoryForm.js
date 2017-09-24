@@ -228,14 +228,14 @@ render() {
             onChange={this.handleHeroNameChange.bind(this)} />
 
 
-          <Divider />
-          <br></br>
+            <Divider />
+            <br></br>
 
             <Form.Field width={4}>
               <label>Hero Gender</label>
               <div onChange={this.handleHeroGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
-                <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
+                <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
+                <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
               </div>
             </Form.Field>
 
@@ -255,49 +255,6 @@ render() {
             <Divider />
             <Divider />
 
-            {/* trying this again to fix the formatting */}
-            {/* trying this again to fix the formatting */}
-            {/* trying this again to fix the formatting */}
-            {/* trying this again to fix the formatting */}
-            {/* trying this again to fix the formatting */}
-            {/* trying this again to fix the formatting */}
-            {/* trying this again to fix the formatting */}
-
-            <Form.Group width={8}>
-              <Form.Field label="Hero Name" placeholder="HERO"
-                width={6}
-                autoFocus
-                control="input" type="text" key="heroName"
-                onChange={this.handleHeroNameChange.bind(this)} />
-
-              <Divider />
-
-              {/* <Form.Group unstackable widths={2}> */}
-              <Form.Group>
-                <Form.Field width={8}>
-                  <label>Hero Gender</label>
-                  <div onChange={this.handleHeroGenderChange.bind(this)}>
-                    <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
-                    <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
-                  </div>
-                </Form.Field>
-
-                <Form.Field width={8}>
-                  <label>
-                    <span role="img" aria-label="emoji">
-                      {(this.state.hero.name !== 'HERO') ? this.state.hero.nerd : null}
-                    </span>  Hero Summary</label>
-
-                    name: {this.state.hero.name}
-                    <br></br>
-                    gender: {this.state.hero.gender}
-                  </Form.Field>
-                </Form.Group>
-              </Form.Group>
-
-
-                <Divider />
-                <Divider />
 
             <Form.Group>
               <Form.Field label="Shadow Name" placeholder="SHADOW"
@@ -305,14 +262,14 @@ render() {
                 control="input" type="text" key="shadowName"
                 onChange={this.handleShadowNameChange.bind(this)} />
 
-              <Form.Field
-                width={4}>
-                <label>Shadow Gender</label>
-                <div onChange={this.handleShadowGenderChange.bind(this)}>
-                  <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
-                  <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
-                </div>
-              </Form.Field>
+                <Form.Field
+                  width={4}>
+                  <label>Shadow Gender</label>
+                  <div onChange={this.handleShadowGenderChange.bind(this)}>
+                    <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
+                    <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
+                  </div>
+                </Form.Field>
 
                 <Form.Field
                   width={6}>
@@ -339,8 +296,8 @@ render() {
                       width={4}>
                       <label>Friend Gender</label>
                       <div onChange={this.handleFriendGenderChange.bind(this)}>
-                        <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
-                        <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
+                        <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
+                        <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
                       </div>
                     </Form.Field>
 
@@ -369,8 +326,8 @@ render() {
                           width={4}>
                           <label>Lover Gender</label>
                           <div onChange={this.handleLoverGenderChange.bind(this)}>
-                            <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
-                            <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
+                            <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
+                            <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
                           </div>
                         </Form.Field>
 
@@ -399,8 +356,8 @@ render() {
                               width={4}>
                               <label>Mentor Gender</label>
                               <div onChange={this.handleMentorGenderChange.bind(this)}>
-                                <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
-                                <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
+                                <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
+                                <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
                               </div>
                             </Form.Field>
 
@@ -429,8 +386,8 @@ render() {
                                   width={4}>
                                   <label>Trickster Gender</label>
                                   <div onChange={this.handleTricksterGenderChange.bind(this)}>
-                                    <Form.Field label="male" value="male" control="input" type="radio" name="alone1" />
-                                    <Form.Field label="female" value="female" control="input" type="radio" name="alone1" />
+                                    <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
+                                    <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
                                   </div>
                                 </Form.Field>
 
