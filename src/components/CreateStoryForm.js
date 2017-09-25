@@ -231,7 +231,7 @@ render() {
             <Divider />
             <br></br>
 
-            <Form.Field width={4}>
+            <Form.Field width={4} className="genderField">
               <label>Hero Gender</label>
               <div onChange={this.handleHeroGenderChange.bind(this)}>
                 <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />

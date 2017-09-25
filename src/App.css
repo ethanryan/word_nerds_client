@@ -64,13 +64,18 @@
   line-height: 1.1;
 }
 
-.CreateStoryForm-red :not(.genderRadio) .field {
+/*.CreateStoryForm-red :not(.genderRadio) .field {*/
+.CreateStoryForm-red .field {
   padding-bottom: 5%;
   background-color: lightblue;
 }
 
-.CreateStoryForm-red .field .genderRadio * {
-  margin-bottom: unset;
+.CreateStoryForm-red .genderField {
+  background-color: yellow;
+}
+
+.CreateStoryForm-red .genderRadio {
+  padding-bottom: 0px;
   background-color: pink;
 }
 
