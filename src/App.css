@@ -57,7 +57,11 @@
   border: 2px solid red;
   border-radius: 25px;
   background: white;
-  padding: 15px 0px 15px 25px;
+  /*padding: 15px 0px 15px 25px;*/
+  padding-top: 15px;
+  padding-right: 25px;
+  padding-bottom: 15px;
+  padding-left: 25px;
   margin: 5px 0px 5px 15px;
   /*top, right, bottom, left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
@@ -67,16 +71,25 @@
 /*.CreateStoryForm-red :not(.genderRadio) .field {*/
 .CreateStoryForm-red .field {
   padding-bottom: 5%;
-  background-color: lightblue;
+  /*background-color: lightblue;*/
 }
 
 .CreateStoryForm-red .genderField {
-  background-color: yellow;
+  /*background-color: yellow;*/
 }
 
 .CreateStoryForm-red .genderRadio {
   padding-bottom: 0px;
-  background-color: pink;
+  /*background-color: pink;*/
+}
+
+.CreateStoryForm-red .summaryField {
+  padding-left: 15px;
+  /*background-color: lightgray;*/
+}
+
+.CreateStoryForm-red .ui.form .fields .wide.field {
+  padding-left: 3%;
 }
 
 .LoginSignUp-divs {

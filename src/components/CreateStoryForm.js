@@ -227,10 +227,6 @@ render() {
             control="input" type="text" key="heroName"
             onChange={this.handleHeroNameChange.bind(this)} />
 
-
-            <Divider />
-            <br></br>
-
             <Form.Field width={4} className="genderField">
               <label>Hero Gender</label>
               <div onChange={this.handleHeroGenderChange.bind(this)}>
@@ -239,7 +235,7 @@ render() {
               </div>
             </Form.Field>
 
-            <Form.Field width={6}>
+            <Form.Field width={6} className="summaryField">
               <label>
                 <span role="img" aria-label="emoji">
                   {(this.state.hero.name !== 'HERO') ? this.state.hero.nerd : null}
@@ -252,7 +248,6 @@ render() {
             </Form.Group>
 
 
-            <Divider />
             <Divider />
 
 
@@ -272,7 +267,7 @@ render() {
                 </Form.Field>
 
                 <Form.Field
-                  width={6}>
+                  width={6} className="summaryField">
                   <label>
                     <span role="img" aria-label="emoji">
                       {(this.state.shadow.name !== 'SHADOW') ? this.state.shadow.nerd : null}
@@ -302,7 +297,7 @@ render() {
                     </Form.Field>
 
                     <Form.Field
-                      width={6}>
+                      width={6} className="summaryField">
                       <label>
                         <span role="img" aria-label="emoji">
                           {(this.state.friend.name !== 'FRIEND') ? this.state.friend.nerd : null}
@@ -332,7 +327,7 @@ render() {
                         </Form.Field>
 
                         <Form.Field
-                          width={6}>
+                          width={6} className="summaryField">
                           <label>
                             <span role="img" aria-label="emoji">
                               {(this.state.lover.name !== 'LOVER') ? this.state.lover.nerd : null}
@@ -362,7 +357,7 @@ render() {
                             </Form.Field>
 
                             <Form.Field
-                              width={6}>
+                              width={6} className="summaryField">
                               <label>
                                 <span role="img" aria-label="emoji">
                                   {(this.state.mentor.name !== 'MENTOR') ? this.state.mentor.nerd : null}
@@ -392,7 +387,7 @@ render() {
                                 </Form.Field>
 
                                 <Form.Field
-                                  width={6}>
+                                  width={6} className="summaryField">
                                   <label>
                                     <span role="img" aria-label="emoji">
                                       {(this.state.trickster.name !== 'TRICKSTER') ? this.state.trickster.nerd : null}
