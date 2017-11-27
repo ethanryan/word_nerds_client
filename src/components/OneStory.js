@@ -12,7 +12,7 @@ const OneStory = (props) => {
   // <div key={story.id} className="OneStory-orange">
   <div key={story.id}>
 
-  <Card fluid>
+    <Card fluid>
 
       <Card.Content>
         <Card.Header>
@@ -24,11 +24,37 @@ const OneStory = (props) => {
 
       <Card.Content>
         <Card.Meta>
-        Story ID: {story.id ? story.id : 0}
-        <br></br>
+          Story ID: {story.id ? story.id : 0}
+          <br></br>
 
-        Creator: {story.user ? story.user.name : "story.user.name here, from OneStory"}
-        <br></br>
+          Creator: {story.user ? story.user.name : "story.user.name here, from OneStory"}
+          <br></br>
+
+          Created: {story.id ? new Date(story.created_at).toLocaleString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+            timeZoneName: 'short'
+          }) : "story.created_at here, from OneStory"}
+          <br></br>
+
+          Updated: {story.id ? new Date(story.updated_at).toLocaleString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+            timeZoneName: 'short'
+          }) : "story.updated_at here, from OneStory"}
+          <br></br>
+
+          {/* Last Updated: {story.id ? story.updated_at : "story.updated_at here, from OneStory"} */}
 
           Word Count: {story.content ? story.content.split(' ').length : 0}
         </Card.Meta>
@@ -60,31 +86,31 @@ const OneStory = (props) => {
       </Card.Content>
 
       <Card.Content extra>
-      <div className='ui two buttons'>
-        <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`}
+        <div className='ui two buttons'>
+          <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`}
           >View</Button>
 
-        <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
-          >Delete</Button>
-      </div>
-    </Card.Content>
+          <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
+            >Delete</Button>
+          </div>
+        </Card.Content>
 
-    </Card>
+      </Card>
 
-    <br></br>
-    <br></br>
+      <br></br>
+      <br></br>
 
-</div>
-)
+    </div>
+  )
 
-return(
-  <div>
-    <ul>{ eachStory.reverse() }</ul>
+  return(
+    <div>
+      <ul>{ eachStory.reverse() }</ul>
 
-    <p>each story can be clicked, which renders it in the EditStoryForm</p>
+      <p>each story can be clicked, which renders it in the EditStoryForm</p>
 
-  </div>
-)
+    </div>
+  )
 
 }
 
