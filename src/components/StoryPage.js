@@ -16,7 +16,10 @@ import { Switch, Route } from 'react-router-dom'
 
 
 const StoryPage = (props) => {
-  console.log('StoryPage props: ', props);
+  // console.log('StoryPage props: ', props);
+
+
+
 
   // let size = 2
 
@@ -99,6 +102,7 @@ return (
             <Route exact path='/'
             render={() => <CreateStoryForm
               handleSubmit={props.handleSubmit}
+              user_id={props.user.id}
             />} />
 
             <Route
@@ -191,6 +195,7 @@ return (
     // image: 'story image here',
     genres: 'story genres here',
     plots: 'story plots here',
+    user_id: 'user_id here',
     stories: [
       {
         characters: 'story characters StoryPage defaultProps',

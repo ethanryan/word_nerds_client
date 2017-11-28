@@ -42,7 +42,7 @@ export function getCurrentUser() {
   .then (response => response.json() )
 }
 
-export function createStory(characters) {
+export function createStory(characters, user_id) { //adding user_id as argument -- ER Nov 2017
   return fetch(`${baseUrl}/stories`, {
     headers: {
       'Accept': 'application/json',
@@ -54,7 +54,7 @@ export function createStory(characters) {
     body: JSON.stringify({
       story: {
         title: characters.hero.name + "'s story, v1",
-        user_id: 1, //default for now <<------------------- change this!!!
+        user_id: user_id, //current user_id here instead of 1
         characters: [
           {
             name: characters.hero.name,
@@ -105,7 +105,7 @@ export function updateStory(updatedStory) {
       story: {
         content: updatedStory.input,
         title: updatedStory.title,
-        user_id: 1 //default for now <<------------------- change this!!!
+        user_id: updatedStory.user_id //story updated by its own user_id
       }
     }),
   }).then( res => res.json() )

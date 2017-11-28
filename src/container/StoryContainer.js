@@ -11,13 +11,10 @@ import StoryPage from '../components/StoryPage'
 import LoginSignUp from '../container/LoginSignUp'
 
 
-// import { Router, Route, Switch } from 'react-router'
-
 class StoryContainer extends Component {
   constructor() {
     super()
     this.state = {
-      // stories: [],
       stories: [
         {
           characters: 'story characters here',
@@ -28,13 +25,14 @@ class StoryContainer extends Component {
           plots: [{title: 'Halloween'}],
           title: 'title here',
           user: 'user here'
-      }
-    ],
-      // stories: [{title: 'title here', 'content': 'words words ----- word words words', genres: 'story genres here', plots: 'story plots here', user: 'user here'}],
+        }
+      ],
       story: 'cool story here',
       title: 'cool story title here',
-      user: 'user here',
-      // current_user: 'current_user here',
+      user: {
+        id: 'user_id here',
+        name: 'user_name here'
+      },
       image: '',
       genres: [],
       users: []
@@ -44,83 +42,82 @@ class StoryContainer extends Component {
 
   componentDidMount() {
     api.getStories()
-      .then( data => this.setState({
-        stories: data
-      }) )
+    .then( data => this.setState({
+      stories: data
+    }) )
 
     api.getUsers()
-      .then (user => this.setState({
-        users: user
-      }) )
+    .then (user => this.setState({
+      users: user
+    }) )
 
     api.getCurrentUser()
-      .then (user => this.setState({
-        user: user.user
-      }) )
+    .then (user => this.setState({
+      user: user.user
+    }) )
   }
 
-  handleSubmit(characters) {
-    api.createStory(characters)
-      .then( story => this.setState(
-          prevState => ({
-            stories: [...prevState.stories, story]
-          })
-        )
-      )
-
-    this.props.history.push(`/stories`) //redirect to all stories
-  }
-
-  handleUpdateStory(updatedStory) {
-    api.updateStory(updatedStory)
-      .then( response => this.setState({
-        stories: response //nasty nas
-      }) )
-
-    this.setState({
-      story: updatedStory.story,
-      title: updatedStory.title,
-    })
-    this.props.history.push(`/stories/${updatedStory.id}`) //redirect to all stories page
-  }
-
-  handleDeleteStory(id) {
-    if (window.confirm("Are you sure you want to delete this story? 😱😱😱 ")) {
-      api.deleteStory(id)
-        .then( () => {
-          this.setState( prevState => ({
-            stories: prevState.stories.filter( story => story.id !== id )
-          }) )
-        })
-    }
-    this.props.history.push('/stories') //redirect to all stories
-  }
-
-  handleLogin(params) {
-    api.logIn(params)
-      .then( resp => {
-        localStorage.setItem("jwt", resp.token)
-        this.setState({
-          user: resp.user
-        })
-        this.props.history.push('/')
+  handleSubmit(characters, user_id) { //adding user_id as argument -- ER Nov 2017
+    api.createStory(characters, user_id) //adding user_id as argument -- ER Nov 2017
+    .then( story => this.setState(
+      prevState => ({
+        stories: [...prevState.stories, story]
       })
-  }
+    )
+  )
+  this.props.history.push(`/stories`) //redirect to all stories
+}
 
-  logout() {
-    this.setState({
-      user: null
+handleUpdateStory(updatedStory) {
+  api.updateStory(updatedStory)
+  .then( response => this.setState({
+    stories: response //nasty nas
+  }) )
+
+  this.setState({
+    story: updatedStory.story,
+    title: updatedStory.title,
+  })
+  this.props.history.push(`/stories/${updatedStory.id}`) //redirect to all stories page
+}
+
+handleDeleteStory(id) {
+  if (window.confirm("Are you sure you want to delete this story? 😱😱😱 ")) {
+    api.deleteStory(id)
+    .then( () => {
+      this.setState( prevState => ({
+        stories: prevState.stories.filter( story => story.id !== id )
+      }) )
     })
-    localStorage.clear()
-    // console.log('logout', this.state.current_user);
   }
+  this.props.history.push('/stories') //redirect to all stories
+}
+
+handleLogin(params) {
+  api.logIn(params)
+  .then( resp => {
+    localStorage.setItem("jwt", resp.token)
+    this.setState({
+      user: resp.user
+    })
+    this.props.history.push('/')
+  })
+}
+
+logout() {
+  this.setState({
+    user: null
+  })
+  localStorage.clear()
+  // console.log('logout', this.state.current_user)
+}
 
 
 render() {
   if(localStorage.getItem('jwt')) {
-    // console.log('jwt: ', this.jwt);
-    // console.log('props from StoryContainer: ', this.props);
-    console.log('state from StoryContainer: ', this.state);
+    // console.log('jwt: ', this.jwt)
+    // console.log('props from StoryContainer: ', this.props)
+    console.log('state from StoryContainer: ', this.state)
     return(
       <div>
         <NavBar
@@ -129,9 +126,6 @@ render() {
           logout={this.logout.bind(this)}
         />
         <StoryPage
-          //props for welcome
-          // current_user={this.state.user.name}
-
           //props for CreateStoryForm
           handleSubmit={this.handleSubmit.bind(this)}
 
@@ -141,6 +135,7 @@ render() {
           story={this.state.story}
           title={this.state.title}
           image={this.state.image}
+          user={this.state.user}
 
           //props for AllStories
           stories={this.state.stories}

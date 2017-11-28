@@ -57,11 +57,6 @@ const StoryShow = (props) => {
 
               Story Creator: { props.story.user ? props.story.user.name : "name here" }
               <br></br>
-              (need to add authentication,<br></br>
-                log out 'bob',<br></br>
-                use JWT - JSON Web Tokens)
-
-              <br></br>
               <br></br>
 
 

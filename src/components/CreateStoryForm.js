@@ -6,10 +6,12 @@ import { Form, Header, Divider } from 'semantic-ui-react'
 class CreateStoryForm extends Component {
 
   constructor(props) {
-    // console.log('props from CreateStoryForm', props)
+    console.log('**** props from CreateStoryForm 1:', props)
     super(props)
+    console.log('**** props from CreateStoryForm 2:', props)
     this.state=({ //organizing this so it's not nested, but post request will be nested
     story: '',
+    //user_id: this.props.user_id, //need to set user_id here??? keep losing user_id on page reload
     hero: {
       name: 'HERO',
       gender: '',
@@ -45,6 +47,8 @@ class CreateStoryForm extends Component {
   })
   this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
 } //end of constructor
+
+
 
 // componentWillReceiveProps(props) { //need this lifecycle method to edit text in textarea
 //   this.setState({
@@ -202,8 +206,11 @@ handleCreateStoryFormSubmit(event) {
     mentor: this.state.mentor,
     trickster: this.state.trickster
   }
-  console.log('CreateStoryForm submitted: ', this.state.story)
-  this.props.handleSubmit( characters )
+  const user_id = this.props.user_id
+  
+  console.log('CreateStoryForm submitted: ', this.state)
+  console.log(`user_id is:`, user_id)
+  this.props.handleSubmit( characters, user_id )
   this.setState({story: ''}) //this clears form onSubmit
 }
 
@@ -219,6 +226,8 @@ render() {
         <Header as='h3' textAlign='center'>
           Create a Story
         </Header>
+
+        <h1>user_id: {this.props.user_id}</h1>
 
         <Form.Group>
           <Form.Field label="Hero Name" placeholder="HERO"
