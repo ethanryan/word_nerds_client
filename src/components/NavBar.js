@@ -24,7 +24,7 @@ class NavBar extends Component {
     return (
 
       <div>
-        <Menu inverted >
+        <Menu inverted>
 
           <Menu.Item
             as={Link} to="/"
@@ -38,6 +38,14 @@ class NavBar extends Component {
             as={Link} to="/stories"
             name='stories'
             active={activeItem === 'stories'}
+            color={'yellow'}
+            onClick={this.handleItemClick}
+          />
+
+          <Menu.Item
+            as={Link} to="/metadata"
+            name='metadata'
+            active={activeItem === 'metadata'}
             color={'yellow'}
             onClick={this.handleItemClick}
           />

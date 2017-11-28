@@ -5,12 +5,10 @@ import { Card, Button } from 'semantic-ui-react'
 
 const OneStory = (props) => {
 
-  // debugger
+  //debugger
   const eachStory = props.stories.map( (story) =>
 
-
-  // <div key={story.id} className="OneStory-orange">
-  <div key={story.id}>
+  <div key={story.id ? story.id : "story.id here"} className="OneStory-orange">
 
     <Card fluid>
 
@@ -24,37 +22,39 @@ const OneStory = (props) => {
 
       <Card.Content>
         <Card.Meta>
-          Story ID: {story.id ? story.id : 0}
-          <br></br>
+          <div>
+            Story ID: {story.id ? story.id : 0}
+          </div>
 
-          Creator: {story.user ? story.user.name : "story.user.name here, from OneStory"}
-          <br></br>
+          <div>
+            Creator: {story.user ? story.user.name : "story.user.name here, from OneStory"}
+          </div>
 
-          Created: {story.id ? new Date(story.created_at).toLocaleString('en-US', {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true,
-            timeZoneName: 'short'
-          }) : "story.created_at here, from OneStory"}
-          <br></br>
+          <div>
+            Created: {story.created_at ? new Date(story.created_at).toLocaleString('en-US', {
+              weekday: 'short',
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+              hour12: true,
+              timeZoneName: 'short'
+            }) : "story.created_at here, from OneStory"}
+          </div>
 
-          Updated: {story.id ? new Date(story.updated_at).toLocaleString('en-US', {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true,
-            timeZoneName: 'short'
-          }) : "story.updated_at here, from OneStory"}
-          <br></br>
-
-          {/* Last Updated: {story.id ? story.updated_at : "story.updated_at here, from OneStory"} */}
+          <div>
+            Updated: {story.updated_at ? new Date(story.updated_at).toLocaleString('en-US', {
+              weekday: 'short',
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+              hour12: true,
+              timeZoneName: 'short'
+            }) : "story.updated_at here, from OneStory"}
+          </div>
 
           Word Count: {story.content ? story.content.split(' ').length : 0}
         </Card.Meta>
@@ -97,15 +97,14 @@ const OneStory = (props) => {
 
       </Card>
 
-      <br></br>
-      <br></br>
-
     </div>
+
+
   )
 
   return(
     <div>
-      <ul>{ eachStory.reverse() }</ul>
+      <ul className="UL-no-padding center">{ eachStory.reverse() }</ul>
 
       <p>each story can be clicked, which renders it in the EditStoryForm</p>
 

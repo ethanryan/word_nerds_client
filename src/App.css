@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+.UL-no-padding {
+  padding: 0;
+}
+
+.center {
+  text-align: center;
+}
+
 .SideBar-blue {
   /*border: 2px solid blue;*/
   border-radius: 25px;
@@ -25,21 +33,41 @@
 }
 
 .OneStory-orange {
-  border: 1px solid orange;
-  border-radius: 10px;
-  background: white;
-  /*width: 95%;*/
-  margin: 20px 40px 55px 0px;
-  /*margin: top right bottom left*/
-  white-space: pre-wrap; /*this is to preserve line breaks added by users*/
+  margin-bottom: 55px;
+  /*white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
+
+.OneStory-forMetadata {
+  margin-bottom: 35px;
+}
+
+.summaryForMetadata-header {
+  background-color: azure;
+  color: purple;
+}
+
+.summaryForMetadata {
+  border: 15px solid gold;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
 
 .AllStories-green {
   border: 2px solid green;
   border-radius: 25px;
   background: white;
-  margin: 5px 0px 5px 15px;
-  padding: 0px 15px 0px 15px;
+  margin: 5px 15px 50px 15px;
+  padding: 0px 10%;
+  /*top right bottom left*/
+}
+
+.AllStoriesForMetadata-purple {
+  border: 2px solid purple;
+  border-radius: 25px;
+  background: white;
+  margin: 5px 15px 5px 15px;
+  padding: 0px 20%;
   /*top right bottom left*/
 }
 

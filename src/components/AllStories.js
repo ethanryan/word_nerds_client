@@ -7,15 +7,16 @@ const AllStories = (props) => {
 
   ///add scrollToTop function here
 
+  // console.log('hello from AllStories')
   return(
+
     <div key={props.id} className="AllStories-green">
 
       <OneStory
         handleDeleteStory={props.handleDeleteStory}
         stories={props.stories}
       />
-      <br></br>
-      <br></br>
+
       {/* <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> */}
 
 

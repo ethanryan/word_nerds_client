@@ -5,6 +5,7 @@ import nerdy from '../components/nerdy.gif'
 import CreateStoryForm from './CreateStoryForm'
 import EditStoryForm from './EditStoryForm'
 import AllStories from './AllStories'
+import Metadata from './Metadata'
 import StoryShow from './StoryShow'
 
 // import { Grid, Button, Card } from 'semantic-ui-react'
@@ -128,6 +129,13 @@ return (
                   render={() => <AllStories
                   handleDeleteStory={props.handleDeleteStory}
                   stories={props.stories}
+                />} />
+
+                <Route
+                  path='/metadata'
+                  render={() => <Metadata
+                  stories={props.stories}
+                  users={props.users}
                 />} />
 
               </Switch>

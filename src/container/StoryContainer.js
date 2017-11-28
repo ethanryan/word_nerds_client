@@ -36,7 +36,8 @@ class StoryContainer extends Component {
       user: 'user here',
       // current_user: 'current_user here',
       image: '',
-      genres: []
+      genres: [],
+      users: []
     }
   }
 
@@ -143,6 +144,7 @@ render() {
 
           //props for AllStories
           stories={this.state.stories}
+          users={this.state.users}
         />
       </div>
     )
