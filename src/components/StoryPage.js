@@ -19,75 +19,6 @@ const StoryPage = (props) => {
   // console.log('StoryPage props: ', props);
 
 
-
-
-  // let size = 2
-
-//   const SideBar = props.stories.map( (story) =>
-//
-//   <div key={story.id ? story.id : 0} className="EachStoryInSideBar-purple">
-//
-//     <Card fluid>
-//
-//         <Card.Content>
-//           <Card.Header>
-//             Story Title:
-//             <Link to={`/stories/${story.id}/edit`}> {story.title}</Link>
-//
-//           </Card.Header>
-//         </Card.Content>
-//
-//         <Card.Content>
-//           <Card.Meta>
-//           Story ID: {story.id ? story.id : 0}
-//           <br></br>
-//
-//           Creator: {story.user.name ? story.user.name : "name goes here"}
-//           <br></br>
-//
-//           Word Count: {story.content ? story.content.split(' ').length : 0}
-//           </Card.Meta>
-//
-//         </Card.Content>
-//
-//         <Card.Content>
-//           Genres: {story.genres ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
-//         </Card.Content>
-//
-//         <Card.Content>
-//           Plots:  {story.plots ? story.plots.map((plot) => {
-//             let plotTitle = plot.title
-//             return (plotTitle
-//               .replace("Halloween", "🔪")
-//               .replace("Alien", "👽")
-//               .replace("The Matrix", "⏰")
-//               .replace("Star Wars", "🚀")
-//               .replace("E.T.", "📞")
-//               .replace("Terminator", "🤖")
-//               .replace("Die Hard", "🔫")
-//               .replace("Thelma and Louise", "🚘")
-//               .replace("Home Alone", "😂")
-//               .replace("Beauty and the Beast", "🦊")
-//               .replace("La Strada", "💔")
-//               .replace("The Piano", "💙")
-//             )
-//           }).join('   ') : 0}
-//         </Card.Content>
-//
-//         <Card.Content extra>
-//         <div className='ui two buttons'>
-//           <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`}
-//             >View</Button>
-//
-//           <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
-//             >Delete</Button>
-//         </div>
-//       </Card.Content>
-//
-//       </Card>
-//   </div>
-// )
-
 return (
   <div>
 
@@ -102,7 +33,7 @@ return (
             <Route exact path='/'
             render={() => <CreateStoryForm
               handleSubmit={props.handleSubmit}
-              user_id={props.user.id}
+              user_id={props.user ? props.user.id : "props.user.id here"}
             />} />
 
             <Route
@@ -158,26 +89,6 @@ return (
 
             </Grid.Column>
 
-
-            {/* <Grid.Column width={6}>
-
-              <div className="SideBar-blue">
-
-                <div className="SideBar-header">
-                  <h2>Recent Stories</h2>
-                </div>
-
-                <ul>{ SideBar.reverse().slice(0, size) }</ul>
-
-              <div className="SideBar-button">
-                <Link to={'/stories'}>
-                <Button color='blue' compact>All Stories</Button>
-              </Link>
-              </div>
-
-              </div>
-
-            </Grid.Column> */}
 
           </Grid.Row>
         </Grid>
