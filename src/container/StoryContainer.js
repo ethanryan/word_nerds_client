@@ -94,6 +94,8 @@ handleDeleteStory(id) {
 }
 
 handleLogin(params) {
+  // if (window.confirm(`Are you sure you want to login??? params are: name: ${params.name}, password: ${params.password}`))
+  //*********** delete above line..... ****************
   api.logIn(params)
   .then( resp => {
     localStorage.setItem("jwt", resp.token)

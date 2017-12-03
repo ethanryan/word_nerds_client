@@ -6,9 +6,8 @@ import { Form, Header, Divider } from 'semantic-ui-react'
 class CreateStoryForm extends Component {
 
   constructor(props) {
-    console.log('**** props from CreateStoryForm 1:', props)
+    console.log('**** props from CreateStoryForm:', props)
     super(props)
-    console.log('**** props from CreateStoryForm 2:', props)
     this.state=({ //organizing this so it's not nested, but post request will be nested
     story: '',
     //user_id: this.props.user_id, //need to set user_id here??? keep losing user_id on page reload
@@ -207,7 +206,7 @@ handleCreateStoryFormSubmit(event) {
     trickster: this.state.trickster
   }
   const user_id = this.props.user_id
-  
+
   console.log('CreateStoryForm submitted: ', this.state)
   console.log(`user_id is:`, user_id)
   this.props.handleSubmit( characters, user_id )
