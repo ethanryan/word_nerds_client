@@ -16,6 +16,18 @@ export function getStories() {
   }).then( response => response.json() )
 }
 
+// export function getUserStories(user_id) { //////adddding thiiisssssssss
+//   return fetch(`${baseUrl}/users/user_stories`, {
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       'Authorization': localStorage.getItem('jwt')
+//     },
+//     mode: 'cors',
+//     method: 'GET',
+//   }).then( response => response.json() )
+// }
+
 export function getUsers() {
   return fetch(`${baseUrl}/users`, {
     headers: {
@@ -124,6 +136,7 @@ export function deleteStory(id) {
 }
 
 export function logIn(params) {
+  console.log('logIn function called');
   return fetch(`${baseUrl}/sign_in`, {
     headers: {
       'Accept': 'application/json',

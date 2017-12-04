@@ -46,6 +46,11 @@ class StoryContainer extends Component {
       stories: data
     }) )
 
+    // api.getUserStories(user_id) //adding this... ER Dec 2017
+    // .then( data => this.setState({
+    //   stories: data
+    // }) )
+
     api.getUsers()
     .then (user => this.setState({
       users: user

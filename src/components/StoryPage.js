@@ -64,6 +64,7 @@ return (
                   render={() => <AllStories
                   handleDeleteStory={props.handleDeleteStory}
                   stories={props.stories}
+                  username={props.user ? props.user.name : "props.user.name here"}
                 />} />
 
                 <Route

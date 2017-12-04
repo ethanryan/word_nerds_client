@@ -12,6 +12,9 @@ const AllStories = (props) => {
 
     <div key={props.id} className="AllStories-green">
 
+      <h1 className="center">{props.username}'s stories</h1>
+      {/* <h3 className="center">NUMBER OF stories by {props.username}</h3> */}
+
       <OneStory
         handleDeleteStory={props.handleDeleteStory}
         stories={props.stories}

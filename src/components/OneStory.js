@@ -5,6 +5,8 @@ import { Card, Button } from 'semantic-ui-react'
 
 const OneStory = (props) => {
 
+  // console.log(`OneStory props: `, props);
+
   //debugger
   const eachStory = props.stories.map( (story) =>
 
@@ -102,8 +104,10 @@ const OneStory = (props) => {
 
   )
 
+  console.log('hello from OneStory')
   return(
     <div>
+
       <ul className="UL-no-padding center">{ eachStory.reverse() }</ul>
 
       <p>each story can be clicked, which renders it in the EditStoryForm</p>
