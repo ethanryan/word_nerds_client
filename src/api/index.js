@@ -16,18 +16,6 @@ export function getStories() {
   }).then( response => response.json() )
 }
 
-// export function getUserStories(user_id) { //////adddding thiiisssssssss
-//   return fetch(`${baseUrl}/users/user_stories`, {
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//       'Authorization': localStorage.getItem('jwt')
-//     },
-//     mode: 'cors',
-//     method: 'GET',
-//   }).then( response => response.json() )
-// }
-
 export function getUsers() {
   return fetch(`${baseUrl}/users`, {
     headers: {

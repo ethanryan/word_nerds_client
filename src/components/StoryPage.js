@@ -19,108 +19,109 @@ const StoryPage = (props) => {
   // console.log('StoryPage props: ', props);
 
 
-return (
-  <div>
+  return (
+    <div>
 
-    <Grid>
-      <Grid.Row>
+      <Grid>
+        <Grid.Row>
 
-        <Grid.Column width={12}>
+          <Grid.Column width={12}>
 
-          {/* <all the switches within StoryPage, forms, show, index, etc.../> */}
+            {/* <all the switches within StoryPage, forms, show, index, etc.../> */}
 
-          <Switch>
-            <Route exact path='/'
-            render={() => <CreateStoryForm
-              handleSubmit={props.handleSubmit}
-              user_id={props.user ? props.user.id : "props.user.id here"}
-            />} />
-
-            <Route
-              exact path='/stories/:id'
-              render={({match}) => {
-                const story = props.stories.find( s => s.id === parseInt(match.params.id, 10))
-                return <StoryShow
-                  story={story}
-                  image={props.image}
-                  handleDeleteStory={props.handleDeleteStory}
-                  // want it to be able to send user to EditStoryForm
-                />
-              }} />
+            <Switch>
+              <Route exact path='/'
+              render={() => <CreateStoryForm
+                handleSubmit={props.handleSubmit}
+                user_id={props.user ? props.user.id : "props.user.id here"}
+              />} />
 
               <Route
-                path='/stories/:id/edit'
+                exact path='/stories/:id'
                 render={({match}) => {
                   const story = props.stories.find( s => s.id === parseInt(match.params.id, 10))
-                  return <EditStoryForm
+                  return <StoryShow
                     story={story}
-                    handleUpdateStory={props.handleUpdateStory}
+                    image={props.image}
                     handleDeleteStory={props.handleDeleteStory}
+                    // want it to be able to send user to EditStoryForm
                   />
                 }} />
-
+                
                 <Route
-                  path='/stories'
-                  render={() => <AllStories
-                  handleDeleteStory={props.handleDeleteStory}
-                  stories={props.stories}
-                  username={props.user ? props.user.name : "props.user.name here"}
-                />} />
+                  path='/stories/:id/edit'
+                  render={({match}) => {
+                    const story = props.stories.find( s => s.id === parseInt(match.params.id, 10))
+                    return <EditStoryForm
+                      story={story}
+                      handleUpdateStory={props.handleUpdateStory}
+                      handleDeleteStory={props.handleDeleteStory}
+                    />
+                  }} />
 
-                <Route
-                  path='/metadata'
-                  render={() => <Metadata
-                  stories={props.stories}
-                  users={props.users}
-                />} />
+                  <Route
+                    path='/stories'
+                    render={() => <AllStories
+                      handleDeleteStory={props.handleDeleteStory}
+                      stories={props.stories}
+                      username={props.user ? props.user.name : "props.user.name here"}
+                      user_id={props.user ? props.user.id : "props.user.id here"}
+                    />} />
 
-              </Switch>
-            </Grid.Column>
+                    <Route
+                      path='/metadata'
+                      render={() => <Metadata
+                        stories={props.stories}
+                        users={props.users}
+                      />} />
 
-
-            <Grid.Column width={4}>
-            <br></br>
-            <br></br>
-            <br></br>
-              <div className="nerdy">
-                <img src={nerdy} className="nerdy" alt="nerdy gif"/>
-
-                <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
-              </div>
-
-            </Grid.Column>
-
-
-          </Grid.Row>
-        </Grid>
-
-      </div>
-    )
-
-  } //end of StoryPage
-
-  //////
-
-  StoryPage.defaultProps = {
-    story: 'story content here', //need this so props aren't null
-    title: 'story title here',
-    // image: 'story image here',
-    genres: 'story genres here',
-    plots: 'story plots here',
-    user_id: 'user_id here',
-    stories: [
-      {
-        characters: 'story characters StoryPage defaultProps',
-        content: 'words words ----- word words words',
-        genres: [{one_genre: 'story genres here'}],
-        id: 'story ID here',
-        paragraphs: 'story paragraphs here',
-        plots: [{title: 'Halloween'}],
-        title: 'title here',
-        user: {name: 'username here'}
-    },
-    ]
-  }
+                    </Switch>
+                  </Grid.Column>
 
 
-  export default StoryPage
+                  <Grid.Column width={4}>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <div className="nerdy">
+                      <img src={nerdy} className="nerdy" alt="nerdy gif"/>
+
+                      <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
+                    </div>
+
+                  </Grid.Column>
+
+
+                </Grid.Row>
+              </Grid>
+
+            </div>
+          )
+
+        } //end of StoryPage
+
+        //////
+
+        StoryPage.defaultProps = {
+          story: 'story content here', //need this so props aren't null
+          title: 'story title here',
+          // image: 'story image here',
+          genres: 'story genres here',
+          plots: 'story plots here',
+          user_id: 'user_id here',
+          stories: [
+            {
+              characters: 'story characters StoryPage defaultProps',
+              content: 'words words ----- word words words',
+              genres: [{one_genre: 'story genres here'}],
+              id: 'story ID here',
+              paragraphs: 'story paragraphs here',
+              plots: [{title: 'Halloween'}],
+              title: 'title here',
+              user: {name: 'username here'}
+            },
+          ]
+        }
+
+
+        export default StoryPage

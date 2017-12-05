@@ -8,7 +8,11 @@ const OneStory = (props) => {
   // console.log(`OneStory props: `, props);
 
   //debugger
-  const eachStory = props.stories.map( (story) =>
+  //filtering stories by user_id... but should this be done via API instead??
+  const filteredStories = props.stories.filter(story => story.user_id === props.user_id)
+
+  // const eachStory = props.stories.map( (story) =>
+  const eachStory = filteredStories.map( (story) =>
 
   <div key={story.id ? story.id : "story.id here"} className="OneStory-orange">
 
@@ -105,6 +109,7 @@ const OneStory = (props) => {
   )
 
   console.log('hello from OneStory')
+  console.log('filteredStories.length is', filteredStories.length)
   return(
     <div>
 
