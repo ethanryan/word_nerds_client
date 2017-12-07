@@ -1,8 +1,8 @@
 // for local server rails api:
-// const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://localhost:3000'
 
 // for hosted heroku api:
-const baseUrl = 'https://word-nerds-api.herokuapp.com'
+// const baseUrl = 'https://word-nerds-api.herokuapp.com'
 
 export function getStories() {
   return fetch(`${baseUrl}/stories`, {
