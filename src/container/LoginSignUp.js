@@ -11,7 +11,7 @@ import { Switch, Route, Link } from 'react-router-dom'
 class LoginSignUp extends React.Component {
 
   render() {
-    console.log('LogInSignUp props', this.props)
+    // console.log('LogInSignUp props', this.props)
 
     return(
       <div>
