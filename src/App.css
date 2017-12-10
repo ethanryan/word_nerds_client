@@ -154,6 +154,18 @@
   /*top, right, bottom, left*/
 }
 
+form input.error {
+  border-color: red;
+}
+
+form span.error {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
 
 .NavBar-yellow {
   border: 2px solid gray;
