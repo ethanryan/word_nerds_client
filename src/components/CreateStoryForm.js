@@ -226,7 +226,7 @@ render() {
           Create a Story
         </Header>
 
-        <h1>user_id: {this.props.user_id}</h1>
+        {/* <h1>user_id: {this.props.user_id}</h1> */}
 
         <Form.Group>
           <Form.Field label="Hero Name" placeholder="HERO"
