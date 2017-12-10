@@ -136,7 +136,7 @@ export function logIn(params) {
 }
 
 
-export function signUp(name, password) {
+export function signUp(email, username, password) {
   return fetch(`${baseUrl}/users`, {
     method: 'POST',
     mode: 'cors',
@@ -146,7 +146,8 @@ export function signUp(name, password) {
     },
     body: JSON.stringify({
       user: {
-        name: name,
+        email_address: email, //this is email_address (not email)
+        name: username, //this is name (not username)
         password: password
       }
     })
