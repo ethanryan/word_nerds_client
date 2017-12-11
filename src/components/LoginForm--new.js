@@ -81,10 +81,6 @@ class LoginForm extends React.Component {
         <Form onSubmit={this.handleSubmit} className="LoginForm-orange">
 
         <h1 className="center-h1">Returning User - Login Form</h1>
-        {/* <Form.Field>
-        <span className={shouldMarkError('nameOrPassword') ? 'error' : 'hidden'}
-          >invalid username or password</span>
-        </Form.Field> */}
 
         <Form.Field>
           <label>Username</label>

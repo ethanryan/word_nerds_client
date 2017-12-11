@@ -91,8 +91,6 @@ class LoginForm extends React.Component {
         <h1 className="center-h1">Returning User - Login Form</h1>
 
         <Form.Field>
-        {/* <div className={shouldMarkError('nameOrPassword') ? 'error' : 'hidden'}
-          >Incorrect Username or Password.</div> */}
         <div className={this.state.nameOrPasswordError === true ? 'nameOrPasswordError' : 'hidden'}
           >Incorrect Username or Password.</div>
         </Form.Field>
