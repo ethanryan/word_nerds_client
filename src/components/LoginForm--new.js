@@ -53,11 +53,6 @@ class LoginForm extends React.Component {
       alert("Incorrect Username or Password.")
       return
     }
-    if (this.state.password !== "bob") { //fix this line <<<<<<<<<<<<
-      console.log("Incorrect Password!!!!!!!!")
-      alert("Incorrect Password.")
-      return
-    }
     this.props.handleLogin(this.state)
   }
 
