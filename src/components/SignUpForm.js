@@ -86,6 +86,7 @@ handleChange(prop, value) {
       <Form.Field>
         <label>Email Address</label>
         <input
+          id='emailAddressInput'
           className={shouldMarkError('email') ? 'error' : ''}
           placeholder='Email Address'
           autoFocus
@@ -100,6 +101,7 @@ handleChange(prop, value) {
         <Form.Field>
           <label>Username</label>
           <input
+            id='usernameInput'
             className={shouldMarkError('username') ? 'error' : ''}
             placeholder='Username'
             value={this.state.username}
@@ -114,6 +116,7 @@ handleChange(prop, value) {
         <Form.Field>
           <label>Password</label>
           <input
+            id='passwordInput'
             className={shouldMarkError('password') ? 'error' : ''}
             placeholder='Password'
             value={this.state.password}

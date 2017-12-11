@@ -50,9 +50,9 @@ describe ("clicks on 'Login' in Login | Sign Up", function() {
 describe ("enter username and login and submit form", function() {
   it("submits login form after entering username and password", function() {
     cy.visit(myApp)
-    cy.get('input:first').should('have.attr', 'placeholder', 'Username')
+    cy.get('#usernameInput').should('have.attr', 'placeholder', 'Username')
     .type('bob')
-    cy.get('input:last').should('have.attr', 'placeholder', 'Password')
+    cy.get('#passwordInput').should('have.attr', 'placeholder', 'Password')
     .type('bob')
     cy.get('form').submit()
     cy.get('.header').should('contain', 'Create a Story')
@@ -65,8 +65,10 @@ describe ("user can't submit login form without entering username and password",
     cy.visit(myApp)
     cy.contains('Login').click()
     cy.url().should('include', '/login')
-    cy.get('input:first').type('opps').clear() // clear out username
-    cy.get('input:last').type('opps').clear() // clear out password
+    cy.get('#usernameInput').should('have.attr', 'placeholder', 'Username')
+    .type('oops').clear() // clear out username
+    cy.get('#passwordInput').should('have.attr', 'placeholder', 'Password')
+    .type('oops').clear() // clear out password
     cy.get('form').submit()
     cy.get('.error').should('contain', 'invalid name')
   })
@@ -76,9 +78,9 @@ describe ("user can't submit login form without entering username and password",
 describe ("user can't submit login form without entering valid username and password", function() {
   it('displays form validation', function() {
     cy.visit(myApp)
-    cy.get('input:first').should('have.attr', 'placeholder', 'Username')
+    cy.get('#usernameInput').should('have.attr', 'placeholder', 'Username')
     .type('wrong')
-    cy.get('input:last').should('have.attr', 'placeholder', 'Password')
+    cy.get('#passwordInput').should('have.attr', 'placeholder', 'Password')
     .type('wrong')
     cy.get('form').submit()
     cy.get('.nameOrPasswordError').should('contain', 'Incorrect Username or Password.')
@@ -88,9 +90,9 @@ describe ("user can't submit login form without entering valid username and pass
 describe ("user can't submit login form without entering valid password for specific username", function() {
   it('displays form validation', function() {
     cy.visit(myApp)
-    cy.get('input:first').should('have.attr', 'placeholder', 'Username')
+    cy.get('#usernameInput').should('have.attr', 'placeholder', 'Username')
     .type('sammy')
-    cy.get('input:last').should('have.attr', 'placeholder', 'Password')
+    cy.get('#passwordInput').should('have.attr', 'placeholder', 'Password')
     .type('bob')
     cy.get('form').submit()
     cy.get('.nameOrPasswordError').should('contain', 'Incorrect Username or Password.')

@@ -98,6 +98,7 @@ class LoginForm extends React.Component {
         <Form.Field>
           <label>Username</label>
           <input
+            id='usernameInput'
             className={shouldMarkError('name') ? 'error' : ''}
             placeholder='Username'
             autoFocus
@@ -113,6 +114,7 @@ class LoginForm extends React.Component {
         <Form.Field>
           <label>Password</label>
           <input
+            id='passwordInput'
             className={shouldMarkError('password') ? 'error' : ''}
             placeholder='Password'
             value={this.state.password}
