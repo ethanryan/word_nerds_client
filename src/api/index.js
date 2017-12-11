@@ -124,7 +124,7 @@ export function deleteStory(id) {
 }
 
 export function logIn(params) {
-  console.log('logIn function called');
+  console.log('logIn function called with params: ', params);
   return fetch(`${baseUrl}/sign_in`, {
     headers: {
       'Accept': 'application/json',

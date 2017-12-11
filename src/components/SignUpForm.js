@@ -4,15 +4,6 @@ import { Form } from 'semantic-ui-react'
 
 import * as api from '../api'
 
-function validate(email, username, password) {
-  // true means invalid, so our conditions got reversed
-  return {
-    email: email.length === 0, //true if email is empty
-    username: username.length === 0, //true if username is empty
-    password: password.length === 0, //true if password is empty
-  };
-}
-
 class SignUp extends React.Component {
   constructor() {
     super();
@@ -26,6 +17,16 @@ class SignUp extends React.Component {
         username: false,
         password: false,
       },
+    };
+  }
+
+
+  validate(email, username, password) {
+    // true means invalid, so our conditions got reversed
+    return {
+      email: email.length === 0, //true if email is empty
+      username: username.length === 0, //true if username is empty
+      password: password.length === 0, //true if password is empty
     };
   }
 
@@ -59,13 +60,13 @@ handleChange(prop, value) {
   }
 
   canBeSubmitted() {
-    const errors = validate(this.state.email, this.state.username, this.state.password);
+    const errors = this.validate(this.state.email, this.state.username, this.state.password);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
     return !isDisabled;
   }
 
   render() {
-    const errors = validate(this.state.email, this.state.username, this.state.password);
+    const errors = this.validate(this.state.email, this.state.username, this.state.password);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
 
     const shouldMarkError = (field) => {

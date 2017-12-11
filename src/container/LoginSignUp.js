@@ -48,6 +48,7 @@ class LoginSignUp extends React.Component {
 
             <Route path='/'
               render={() => <LoginForm
+                users={this.props.users}
                 handleLogin={this.props.handleLogin}
               />} />
 

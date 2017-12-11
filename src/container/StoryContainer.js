@@ -156,7 +156,10 @@ render() {
       <div>
         <NavBarLoginSignUp />
 
-        <LoginSignUp handleLogin={this.handleLogin.bind(this)} />
+        <LoginSignUp
+          handleLogin={this.handleLogin.bind(this)}
+          users={this.state.users}
+        />
       </div>
     )
 

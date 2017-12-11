@@ -71,26 +71,9 @@ describe ("user can't submit login form without entering username and password",
     cy.visit(myApp)
     cy.contains('Login').click()
     cy.url().should('include', '/login')
-    // cy.get('input:first').should('have.attr', 'placeholder', 'Username')
-    // .type('gonna delete all these words in a second')
-    cy.get('input:first').clear() // clear out username
+    cy.get('input:first').type('opps').clear() // clear out username
+    cy.get('input:last').type('opps').clear() // clear out password
     cy.get('form').submit()
-    cy.get('#errors').should('contain', 'Username is required')
+    cy.get('.error').should('contain', 'invalid name')
   })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////
