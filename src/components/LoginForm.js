@@ -8,6 +8,7 @@ class LoginForm extends React.Component {
     this.state = {
       name: '',
       password: '',
+      nameOrPasswordError: false,
 
       touched: {
         name: false,
@@ -50,12 +51,14 @@ class LoginForm extends React.Component {
 
     if ( !names.includes(user) ) {
       console.log("Incorrect Username or Password!!!!!!!!")
-      alert("Incorrect Username or Password.")
+      // alert("Incorrect Username or Password.")
+      this.setState({nameOrPasswordError: true})
       return
     }
     if (this.state.password !== "bob") { //fix this line <<<<<<<<<<<<
       console.log("Incorrect Password!!!!!!!!")
-      alert("Incorrect Password.")
+      // alert("Incorrect Password.")
+      this.setState({nameOrPasswordError: true})
       return
     }
     this.props.handleLogin(this.state)
@@ -86,10 +89,13 @@ class LoginForm extends React.Component {
         <Form onSubmit={this.handleSubmit} className="LoginForm-orange">
 
         <h1 className="center-h1">Returning User - Login Form</h1>
-        {/* <Form.Field>
-        <span className={shouldMarkError('nameOrPassword') ? 'error' : 'hidden'}
-          >invalid username or password</span>
-        </Form.Field> */}
+
+        <Form.Field>
+        {/* <div className={shouldMarkError('nameOrPassword') ? 'error' : 'hidden'}
+          >Incorrect Username or Password.</div> */}
+        <div className={this.state.nameOrPasswordError === true ? 'nameOrPasswordError' : 'hidden'}
+          >Incorrect Username or Password.</div>
+        </Form.Field>
 
         <Form.Field>
           <label>Username</label>
