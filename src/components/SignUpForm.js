@@ -11,6 +11,7 @@ class SignUp extends React.Component {
       email: '',
       username: '',
       password: '',
+      usernameExistsError: false,
 
       touched: {
         email: false,
@@ -53,9 +54,24 @@ handleChange(prop, value) {
 
   handleSubmit(e) {
     e.preventDefault()
+    
+    var allUsers = this.props.users
+    var names = allUsers.map(function(eachUser) {return eachUser.name})
+    var username = this.state.username
+
+    console.log('names :', names)
+    console.log('username :', username)
+
+    if ( names.includes(username) ) {
+      console.log("username already taken")
+      this.setState({usernameExistsError: true})
+      return
+    }
+
     if ( !this.canBeSubmitted() ) {
       return //if the form can't be sumitted, return to the page
     }
+
     this.handleSignUp()
   }
 
@@ -82,6 +98,11 @@ handleChange(prop, value) {
       <Form onSubmit={ e => this.handleSubmit(e)} className='SignUpForm-blue'>
 
         <h1 className='center-h1'>New User - Sign Up Form</h1>
+
+        <Form.Field>
+        <div className={this.state.usernameExistsError === true ? 'usernameExistsError' : 'hidden'}
+          >Username already taken. Must have unique username.</div>
+        </Form.Field>
 
       <Form.Field>
         <label>Email Address</label>
