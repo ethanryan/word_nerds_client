@@ -7,44 +7,44 @@ describe ('visit app', function() {
   })
 })
 
-// describe ('check for the words', function() {
-//   it("checks for text, Word Nerds", function() {
-//     cy.visit(myApp)
-//     cy.contains("Word Nerds")
-//   })
-// })
+describe ('check for the words', function() {
+  it("checks for text, Word Nerds", function() {
+    cy.visit(myApp)
+    cy.contains("Word Nerds")
+  })
+})
 
-// describe ('clicks on Sign Up', function() {
-//   it("clicks on Sign Up", function() {
-//     cy.visit(myApp)
-//     cy.contains('Sign Up').click()
-//     cy.url().should('include', '/register')
-//   })
-// })
+describe ('clicks on Sign Up', function() {
+  it("clicks on Sign Up", function() {
+    cy.visit(myApp)
+    cy.contains('Sign Up').click()
+    cy.url().should('include', '/register')
+  })
+})
 
-// describe ('clicks on Login', function() {
-//   it("clicks on Login", function() {
-//     cy.visit(myApp)
-//     cy.contains('Login').click()
-//     cy.url().should('include', '/login')
-//   })
-// })
+describe ('clicks on Login', function() {
+  it("clicks on Login", function() {
+    cy.visit(myApp)
+    cy.contains('Login').click()
+    cy.url().should('include', '/login')
+  })
+})
 
-// describe ("clicks on 'Sign Up' in Login | Sign Up", function() {
-//   it("clicks on 'Sign Up' in Login | Sign Up", function() {
-//     cy.visit(myApp)
-//     cy.get('.hoverYellow').contains('Sign Up').click()
-//     cy.url().should('include', '/register')
-//   })
-// })
+describe ("clicks on 'Sign Up' in Login | Sign Up", function() {
+  it("clicks on 'Sign Up' in Login | Sign Up", function() {
+    cy.visit(myApp)
+    cy.get('.hoverYellow').contains('Sign Up').click()
+    cy.url().should('include', '/register')
+  })
+})
 
-// describe ("clicks on 'Login' in Login | Sign Up", function() {
-//   it("clicks on 'Login' in Login | Sign Up", function() {
-//     cy.visit(myApp)
-//     cy.get('.hoverYellow').contains('Login').click()
-//     cy.url().should('include', '/login')
-//   })
-// })
+describe ("clicks on 'Login' in Login | Sign Up", function() {
+  it("clicks on 'Login' in Login | Sign Up", function() {
+    cy.visit(myApp)
+    cy.get('.hoverYellow').contains('Login').click()
+    cy.url().should('include', '/login')
+  })
+})
 
 
 describe ("enter username and login and submit form", function() {
