@@ -35,7 +35,8 @@ class StoryContainer extends Component {
       },
       image: '',
       genres: [],
-      users: []
+      users: [],
+      nameOrPasswordError: false,
     }
   }
 
@@ -108,6 +109,24 @@ handleDeleteStory(id) {
 //   })
 // }
 
+handleLogin(params) {
+  this.setState({nameOrPasswordError: false}) //resetting the state
+  api.logIn(params) //calling logIn function in api/index.js
+  .then( resp => {
+    if(resp.user == null && resp.error != null) { //if user doesn't exist, or if there is an error...
+    this.setState({nameOrPasswordError: true}) //need to pass this down to LoginForm
+    console.log("response error")
+    return
+  }
+
+  localStorage.setItem("jwt", resp.token)
+  this.setState({
+    user: resp.user //this needs to be in StoryContainer
+  })
+  this.props.history.push('/')
+})
+}
+
 
 
 
@@ -158,7 +177,8 @@ render() {
         <NavBarLoginSignUp />
 
         <LoginSignUp
-          // handleLogin={this.handleLogin.bind(this)}
+          handleLogin={this.handleLogin.bind(this)}
+          nameOrPasswordError={this.state.nameOrPasswordError}
           users={this.state.users}
         />
       </div>

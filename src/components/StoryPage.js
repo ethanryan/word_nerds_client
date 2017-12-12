@@ -47,7 +47,7 @@ const StoryPage = (props) => {
                     // want it to be able to send user to EditStoryForm
                   />
                 }} />
-                
+
                 <Route
                   path='/stories/:id/edit'
                   render={({match}) => {
@@ -80,9 +80,7 @@ const StoryPage = (props) => {
 
 
                   <Grid.Column width={4}>
-                    <br></br>
-                    <br></br>
-                    <br></br>
+
                     <div className="nerdy">
                       <img src={nerdy} className="nerdy" alt="nerdy gif"/>
 

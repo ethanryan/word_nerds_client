@@ -1,18 +1,14 @@
 import React from 'react'
 
-import * as api from '../api'
-
-import { withRouter } from 'react-router-dom'
-
 import { Form } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    console.log('LoginForm props: ', props);
+    super(props)
     this.state = {
       name: '',
       password: '',
-      nameOrPasswordError: false,
 
       touched: {
         name: false,
@@ -42,32 +38,10 @@ class LoginForm extends React.Component {
     })
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault()
-  //   this.props.handleLogin(this.state)
-  // }
-
   handleSubmit(e) {
     console.log('hangleSubmit called from LoginForm')
-    //resetting the state
-    this.setState({nameOrPasswordError: false})
     e.preventDefault()
-    
-    let self = this
-    api.logIn(self.state) //calling logIn function in api/index.js
-    .then( resp => {
-      if(resp.user == null && resp.error != null) { //if user doesn't exist, or if there is an error...
-        self.setState({nameOrPasswordError: true})
-        console.log("response error")
-        return
-      }
-
-      localStorage.setItem("jwt", resp.token)
-      self.setState({
-        user: resp.user
-      })
-      self.props.history.push('/')
-    })
+    this.props.handleLogin(this.state) //passing state as parms to handleLogin in StoryContainer
   }
 
   canBeSubmitted() {
@@ -77,8 +51,8 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    console.log('LoginForm state: ', this.state)
-    console.log('LoginForm props: ', this.props)
+    // console.log('LoginForm state: ', this.state)
+    // console.log('LoginForm props: ', this.props)
 
     const errors = this.validate(this.state.name, this.state.password)
     const isDisabled = Object.keys(errors).some(x => errors[x])
@@ -97,7 +71,7 @@ class LoginForm extends React.Component {
         <h1 className="center-h1">Returning User - Login Form</h1>
 
         <Form.Field>
-        <div className={this.state.nameOrPasswordError === true ? 'nameOrPasswordError' : 'hidden'}
+        <div className={this.props.nameOrPasswordError === true ? 'nameOrPasswordError' : 'hidden'}
           >Incorrect Username or Password.</div>
         </Form.Field>
 
@@ -144,5 +118,4 @@ class LoginForm extends React.Component {
   }
 }
 
-
-export default withRouter(LoginForm)
+export default LoginForm

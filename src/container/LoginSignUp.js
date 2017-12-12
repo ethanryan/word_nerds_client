@@ -20,9 +20,7 @@ class LoginSignUp extends React.Component {
         <Grid.Row>
 
           <Grid.Column width={8}>
-          <br></br>
-          <br></br>
-          <br></br>
+
             <div className="nerdy">
               <img src={nerdy} className="nerdy" alt="nerdy gif"/>
 
@@ -49,7 +47,8 @@ class LoginSignUp extends React.Component {
             <Route path='/'
               render={() => <LoginForm
                 users={this.props.users}
-                // handleLogin={this.props.handleLogin}
+                handleLogin={this.props.handleLogin}
+                nameOrPasswordError={this.props.nameOrPasswordError}
               />} />
 
           </Switch>
