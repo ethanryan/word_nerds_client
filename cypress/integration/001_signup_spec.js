@@ -50,7 +50,7 @@ describe ("user can't submit signup form without entering unique username", func
     .type('bob')
 
     cy.get('#usernameInput').should('have.attr', 'placeholder', 'Username')
-    .type('wrong')
+    .type('bob')
 
     cy.get('#passwordInput').should('have.attr', 'placeholder', 'Password')
     .type('wrong')

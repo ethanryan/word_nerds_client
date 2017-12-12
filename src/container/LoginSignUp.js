@@ -11,7 +11,7 @@ import { Switch, Route, Link } from 'react-router-dom'
 class LoginSignUp extends React.Component {
 
   render() {
-    console.log('LogInSignUp props', this.props)
+    // console.log('LogInSignUp props', this.props)
 
     return(
       <div>
@@ -42,7 +42,7 @@ class LoginSignUp extends React.Component {
             <Route exact path='/register'
               render={() => <SignUpForm
                 users={this.props.users} //delete this after improving newUsername validation...
-                
+
                 handleSignUp={this.props.handleSignUp}
                 usernameExistsError={this.props.usernameExistsError}
               />} />

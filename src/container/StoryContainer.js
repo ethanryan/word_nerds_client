@@ -97,9 +97,6 @@ handleDeleteStory(id) {
 }
 
 
-
-
-////////////trying to put this here.........
 handleSignUp(params) {
   console.log('handleSignUp called with params: ', params)
   api.signUp(params)
@@ -110,12 +107,6 @@ handleSignUp(params) {
       console.log("resp.error from handleSignUp: ", resp.error)
       return
     }
-    if ( this.state.users.includes(params.username) ) {
-      console.log("username already taken!!!!!!")
-      this.setState({usernameExistsError: true})
-      return
-    }
-
     localStorage.setItem('jwt', resp.token)
     this.setState({
       user: resp.user
@@ -135,7 +126,6 @@ handleLogin(params) {
     console.log("response error")
     return
   }
-
   localStorage.setItem("jwt", resp.token)
   this.setState({
     user: resp.user //this needs to be in StoryContainer
@@ -161,7 +151,7 @@ render() {
     // console.log('jwt: ', this.jwt)
     // console.log('props from StoryContainer: ', this.props)
     console.log('state from StoryContainer: ', this.state)
-    console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
+    // console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
     return(
       <div>
         <NavBar
@@ -190,7 +180,7 @@ render() {
   }
   else {
     console.log('state from StoryContainer: ', this.state)
-    console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
+    // console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
     return(
       <div>
         <NavBarLoginSignUp />

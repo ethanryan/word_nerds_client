@@ -4,7 +4,7 @@ import { Form } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
   constructor(props) {
-    console.log('LoginForm props: ', props);
+    // console.log('LoginForm props: ', props);
     super(props)
     this.state = {
       name: '',
