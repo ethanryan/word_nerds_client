@@ -41,12 +41,14 @@ class LoginSignUp extends React.Component {
 
             <Route exact path='/register'
               render={() => <SignUpForm
-                users={this.props.users}
+                users={this.props.users} //delete this after improving newUsername validation...
+                
+                handleSignUp={this.props.handleSignUp}
+                usernameExistsError={this.props.usernameExistsError}
               />} />
 
             <Route path='/'
               render={() => <LoginForm
-                users={this.props.users}
                 handleLogin={this.props.handleLogin}
                 nameOrPasswordError={this.props.nameOrPasswordError}
               />} />

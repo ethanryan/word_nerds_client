@@ -136,7 +136,8 @@ export function logIn(params) {
 }
 
 
-export function signUp(email, username, password) {
+export function signUp(params) {
+  console.log('signUp function called with params: ', params);
   return fetch(`${baseUrl}/users`, {
     method: 'POST',
     mode: 'cors',
@@ -146,9 +147,9 @@ export function signUp(email, username, password) {
     },
     body: JSON.stringify({
       user: {
-        email_address: email, //this is email_address (not email)
-        name: username, //this is name (not username)
-        password: password
+        email_address: params.email, //this is email_address on backend (not email)
+        name: params.username, //this is name on backend (not username)
+        password: params.password
       }
     })
   }).then( res => res.json() )

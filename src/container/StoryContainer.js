@@ -37,6 +37,7 @@ class StoryContainer extends Component {
       genres: [],
       users: [],
       nameOrPasswordError: false,
+      usernameExistsError: false,
     }
   }
 
@@ -57,6 +58,7 @@ class StoryContainer extends Component {
       user: user.user
     }) )
   }
+
 
   handleSubmit(characters, user_id) { //adding user_id as argument -- ER Nov 2017
     api.createStory(characters, user_id) //adding user_id as argument -- ER Nov 2017
@@ -94,22 +96,37 @@ handleDeleteStory(id) {
   this.props.history.push('/stories') //redirect to all stories
 }
 
-//want this function here or in LoginForm??? ----->>>>>?????
-// handleLogin(params) {
-//   // if (window.confirm(`Are you sure you want to login??? params are: name: ${params.name}, password: ${params.password}`))
-//   //*********** delete above line..... ****************
-//   api.logIn(params)
-//   .then( resp => {
-//     if(resp.error !== null)
-//     localStorage.setItem("jwt", resp.token)
-//     this.setState({
-//       user: resp.user
-//     })
-//     this.props.history.push('/')
-//   })
-// }
+
+
+
+////////////trying to put this here.........
+handleSignUp(params) {
+  console.log('handleSignUp called with params: ', params)
+  api.signUp(params)
+  .then(resp => {
+    if(resp.error != null) { //if user already exists, or if there is an error...
+      this.setState({usernameExistsError: true})
+      console.log("response error from handleSignUp")
+      console.log("resp.error from handleSignUp: ", resp.error)
+      return
+    }
+    if ( this.state.users.includes(params.username) ) {
+      console.log("username already taken!!!!!!")
+      this.setState({usernameExistsError: true})
+      return
+    }
+
+    localStorage.setItem('jwt', resp.token)
+    this.setState({
+      user: resp.user
+    })
+    this.props.history.push('/')
+  })
+}
+
 
 handleLogin(params) {
+  // if (window.confirm(`Are you sure you want to login??? params are: name: ${params.name}, password: ${params.password}`))
   this.setState({nameOrPasswordError: false}) //resetting the state
   api.logIn(params) //calling logIn function in api/index.js
   .then( resp => {
@@ -144,6 +161,7 @@ render() {
     // console.log('jwt: ', this.jwt)
     // console.log('props from StoryContainer: ', this.props)
     console.log('state from StoryContainer: ', this.state)
+    console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
     return(
       <div>
         <NavBar
@@ -172,13 +190,16 @@ render() {
   }
   else {
     console.log('state from StoryContainer: ', this.state)
+    console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
     return(
       <div>
         <NavBarLoginSignUp />
 
         <LoginSignUp
           handleLogin={this.handleLogin.bind(this)}
+          handleSignUp={this.handleSignUp.bind(this)}
           nameOrPasswordError={this.state.nameOrPasswordError}
+          usernameExistsError={this.state.usernameExistsError}
           users={this.state.users}
         />
       </div>

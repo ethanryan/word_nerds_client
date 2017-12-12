@@ -1,24 +1,22 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+
 import { Form } from 'semantic-ui-react'
 
-import * as api from '../api'
-
 class SignUp extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props)
     this.state = {
       email: '',
       username: '',
       password: '',
-      usernameExistsError: false,
 
       touched: {
         email: false,
         username: false,
         password: false,
       },
-    };
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 
@@ -31,19 +29,11 @@ class SignUp extends React.Component {
     };
   }
 
-  handleSignUp() {
-    api.signUp(this.state.email, this.state.username, this.state.password) //add email here!!!!! <<<<<<-----!!!!
-      .then(res => {
-        localStorage.setItem('jwt', res.token)
-        this.props.history.push('/')
-      })
+  handleChange(prop, value) {
+    this.setState({
+      [prop]: value
+    })
   }
-
-handleChange(prop, value) {
-  this.setState({
-    [prop]: value
-  })
-}
 
 
   handleBlur = (field) => (evt) => {
@@ -53,54 +43,41 @@ handleChange(prop, value) {
   }
 
   handleSubmit(e) {
+    console.log('handleSubmit called from SignUpForm')
     e.preventDefault()
-    
-    var allUsers = this.props.users
-    var names = allUsers.map(function(eachUser) {return eachUser.name})
-    var username = this.state.username
-
-    console.log('names :', names)
-    console.log('username :', username)
-
-    if ( names.includes(username) ) {
-      console.log("username already taken")
-      this.setState({usernameExistsError: true})
-      return
-    }
-
     if ( !this.canBeSubmitted() ) {
-      return //if the form can't be sumitted, return to the page
+      return //if the form can't be submitted, return to the page
     }
-
-    this.handleSignUp()
+    this.props.handleSignUp(this.state) //passing state as parms to handleSignUp in StoryContainer
   }
 
   canBeSubmitted() {
-    const errors = this.validate(this.state.email, this.state.username, this.state.password);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
+    const errors = this.validate(this.state.email, this.state.username, this.state.password)
+    const isDisabled = Object.keys(errors).some(x => errors[x])
+    return !isDisabled
   }
 
   render() {
-    const errors = this.validate(this.state.email, this.state.username, this.state.password);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    // console.log('props from SignUpForm: ', this.props)
+    // console.log('state from SignUpForm: ', this.state)
+    const errors = this.validate(this.state.email, this.state.username, this.state.password)
+    const isDisabled = Object.keys(errors).some(x => errors[x])
 
     const shouldMarkError = (field) => {
-      const hasError = errors[field];
-      const shouldShow = this.state.touched[field];
-
-      return hasError ? shouldShow : false;
-    };
+      const hasError = errors[field]
+      const shouldShow = this.state.touched[field]
+      return hasError ? shouldShow : false
+    }
 
     return (
       <div className='LoginSignUp-divs'>
 
-      <Form onSubmit={ e => this.handleSubmit(e)} className='SignUpForm-blue'>
+      <Form onSubmit={this.handleSubmit} className='SignUpForm-blue'>
 
         <h1 className='center-h1'>New User - Sign Up Form</h1>
 
         <Form.Field>
-        <div className={this.state.usernameExistsError === true ? 'usernameExistsError' : 'hidden'}
+        <div className={this.props.usernameExistsError === true ? 'usernameExistsError' : 'hidden'}
           >Username already taken. Must have unique username.</div>
         </Form.Field>
 
@@ -160,5 +137,4 @@ handleChange(prop, value) {
   }
 }
 
-
-export default withRouter(SignUp)
+export default SignUp
