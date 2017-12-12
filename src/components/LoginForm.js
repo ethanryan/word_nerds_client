@@ -1,5 +1,9 @@
 import React from 'react'
 
+import * as api from '../api'
+
+import { withRouter } from 'react-router-dom'
+
 import { Form } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
@@ -38,30 +42,32 @@ class LoginForm extends React.Component {
     })
   }
 
+  // handleSubmit(e) {
+  //   e.preventDefault()
+  //   this.props.handleLogin(this.state)
+  // }
+
   handleSubmit(e) {
     console.log('hangleSubmit called from LoginForm')
+    //resetting the state
+    this.setState({nameOrPasswordError: false})
     e.preventDefault()
+    
+    let self = this
+    api.logIn(self.state) //calling logIn function in api/index.js
+    .then( resp => {
+      if(resp.user == null && resp.error != null) { //if user doesn't exist, or if there is an error...
+        self.setState({nameOrPasswordError: true})
+        console.log("response error")
+        return
+      }
 
-    var allUsers = this.props.users
-    var names = allUsers.map(function(eachUser) {return eachUser.name})
-    var user = this.state.name
-
-    console.log('names :', names)
-    console.log('user :', user)
-
-    if ( !names.includes(user) ) {
-      console.log("Incorrect Username or Password!!!!!!!!")
-      // alert("Incorrect Username or Password.")
-      this.setState({nameOrPasswordError: true})
-      return
-    }
-    if (this.state.password !== "bob") { //fix this line <<<<<<<<<<<<
-      console.log("Incorrect Password!!!!!!!!")
-      // alert("Incorrect Password.")
-      this.setState({nameOrPasswordError: true})
-      return
-    }
-    this.props.handleLogin(this.state)
+      localStorage.setItem("jwt", resp.token)
+      self.setState({
+        user: resp.user
+      })
+      self.props.history.push('/')
+    })
   }
 
   canBeSubmitted() {
@@ -139,4 +145,4 @@ class LoginForm extends React.Component {
 }
 
 
-export default LoginForm
+export default withRouter(LoginForm)

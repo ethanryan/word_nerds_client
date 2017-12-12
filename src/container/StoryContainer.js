@@ -93,18 +93,23 @@ handleDeleteStory(id) {
   this.props.history.push('/stories') //redirect to all stories
 }
 
-handleLogin(params) {
-  // if (window.confirm(`Are you sure you want to login??? params are: name: ${params.name}, password: ${params.password}`))
-  //*********** delete above line..... ****************
-  api.logIn(params)
-  .then( resp => {
-    localStorage.setItem("jwt", resp.token)
-    this.setState({
-      user: resp.user
-    })
-    this.props.history.push('/')
-  })
-}
+//want this function here or in LoginForm??? ----->>>>>?????
+// handleLogin(params) {
+//   // if (window.confirm(`Are you sure you want to login??? params are: name: ${params.name}, password: ${params.password}`))
+//   //*********** delete above line..... ****************
+//   api.logIn(params)
+//   .then( resp => {
+//     if(resp.error !== null)
+//     localStorage.setItem("jwt", resp.token)
+//     this.setState({
+//       user: resp.user
+//     })
+//     this.props.history.push('/')
+//   })
+// }
+
+
+
 
 logout() {
   this.setState({
@@ -153,7 +158,7 @@ render() {
         <NavBarLoginSignUp />
 
         <LoginSignUp
-          handleLogin={this.handleLogin.bind(this)}
+          // handleLogin={this.handleLogin.bind(this)}
           users={this.state.users}
         />
       </div>
