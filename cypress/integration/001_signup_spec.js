@@ -21,7 +21,7 @@ describe ("clicks on 'Sign Up' in Login | Sign Up", function() {
 
 
 describe ("user can't submit signup form without entering email_address, username, and password", function() {
-  it('displays form validation', function() {
+  it('displays errors when input fields are empty', function() {
     cy.visit(myApp)
     cy.contains('Sign Up').click()
     cy.url().should('include', '/register')
@@ -41,7 +41,7 @@ describe ("user can't submit signup form without entering email_address, usernam
 
 
 describe ("user can't submit signup form without entering unique username", function() {
-  it('displays form validation', function() {
+  it('displays errors when username is not unique', function() {
     cy.visit(myApp)
     cy.get('.hoverYellow').contains('Sign Up').click()
     cy.url().should('include', '/register')
@@ -54,7 +54,7 @@ describe ("user can't submit signup form without entering unique username", func
 
     cy.get('#passwordInput').should('have.attr', 'placeholder', 'Password')
     .type('wrong')
-    
+
     cy.get('form').submit()
     cy.get('.usernameExistsError').should('contain', 'Username already taken. Must have unique username.')
   })
