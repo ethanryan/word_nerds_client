@@ -7,7 +7,7 @@ describe ('visit app', function() {
   })
 })
 
-describe ('check for the words', function() {
+describe ('check for the words on homepage', function() {
   it("checks for text, Word Nerds", function() {
     cy.visit(myApp)
     cy.contains("Word Nerds")
@@ -61,7 +61,7 @@ describe ("enter username and login and submit form", function() {
 
 
 describe ("user can't submit login form without entering username and password", function() {
-  it('displays form validation', function() {
+  it('displays invalid name error', function() {
     cy.visit(myApp)
     cy.contains('Login').click()
     cy.url().should('include', '/login')
@@ -76,19 +76,19 @@ describe ("user can't submit login form without entering username and password",
 
 
 describe ("user can't submit login form without entering valid username and password", function() {
-  it('displays form validation', function() {
+  it('displays nameOrPasswordError when user does not exist', function() {
     cy.visit(myApp)
     cy.get('#usernameInput').should('have.attr', 'placeholder', 'Username')
-    .type('wrong')
+    .type('wrong username')
     cy.get('#passwordInput').should('have.attr', 'placeholder', 'Password')
-    .type('wrong')
+    .type('wrong password')
     cy.get('form').submit()
     cy.get('.nameOrPasswordError').should('contain', 'Incorrect Username or Password.')
   })
 })
 
 describe ("user can't submit login form without entering valid password for specific username", function() {
-  it('displays form validation', function() {
+  it('displays nameOrPasswordError error when user enters wrong password', function() {
     cy.visit(myApp)
     cy.get('#usernameInput').should('have.attr', 'placeholder', 'Username')
     .type('sammy')
