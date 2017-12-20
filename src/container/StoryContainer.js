@@ -34,6 +34,7 @@ class StoryContainer extends Component {
         name: 'user_name here'
       },
       image: '',
+      plots: [],
       genres: [],
       users: [],
       nameOrPasswordError: false,
@@ -46,6 +47,11 @@ class StoryContainer extends Component {
     api.getStories()
     .then( data => this.setState({
       stories: data
+    }) )
+
+    api.getPlots()
+    .then( data => this.setState({
+      plots: data
     }) )
 
     api.getUsers()
@@ -173,6 +179,7 @@ render() {
 
           //props for AllStories
           stories={this.state.stories}
+          plots={this.state.plots}
           users={this.state.users}
         />
       </div>

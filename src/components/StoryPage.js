@@ -72,6 +72,7 @@ const StoryPage = (props) => {
                       path='/metadata'
                       render={() => <Metadata
                         stories={props.stories}
+                        plots={props.plots}
                         users={props.users}
                       />} />
 

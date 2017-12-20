@@ -13,6 +13,7 @@ const Metadata = (props) => {
 
       <SummaryForMetadata
         stories={props.stories}
+        plots={props.plots}
         users={props.users}
       />
 

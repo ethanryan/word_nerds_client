@@ -25,6 +25,12 @@ const SummaryForMetadata = (props) => {
               Total users in database: {props.users.length}
             </h2>
           </Card.Content>
+
+          <Card.Content>
+            <h2>
+              Total plots in database: {props.plots.length}
+            </h2>
+          </Card.Content>
         </Card>
       </div>
 
