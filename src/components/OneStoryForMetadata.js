@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 import React from 'react'
 
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 
 class OneStoryForMetadata extends React.Component {
   constructor(props) {
@@ -37,10 +37,10 @@ class OneStoryForMetadata extends React.Component {
 
     const { column, data, direction } = this.state
 
-    const storyObjectArray = this.props.stories
+    // const storyObjectArray = this.props.stories
 
-    console.log('in OneStoryForMetadata, storyObjectArray is: ', storyObjectArray)
-    console.log('in OneStoryForMetadata, this.state.data is: ', this.state.data)
+    // console.log('in OneStoryForMetadata, storyObjectArray is: ', storyObjectArray)
+    // console.log('in OneStoryForMetadata, this.state.data is: ', this.state.data)
 
     return(
 
