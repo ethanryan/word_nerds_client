@@ -10,6 +10,12 @@
   text-align: center;
 }
 
+.aboutWordNerds {
+  margin-top: 25px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 .nameOrPasswordError {
   text-align: center;
   color: red;

@@ -25,6 +25,20 @@ class LoginSignUp extends React.Component {
               <img src={nerdy} className="nerdy" alt="nerdy gif"/>
 
               <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
+
+            </div>
+
+            <div className="aboutWordNerds">
+              <p>
+                Word Nerds is a short story generator that creates a unique, 500-word short story with the click of a button.
+              </p>
+              <p>
+                Like Mad Libs, or like an exquisite corpse, your story won't always make logical sense, but it'll always be entertaining.
+                And it'll be a decent first draft, giving you plenty of text to edit.
+              </p>
+              <p>
+                Everyone has a story to tell. Start telling yours today.
+              </p>
             </div>
 
           </Grid.Column>
