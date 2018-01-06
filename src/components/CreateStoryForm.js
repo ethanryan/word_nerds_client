@@ -55,12 +55,6 @@ class CreateStoryForm extends Component {
 
 
 
-// componentWillReceiveProps(props) { //need this lifecycle method to edit text in textarea
-//   this.setState({
-//     story: props.story
-//   })
-// }
-
 handleCharacterInputChange(event) {
   //abstract each character, so just one function
 }
@@ -248,7 +242,25 @@ handleCreateStoryFormSubmit(event) {
 }
 
 
+
 render() {
+
+  var horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
+
+  console.log('horrorPlots.length is: ', horrorPlots.length)
+
+  function filteredPlotsByGenre(genreSelection) {
+    //const result = words.filter(word => word.length > 6);
+
+    //argument above will be this.state.genreSelection, a string
+    //need to convert it to enum... ex if "horror", make it number 1
+    //then filter below by that number, and return the resulting array's length
+    //call this function
+    const filteredGenre = this.props.plots.filter(plotObject => plotObject === 1)
+    //const horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
+    //var above will be an array... need to return the length
+    return filteredGenre.length
+  }
 
   return(
 
@@ -299,6 +311,18 @@ render() {
 
         <Header as='h3' textAlign='center'>
           You chose: {this.state.genreSelection}
+          <br></br>
+          Total plots in database: {this.props.plots.length}
+          <br></br>
+
+          {/* Total number of horror plots: { horrorPlots.length } */}
+          <br></br>
+
+          Total number of {this.state.genreSelection} plots: { filteredPlotsByGenre(this.state.genreSelection) }
+          <br></br>
+
+          {this.state.genreSelection} plots in database: {this.props.plots.length}
+          <br></br>
         </Header>
 
 

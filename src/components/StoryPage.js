@@ -34,6 +34,7 @@ const StoryPage = (props) => {
               render={() => <CreateStoryForm
                 handleSubmit={props.handleSubmit}
                 user_id={props.user ? props.user.id : "props.user.id here"}
+                plots={props.plots}
               />} />
 
               <Route
