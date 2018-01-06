@@ -42,6 +42,10 @@ class CreateStoryForm extends Component {
       nerd: ''
     },
     genres: ['random'],
+
+    thisOrThat: 'abc', //default... ok to set default for controlled component in state?
+    selectors: '',
+
     nerd: <span role="img" aria-label="emoji">🤓</span>
   })
   this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
@@ -58,6 +62,16 @@ class CreateStoryForm extends Component {
 handleCharacterInputChange(event) {
   //abstract each character, so just one function
 }
+
+handleThisOrThatChange(event) {
+  const thisOrThat = event.target.value
+  //console.log(event.target.value)
+  console.log('thisOrThat is: ', thisOrThat)
+  this.setState({
+    thisOrThat: thisOrThat,
+    })
+}
+
 
 
 handleHeroNameChange(event) {
@@ -208,7 +222,7 @@ handleCreateStoryFormSubmit(event) {
   const user_id = this.props.user_id
 
   console.log('CreateStoryForm submitted: ', this.state)
-  console.log(`user_id is:`, user_id)
+  console.log('user_id is: ', user_id)
   this.props.handleSubmit( characters, user_id )
   this.setState({story: ''}) //this clears form onSubmit
 }
@@ -228,6 +242,68 @@ render() {
 
         {/* <h1>user_id: {this.props.user_id}</h1> */}
 
+        <Header as='h4' textAlign='center'>
+          Example radios and checkboxes
+        </Header>
+
+        <Form.Group grouped>
+          <label>HTML radios</label>
+          <Form.Field label='This one - abc'
+            value="abc"
+            control='input' type='radio'
+            checked={this.state.thisOrThat === 'abc'}
+            onChange={this.handleThisOrThatChange.bind(this)}
+          />
+          <Form.Field label='That one - xyz'
+            value="xyz"
+            control='input' type='radio'
+            checked={this.state.thisOrThat === 'xyz'}
+            onChange={this.handleThisOrThatChange.bind(this)}
+          />
+        </Form.Group>
+
+        <Header as='h4' textAlign='center'>
+          You chose: {this.state.thisOrThat}
+        </Header>
+
+        <Form.Group grouped>
+          <label>HTML checkboxes</label>
+          <Form.Field label='This one - A' control='input' type='checkbox' />
+          <Form.Field label='That one - B' control='input' type='checkbox' />
+        </Form.Group>
+
+
+
+
+
+
+
+        <Divider />
+        <Divider />
+
+        <Header as='h4' textAlign='center'>
+          Choose Genre or Genres
+        </Header>
+
+        <Form.Group grouped>
+          <label>HTML radios</label>
+          <Form.Field label='This one' control='input' type='radio' name='htmlRadios' />
+          <Form.Field label='That one' control='input' type='radio' name='htmlRadios' />
+        </Form.Group>
+        <Form.Group grouped>
+          <label>HTML checkboxes</label>
+          <Form.Field label='This one' control='input' type='checkbox' />
+          <Form.Field label='That one' control='input' type='checkbox' />
+        </Form.Group>
+
+        <Divider />
+        <Divider />
+
+
+        <Header as='h4' textAlign='center'>
+          Create Characters
+        </Header>
+
         <Form.Group>
           <Form.Field label="Hero Name" placeholder="HERO"
             autoFocus
@@ -235,12 +311,27 @@ render() {
             control="input" type="text" key="heroName"
             onChange={this.handleHeroNameChange.bind(this)} />
 
+            {/* <Form.Field label='This one - abc'
+              value="abc"
+              control='input' type='radio'
+              checked={this.state.thisOrThat === 'abc'}
+              onChange={this.handleThisOrThatChange.bind(this)}
+            /> */}
+
             <Form.Field width={4} className="genderField">
               <label>Hero Gender</label>
-              <div onChange={this.handleHeroGenderChange.bind(this)}>
-                <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
-                <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
-              </div>
+                <Form.Field label="male"
+                  value="male"
+                  control="input" type="radio" className="genderRadio"
+                  checked={this.state.hero.gender === "male"}
+                  onChange={this.handleHeroGenderChange.bind(this)}
+                />
+                <Form.Field label="female"
+                  value="female"
+                  control="input" type="radio" className="genderRadio"
+                  checked={this.state.hero.gender === "female"}
+                  onChange={this.handleHeroGenderChange.bind(this)}
+                />
             </Form.Field>
 
             <Form.Field width={6} className="summaryField">
@@ -265,13 +356,20 @@ render() {
                 control="input" type="text" key="shadowName"
                 onChange={this.handleShadowNameChange.bind(this)} />
 
-                <Form.Field
-                  width={4}>
+                <Form.Field width={4} className="genderField">
                   <label>Shadow Gender</label>
-                  <div onChange={this.handleShadowGenderChange.bind(this)}>
-                    <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
-                    <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
-                  </div>
+                  <Form.Field label="male"
+                    value="male"
+                    control="input" type="radio" className="genderRadio"
+                    checked={this.state.shadow.gender === "male"}
+                    onChange={this.handleShadowGenderChange.bind(this)}
+                  />
+                  <Form.Field label="female"
+                    value="female"
+                    control="input" type="radio" className="genderRadio"
+                    checked={this.state.shadow.gender === "female"}
+                    onChange={this.handleShadowGenderChange.bind(this)}
+                  />
                 </Form.Field>
 
                 <Form.Field
@@ -295,13 +393,20 @@ render() {
                     control="input" type="text" key="friendName"
                     onChange={this.handleFriendNameChange.bind(this)} />
 
-                    <Form.Field
-                      width={4}>
+                    <Form.Field width={4} className="genderField">
                       <label>Friend Gender</label>
-                      <div onChange={this.handleFriendGenderChange.bind(this)}>
-                        <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
-                        <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
-                      </div>
+                      <Form.Field label="male"
+                        value="male"
+                        control="input" type="radio" className="genderRadio"
+                        checked={this.state.friend.gender === "male"}
+                        onChange={this.handleFriendGenderChange.bind(this)}
+                      />
+                      <Form.Field label="female"
+                        value="female"
+                        control="input" type="radio" className="genderRadio"
+                        checked={this.state.friend.gender === "female"}
+                        onChange={this.handleFriendGenderChange.bind(this)}
+                      />
                     </Form.Field>
 
                     <Form.Field
@@ -325,13 +430,20 @@ render() {
                         control="input" type="text" key="loverName"
                         onChange={this.handleLoverNameChange.bind(this)} />
 
-                        <Form.Field
-                          width={4}>
+                        <Form.Field width={4} className="genderField">
                           <label>Lover Gender</label>
-                          <div onChange={this.handleLoverGenderChange.bind(this)}>
-                            <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
-                            <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
-                          </div>
+                          <Form.Field label="male"
+                            value="male"
+                            control="input" type="radio" className="genderRadio"
+                            checked={this.state.lover.gender === "male"}
+                            onChange={this.handleLoverGenderChange.bind(this)}
+                          />
+                          <Form.Field label="female"
+                            value="female"
+                            control="input" type="radio" className="genderRadio"
+                            checked={this.state.lover.gender === "female"}
+                            onChange={this.handleLoverGenderChange.bind(this)}
+                          />
                         </Form.Field>
 
                         <Form.Field
@@ -355,13 +467,20 @@ render() {
                             control="input" type="text" key="mentorName"
                             onChange={this.handleMentorNameChange.bind(this)} />
 
-                            <Form.Field
-                              width={4}>
+                            <Form.Field width={4} className="genderField">
                               <label>Mentor Gender</label>
-                              <div onChange={this.handleMentorGenderChange.bind(this)}>
-                                <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
-                                <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
-                              </div>
+                              <Form.Field label="male"
+                                value="male"
+                                control="input" type="radio" className="genderRadio"
+                                checked={this.state.mentor.gender === "male"}
+                                onChange={this.handleMentorGenderChange.bind(this)}
+                              />
+                              <Form.Field label="female"
+                                value="female"
+                                control="input" type="radio" className="genderRadio"
+                                checked={this.state.mentor.gender === "female"}
+                                onChange={this.handleMentorGenderChange.bind(this)}
+                              />
                             </Form.Field>
 
                             <Form.Field
@@ -385,13 +504,20 @@ render() {
                                 control="input" type="text" key="TricksterName"
                                 onChange={this.handleTricksterNameChange.bind(this)} />
 
-                                <Form.Field
-                                  width={4}>
+                                <Form.Field width={4} className="genderField">
                                   <label>Trickster Gender</label>
-                                  <div onChange={this.handleTricksterGenderChange.bind(this)}>
-                                    <Form.Field label="male" value="male" control="input" className="genderRadio" type="radio" name="alone1" />
-                                    <Form.Field label="female" value="female" control="input" className="genderRadio" type="radio" name="alone1" />
-                                  </div>
+                                  <Form.Field label="male"
+                                    value="male"
+                                    control="input" type="radio" className="genderRadio"
+                                    checked={this.state.trickster.gender === "male"}
+                                    onChange={this.handleTricksterGenderChange.bind(this)}
+                                  />
+                                  <Form.Field label="female"
+                                    value="female"
+                                    control="input" type="radio" className="genderRadio"
+                                    checked={this.state.trickster.gender === "female"}
+                                    onChange={this.handleTricksterGenderChange.bind(this)}
+                                  />
                                 </Form.Field>
 
                                 <Form.Field
