@@ -41,10 +41,12 @@ class CreateStoryForm extends Component {
       gender: '',
       nerd: ''
     },
-    genres: ['random'],
-
-    thisOrThat: 'abc', //default... ok to set default for controlled component in state?
-    selectors: '',
+    genres: ['random'], //will replace this with below...
+    //for now, will make genre selection radio buttons
+    //in the future, will make it so user can select multiple, or random, which selects from all
+    //and if user deselects all, it automatically selects random
+    //perhaps could have random be a radio button and everything else be a select button
+    genreSelection: 'random', //default... ok to set default for controlled component in state?
 
     nerd: <span role="img" aria-label="emoji">🤓</span>
   })
@@ -69,6 +71,24 @@ handleThisOrThatChange(event) {
   console.log('thisOrThat is: ', thisOrThat)
   this.setState({
     thisOrThat: thisOrThat,
+    })
+}
+
+handleSelectionChange(event) {
+  const selections = event.target.value
+  //console.log(event.target.value)
+  console.log('selections is: ', selections)
+  this.setState({
+    selections: selections,
+    })
+}
+
+handleGenreSelectionChange(event) {
+  const genreSelection = event.target.value
+  //console.log(event.target.value)
+  console.log('genreSelection is: ', genreSelection)
+  this.setState({
+    genreSelection: genreSelection,
     })
 }
 
@@ -236,71 +256,57 @@ render() {
 
       <Form onSubmit={this.handleCreateStoryFormSubmit}>
 
-        <Header as='h3' textAlign='center'>
+        <Header as='h1' textAlign='center'>
           Create a Story
         </Header>
 
         {/* <h1>user_id: {this.props.user_id}</h1> */}
 
-        <Header as='h4' textAlign='center'>
-          Example radios and checkboxes
-        </Header>
-
-        <Form.Group grouped>
-          <label>HTML radios</label>
-          <Form.Field label='This one - abc'
-            value="abc"
-            control='input' type='radio'
-            checked={this.state.thisOrThat === 'abc'}
-            onChange={this.handleThisOrThatChange.bind(this)}
-          />
-          <Form.Field label='That one - xyz'
-            value="xyz"
-            control='input' type='radio'
-            checked={this.state.thisOrThat === 'xyz'}
-            onChange={this.handleThisOrThatChange.bind(this)}
-          />
-        </Form.Group>
-
-        <Header as='h4' textAlign='center'>
-          You chose: {this.state.thisOrThat}
-        </Header>
-
-        <Form.Group grouped>
-          <label>HTML checkboxes</label>
-          <Form.Field label='This one - A' control='input' type='checkbox' />
-          <Form.Field label='That one - B' control='input' type='checkbox' />
-        </Form.Group>
-
-
-
-
-
-
-
         <Divider />
         <Divider />
 
-        <Header as='h4' textAlign='center'>
+        {/* //comments here and above
+        //for now, will make genre selection radio buttons
+        //in the future, will make it so user can select multiple, or random, which selects from all
+        //and if user deselects all, it automatically selects random
+        //perhaps could have random be a radio button and everything else be a select button */}
+
+        <Header as='h2' textAlign='center'>
           Choose Genre or Genres
         </Header>
 
-        <Form.Group grouped>
-          <label>HTML radios</label>
-          <Form.Field label='This one' control='input' type='radio' name='htmlRadios' />
-          <Form.Field label='That one' control='input' type='radio' name='htmlRadios' />
+        <Form.Group grouped className="genreSelection">
+          <label>Genres</label>
+          <Form.Field label="horror"
+            value="horror"
+            control="input" type="radio"
+            checked={this.state.genreSelection === "horror"}
+            onChange={this.handleGenreSelectionChange.bind(this)}
+          />
+          <Form.Field label="sci-fi"
+            value="sci-fi"
+            control="input" type="radio"
+            checked={this.state.genreSelection === "sci-fi"}
+            onChange={this.handleGenreSelectionChange.bind(this)}
+          />
+          <Form.Field label="random"
+            value="random"
+            control="input" type="radio"
+            checked={this.state.genreSelection === "random"}
+            onChange={this.handleGenreSelectionChange.bind(this)}
+          />
         </Form.Group>
-        <Form.Group grouped>
-          <label>HTML checkboxes</label>
-          <Form.Field label='This one' control='input' type='checkbox' />
-          <Form.Field label='That one' control='input' type='checkbox' />
-        </Form.Group>
+
+        <Header as='h3' textAlign='center'>
+          You chose: {this.state.genreSelection}
+        </Header>
+
 
         <Divider />
         <Divider />
 
 
-        <Header as='h4' textAlign='center'>
+        <Header as='h2' textAlign='center'>
           Create Characters
         </Header>
 
@@ -310,13 +316,6 @@ render() {
             width={6}
             control="input" type="text" key="heroName"
             onChange={this.handleHeroNameChange.bind(this)} />
-
-            {/* <Form.Field label='This one - abc'
-              value="abc"
-              control='input' type='radio'
-              checked={this.state.thisOrThat === 'abc'}
-              onChange={this.handleThisOrThatChange.bind(this)}
-            /> */}
 
             <Form.Field width={4} className="genderField">
               <label>Hero Gender</label>

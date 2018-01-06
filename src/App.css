@@ -112,6 +112,11 @@
   line-height: 1.1;
 }
 
+.genreSelection {
+  border: 1px dotted green;
+  padding-left: 45%;
+}
+
 /*.CreateStoryForm-red :not(.genderRadio) .field {*/
 .CreateStoryForm-red .field {
   padding-bottom: 5%;
