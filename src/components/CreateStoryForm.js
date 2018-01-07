@@ -47,7 +47,7 @@ class CreateStoryForm extends Component {
     //and if user deselects all, it automatically selects random
     //perhaps could have random be a radio button and everything else be a select button
     genreSelection: 'random', //default... ok to set default for controlled component in state?
-
+    filteredPlotsByGenre: this.props.plots.length,
     nerd: <span role="img" aria-label="emoji">🤓</span>
   })
   this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
@@ -77,13 +77,24 @@ handleSelectionChange(event) {
     })
 }
 
+
 handleGenreSelectionChange(event) {
   const genreSelection = event.target.value
-  //console.log(event.target.value)
   console.log('genreSelection is: ', genreSelection)
-  this.setState({
-    genreSelection: genreSelection,
-    })
+  var horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
+  var sciFiPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 2)
+  var randomPlots = this.props.plots.filter(plotObject => plotObject)
+
+    if (genreSelection === "horror") {
+      this.setState({ filteredPlotsByGenre: horrorPlots.length })
+    }
+    if (genreSelection === "sci-fi") {
+      this.setState({ filteredPlotsByGenre: sciFiPlots.length })
+    }
+    if (genreSelection === "random") {
+      this.setState({ filteredPlotsByGenre: randomPlots.length })
+    }
+    this.setState({ genreSelection: genreSelection })
 }
 
 
@@ -245,23 +256,6 @@ handleCreateStoryFormSubmit(event) {
 
 render() {
 
-  var horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
-
-  console.log('horrorPlots.length is: ', horrorPlots.length)
-
-  function filteredPlotsByGenre(genreSelection) {
-    //const result = words.filter(word => word.length > 6);
-
-    //argument above will be this.state.genreSelection, a string
-    //need to convert it to enum... ex if "horror", make it number 1
-    //then filter below by that number, and return the resulting array's length
-    //call this function
-    const filteredGenre = this.props.plots.filter(plotObject => plotObject === 1)
-    //const horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
-    //var above will be an array... need to return the length
-    return filteredGenre.length
-  }
-
   return(
 
     <div className="CreateStoryForm-red">
@@ -312,16 +306,13 @@ render() {
         <Header as='h3' textAlign='center'>
           You chose: {this.state.genreSelection}
           <br></br>
+          <br></br>
+
+          {this.state.genreSelection} plots: { this.state.filteredPlotsByGenre }
+          <br></br>
+          <br></br>
+
           Total plots in database: {this.props.plots.length}
-          <br></br>
-
-          {/* Total number of horror plots: { horrorPlots.length } */}
-          <br></br>
-
-          Total number of {this.state.genreSelection} plots: { filteredPlotsByGenre(this.state.genreSelection) }
-          <br></br>
-
-          {this.state.genreSelection} plots in database: {this.props.plots.length}
           <br></br>
         </Header>
 
