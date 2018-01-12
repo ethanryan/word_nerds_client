@@ -81,15 +81,32 @@ handleSelectionChange(event) {
 handleGenreSelectionChange(event) {
   const genreSelection = event.target.value
   console.log('genreSelection is: ', genreSelection)
+  ////not DRY!!!! refactor below....
   var horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
   var sciFiPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 2)
+  var actionPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 3)
+  var dramaPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 4)
+  var comedyPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 6)
+  var romancePlots = this.props.plots.filter(plotObject => plotObject.genre_id === 7)
   var randomPlots = this.props.plots.filter(plotObject => plotObject)
 
     if (genreSelection === "horror") {
       this.setState({ filteredPlotsByGenre: horrorPlots.length })
     }
-    if (genreSelection === "sci-fi") {
+    if (genreSelection === "scifi") {
       this.setState({ filteredPlotsByGenre: sciFiPlots.length })
+    }
+    if (genreSelection === "action") {
+      this.setState({ filteredPlotsByGenre: actionPlots.length })
+    }
+    if (genreSelection === "drama") {
+      this.setState({ filteredPlotsByGenre: dramaPlots.length })
+    }
+    if (genreSelection === "comedy") {
+      this.setState({ filteredPlotsByGenre: comedyPlots.length })
+    }
+    if (genreSelection === "romance") {
+      this.setState({ filteredPlotsByGenre: romancePlots.length })
     }
     if (genreSelection === "random") {
       this.setState({ filteredPlotsByGenre: randomPlots.length })
@@ -245,10 +262,11 @@ handleCreateStoryFormSubmit(event) {
     trickster: this.state.trickster
   }
   const user_id = this.props.user_id
+  const genres = this.state.genreSelection
 
   console.log('CreateStoryForm submitted: ', this.state)
   console.log('user_id is: ', user_id)
-  this.props.handleSubmit( characters, user_id )
+  this.props.handleSubmit( genres, characters, user_id )
   this.setState({story: ''}) //this clears form onSubmit
 }
 
@@ -290,9 +308,33 @@ render() {
             onChange={this.handleGenreSelectionChange.bind(this)}
           />
           <Form.Field label="sci-fi"
-            value="sci-fi"
+            value="scifi"
             control="input" type="radio"
-            checked={this.state.genreSelection === "sci-fi"}
+            checked={this.state.genreSelection === "scifi"}
+            onChange={this.handleGenreSelectionChange.bind(this)}
+          />
+          <Form.Field label="action"
+            value="action"
+            control="input" type="radio"
+            checked={this.state.genreSelection === "action"}
+            onChange={this.handleGenreSelectionChange.bind(this)}
+          />
+          <Form.Field label="drama"
+            value="drama"
+            control="input" type="radio"
+            checked={this.state.genreSelection === "drama"}
+            onChange={this.handleGenreSelectionChange.bind(this)}
+          />
+          <Form.Field label="comedy"
+            value="comedy"
+            control="input" type="radio"
+            checked={this.state.genreSelection === "comedy"}
+            onChange={this.handleGenreSelectionChange.bind(this)}
+          />
+          <Form.Field label="romance"
+            value="romance"
+            control="input" type="radio"
+            checked={this.state.genreSelection === "romance"}
             onChange={this.handleGenreSelectionChange.bind(this)}
           />
           <Form.Field label="random"

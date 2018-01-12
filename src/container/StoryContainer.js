@@ -66,8 +66,8 @@ class StoryContainer extends Component {
   }
 
 
-  handleSubmit(characters, user_id) { //adding user_id as argument -- ER Nov 2017
-    api.createStory(characters, user_id) //adding user_id as argument -- ER Nov 2017
+  handleSubmit(genres, characters, user_id) { //adding genre as argument -- ER Jan 2018
+    api.createStory(genres, characters, user_id) //adding user_id as argument -- ER Nov 2017
     .then( story => this.setState(
       prevState => ({
         stories: [...prevState.stories, story]
@@ -157,7 +157,7 @@ render() {
     // console.log('jwt: ', this.jwt)
     // console.log('props from StoryContainer: ', this.props)
     console.log('state from StoryContainer: ', this.state)
-    // console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
+    console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
     return(
       <div>
         <NavBar

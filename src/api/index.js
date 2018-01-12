@@ -1,8 +1,8 @@
 // for local server rails api:
-//const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://localhost:3000'
 
 // for hosted heroku api:
-const baseUrl = 'https://word-nerds-api.herokuapp.com'
+//const baseUrl = 'https://word-nerds-api.herokuapp.com'
 
 export function getStories() {
   return fetch(`${baseUrl}/stories`, {
@@ -54,7 +54,7 @@ export function getCurrentUser() {
   .then (response => response.json() )
 }
 
-export function createStory(characters, user_id) { //adding user_id as argument -- ER Nov 2017
+export function createStory(genres, characters, user_id) { //adding user_id as argument -- ER Nov 2017
   return fetch(`${baseUrl}/stories`, {
     headers: {
       'Accept': 'application/json',
@@ -66,6 +66,11 @@ export function createStory(characters, user_id) { //adding user_id as argument 
     body: JSON.stringify({
       story: {
         title: characters.hero.name + "'s story, v1",
+        genres: [
+          {
+            name: genres
+          },
+          ], //making this an array of genres -- ER Jan 2018
         user_id: user_id, //current user_id here instead of 1
         characters: [
           {
