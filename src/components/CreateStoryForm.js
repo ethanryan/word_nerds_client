@@ -48,6 +48,7 @@ class CreateStoryForm extends Component {
     //perhaps could have random be a radio button and everything else be a select button
     genreSelection: 'random', //default... ok to set default for controlled component in state?
     filteredPlotsByGenre: this.props.plots.length,
+    filteredPlotsByTitle: 0, //default for now... 0 is false, so won't break trying to render
     nerd: <span role="img" aria-label="emoji">🤓</span>
   })
   this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
@@ -91,25 +92,25 @@ handleGenreSelectionChange(event) {
   var randomPlots = this.props.plots.filter(plotObject => plotObject)
 
   if (genreSelection === "horror") {
-    this.setState({ filteredPlotsByGenre: horrorPlots.length })
+    this.setState({ filteredPlotsByGenre: horrorPlots.length, filteredPlotsByTitle: horrorPlots.map(object => object.title) })
   }
   if (genreSelection === "scifi") {
-    this.setState({ filteredPlotsByGenre: sciFiPlots.length })
+    this.setState({ filteredPlotsByGenre: sciFiPlots.length, filteredPlotsByTitle: sciFiPlots.map(object => object.title) })
   }
   if (genreSelection === "action") {
-    this.setState({ filteredPlotsByGenre: actionPlots.length })
+    this.setState({ filteredPlotsByGenre: actionPlots.length, filteredPlotsByTitle: actionPlots.map(object => object.title) })
   }
   if (genreSelection === "drama") {
-    this.setState({ filteredPlotsByGenre: dramaPlots.length })
+    this.setState({ filteredPlotsByGenre: dramaPlots.length, filteredPlotsByTitle: dramaPlots.map(object => object.title) })
   }
   if (genreSelection === "comedy") {
-    this.setState({ filteredPlotsByGenre: comedyPlots.length })
+    this.setState({ filteredPlotsByGenre: comedyPlots.length, filteredPlotsByTitle: comedyPlots.map(object => object.title) })
   }
   if (genreSelection === "romance") {
-    this.setState({ filteredPlotsByGenre: romancePlots.length })
+    this.setState({ filteredPlotsByGenre: romancePlots.length, filteredPlotsByTitle: romancePlots.map(object => object.title) })
   }
   if (genreSelection === "random") {
-    this.setState({ filteredPlotsByGenre: randomPlots.length })
+    this.setState({ filteredPlotsByGenre: randomPlots.length, filteredPlotsByTitle: randomPlots.map(object => object.title) })
   }
   this.setState({ genreSelection: genreSelection })
 }
@@ -364,6 +365,26 @@ render() {
 
             {this.state.genreSelection} plots: { this.state.filteredPlotsByGenre }
             <br></br>
+            <br></br>
+
+            <div>{this.state.filteredPlotsByTitle ? this.state.filteredPlotsByTitle.map((plotTitle) => {
+              return (
+                plotTitle
+                .replace("Halloween", "🔪")
+                .replace("Alien", "👽")
+                .replace("The Matrix", "⏰")
+                .replace("Star Wars", "🚀")
+                .replace("E.T.", "📞")
+                .replace("Terminator", "🤖")
+                .replace("Die Hard", "🔫")
+                .replace("Thelma and Louise", "🚘")
+                .replace("Home Alone", "😂")
+                .replace("Beauty and the Beast", "🦊")
+                .replace("La Strada", "💔")
+                .replace("The Piano", "💙")
+              )
+            }).join('   ') : 0}</div>
+
             <br></br>
 
             Total plots in database: {this.props.plots.length}
