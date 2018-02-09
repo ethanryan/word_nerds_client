@@ -108,8 +108,8 @@ const OneStory = (props) => {
 
   )
 
-  console.log('hello from OneStory')
-  console.log('filteredStories.length is', filteredStories.length)
+  // console.log('hello from OneStory')
+  // console.log('filteredStories.length is', filteredStories.length)
   return(
     <div>
 

@@ -20,12 +20,10 @@ class CreateStoryFormSelectGenre extends Component {
   })
 } //end of constructor
 
-componentWillReceiveProps(nextProps) { //need this lifecycle method to edit text in textarea
-  console.log('nextProps is: ', nextProps)
+componentWillReceiveProps(nextProps) { //need this lifecycle method to update filteredPlotsByTitle
+  // console.log('CreateStoryFormSelectGenre nextProps is: ', nextProps)
   if (this.props.plots.length !== nextProps.plots.length) {
     this.setState({
-      // input: props.story.content,
-      // filteredPlotsByGenre: this.props.plots.length,
       filteredPlotsByGenre: nextProps.plots.length,
       filteredPlotsByTitle: nextProps.plots.filter(plotObject => plotObject).map(object => object.title)
     })

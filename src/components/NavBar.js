@@ -8,16 +8,45 @@ import { Link } from 'react-router-dom'
 class NavBar extends Component {
   constructor(props) {
     super(props)
-    this.state = {activeItem: 'home'}
+    var pathname = this.props.location.pathname
+    if (this.props.location.pathname === "/" || this.props.location.pathname === "") {
+      pathname = "home"
+    } else {
+      pathname = pathname.slice(1) //slicing off "/" from pathname
+    }
+
+    this.state = {
+      // activeItem: 'home' //default
+      activeItem: pathname //default
+    }
+  }
+  
+  componentWillReceiveProps(nextProps) { //need this lifecycle method to update navbar activeItem on refresh
+    // console.log('NavBar nextProps is: ', nextProps)
+    // console.log('NavBar nextProps.location.pathname is: ', nextProps.location.pathname)
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      var pathname = nextProps.location.pathname
+      if (nextProps.location.pathname === "/" || nextProps.location.pathname === "") {
+        pathname = "home"
+      } else {
+        pathname = pathname.slice(1) //slicing off "/" from pathname
+      }
+      this.setState({
+        activeItem: pathname,
+      })
+    }
   }
 
-  handleItemClick = (event, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (event, { name }) => this.setState({
+    activeItem: name
+  })
 
   render() {
     const { activeItem } = this.state
 
     // console.log('NavBar state: ', this.state);
     // console.log('NavBar props: ', this.props);
+    // console.log('NavBar props.location.pathname: ', this.props.location.pathname);
 
     // let current_user = this.state.current_user
 

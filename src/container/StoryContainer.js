@@ -165,7 +165,7 @@ logout() {
 render() {
   if(localStorage.getItem('jwt')) {
     // console.log('jwt: ', this.jwt)
-    // console.log('props from StoryContainer: ', this.props)
+    console.log('props from StoryContainer: ', this.props)
     console.log('state from StoryContainer: ', this.state)
     console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
     return(
@@ -174,6 +174,7 @@ render() {
           title="Word Nerds"
           current_user={this.state.user ? this.state.user.name : "current_user here"}
           logout={this.logout.bind(this)}
+          location={this.props.location}
         />
         <StoryPage
           //props for CreateStoryForm
