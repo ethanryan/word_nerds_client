@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 
 import { Form, Header, Grid } from 'semantic-ui-react'
-// import { Radio } from 'semantic-ui-react'
 
 class CreateStoryFormSelectGenre extends Component {
 
   constructor(props) {
-    console.log('**** props from CreateStoryFormSelectGenre:', props)
+    // console.log('**** props from CreateStoryFormSelectGenre:', props)
     super(props)
     this.state=({ //organizing this so it's not nested, but post request will be nested
-    // story: '',
-    //user_id: this.props.user_id, //need to set user_id here??? keep losing user_id on page reload
-
 
     //genres: ['random'], //will replace this with below...
     //for now, will make genre selection radio buttons
@@ -21,35 +17,13 @@ class CreateStoryFormSelectGenre extends Component {
     genreSelection: 'random', //default... ok to set default for controlled component in state?
     filteredPlotsByGenre: this.props.plots.length,
     filteredPlotsByTitle: 0, //default for now... 0 is false, so won't break trying to render
-    nerd: <span role="img" aria-label="emoji">🤓</span>
   })
-  this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
 } //end of constructor
-
-
-
-handleThisOrThatChange(event) {
-  const thisOrThat = event.target.value
-  //console.log(event.target.value)
-  console.log('thisOrThat is: ', thisOrThat)
-  this.setState({
-    thisOrThat: thisOrThat,
-  })
-}
-
-handleSelectionChange(event) {
-  const selections = event.target.value
-  //console.log(event.target.value)
-  console.log('selections is: ', selections)
-  this.setState({
-    selections: selections,
-  })
-}
 
 
 handleGenreSelectionChange(event) {
   const genreSelection = event.target.value
-  console.log('--->>> CreateStoryFormSelectGenre: genreSelection is: ', genreSelection)
+  // console.log('--->>> CreateStoryFormSelectGenre: genreSelection is: ', genreSelection)
   ////not DRY!!!! refactor below....
   var horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
   var sciFiPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 2)
@@ -80,45 +54,18 @@ handleGenreSelectionChange(event) {
   if (genreSelection === "random") {
     this.setState({ filteredPlotsByGenre: randomPlots.length, filteredPlotsByTitle: randomPlots.map(object => object.title) })
   }
-  //this.props.handleSubmit( genres, characters, user_id )
   this.props.handleGenreChange( genreSelection ) //this will pass genreSelection up to state in StoryContainer
   this.setState({ genreSelection: genreSelection })
 }
 
 
 
-handleCreateStoryFormSubmit(event) { //won't need this function here,
-//just need to pass genreSelection to StoryContainer to pass to CreateStoryForm...
-
-  event.preventDefault()
-  // const characters = {
-  //   hero: this.state.hero,
-  //   shadow: this.state.shadow,
-  //   friend: this.state.friend,
-  //   lover: this.state.lover,
-  //   mentor: this.state.mentor,
-  //   trickster: this.state.trickster
-  // }
-  // const user_id = this.props.user_id
-  const genres = this.state.genreSelection
-
-  // console.log('CreateStoryForm submitted: ', this.state)
-  // console.log('user_id is: ', user_id)
-  //this.props.handleSubmit( genres, characters, user_id )
-  this.props.handleSubmit( genres )
-  // this.setState({story: ''}) //this clears form onSubmit
-}
-
-
-
 render() {
-  console.log('****>>>>>> state from CreateStoryFormSelectGenre:', this.state)
-
+  // console.log('****>>>>>> state from CreateStoryFormSelectGenre:', this.state)
   return(
 
     <div className="CreateStoryFormSelectGenre">
 
-      {/* <Form onSubmit={this.handleCreateStoryFormSubmit}> */}
       <Form>
 
         {/* //comments here and above
