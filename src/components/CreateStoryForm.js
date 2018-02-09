@@ -7,7 +7,7 @@ import { Form, Header, Divider } from 'semantic-ui-react'
 class CreateStoryForm extends Component {
 
   constructor(props) {
-    console.log('**** props from CreateStoryForm:', props)
+    // console.log('**** props from CreateStoryForm:', props)
     super(props)
     this.state=({ //organizing this so it's not nested, but post request will be nested
     story: '',
@@ -42,11 +42,7 @@ class CreateStoryForm extends Component {
       gender: '',
       nerd: ''
     },
-    //genres: ['random'], //will replace this with below...
-    //genreSelection: 'random', //default... ok to set default for controlled component in state?
-    genreSelection: this.props.genreSelection, //default... ok to set default for controlled component in state?
-    filteredPlotsByGenre: this.props.plots.length,
-    nerd: <span role="img" aria-label="emoji">🤓</span>
+    genreSelection: this.props.genreSelection, //chosen in CreateStoryFormSelectGenre, passed up to StoryContainer from there
   })
   this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
 } //end of constructor
@@ -233,7 +229,6 @@ render() {
         <Divider />
 
         <CreateStoryFormSelectGenre
-          // props={this.props}
           plots={this.props.plots}
           handleGenreChange={this.props.handleGenreChange}
         />
@@ -282,7 +277,7 @@ render() {
               </Form.Field>
             </Form.Group>
 
-            
+
             <Divider />
 
 

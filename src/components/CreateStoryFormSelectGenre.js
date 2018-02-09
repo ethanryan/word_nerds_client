@@ -5,7 +5,7 @@ import { Form, Header, Grid } from 'semantic-ui-react'
 class CreateStoryFormSelectGenre extends Component {
 
   constructor(props) {
-    // console.log('**** props from CreateStoryFormSelectGenre:', props)
+    console.log('**** props from CreateStoryFormSelectGenre:', props)
     super(props)
     this.state=({ //organizing this so it's not nested, but post request will be nested
 
@@ -14,12 +14,23 @@ class CreateStoryFormSelectGenre extends Component {
     //in the future, will make it so user can select multiple, or random, which selects from all
     //and if user deselects all, it automatically selects random
     //perhaps could have random be a radio button and everything else be a select button
-    genreSelection: 'random', //default... ok to set default for controlled component in state?
+    genreSelection: "random", //default... ok to set default for controlled component in state?
     filteredPlotsByGenre: this.props.plots.length,
-    filteredPlotsByTitle: 0, //default for now... 0 is false, so won't break trying to render
+    filteredPlotsByTitle: this.props.plots.filter(plotObject => plotObject).map(object => object.title) //default for now... 0 is false, so won't break trying to render
   })
 } //end of constructor
 
+componentWillReceiveProps(nextProps) { //need this lifecycle method to edit text in textarea
+  console.log('nextProps is: ', nextProps)
+  if (this.props.plots.length !== nextProps.plots.length) {
+    this.setState({
+      // input: props.story.content,
+      // filteredPlotsByGenre: this.props.plots.length,
+      filteredPlotsByGenre: nextProps.plots.length,
+      filteredPlotsByTitle: nextProps.plots.filter(plotObject => plotObject).map(object => object.title)
+    })
+  }
+}
 
 handleGenreSelectionChange(event) {
   const genreSelection = event.target.value
@@ -32,6 +43,8 @@ handleGenreSelectionChange(event) {
   var comedyPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 6)
   var romancePlots = this.props.plots.filter(plotObject => plotObject.genre_id === 7)
   var randomPlots = this.props.plots.filter(plotObject => plotObject)
+  // console.log('randomPlots is: ', randomPlots) //an array
+  // console.log('this.props.plots.filter(plotObject => plotObject).map(object => object.title) is: ', this.props.plots.filter(plotObject => plotObject).map(object => object.title) )
 
   if (genreSelection === "horror") {
     this.setState({ filteredPlotsByGenre: horrorPlots.length, filteredPlotsByTitle: horrorPlots.map(object => object.title) })
@@ -65,8 +78,6 @@ render() {
   return(
 
     <div className="CreateStoryFormSelectGenre">
-
-      <Form>
 
         {/* //comments here and above
           //for now, will make genre selection radio buttons
@@ -168,9 +179,6 @@ render() {
             Total plots in database: {this.props.plots.length}
             <br></br>
           </Header>
-
-
-            </Form>
 
           </div>
         )
