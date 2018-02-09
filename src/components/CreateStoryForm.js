@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
-import { Form, Header, Divider, Grid } from 'semantic-ui-react'
+import CreateStoryFormSelectGenre from './CreateStoryFormSelectGenre'
+
+import { Form, Header, Divider } from 'semantic-ui-react'
 // import { Radio } from 'semantic-ui-react'
 
 class CreateStoryForm extends Component {
@@ -46,7 +48,8 @@ class CreateStoryForm extends Component {
     //in the future, will make it so user can select multiple, or random, which selects from all
     //and if user deselects all, it automatically selects random
     //perhaps could have random be a radio button and everything else be a select button
-    genreSelection: 'random', //default... ok to set default for controlled component in state?
+    //genreSelection: 'random', //default... ok to set default for controlled component in state?
+    genreSelection: this.props.genreSelection, //default... ok to set default for controlled component in state?
     filteredPlotsByGenre: this.props.plots.length,
     filteredPlotsByTitle: 0, //default for now... 0 is false, so won't break trying to render
     nerd: <span role="img" aria-label="emoji">🤓</span>
@@ -60,60 +63,60 @@ handleCharacterInputChange(event) {
   //abstract each character, so just one function
 }
 
-handleThisOrThatChange(event) {
-  const thisOrThat = event.target.value
-  //console.log(event.target.value)
-  console.log('thisOrThat is: ', thisOrThat)
-  this.setState({
-    thisOrThat: thisOrThat,
-  })
-}
+// handleThisOrThatChange(event) {
+//   const thisOrThat = event.target.value
+//   //console.log(event.target.value)
+//   console.log('thisOrThat is: ', thisOrThat)
+//   this.setState({
+//     thisOrThat: thisOrThat,
+//   })
+// }
 
-handleSelectionChange(event) {
-  const selections = event.target.value
-  //console.log(event.target.value)
-  console.log('selections is: ', selections)
-  this.setState({
-    selections: selections,
-  })
-}
+// handleSelectionChange(event) {
+//   const selections = event.target.value
+//   //console.log(event.target.value)
+//   console.log('selections is: ', selections)
+//   this.setState({
+//     selections: selections,
+//   })
+// }
 
 
-handleGenreSelectionChange(event) {
-  const genreSelection = event.target.value
-  console.log('genreSelection is: ', genreSelection)
-  ////not DRY!!!! refactor below....
-  var horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
-  var sciFiPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 2)
-  var actionPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 3)
-  var dramaPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 4)
-  var comedyPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 6)
-  var romancePlots = this.props.plots.filter(plotObject => plotObject.genre_id === 7)
-  var randomPlots = this.props.plots.filter(plotObject => plotObject)
-
-  if (genreSelection === "horror") {
-    this.setState({ filteredPlotsByGenre: horrorPlots.length, filteredPlotsByTitle: horrorPlots.map(object => object.title) })
-  }
-  if (genreSelection === "scifi") {
-    this.setState({ filteredPlotsByGenre: sciFiPlots.length, filteredPlotsByTitle: sciFiPlots.map(object => object.title) })
-  }
-  if (genreSelection === "action") {
-    this.setState({ filteredPlotsByGenre: actionPlots.length, filteredPlotsByTitle: actionPlots.map(object => object.title) })
-  }
-  if (genreSelection === "drama") {
-    this.setState({ filteredPlotsByGenre: dramaPlots.length, filteredPlotsByTitle: dramaPlots.map(object => object.title) })
-  }
-  if (genreSelection === "comedy") {
-    this.setState({ filteredPlotsByGenre: comedyPlots.length, filteredPlotsByTitle: comedyPlots.map(object => object.title) })
-  }
-  if (genreSelection === "romance") {
-    this.setState({ filteredPlotsByGenre: romancePlots.length, filteredPlotsByTitle: romancePlots.map(object => object.title) })
-  }
-  if (genreSelection === "random") {
-    this.setState({ filteredPlotsByGenre: randomPlots.length, filteredPlotsByTitle: randomPlots.map(object => object.title) })
-  }
-  this.setState({ genreSelection: genreSelection })
-}
+// handleGenreSelectionChange(event) {
+//   const genreSelection = event.target.value
+//   console.log('genreSelection is: ', genreSelection)
+//   ////not DRY!!!! refactor below....
+//   var horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
+//   var sciFiPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 2)
+//   var actionPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 3)
+//   var dramaPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 4)
+//   var comedyPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 6)
+//   var romancePlots = this.props.plots.filter(plotObject => plotObject.genre_id === 7)
+//   var randomPlots = this.props.plots.filter(plotObject => plotObject)
+//
+//   if (genreSelection === "horror") {
+//     this.setState({ filteredPlotsByGenre: horrorPlots.length, filteredPlotsByTitle: horrorPlots.map(object => object.title) })
+//   }
+//   if (genreSelection === "scifi") {
+//     this.setState({ filteredPlotsByGenre: sciFiPlots.length, filteredPlotsByTitle: sciFiPlots.map(object => object.title) })
+//   }
+//   if (genreSelection === "action") {
+//     this.setState({ filteredPlotsByGenre: actionPlots.length, filteredPlotsByTitle: actionPlots.map(object => object.title) })
+//   }
+//   if (genreSelection === "drama") {
+//     this.setState({ filteredPlotsByGenre: dramaPlots.length, filteredPlotsByTitle: dramaPlots.map(object => object.title) })
+//   }
+//   if (genreSelection === "comedy") {
+//     this.setState({ filteredPlotsByGenre: comedyPlots.length, filteredPlotsByTitle: comedyPlots.map(object => object.title) })
+//   }
+//   if (genreSelection === "romance") {
+//     this.setState({ filteredPlotsByGenre: romancePlots.length, filteredPlotsByTitle: romancePlots.map(object => object.title) })
+//   }
+//   if (genreSelection === "random") {
+//     this.setState({ filteredPlotsByGenre: randomPlots.length, filteredPlotsByTitle: randomPlots.map(object => object.title) })
+//   }
+//   this.setState({ genreSelection: genreSelection })
+// }
 
 
 
@@ -263,7 +266,8 @@ handleCreateStoryFormSubmit(event) {
     trickster: this.state.trickster
   }
   const user_id = this.props.user_id
-  const genres = this.state.genreSelection
+  // const genres = this.state.genreSelection
+  const genres = this.props.genreSelection
 
   console.log('CreateStoryForm submitted: ', this.state)
   console.log('user_id is: ', user_id)
@@ -290,106 +294,11 @@ render() {
         <Divider />
         <Divider />
 
-        {/* //comments here and above
-          //for now, will make genre selection radio buttons
-          //in the future, will make it so user can select multiple, or random, which selects from all
-          //and if user deselects all, it automatically selects random
-          //perhaps could have random be a radio button and everything else be a select button */}
-
-          <Header as='h2' textAlign='center'>
-            Choose Genre or Genres
-          </Header>
-
-          <Form.Group grouped className="genreSelection">
-
-            <Grid columns={2} centered>
-              <Grid.Row className="genreSelectionRow">
-                <Grid.Column>
-                  <Form.Field label="horror"
-                    value="horror"
-                    control="input" type="radio"
-                    checked={this.state.genreSelection === "horror"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
-                  />
-                  <Form.Field label="sci-fi"
-                    value="scifi"
-                    control="input" type="radio"
-                    checked={this.state.genreSelection === "scifi"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
-                  />
-                  <Form.Field label="action"
-                    value="action"
-                    control="input" type="radio"
-                    checked={this.state.genreSelection === "action"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
-                  />
-                </Grid.Column>
-
-                <Grid.Column>
-                  <Form.Field label="drama"
-                    value="drama"
-                    control="input" type="radio"
-                    checked={this.state.genreSelection === "drama"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
-                  />
-                  <Form.Field label="comedy"
-                    value="comedy"
-                    control="input" type="radio"
-                    checked={this.state.genreSelection === "comedy"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
-                  />
-                  <Form.Field label="romance"
-                    value="romance"
-                    control="input" type="radio"
-                    checked={this.state.genreSelection === "romance"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
-                  />
-                </Grid.Column>
-              </Grid.Row>
-
-
-                  <Form.Field label="random"
-                    value="random"
-                    control="input" type="radio"
-                    checked={this.state.genreSelection === "random"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
-                  />
-
-            </Grid>
-          </Form.Group>
-
-          <Header as='h3' textAlign='center'>
-            You chose: {this.state.genreSelection}
-            <br></br>
-            <br></br>
-
-            {this.state.genreSelection} plots: { this.state.filteredPlotsByGenre }
-            <br></br>
-            <br></br>
-
-            <div>{this.state.filteredPlotsByTitle ? this.state.filteredPlotsByTitle.map((plotTitle) => {
-              return (
-                plotTitle
-                .replace("Halloween", "🔪")
-                .replace("Alien", "👽")
-                .replace("The Matrix", "⏰")
-                .replace("Star Wars", "🚀")
-                .replace("E.T.", "📞")
-                .replace("Terminator", "🤖")
-                .replace("Die Hard", "🔫")
-                .replace("Thelma and Louise", "🚘")
-                .replace("Home Alone", "😂")
-                .replace("Beauty and the Beast", "🦊")
-                .replace("La Strada", "💔")
-                .replace("The Piano", "💙")
-              )
-            }).join('   ') : 0}</div>
-
-            <br></br>
-
-            Total plots in database: {this.props.plots.length}
-            <br></br>
-          </Header>
+        <CreateStoryFormSelectGenre
+          // props={this.props}
+          plots={this.props.plots}
+          handleGenreChange={this.props.handleGenreChange}
+        />
 
 
           <Divider />
@@ -402,7 +311,7 @@ render() {
 
           <Form.Group>
             <Form.Field label="Hero Name" placeholder="HERO"
-              autoFocus
+              // autoFocus
               width={6}
               control="input" type="text" key="heroName"
               onChange={this.handleHeroNameChange.bind(this)} />

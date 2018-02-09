@@ -112,6 +112,10 @@
   line-height: 1.1;
 }
 
+.CreateStoryFormSelectGenre {
+  border: 2px solid blue;
+}
+
 .genreSelection {
   border: 1px dotted green;
   padding: 15px;

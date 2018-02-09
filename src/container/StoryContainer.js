@@ -36,6 +36,7 @@ class StoryContainer extends Component {
       image: '',
       plots: [],
       genres: [],
+      genreSelection: '', //from CreateStoryFormSelectGenre
       users: [],
       nameOrPasswordError: false,
       usernameExistsError: false,
@@ -142,6 +143,15 @@ handleLogin(params) {
 
 
 
+handleGenreChange(params) {
+  console.log(' ! ! ! ! ! StoryContainer ~~~~~~~~~ handleGenreChange called with params: ', params)
+  this.setState({
+    genreSelection: params
+  })
+}
+
+
+
 
 logout() {
   this.setState({
@@ -168,6 +178,9 @@ render() {
         <StoryPage
           //props for CreateStoryForm
           handleSubmit={this.handleSubmit.bind(this)}
+          genreSelection={this.state.genreSelection}
+          handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
+          ///need to make this function above!!!! data down, actions up... so CreateStoryFormSelectGenre can send up selectedGenre to here.
 
           //props for EditStoryForm
           handleDeleteStory={this.handleDeleteStory.bind(this)}
