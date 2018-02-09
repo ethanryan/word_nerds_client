@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Image, Grid, Button } from 'semantic-ui-react'
+// import { Image, Grid, Button } from 'semantic-ui-react'
+import { Grid, Button } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom'
 
@@ -13,7 +14,7 @@ const StoryShow = (props) => {
   // below console logs break page on refresh
   // console.log('StoryShow props.story.user.name: ', props.story.user.name);
 
-  let CoolStoryBro = 'http://i1.kym-cdn.com/photos/images/facebook/000/061/294/1106514-cool_story_bro_super.jpg'
+  // let CoolStoryBro = 'http://i1.kym-cdn.com/photos/images/facebook/000/061/294/1106514-cool_story_bro_super.jpg'
 
   // let GoogleImage = (<gcse:search></gcse:search>)
   // let GoogleImageHere = (<gcseSearch>pic here</gcseSearch>)
@@ -34,7 +35,7 @@ const StoryShow = (props) => {
 
               <Grid centered columns={2}>
                   <Grid.Column>
-                    <Image src={props.image ? props.image : CoolStoryBro} size='medium' />
+                    {/* <Image src={props.image ? props.image : CoolStoryBro} size='medium' /> */}
                     {/* <Image src={ImageFromGoogleAPI} size='medium' /> */}
 
                   </Grid.Column>

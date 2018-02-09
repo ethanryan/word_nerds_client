@@ -21,7 +21,8 @@ const OneStory = (props) => {
       <Card.Content>
         <Card.Header>
           Story Title:
-          <Link to={`/stories/${story.id}/edit`}> {story.title}</Link>
+          {/* <Link to={`/stories/${story.id}/edit`}> {story.title}</Link> */}
+          <Link to={`/stories/${story.id}`}> {story.title}</Link>
 
         </Card.Header>
       </Card.Content>
@@ -93,7 +94,8 @@ const OneStory = (props) => {
 
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`}
+          {/* <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`} */}
+          <Button basic color='green' as={Link} to={`/stories/${story.id}`}
           >View</Button>
 
           <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
