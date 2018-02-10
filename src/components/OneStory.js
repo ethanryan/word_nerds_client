@@ -6,7 +6,7 @@ import { Card, Button } from 'semantic-ui-react'
 
 const OneStory = (props) => {
 
-  // console.log(`OneStory props: `, props);
+  console.log(`OneStory props: `, props);
 
   //debugger
   //filtering stories by user_id... but should this be done via API instead??

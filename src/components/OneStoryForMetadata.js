@@ -15,6 +15,12 @@ class OneStoryForMetadata extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      data: nextProps.stories
+    })
+  }
+
   handleSort = clickedColumn => () => {
     const { column, data, direction } = this.state
     if (column !== clickedColumn) {
