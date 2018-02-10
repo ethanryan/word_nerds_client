@@ -10,6 +10,14 @@
   text-align: center;
 }
 
+.floatLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
 .aboutWordNerds {
   margin-top: 25px;
   padding-left: 10%;

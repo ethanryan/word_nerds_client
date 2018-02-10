@@ -1,6 +1,7 @@
 import React from 'react'
 
 // import { Image, Grid, Button } from 'semantic-ui-react'
+// import { Grid, Button, Modal } from 'semantic-ui-react'
 import { Grid, Button } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom'
@@ -22,8 +23,7 @@ const StoryShow = (props) => {
 
   return(
     <div>
-
-          <div className="StoryShow-purple">
+      <div className="StoryShow-purple">
 
             <div>
 {/* {GoogleImageSearchResults} */}
@@ -118,7 +118,7 @@ const StoryShow = (props) => {
               <br></br>
               <br></br>
 
-          </div>
+      </div>
     </div>
   )
 }

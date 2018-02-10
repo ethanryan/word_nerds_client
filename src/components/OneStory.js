@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+// import { Card, Button, Modal } from 'semantic-ui-react'
 import { Card, Button } from 'semantic-ui-react'
 
 
@@ -15,6 +16,7 @@ const OneStory = (props) => {
   const eachStory = filteredStories.map( (story) =>
 
   <div key={story.id ? story.id : "story.id here"} className="OneStory-orange">
+    {/* <Modal trigger={<Button>Show Modal</Button>}> */}
 
     <Card fluid>
 
@@ -23,21 +25,23 @@ const OneStory = (props) => {
           Story Title:
           {/* <Link to={`/stories/${story.id}/edit`}> {story.title}</Link> */}
           <Link to={`/stories/${story.id}`}> {story.title}</Link>
+          {/* <h1>{story.title}</h1> */}
 
         </Card.Header>
+        <Card.Meta>
+          Creator: {story.user ? story.user.name : "story.user.name here, from OneStory"}
+        </Card.Meta>
       </Card.Content>
 
       <Card.Content>
         <Card.Meta>
-          <div>
+          <div className="floatRight">
             Story ID: {story.id ? story.id : 0}
+            <br></br>
+            Word Count: {story.content ? story.content.split(' ').length : 0}
           </div>
 
-          <div>
-            Creator: {story.user ? story.user.name : "story.user.name here, from OneStory"}
-          </div>
-
-          <div>
+          <div className="floatLeft">
             Created: {story.created_at ? new Date(story.created_at).toLocaleString('en-US', {
               weekday: 'short',
               month: 'short',
@@ -48,9 +52,9 @@ const OneStory = (props) => {
               hour12: true,
               timeZoneName: 'short'
             }) : "story.created_at here, from OneStory"}
-          </div>
 
-          <div>
+            <br></br>
+
             Updated: {story.updated_at ? new Date(story.updated_at).toLocaleString('en-US', {
               weekday: 'short',
               month: 'short',
@@ -62,8 +66,6 @@ const OneStory = (props) => {
               timeZoneName: 'short'
             }) : "story.updated_at here, from OneStory"}
           </div>
-
-          Word Count: {story.content ? story.content.split(' ').length : 0}
         </Card.Meta>
 
       </Card.Content>
@@ -104,7 +106,7 @@ const OneStory = (props) => {
         </Card.Content>
 
       </Card>
-
+    {/* </Modal> */}
     </div>
 
 
