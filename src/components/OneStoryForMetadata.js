@@ -7,17 +7,19 @@ import { Table } from 'semantic-ui-react'
 class OneStoryForMetadata extends React.Component {
   constructor(props) {
     super(props)
+    let sortedStories = props.stories.slice(0) //clone array, cuz sort mutates
     this.state = {
       column: null,
-      data: props.stories.reverse(), //why doesn't this get data before rendering? need to add componentWillReceiveProps ???
-      //data: this.storyObjectArray, //this doesn't work, but is quicker in the console
+      data: sortedStories.reverse(), //don't get this get data before rendering, so need componentWillReceiveProps...
       direction: null,
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    // console.log('OneStoryForMetadata, nextProps is: ', nextProps)
+    let sortedStories = nextProps.stories.slice(0) //clone array, cuz sort mutates
     this.setState({
-      data: nextProps.stories
+      data: sortedStories.reverse() //reverse here and above, cuz here replaces above...
     })
   }
 
@@ -32,8 +34,7 @@ class OneStoryForMetadata extends React.Component {
       return
     }
     this.setState({
-      // data: data.reverse(),
-      data: this.props.stories.reverse(), //need this????
+      data: data.reverse(),
       direction: direction === 'ascending' ? 'descending' : 'ascending',
     })
   }
@@ -58,10 +59,10 @@ class OneStoryForMetadata extends React.Component {
               <Table.HeaderCell sorted={column === 'title' ? direction : null} onClick={this.handleSort('title')}>
                 Title
               </Table.HeaderCell>
-              <Table.HeaderCell sorted={column === 'user' ? direction : null} onClick={this.handleSort('user')}>
+              <Table.HeaderCell sorted={column === 'user' ? direction : null} onClick={this.handleSort('user.name')}>
                 Creator
               </Table.HeaderCell>
-              <Table.HeaderCell sorted={column === 'content' ? direction : null} onClick={this.handleSort('content')}>
+              <Table.HeaderCell sorted={column === 'content' ? direction : null} onClick={this.handleSort('content.length')}>
                 Word Count
               </Table.HeaderCell>
               <Table.HeaderCell sorted={column === 'genres' ? direction : null} onClick={this.handleSort('genres')}>
@@ -80,7 +81,6 @@ class OneStoryForMetadata extends React.Component {
           </Table.Header>
 
 
-
           <Table.Body>
 
             {_.map(data, ({ id, title, user, content, genres, plots, created_at, updated_at }) => (
@@ -89,7 +89,7 @@ class OneStoryForMetadata extends React.Component {
 
                 <Table.Cell>{title ? title : "title"}</Table.Cell>
 
-                <Table.Cell>{user ? user.name : "story creator"}</Table.Cell>
+                <Table.Cell>{user.name ? user.name : "story creator"}</Table.Cell>
 
                 <Table.Cell>{content ? content.split(' ').length : 0}</Table.Cell>
 
@@ -114,7 +114,7 @@ class OneStoryForMetadata extends React.Component {
                 }).join('   ') : 0}</Table.Cell>
 
                 <Table.Cell>{created_at ? new Date(created_at).toLocaleString('en-US', {
-                  weekday: 'short',
+                  // weekday: 'short',
                   month: 'short',
                   day: 'numeric',
                   year: 'numeric',
@@ -125,7 +125,7 @@ class OneStoryForMetadata extends React.Component {
                 }) : "created"}</Table.Cell>
 
                 <Table.Cell>{updated_at ? new Date(updated_at).toLocaleString('en-US', {
-                  weekday: 'short',
+                  // weekday: 'short',
                   month: 'short',
                   day: 'numeric',
                   year: 'numeric',
@@ -139,7 +139,6 @@ class OneStoryForMetadata extends React.Component {
 
             ))}
           </Table.Body>
-
 
         </Table>
         <p className="center">Word Nerds Metadata</p>
