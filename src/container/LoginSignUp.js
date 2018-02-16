@@ -37,7 +37,7 @@ class LoginSignUp extends React.Component {
                 And it'll be a decent first draft, giving you plenty of text to edit.
               </p>
               <p>
-                Everyone has a story to tell. Start telling yours today.
+                Everyone has a story to tell. Start telling yours today!
               </p>
             </div>
 
