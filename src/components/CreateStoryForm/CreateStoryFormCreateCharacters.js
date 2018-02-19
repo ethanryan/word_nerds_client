@@ -241,7 +241,7 @@ render() {
 
 
 
-          {/* <Form.Group>
+          <Form.Group>
             <Form.Field label="Shadow Name" placeholder="SHADOW"
               width={6}
               control="input" type="text" key="shadowName"
@@ -422,7 +422,7 @@ render() {
                                   <br></br>
                                   gender: {this.state.trickster.gender}
                                 </Form.Field>
-                              </Form.Group> */}
+                              </Form.Group>
     </div>
   )
 }
