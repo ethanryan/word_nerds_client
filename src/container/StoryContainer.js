@@ -33,6 +33,34 @@ class StoryContainer extends Component {
         id: 'user_id here',
         name: 'user_name here'
       },
+      characters: {
+        hero: {
+          name: 'HERO', //default name...
+          gender: '',
+        },
+        shadow: {
+          name: 'SHADOW', //default name...
+          gender: '',
+        },
+        friend: {
+          name: 'FRIEND', //default name...
+          gender: '',
+        },
+        lover: {
+          name: 'LOVER', //default name...
+          gender: '',
+        },
+        mentor: {
+          name: 'MENTOR', //default name...
+          gender: '',
+        },
+        trickster: {
+          name: 'TRICKSTER', //default name...
+          gender: '',
+        },
+      },
+      //updated from CreateStoryFormCreateCharacters...
+
       image: '',
       plots: [],
       genres: [],
@@ -152,6 +180,119 @@ class StoryContainer extends Component {
   }
 
 
+  //abstract below functions into one function???????
+  //abstract below functions into one function???????
+  //abstract below functions into one function???????
+  //abstract below functions into one function???????
+
+  //   hero: this.state.hero,
+  //   shadow: this.state.shadow,
+  //   friend: this.state.friend,
+  //   lover: this.state.lover,
+  //   mentor: this.state.mentor,
+  //   trickster: this.state.trickster
+
+  handleHeroNameChange(params) {
+    let characters = {...this.state.characters}
+    characters.hero.name = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleHeroGenderChange(params) {
+    let characters = {...this.state.characters}
+    characters.hero.gender = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleShadowNameChange(params) {
+    let characters = {...this.state.characters}
+    characters.shadow.name = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleShadowGenderChange(params) {
+    let characters = {...this.state.characters}
+    characters.shadow.gender = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleFriendNameChange(params) {
+    let characters = {...this.state.characters}
+    characters.friend.name = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleFriendGenderChange(params) {
+    let characters = {...this.state.characters}
+    characters.friend.gender = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleLoverNameChange(params) {
+    let characters = {...this.state.characters}
+    characters.lover.name = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleLoverGenderChange(params) {
+    let characters = {...this.state.characters}
+    characters.lover.gender = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleMentorNameChange(params) {
+    let characters = {...this.state.characters}
+    characters.mentor.name = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleMentorGenderChange(params) {
+    let characters = {...this.state.characters}
+    characters.mentor.gender = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleTricksterNameChange(params) {
+    let characters = {...this.state.characters}
+    characters.trickster.name = params
+    this.setState({
+      characters
+    })
+  }
+
+  handleTricksterGenderChange(params) {
+    let characters = {...this.state.characters}
+    characters.trickster.gender = params
+    this.setState({
+      characters
+    })
+  }
+  //abstract above functions into one function???????
+  //abstract above functions into one function???????
+  //abstract above functions into one function???????
+  //abstract above functions into one function???????
+
+
   sortStoriesByUpdatedAt(storiesArray) {
     // console.log('0. container - storiesArray: ', storiesArray)
     var newArray = storiesArray.slice(0) //clone, cuz sort mutates
@@ -195,6 +336,29 @@ class StoryContainer extends Component {
           handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
           ///above so CreateStoryFormSelectGenre can send up selectedGenre to here, StoryContainer
 
+          //refactor below!!!! just needs to be one or two functions for all character names and genders...
+          //   hero: this.state.hero,
+          //   shadow: this.state.shadow,
+          //   friend: this.state.friend,
+          //   lover: this.state.lover,
+          //   mentor: this.state.mentor,
+          //   trickster: this.state.trickster
+          handleHeroNameChange={this.handleHeroNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+          handleShadowNameChange={this.handleShadowNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+          handleFriendNameChange={this.handleFriendNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+          handleLoverNameChange={this.handleLoverNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+          handleMentorNameChange={this.handleMentorNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+          handleTricksterNameChange={this.handleTricksterNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+
+          handleHeroGenderChange={this.handleHeroGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+          handleShadowGenderChange={this.handleShadowGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+          handleFriendGenderChange={this.handleFriendGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+          handleLoverGenderChange={this.handleLoverGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+          handleMentorGenderChange={this.handleMentorGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+          handleTricksterGenderChange={this.handleTricksterGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+
+          characterProps={this.state.characters} //pass all characters in one prop...
+
           //props for EditStoryForm
           handleDeleteStory={this.handleDeleteStory.bind(this)}
           handleUpdateStory={this.handleUpdateStory.bind(this)}
@@ -213,7 +377,7 @@ class StoryContainer extends Component {
   }
   else {
     console.log('state from StoryContainer: ', this.state)
-    console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
+    console.log('!!!! state.users.length 0 means NO INTERNET: ', this.state.users.length)
     return(
       <div>
         <NavBarLoginSignUp />

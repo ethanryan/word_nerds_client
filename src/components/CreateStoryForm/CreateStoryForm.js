@@ -1,51 +1,64 @@
 import React, { Component } from 'react'
 
 import CreateStoryFormSelectGenre from './CreateStoryFormSelectGenre'
+import CreateStoryFormCreateCharacters from './CreateStoryFormCreateCharacters'
 
 import { Form, Header, Divider, Modal, Button, Segment } from 'semantic-ui-react'
 
 class CreateStoryForm extends Component {
 
   constructor(props) {
-    // console.log('**** props from CreateStoryForm:', props)
     super(props)
+    console.log('**** props from CreateStoryForm:', props)
+    console.log('+++++ props.characterProps from CreateStoryFormCreateCharacters:', props.characterProps)
     this.state=({ //organizing this so it's not nested, but post request will be nested
     story: '',
     //user_id: this.props.user_id, //need to set user_id here??? keep losing user_id on page reload
-    hero: {
-      name: 'HERO',
-      gender: '',
-      nerd: ''
-    },
-    shadow: {
-      name: 'SHADOW',
-      gender: '',
-      nerd: ''
-    },
-    friend: {
-      name: 'FRIEND',
-      gender: '',
-      nerd: ''
-    },
-    lover: {
-      name: 'LOVER',
-      gender: '',
-      nerd: ''
-    },
-    mentor: {
-      name: 'MENTOR',
-      gender: '',
-      nerd: ''
-    },
-    trickster: {
-      name: 'TRICKSTER',
-      gender: '',
-      nerd: ''
-    },
+    characters: this.props.characterProps,
+    //need below, or can i put them all in the above attribute???? -------- ??????????
+
+    // shadow: {
+    //   name: 'SHADOW',
+    //   gender: '',
+    //   emoji: ''
+    // },
+    // friend: {
+    //   name: 'FRIEND',
+    //   gender: '',
+    //   emoji: ''
+    // },
+    // lover: {
+    //   name: 'LOVER',
+    //   gender: '',
+    //   emoji: ''
+    // },
+    // mentor: {
+    //   name: 'MENTOR',
+    //   gender: '',
+    //   emoji: ''
+    // },
+    // trickster: {
+    //   name: 'TRICKSTER',
+    //   gender: '',
+    //   emoji: ''
+    // },
     genreSelection: this.props.genreSelection, //chosen in CreateStoryFormSelectGenre, passed up to StoryContainer from there
   })
   this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
 } //end of constructor
+
+
+
+componentWillReceiveProps(nextProps) { //need this lifecycle method to update filteredPlotsByTitle
+  // console.log('CreateStoryForm nextProps::::', nextProps)
+  if (this.props !== nextProps) {
+    console.log("CreateStoryForm - props don't equal nextProps, so updating state with nextProps: ", nextProps)
+    // console.log("CreateStoryForm - props don't equal nextProps -- updating state with nextProps.characterProps: ", nextProps.characterProps)
+    this.setState({
+      characters: nextProps.characterProps,
+    })
+  }
+}
 
 
 
@@ -54,156 +67,49 @@ handleCharacterInputChange(event) {
 }
 
 
-handleHeroNameChange(event) {
-  const heroName = event.target.value
-  this.setState({
-    hero: {
-      name: heroName,
-      gender: this.state.hero.gender,
-      nerd: <span role="img" aria-label="emoji">😄</span>
-    },
-  })
-}
+// handleHeroNameChange(event) {
+//   const heroName = event.target.value
+//   this.setState({
+//     hero: {
+//       name: heroName,
+//       gender: this.state.hero.gender,
+//       emoji: <span role="img" aria-label="emoji">😄</span>
+//     },
+//   })
+// }
 
-handleHeroGenderChange(event) {
-  const heroGender = event.target.value
-  this.setState({
-    hero: {
-      name: this.state.hero.name,
-      gender: heroGender,
-      nerd: this.state.hero.nerd,
-    },
-  })
-}
-
-
-handleShadowNameChange(event) {
-  const shadowName = event.target.value
-  this.setState({
-    shadow: {
-      name: shadowName,
-      gender: this.state.shadow.gender,
-      nerd: <span role="img" aria-label="emoji">😨</span>
-      // nerd: <span role="img" aria-label="emoji">😈</span>
-    },
-  })
-}
-
-handleShadowGenderChange(event) {
-  const shadowGender = event.target.value
-  this.setState({
-    shadow: {
-      name: this.state.shadow.name,
-      gender: shadowGender,
-      nerd: this.state.shadow.nerd,
-    },
-  })
-}
-
-handleFriendNameChange(event) {
-  const friendName = event.target.value
-  this.setState({
-    friend: {
-      name: friendName,
-      gender: this.state.friend.gender,
-      nerd: <span role="img" aria-label="emoji">😎</span>
-    },
-  })
-}
-
-handleFriendGenderChange(event) {
-  const friendGender = event.target.value
-  this.setState({
-    friend: {
-      name: this.state.friend.name,
-      gender: friendGender,
-      nerd: this.state.friend.nerd,
-    },
-  })
-}
-
-handleLoverNameChange(event) {
-  const loverName = event.target.value
-  this.setState({
-    lover: {
-      name: loverName,
-      gender: this.state.lover.gender,
-      nerd: <span role="img" aria-label="emoji">😘</span>
-    },
-  })
-}
-
-handleLoverGenderChange(event) {
-  const loverGender = event.target.value
-  this.setState({
-    lover: {
-      name: this.state.lover.name,
-      gender: loverGender,
-      nerd: this.state.lover.nerd,
-    },
-  })
-}
-
-handleMentorNameChange(event) {
-  const mentorName = event.target.value
-  this.setState({
-    mentor: {
-      name: mentorName,
-      gender: this.state.mentor.gender,
-      nerd: <span role="img" aria-label="emoji">🤓</span>
-    },
-  })
-}
-
-handleMentorGenderChange(event) {
-  const mentorGender = event.target.value
-  this.setState({
-    mentor: {
-      name: this.state.mentor.name,
-      gender: mentorGender,
-      nerd: this.state.mentor.nerd,
-    },
-  })
-}
-
-handleTricksterNameChange(event) {
-  const tricksterName = event.target.value
-  this.setState({
-    trickster: {
-      name: tricksterName,
-      gender: this.state.trickster.gender,
-      nerd: <span role="img" aria-label="emoji">😜</span>
-    },
-  })
-}
-
-handleTricksterGenderChange(event) {
-  const tricksterGender = event.target.value
-  this.setState({
-    trickster: {
-      name: this.state.trickster.name,
-      gender: tricksterGender,
-      nerd: this.state.trickster.nerd,
-    },
-  })
-}
+// handleHeroGenderChange(event) {
+//   const heroGender = event.target.value
+//   this.setState({
+//     hero: {
+//       name: this.state.hero.name,
+//       gender: heroGender,
+//       emoji: this.state.hero.emoji,
+//     },
+//   })
+// }
 
 
 handleCreateStoryFormSubmit(event) {
   event.preventDefault()
-  const characters = {
-    hero: this.state.hero,
-    shadow: this.state.shadow,
-    friend: this.state.friend,
-    lover: this.state.lover,
-    mentor: this.state.mentor,
-    trickster: this.state.trickster
-  }
+  const characters = this.state.characters
+
+  // const characters = {
+  //   // hero: this.state.hero,
+  //   hero: this.props.characterProps.hero,
+  //   shadow: this.state.shadow,
+  //   friend: this.state.friend,
+  //   lover: this.state.lover,
+  //   mentor: this.state.mentor,
+  //   trickster: this.state.trickster
+  // }
   const user_id = this.props.user_id
-  // const genres = this.state.genreSelection
+
   const genres = this.props.genreSelection
 
-  console.log('CreateStoryForm submitted: ', this.state)
+  console.log('CreateStoryForm submitted this.state: ', this.state)
+  console.log('CreateStoryForm submitted characters--------: ', characters)
+  // console.log('CreateStoryForm submitted characters.hero --------: ', characters.hero)
   console.log('user_id is: ', user_id)
   this.props.handleSubmit( genres, characters, user_id )
   this.setState({story: ''}) //this clears form onSubmit
@@ -238,11 +144,16 @@ render() {
           handleGenreChange={this.props.handleGenreChange}
         />
 
-
         <Divider />
 
+        <CreateStoryFormCreateCharacters
+          handleHeroNameChange={this.props.handleHeroNameChange}
+          handleHeroGenderChange={this.props.handleHeroGenderChange}
+          // characterProps={this.props.characterProps}
+        />
+
         {/* make everything below here its own component, CreateStoryFormCreateCharacters */}
-        <Header as='h2' textAlign='center'>
+        {/* <Header as='h2' textAlign='center'>
           Create Characters
         </Header>
 
@@ -272,7 +183,7 @@ render() {
             <Form.Field width={6} className="summaryField">
               <label>
                 <span role="img" aria-label="emoji">
-                  {(this.state.hero.name !== 'HERO') ? this.state.hero.nerd : null}
+                  {(this.state.hero.name !== 'HERO') ? this.state.hero.emoji : null}
                 </span>  Hero Summary</label>
 
                 name: {this.state.hero.name}
@@ -311,7 +222,7 @@ render() {
                   width={6} className="summaryField">
                   <label>
                     <span role="img" aria-label="emoji">
-                      {(this.state.shadow.name !== 'SHADOW') ? this.state.shadow.nerd : null}
+                      {(this.state.shadow.name !== 'SHADOW') ? this.state.shadow.emoji : null}
                     </span>  Shadow Summary</label>
 
                     name: {this.state.shadow.name}
@@ -348,7 +259,7 @@ render() {
                       width={6} className="summaryField">
                       <label>
                         <span role="img" aria-label="emoji">
-                          {(this.state.friend.name !== 'FRIEND') ? this.state.friend.nerd : null}
+                          {(this.state.friend.name !== 'FRIEND') ? this.state.friend.emoji : null}
                         </span>  Friend Summary</label>
 
                         name: {this.state.friend.name}
@@ -385,7 +296,7 @@ render() {
                           width={6} className="summaryField">
                           <label>
                             <span role="img" aria-label="emoji">
-                              {(this.state.lover.name !== 'LOVER') ? this.state.lover.nerd : null}
+                              {(this.state.lover.name !== 'LOVER') ? this.state.lover.emoji : null}
                             </span>  Lover Summary</label>
 
                             name: {this.state.lover.name}
@@ -422,7 +333,7 @@ render() {
                               width={6} className="summaryField">
                               <label>
                                 <span role="img" aria-label="emoji">
-                                  {(this.state.mentor.name !== 'MENTOR') ? this.state.mentor.nerd : null}
+                                  {(this.state.mentor.name !== 'MENTOR') ? this.state.mentor.emoji : null}
                                 </span>  Mentor Summary</label>
 
                                 name: {this.state.mentor.name}
@@ -459,14 +370,14 @@ render() {
                                   width={6} className="summaryField">
                                   <label>
                                     <span role="img" aria-label="emoji">
-                                      {(this.state.trickster.name !== 'TRICKSTER') ? this.state.trickster.nerd : null}
+                                      {(this.state.trickster.name !== 'TRICKSTER') ? this.state.trickster.emoji : null}
                                     </span>  Trickster Summary</label>
 
                                     name: {this.state.trickster.name}
                                     <br></br>
                                     gender: {this.state.trickster.gender}
                                   </Form.Field>
-                                </Form.Group>
+                                </Form.Group> */}
 
 
                                 <Form.Button content='Submit' type="submit" primary fluid/>

@@ -35,8 +35,25 @@ const StoryPage = (props) => {
                 handleSubmit={props.handleSubmit}
                 user_id={props.user ? props.user.id : "props.user.id here"}
                 genreSelection={props.genreSelection} //this goes to CreateStoryForm
-                handleGenreChange={props.handleGenreChange} //this will be passed down to CreateStoryFormSelectGenre
+                //below will be passed down to CreateStoryFormSelectGenre:
                 plots={props.plots}
+                handleGenreChange={props.handleGenreChange}
+                //below will be passed down to CreateStoryFormCreateCharacters:
+                //refactor below!!! don't need all these functions, just one or two...
+                characterProps={props.characterProps}
+                handleHeroNameChange={props.handleHeroNameChange}
+                handleShadowNameChange={props.handleShadowNameChange}
+                handleFriendNameChange={props.handleFriendNameChange}
+                handleLoverNameChange={props.handleLoverNameChange}
+                handleMentorNameChange={props.handleMentorNameChange}
+                handleTricksterNameChange={props.handleTricksterNameChange}
+                //refactor below!!! don't need all these functions, just one or two...
+                handleHeroGenderChange={props.handleHeroGenderChange}
+                handleShadowGenderChange={props.handleShadowGenderChange}
+                handleFriendGenderChange={props.handleFriendGenderChange}
+                handleLoverGenderChange={props.handleLoverGenderChange}
+                handleMentorGenderChange={props.handleMentorGenderChange}
+                handleTricksterGenderChange={props.handleTricksterGenderChange}
               />} />
 
               <Route
