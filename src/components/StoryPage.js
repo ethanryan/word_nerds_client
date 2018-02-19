@@ -2,7 +2,7 @@ import React from 'react'
 
 import nerdy from '../components/nerdy.gif'
 
-import CreateStoryForm from './CreateStoryForm'
+import CreateStoryForm from './CreateStoryForm/CreateStoryForm'
 import EditStoryForm from './EditStoryForm'
 import AllStories from './AllStories'
 import Metadata from './Metadata'
