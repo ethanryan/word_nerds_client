@@ -10,6 +10,12 @@
   text-align: center;
 }
 
+.modal-trigger {
+  margin-top: 12%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 .floatLeft {
   float: left;
 }
@@ -106,7 +112,7 @@
 }
 
 .CreateStoryForm-red {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   border-radius: 25px;
   background: white;
   /*padding: 15px 0px 15px 25px;*/
@@ -114,7 +120,8 @@
   padding-right: 25px;
   padding-bottom: 15px;
   padding-left: 25px;
-  margin: 5px 0px 5px 15px;
+  /* margin: 5px 0px 5px 15px; */
+  margin: 5px 0px 5px 0px;
   /*top, right, bottom, left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
   line-height: 1.1;

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import CreateStoryFormSelectGenre from './CreateStoryFormSelectGenre'
 
-import { Form, Header, Divider, Modal, Button } from 'semantic-ui-react'
+import { Form, Header, Divider, Modal, Button, Segment } from 'semantic-ui-react'
 
 class CreateStoryForm extends Component {
 
@@ -215,10 +215,18 @@ render() {
 
   return(
 
-    <div className="CreateStoryForm-red">
+    // <div className="CreateStoryForm-red">
+    <div>
 
-      <Modal trigger={<Button>Create A Story</Button>}>
+        <Modal trigger={
+          <div className="center modal-trigger">
+            <Segment>
+              <Button primary massive>Create A Story</Button>
+            </Segment>
+          </div>
+        }>
 
+      <div className="CreateStoryForm-red">
       <Form onSubmit={this.handleCreateStoryFormSubmit}>
 
         <Header as='h1' textAlign='center'>
@@ -228,7 +236,6 @@ render() {
         {/* <h1>user_id: {this.props.user_id}</h1> */}
 
         <Divider />
-        <Divider />
 
         <CreateStoryFormSelectGenre
           plots={this.props.plots}
@@ -236,7 +243,6 @@ render() {
         />
 
 
-        <Divider />
         <Divider />
 
 
@@ -469,10 +475,10 @@ render() {
 
                                 <Divider />
 
-                                <Form.Button content='Submit' type="submit" primary/>
+                                <Form.Button content='Submit' type="submit" primary fluid/>
 
                               </Form>
-
+                            </div>
                             </Modal>
 
                             </div>
