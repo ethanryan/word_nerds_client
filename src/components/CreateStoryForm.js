@@ -215,7 +215,6 @@ render() {
 
   return(
 
-    // <div className="CreateStoryForm-red">
     <div>
 
         <Modal trigger={
@@ -226,16 +225,13 @@ render() {
           </div>
         }>
 
-      <div className="CreateStoryForm-red">
-      <Form onSubmit={this.handleCreateStoryFormSubmit}>
+      <Form onSubmit={this.handleCreateStoryFormSubmit} className="CreateStoryForm-red">
 
         <Header as='h1' textAlign='center'>
           Create a Story
         </Header>
 
         {/* <h1>user_id: {this.props.user_id}</h1> */}
-
-        <Divider />
 
         <CreateStoryFormSelectGenre
           plots={this.props.plots}
@@ -245,7 +241,7 @@ render() {
 
         <Divider />
 
-
+        {/* make everything below here its own component, CreateStoryFormCreateCharacters */}
         <Header as='h2' textAlign='center'>
           Create Characters
         </Header>
@@ -473,14 +469,10 @@ render() {
                                 </Form.Group>
 
 
-                                <Divider />
-
                                 <Form.Button content='Submit' type="submit" primary fluid/>
 
                               </Form>
-                            </div>
                             </Modal>
-
                             </div>
                           )
                         }
