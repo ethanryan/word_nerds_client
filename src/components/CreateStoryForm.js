@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import CreateStoryFormSelectGenre from './CreateStoryFormSelectGenre'
 
-import { Form, Header, Divider } from 'semantic-ui-react'
+import { Form, Header, Divider, Modal, Button } from 'semantic-ui-react'
 
 class CreateStoryForm extends Component {
 
@@ -216,6 +216,8 @@ render() {
   return(
 
     <div className="CreateStoryForm-red">
+
+      <Modal trigger={<Button>Create A Story</Button>}>
 
       <Form onSubmit={this.handleCreateStoryFormSubmit}>
 
@@ -470,6 +472,8 @@ render() {
                                 <Form.Button content='Submit' type="submit" primary/>
 
                               </Form>
+
+                            </Modal>
 
                             </div>
                           )
