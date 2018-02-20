@@ -1,7 +1,10 @@
 import React from 'react'
+
 import { Link } from 'react-router-dom'
-// import { Card, Button, Modal } from 'semantic-ui-react'
-import { Card, Button } from 'semantic-ui-react'
+
+import StoryShow from './StoryShow'
+
+import { Card, Button, Modal } from 'semantic-ui-react'
 
 
 const OneStory = (props) => {
@@ -18,6 +21,7 @@ const OneStory = (props) => {
   <div key={story.id ? story.id : "story.id here"} className="OneStory-orange">
     {/* <Modal trigger={<Button>Show Modal</Button>}> */}
 
+    {/* <Modal.Header>This is a modal motherfucker</Modal.Header> */}
     <Card fluid>
 
       <Card.Content>
@@ -97,8 +101,17 @@ const OneStory = (props) => {
       <Card.Content extra>
         <div className='ui two buttons'>
           {/* <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`} */}
-          <Button basic color='green' as={Link} to={`/stories/${story.id}`}
-          >View</Button>
+
+        <Modal trigger={
+          <Button basic color='green'
+            >View</Button>
+            }>
+          <StoryShow
+            story={story}
+            handleDeleteStory={props.handleDeleteStory}
+            // want it to be able to send user to EditStoryForm
+          />
+        </Modal>
 
           <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
             >Delete</Button>
@@ -106,7 +119,6 @@ const OneStory = (props) => {
         </Card.Content>
 
       </Card>
-    {/* </Modal> */}
     </div>
 
 
