@@ -149,26 +149,33 @@
 
 /*.CreateStoryForm-red :not(.genderRadio) .field {*/
 .CreateStoryForm-red .field {
-  padding-bottom: 5%;
-  /*background-color: lightblue;*/
+  /* background-color: lightblue; */
+  /* padding-bottom: 5%; */
 }
 
 .CreateStoryForm-red .genderField {
-  /*background-color: yellow;*/
+  /* background-color: yellow; */
+  padding-left: 20%;
+}
+
+.CreateStoryForm-red .gender-label {
+  padding-left: 25%;
 }
 
 .CreateStoryForm-red .genderRadio {
   padding-bottom: 0px;
-  /*background-color: pink;*/
+  padding-left: 35%;
+  /* background-color: pink; */
 }
 
 .CreateStoryForm-red .summaryField {
-  padding-left: 15px;
-  /*background-color: lightgray;*/
+  /* background-color: lightgray; */
+  padding-left: 35%;
 }
 
 .CreateStoryForm-red .ui.form .fields .wide.field {
-  padding-left: 3%;
+  /* padding-left: 3%; */
+  /* background-color: black; */
 }
 
 .LoginSignUp-divs {
@@ -186,7 +193,7 @@
 }
 
 .center-h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .LoginForm-orange {

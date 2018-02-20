@@ -205,7 +205,7 @@ render() {
           onChange={this.handleHeroNameChange.bind(this)} />
 
           <Form.Field width={4} className="genderField">
-            <label>Hero Gender</label>
+            <label className="gender-label">Hero Gender</label>
             <Form.Field label="male"
               value="male"
               control="input" type="radio" className="genderRadio"
@@ -242,7 +242,7 @@ render() {
               onChange={this.handleShadowNameChange.bind(this)} />
 
               <Form.Field width={4} className="genderField">
-                <label>Shadow Gender</label>
+                <label className="gender-label">Shadow Gender</label>
                 <Form.Field label="male"
                   value="male"
                   control="input" type="radio" className="genderRadio"
@@ -263,7 +263,6 @@ render() {
                   <span role="img" aria-label="emoji">
                     {(this.state.shadow.name !== 'SHADOW') ? this.state.shadow.emoji : null}
                   </span>  Shadow Summary</label>
-
                   name: {this.state.shadow.name}
                   <br></br>
                   gender: {this.state.shadow.gender}
@@ -279,7 +278,7 @@ render() {
                   onChange={this.handleFriendNameChange.bind(this)} />
 
                   <Form.Field width={4} className="genderField">
-                    <label>Friend Gender</label>
+                    <label className="gender-label">Friend Gender</label>
                     <Form.Field label="male"
                       value="male"
                       control="input" type="radio" className="genderRadio"
@@ -294,8 +293,7 @@ render() {
                     />
                   </Form.Field>
 
-                  <Form.Field
-                    width={6} className="summaryField">
+                  <Form.Field width={6} className="summaryField">
                     <label>
                       <span role="img" aria-label="emoji">
                         {(this.state.friend.name !== 'FRIEND') ? this.state.friend.emoji : null}
@@ -316,7 +314,7 @@ render() {
                       onChange={this.handleLoverNameChange.bind(this)} />
 
                       <Form.Field width={4} className="genderField">
-                        <label>Lover Gender</label>
+                        <label className="gender-label">Lover Gender</label>
                         <Form.Field label="male"
                           value="male"
                           control="input" type="radio" className="genderRadio"
@@ -353,7 +351,7 @@ render() {
                           onChange={this.handleMentorNameChange.bind(this)} />
 
                           <Form.Field width={4} className="genderField">
-                            <label>Mentor Gender</label>
+                            <label className="gender-label">Mentor Gender</label>
                             <Form.Field label="male"
                               value="male"
                               control="input" type="radio" className="genderRadio"
@@ -390,7 +388,7 @@ render() {
                               onChange={this.handleTricksterNameChange.bind(this)} />
 
                               <Form.Field width={4} className="genderField">
-                                <label>Trickster Gender</label>
+                                <label className="gender-label">Trickster Gender</label>
                                 <Form.Field label="male"
                                   value="male"
                                   control="input" type="radio" className="genderRadio"
