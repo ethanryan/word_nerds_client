@@ -193,7 +193,7 @@ render() {
   // console.log('!!!!! this.state.hero from CreateStoryFormCreateCharacters:', this.state.hero)
 
   return(
-    <div>
+    <div className="create-characters">
       <Header as='h2' textAlign='center'>
         Create Characters
       </Header>
@@ -234,12 +234,6 @@ render() {
 
 
           <Divider />
-          ----------------------
-          ----------------------
-          ----------------------
-          ----------------------
-
-
 
           <Form.Group>
             <Form.Field label="Shadow Name" placeholder="SHADOW"

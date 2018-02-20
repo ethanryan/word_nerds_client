@@ -132,6 +132,10 @@
   background-color: azure;
 }
 
+.create-characters {
+  background-color: lightyellow;
+}
+
 .genreSelection {
   /* border: 1px dotted green; */
   padding: 15px;
