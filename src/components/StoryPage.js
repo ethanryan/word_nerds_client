@@ -60,12 +60,14 @@ const StoryPage = (props) => {
                 exact path='/stories/:id'
                 render={({match}) => {
                   const story = props.stories.find( s => s.id === parseInt(match.params.id, 10))
-                  return <StoryShow
-                    story={story}
-                    image={props.image}
-                    handleDeleteStory={props.handleDeleteStory}
-                    // want it to be able to send user to EditStoryForm
-                  />
+                  return <div className="StoryShow-purple">
+                    <StoryShow
+                      story={story}
+                      image={props.image}
+                      handleDeleteStory={props.handleDeleteStory}
+                      // want it to be able to send user to EditStoryForm
+                    />
+                  </div>
                 }} />
 
                 <Route

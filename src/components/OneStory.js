@@ -102,16 +102,18 @@ const OneStory = (props) => {
         <div className='ui two buttons'>
           {/* <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`} */}
 
-        <Modal trigger={
-          <Button basic color='green'
-            >View</Button>
+          <Modal trigger={
+            <Button basic color='green'
+              >View</Button>
             }>
-          <StoryShow
-            story={story}
-            handleDeleteStory={props.handleDeleteStory}
-            // want it to be able to send user to EditStoryForm
-          />
-        </Modal>
+            <div className="StoryShow-purple-modal">
+              <StoryShow
+                story={story}
+                handleDeleteStory={props.handleDeleteStory}
+                // want it to be able to send user to EditStoryForm
+              />
+            </div>
+          </Modal>
 
           <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
             >Delete</Button>
