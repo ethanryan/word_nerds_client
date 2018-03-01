@@ -23,8 +23,6 @@ const StoryShow = (props) => {
 
   return(
     <div>
-      <div className="StoryShow-purple">
-
             <div>
 {/* {GoogleImageSearchResults} */}
             </div>
@@ -118,7 +116,6 @@ const StoryShow = (props) => {
               <br></br>
               <br></br>
 
-      </div>
     </div>
   )
 }
