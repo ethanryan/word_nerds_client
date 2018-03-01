@@ -238,7 +238,7 @@ form span.error {
   border: 2px solid blue;
   border-radius: 25px;
   background: white;
-  padding: 15px 5px 15px 15px;
+  padding: 15px 15px 15px 15px;
   margin: 5px 0px 5px 20px;
   /*top, right, bottom, left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
@@ -251,8 +251,7 @@ form span.error {
 .EditStoryForm-blue-modal {
   border: 2px solid blue;
   background: white;
-  padding: 15px 25px 15px 50px; /* why do i need to make left padding 50px instead of 25 to get it centered??? */
-  /* padding: 15px 5px 15px 5px; */
+  padding: 15px 25px 15px 25px; 
   /*top, right, bottom, left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
