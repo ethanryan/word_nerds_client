@@ -240,10 +240,20 @@ form span.error {
   background: white;
   padding: 15px 5px 15px 15px;
   margin: 5px 0px 5px 20px;
+  /*top, right, bottom, left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
 
 .EditStoryForm-linebreaks {
+  white-space: pre-wrap; /*this is to preserve line breaks added by users*/
+}
+
+.EditStoryForm-blue-modal {
+  border: 2px solid blue;
+  background: white;
+  padding: 15px 25px 15px 50px; /* why do i need to make left padding 50px instead of 25 to get it centered??? */
+  /* padding: 15px 5px 15px 5px; */
+  /*top, right, bottom, left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
 
@@ -259,10 +269,8 @@ form span.error {
 
 .StoryShow-purple-modal {
   border: 2px solid purple;
-  /* border-radius: 25px; */
   background: white;
   padding: 15px 25px 15px 25px;
-  /* margin: 5px 20px 5px 20px; */
   /*top, right, bottom, left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
