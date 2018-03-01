@@ -18,9 +18,15 @@ const AllStories = (props) => {
       <h3 className="center">total stories: {filteredStories.length}</h3>
 
       <OneStory
+        handleUpdateStory={props.handleUpdateStory}
         handleDeleteStory={props.handleDeleteStory}
         stories={props.stories}
         user_id={props.user_id}
+        storyShowIsModal={props.storyShowIsModal}
+        openModal={props.openModal}
+        closeModal={props.closeModal}
+        storyShowModalIsEditable={props.storyShowModalIsEditable}
+        toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
       />
 
       {/* <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> */}

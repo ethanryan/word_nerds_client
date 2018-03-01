@@ -53,12 +53,15 @@ class EditStoryForm extends Component {
   }
 
   handleEditStoryFormSubmit(event) {
+    console.log('handleEditStoryFormSubmit called ---------->><><><><><><>')
+    console.log('event is: ', event)
     event.preventDefault()
     const updatedStory = {
       input: this.state.input,
       title: this.state.title,
       id: this.props.story.id
     }
+    console.log('updatedStory is: ', updatedStory)
     this.props.handleUpdateStory(updatedStory)
     this.setState({input: ''})
   }
@@ -102,7 +105,7 @@ handleRandomLastSentence() {
 
   render() {
 
-    console.log('render is called in EditStory');
+    console.log('render is called in EditStory ~~~~~~~~~~~ <<<<<<<<----------------000000000');
     // console.log('from EditStoryForm, this.state.input: ', this.state.input);
 
     // debugger
@@ -117,7 +120,7 @@ handleRandomLastSentence() {
     let genres = (this.props.story.genres ? this.props.story.genres.map((genre) => {return (genre.name) }).join(', ') : 0)
 
     return(
-        <div className="EditStoryForm-blue">
+        <div>
 
           <Form id="EditStoryForm" onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
             <h3>Edit Story</h3>
@@ -158,7 +161,7 @@ handleRandomLastSentence() {
             <Form.Field label='Title'
               placeholder="title here"
               control='input'
-              width={15}
+              width={16}
               value={this.state.title} //value of input field is state.title, coming from componentWillReceiveProps
               onChange={this.handleTitleChange}
             />
@@ -168,25 +171,25 @@ handleRandomLastSentence() {
               className="EditStoryForm-linebreaks"
               placeholder="this is where the story content goes for editing"
               control='textarea' rows='35'
-              width={15}
+              width={16}
               // value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
               value={paragraphs}
               onChange={this.handleStoryChange}
             />
 
             <div>
-              <Button.Group floated='right'>
-                <Button color='red'
+              {/* <Button.Group floated='right'>
+                <Button basic color='red'
                   compact
                   onClick={() => {this.props.handleDeleteStory(this.props.story.id)}}>Delete</Button>
-                </Button.Group>
+                </Button.Group> */}
 
               <Button.Group>
                 <Form.Button
                   content='Save Story'
                   type="submit"
                   primary compact/>
-..
+
               <Form.Button color='purple'
                   compact
                   type="button"

@@ -3,6 +3,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import StoryShow from './StoryShow'
+import EditStoryForm from './EditStoryForm'
+
 
 import { Card, Button, Modal } from 'semantic-ui-react'
 
@@ -29,7 +31,6 @@ const OneStory = (props) => {
           Story Title:
           {/* <Link to={`/stories/${story.id}/edit`}> {story.title}</Link> */}
           <Link to={`/stories/${story.id}`}> {story.title}</Link>
-          {/* <h1>{story.title}</h1> */}
 
         </Card.Header>
         <Card.Meta>
@@ -102,17 +103,41 @@ const OneStory = (props) => {
         <div className='ui two buttons'>
           {/* <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`} */}
 
-          <Modal trigger={
-            <Button basic color='green'
+          <Modal
+            open={props.storyShowIsModal}
+            onClose={() => props.closeModal()}
+            trigger={
+            <Button basic color='green' onClick={() => props.openModal()}
               >View</Button>
             }>
-            <div className="StoryShow-purple-modal">
-              <StoryShow
-                story={story}
-                handleDeleteStory={props.handleDeleteStory}
-                // want it to be able to send user to EditStoryForm
-              />
-            </div>
+
+            {/* switch below... either show StoryShow, or show EditStoryForm */}
+            {/* {props.storyShowModalIsEditable ? <p>this is the modal edit form!!!! </p> : <p>this is the StoryShow-purple-modal</p>} */}
+
+            {props.storyShowModalIsEditable ?
+
+              <div className="EditStoryForm-blue-modal">
+                <EditStoryForm
+                  story={story}
+                  handleUpdateStory={props.handleUpdateStory}
+                  handleDeleteStory={props.handleDeleteStory}
+                />
+              </div>
+
+              :
+
+              <div className="StoryShow-purple-modal">
+                <StoryShow
+                  story={story}
+                  handleUpdateStory={props.handleUpdateStory}
+                  handleDeleteStory={props.handleDeleteStory}
+                  storyShowIsModal={props.storyShowIsModal}
+                  storyShowModalIsEditable={props.storyShowModalIsEditable}
+                  toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
+                />
+              </div>
+            }
+
           </Modal>
 
           <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}

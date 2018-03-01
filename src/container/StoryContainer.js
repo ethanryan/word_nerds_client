@@ -61,6 +61,9 @@ class StoryContainer extends Component {
       },
       //updated from CreateStoryFormCreateCharacters...
 
+      storyShowIsModal: false,
+      storyShowModalIsEditable: false,
+
       image: '',
       plots: [],
       genres: [],
@@ -95,6 +98,20 @@ class StoryContainer extends Component {
     }) )
   }
 
+  openModal() {
+    this.setState({ storyShowIsModal: true })
+  }
+
+  closeModal() {
+    this.setState({
+      storyShowIsModal: false,
+      storyShowModalIsEditable: false,
+     })
+  }
+
+  toggleStoryShowModalToEditable() {
+    this.setState({ storyShowModalIsEditable: true })
+  }
 
   handleSubmit(genres, characters, user_id) { //adding genre as argument -- ER Jan 2018
     api.createStory(genres, characters, user_id) //adding user_id as argument -- ER Nov 2017
@@ -111,14 +128,19 @@ class StoryContainer extends Component {
     api.updateStory(updatedStory)
     .then( data => this.sortStoriesByUpdatedAt(data) ) //sorting stories by updated_at, with function below
     .then( data => this.setState({
-      stories: data //nasty nas
+      stories: data
     }) )
-
     this.setState({
       story: updatedStory.story,
       title: updatedStory.title,
+      storyShowModalIsEditable: false,
     })
-    this.props.history.push(`/stories/${updatedStory.id}`) //redirect to all stories page
+    // if (this.state.storyShowIsModal === true) {
+    //   this.props.history.push(`/stories`) //redirect to stories page, which should show the modal...
+    // }
+    if (this.state.storyShowIsModal === false) {
+      this.props.history.push(`/stories/${updatedStory.id}`) //redirect to StoryShow page
+    }
   }
 
   handleDeleteStory(id) {
@@ -126,8 +148,12 @@ class StoryContainer extends Component {
       api.deleteStory(id)
       .then( () => {
         this.setState( prevState => ({
-          stories: prevState.stories.filter( story => story.id !== id )
+          stories: prevState.stories.filter( story => story.id !== id ),
         }) )
+        // this.setState({
+        // storyShowIsModal: false,
+        // storyShowModalIsEditable: false
+        // }) //make sure modal is closed... --- adding this breaks app...
       })
     }
     this.props.history.push('/stories') //redirect to all stories
@@ -371,6 +397,11 @@ class StoryContainer extends Component {
           stories={this.state.stories}
           plots={this.state.plots}
           users={this.state.users}
+          storyShowIsModal={this.state.storyShowIsModal}
+          storyShowModalIsEditable={this.state.storyShowModalIsEditable}
+          toggleStoryShowModalToEditable={this.toggleStoryShowModalToEditable.bind(this)}
+          openModal={this.openModal.bind(this)}
+          closeModal={this.closeModal.bind(this)}
         />
       </div>
     )

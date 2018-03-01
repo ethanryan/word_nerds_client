@@ -65,7 +65,6 @@ const StoryPage = (props) => {
                       story={story}
                       image={props.image}
                       handleDeleteStory={props.handleDeleteStory}
-                      // want it to be able to send user to EditStoryForm
                     />
                   </div>
                 }} />
@@ -74,20 +73,28 @@ const StoryPage = (props) => {
                   path='/stories/:id/edit'
                   render={({match}) => {
                     const story = props.stories.find( s => s.id === parseInt(match.params.id, 10))
-                    return <EditStoryForm
-                      story={story}
-                      handleUpdateStory={props.handleUpdateStory}
-                      handleDeleteStory={props.handleDeleteStory}
-                    />
+                    return <div className="EditStoryForm-blue">
+                      <EditStoryForm
+                        story={story}
+                        handleUpdateStory={props.handleUpdateStory}
+                        handleDeleteStory={props.handleDeleteStory}
+                      />
+                    </div>
                   }} />
 
                   <Route
                     path='/stories'
                     render={() => <AllStories
+                      handleUpdateStory={props.handleUpdateStory}
                       handleDeleteStory={props.handleDeleteStory}
                       stories={props.stories}
                       username={props.user ? props.user.name : "props.user.name here"}
                       user_id={props.user ? props.user.id : "props.user.id here"}
+                      storyShowIsModal={props.storyShowIsModal}
+                      openModal={props.openModal}
+                      closeModal={props.closeModal}
+                      storyShowModalIsEditable={props.storyShowModalIsEditable}
+                      toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
                     />} />
 
                     <Route

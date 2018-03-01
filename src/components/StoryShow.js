@@ -23,110 +23,117 @@ const StoryShow = (props) => {
 
   return(
     <div>
-            <div>
-{/* {GoogleImageSearchResults} */}
-            </div>
+      <div>
+        {/* {GoogleImageSearchResults} */}
+      </div>
 
-            <div>
-{/* {GoogleImageHere} */}
-            </div>
+      <div>
+        {/* {GoogleImageHere} */}
+      </div>
 
-              <Grid centered columns={2}>
-                  <Grid.Column>
-                    {/* <Image src={props.image ? props.image : CoolStoryBro} size='medium' /> */}
-                    {/* <Image src={ImageFromGoogleAPI} size='medium' /> */}
+      <Grid centered columns={2}>
+        <Grid.Column>
+          {/* <Image src={props.image ? props.image : CoolStoryBro} size='medium' /> */}
+          {/* <Image src={ImageFromGoogleAPI} size='medium' /> */}
 
-                  </Grid.Column>
-              </Grid>
+        </Grid.Column>
+      </Grid>
 
-            <h2>
-              Title: { props.story.title ? props.story.title : 0 }
-            </h2>
+      <h2>
+        Title: { props.story.title ? props.story.title : 0 }
+      </h2>
 
-              Edit this story:
-              <Link className='btn btn-primary'
-                to={`/stories/${props.story.id}/edit`}
-              > {props.story.title}</Link>
-              <br></br>
-              <br></br>
+      Edit this story:
+      <Link className='btn btn-primary'
+        to={`/stories/${props.story.id}/edit`}
+        > {props.story.title}</Link>
+        <br></br>
+        <br></br>
 
-              Story ID: { props.story.id ? props.story.id : "story ID here" }
-              <br></br>
-              <br></br>
+        Story ID: { props.story.id ? props.story.id : "story ID here" }
+        <br></br>
+        <br></br>
 
-              Story Creator: { props.story.user ? props.story.user.name : "name here" }
-              <br></br>
-              <br></br>
-
-
-              Word count: {props.story.content ? props.story.content.split(' ').length : 0}
-              <br></br>
-              <br></br>
+        Story Creator: { props.story.user ? props.story.user.name : "name here" }
+        <br></br>
+        <br></br>
 
 
-              Genres: {props.story.content ? props.story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
-              <br></br>
-              <br></br>
+        Word count: {props.story.content ? props.story.content.split(' ').length : 0}
+        <br></br>
+        <br></br>
 
 
-              Plots:  {props.story.content ? props.story.plots.map((plot) => {
-                      let plotTitle = plot.title
-                      return (plotTitle
-                        .replace("Halloween", "🔪")
-                        .replace("Alien", "👽")
-                        .replace("The Matrix", "⏰")
-                        .replace("Star Wars", "🚀")
-                        .replace("E.T.", "📞")
-                        .replace("Terminator", "🤖")
-                        .replace("Die Hard", "🔫")
-                        .replace("Thelma and Louise", "🚘")
-                        .replace("Home Alone", "😂")
-                        .replace("Beauty and the Beast", "🦊")
-                        .replace("La Strada", "💔")
-                        .replace("The Piano", "💙")
-                    )
-                  }).join('   ') : 0}
+        Genres: {props.story.content ? props.story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
+        <br></br>
+        <br></br>
 
 
-              <br></br>
-              <br></br>
+        Plots:  {props.story.content ? props.story.plots.map((plot) => {
+          let plotTitle = plot.title
+          return (plotTitle
+            .replace("Halloween", "🔪")
+            .replace("Alien", "👽")
+            .replace("The Matrix", "⏰")
+            .replace("Star Wars", "🚀")
+            .replace("E.T.", "📞")
+            .replace("Terminator", "🤖")
+            .replace("Die Hard", "🔫")
+            .replace("Thelma and Louise", "🚘")
+            .replace("Home Alone", "😂")
+            .replace("Beauty and the Beast", "🦊")
+            .replace("La Strada", "💔")
+            .replace("The Piano", "💙")
+          )
+        }).join('   ') : 0}
 
-              <strong>
-              Story content:
-              </strong>
 
-              <br></br>
-              <br></br>
+        <br></br>
+        <br></br>
 
-              {/* {props.story.content} */}
-              {props.story.content ? props.story.content.split('-----').join('\n\n') : "story content will go here"}
-              <br></br>
-              <br></br>
+        <strong>
+          Story content:
+        </strong>
 
-              Story ID: {props.story.id}
-              <br></br>
+        <br></br>
+        <br></br>
 
-              <Link to={`/stories/${props.story.id}/edit`}>
-                <Button color='green' compact>Edit Story
-                </Button>
-              </Link>
+        {/* {props.story.content} */}
+        {props.story.content ? props.story.content.split('-----').join('\n\n') : "story content will go here"}
+        <br></br>
+        <br></br>
 
-              <Button color='red' floated='right' compact
-                onClick={() => {props.handleDeleteStory(props.story.id)}}>Delete</Button>
-              <br></br>
-              <br></br>
+        {/* Story ID: {props.story.id} */}
+        <br></br>
 
-    </div>
-  )
-}
+        {/* {props.storyShowIsModal ? <p>this is a modal!!!</p> : <p>this ain't no modal yo</p>} */}
 
-StoryShow.defaultProps = {
-  content: 'story content here', //need this so props aren't null
-  title: 'story title here',
-  // image: 'story image here',
-  story: {title: 'title', 'content': 'words words ----- word words words',
-  // image: 'image here',
-  genres: ['genres here'], plots: [{title: "Halloween"}]},
-}
+        {props.storyShowIsModal ?
 
-export default StoryShow
+          <Button basic color='green'
+            onClick={() => { props.toggleStoryShowModalToEditable() }}
+            >Edit Story</Button>
+
+            :
+
+            <Link to={`/stories/${props.story.id}/edit`}>
+            <Button color='green' compact
+              >Edit Story
+            </Button>
+          </Link>
+
+        }
+
+      </div>
+    )
+  }
+
+  StoryShow.defaultProps = {
+    content: 'story content here', //need this so props aren't null
+    title: 'story title here',
+    // image: 'story image here',
+    story: {title: 'title', 'content': 'words words ----- word words words',
+    genres: ['genres here'], plots: [{title: "Halloween"}]},
+  }
+
+  export default StoryShow
