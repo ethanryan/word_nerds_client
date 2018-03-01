@@ -252,7 +252,17 @@ form span.error {
   border-radius: 25px;
   background: white;
   padding: 15px 25px 15px 25px;
-  margin: 5px 0px 5px 20px;
+  margin: 5px 20px 5px 20px;
+  /*top, right, bottom, left*/
+  white-space: pre-wrap; /*this is to preserve line breaks added by users*/
+}
+
+.StoryShow-purple-modal {
+  border: 2px solid purple;
+  /* border-radius: 25px; */
+  background: white;
+  padding: 15px 25px 15px 25px;
+  /* margin: 5px 20px 5px 20px; */
   /*top, right, bottom, left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
