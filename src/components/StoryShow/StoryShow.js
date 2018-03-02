@@ -13,7 +13,7 @@ const StoryShow = (props) => {
   console.log('StoryShow props.story.id: ', props.story.id);
   // console.log('StoryShow props.story.user: ', props.story.user);
 
-  // console.log('******** >>>>>>> StoryShow props... props.storyIdIsOpen:::: ', props.storyIdIsOpen)
+  // console.log('******** >>>>>>> StoryShow props... props.activeModalStoryId:::: ', props.activeModalStoryId)
 
   // console.log('--=-=-=-=-=-=-= props.storyForModal::::', props.storyForModal)
   // below console logs break page on refresh

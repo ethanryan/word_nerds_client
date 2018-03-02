@@ -14,8 +14,8 @@ const OneStory = (props) => {
   console.log(`OneStory props: `, props);
 
   //debugger
-  const storyForModal = props.userStories.find(story => story.id === props.storyIdIsOpen)
-  console.log('888888887777777---->>>>>> storyForModal is:::::', storyForModal)
+  const storyForModal = props.userStories.find(story => story.id === props.activeModalStoryId)
+  console.log('OneStory---->>>>>> storyForModal is:::::', storyForModal)
 
 
   const eachStory = props.userStories.map( (story) =>
@@ -117,7 +117,7 @@ const OneStory = (props) => {
           <Modal
             open={props.storyShowIsModal}
             onClose={() => props.closeModal()}
-            id={props.storyIdIsOpen} //passing id here...
+            id={props.activeModalStoryId} //passing id here...
             trigger={
             <Button basic color='green'
               onClick={() => props.openModal(story.id)} //sending clicked story as argument here...
@@ -144,7 +144,7 @@ const OneStory = (props) => {
                   storyShowIsModal={props.storyShowIsModal}
                   storyShowModalIsEditable={props.storyShowModalIsEditable}
                   toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
-                  storyIdIsOpen={props.storyIdIsOpen} //passing id here...
+                  activeModalStoryId={props.activeModalStoryId} //passing id here...
                 />
               </div>
             }

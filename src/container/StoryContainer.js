@@ -62,7 +62,7 @@ class StoryContainer extends Component {
       //updated from CreateStoryFormCreateCharacters...
 
       storyShowIsModal: false,
-      storyIdIsOpen: '', //this will be a number...
+      activeModalStoryId: '', //this will be a number...
       storyShowModalIsEditable: false,
 
       image: '',
@@ -103,7 +103,7 @@ class StoryContainer extends Component {
     var storyId = id
     this.setState({
       storyShowIsModal: true,
-      storyIdIsOpen: storyId,
+      activeModalStoryId: storyId,
     })
   }
 
@@ -407,7 +407,7 @@ class StoryContainer extends Component {
           toggleStoryShowModalToEditable={this.toggleStoryShowModalToEditable.bind(this)}
           openModal={this.openModal.bind(this)}
           closeModal={this.closeModal.bind(this)}
-          storyIdIsOpen={this.state.storyIdIsOpen}
+          activeModalStoryId={this.state.activeModalStoryId}
         />
       </div>
     )
