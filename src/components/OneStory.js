@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 // import StoryShow from './StoryShow'
 import StoryShowModal from './StoryShow/StoryShowModal'
+import StoryShow from './StoryShow/StoryShow'
 import EditStoryForm from './EditStoryForm'
 
 
@@ -137,7 +138,7 @@ const OneStory = (props) => {
 
               <div className="EditStoryForm-blue-modal">
                 <EditStoryForm
-                  story={story}
+                  story={storyForModal}
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}
                 />
@@ -146,15 +147,16 @@ const OneStory = (props) => {
               :
 
               <div className="StoryShow-purple-modal">
-                <StoryShowModal
-                  story={story}
+                {/* <StoryShowModal */}
+                <StoryShow
+                  story={storyForModal} //storyForModal, not story, which is each story in filteredStories
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}
                   storyShowIsModal={props.storyShowIsModal}
                   storyShowModalIsEditable={props.storyShowModalIsEditable}
                   toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
                   storyIdIsOpen={props.storyIdIsOpen} //passing id here...
-                  storyForModal={storyForModal}
+                  // storyForModal={storyForModal}
                 />
               </div>
             }

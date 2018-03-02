@@ -110,28 +110,28 @@ const StoryShow = (props) => {
         {/* Story ID: {props.story.id} */}
         <br></br>
 
-        {/* <Link to={`/stories/${props.story.id}/edit`}>
+        <Link to={`/stories/${props.story.id}/edit`}>
         <Button color='green' compact
           >Edit Story
         </Button>
-      </Link> */}
+      </Link>
 
-      {/* {props.storyShowIsModal ? <h1>this is a modal!!!</h1> : <h1>this ain't no modal yo</h1>} */}
+      {/* {props.storyShowIsModal ? <p>this is a modal!!!</p> : <p>this ain't no modal yo</p>} */}
 
-      {props.storyShowIsModal ?
+      {/* {props.storyShowIsModal ?
         <Button basic color='green'
-          onClick={() => { props.toggleStoryShowModalToEditable() }}
-          >Edit Story</Button>
-          :
-          <Link to={`/stories/${props.story.id}/edit`}>
-          <Button color='green' compact
-            >Edit Story
-          </Button>
-        </Link>
-      }
+        onClick={() => { props.toggleStoryShowModalToEditable() }}
+        >Edit Story</Button>
+        :
+        <Link to={`/stories/${props.story.id}/edit`}>
+        <Button color='green' compact
+        >Edit Story
+      </Button>
+    </Link>
+  } */}
 
-    </div>
-  )
+</div>
+)
 }
 
 StoryShow.defaultProps = {
