@@ -110,34 +110,36 @@ const StoryShow = (props) => {
         {/* Story ID: {props.story.id} */}
         <br></br>
 
-        {/* {props.storyShowIsModal ? <p>this is a modal!!!</p> : <p>this ain't no modal yo</p>} */}
+        <Link to={`/stories/${props.story.id}/edit`}>
+        <Button color='green' compact
+          >Edit Story
+        </Button>
+      </Link>
 
-        {props.storyShowIsModal ?
+      {/* {props.storyShowIsModal ? <p>this is a modal!!!</p> : <p>this ain't no modal yo</p>} */}
 
-          <Button basic color='green'
-            onClick={() => { props.toggleStoryShowModalToEditable() }}
-            >Edit Story</Button>
+      {/* {props.storyShowIsModal ?
+        <Button basic color='green'
+        onClick={() => { props.toggleStoryShowModalToEditable() }}
+        >Edit Story</Button>
+        :
+        <Link to={`/stories/${props.story.id}/edit`}>
+        <Button color='green' compact
+        >Edit Story
+      </Button>
+    </Link>
+  } */}
 
-            :
+</div>
+)
+}
 
-            <Link to={`/stories/${props.story.id}/edit`}>
-            <Button color='green' compact
-              >Edit Story
-            </Button>
-          </Link>
+StoryShow.defaultProps = {
+  content: 'story content here', //need this so props aren't null
+  title: 'story title here',
+  // image: 'story image here',
+  story: {title: 'title', 'content': 'words words ----- word words words',
+  genres: ['genres here'], plots: [{title: "Halloween"}]},
+}
 
-        }
-
-      </div>
-    )
-  }
-
-  StoryShow.defaultProps = {
-    content: 'story content here', //need this so props aren't null
-    title: 'story title here',
-    // image: 'story image here',
-    story: {title: 'title', 'content': 'words words ----- word words words',
-    genres: ['genres here'], plots: [{title: "Halloween"}]},
-  }
-
-  export default StoryShow
+export default StoryShow

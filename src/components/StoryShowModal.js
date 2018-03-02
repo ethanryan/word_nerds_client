@@ -46,7 +46,7 @@ const StoryShowModal = (props) => {
       <h2>
         *** >>>> props.storyIdIsOpen: { props.storyIdIsOpen ? props.storyIdIsOpen : 0 }
       </h2>
-
+      
       <p>
         *** >>>> props.storyIdIsOpen: { props.storyForModal ? props.storyForModal.title : "props.storyForModal[0].title here" }
       </p>
@@ -118,34 +118,34 @@ const StoryShowModal = (props) => {
         {/* Story ID: {props.storyForModal.id} */}
         <br></br>
 
-        {/* {props.storyShowIsModal ? <p>this is a modal!!!</p> : <p>this ain't no modal yo</p>} */}
+        <Button basic color='green'
+          onClick={() => { props.toggleStoryShowModalToEditable() }}
+          >Edit Story</Button>
 
-        {props.storyShowIsModal ?
+          {/* {props.storyShowIsModal ? <p>this is a modal!!!</p> : <p>this ain't no modal yo</p>} */}
 
-          <Button basic color='green'
+          {/* {props.storyShowIsModal ?
+            <Button basic color='green'
             onClick={() => { props.toggleStoryShowModalToEditable() }}
             >Edit Story</Button>
-
             :
-
             <Link to={`/stories/${props.storyForModal.id}/edit`}>
             <Button color='green' compact
-              >Edit Story
-            </Button>
-          </Link>
+            >Edit Story
+          </Button>
+        </Link>
+      } */}
 
-        }
+    </div>
+  )
+}
 
-      </div>
-    )
-  }
+StoryShowModal.defaultProps = {
+  content: 'story content here', //need this so props aren't null
+  title: 'story title here',
+  // image: 'story image here',
+  story: {title: 'title', 'content': 'words words ----- word words words',
+  genres: ['genres here'], plots: [{title: "Halloween"}]},
+}
 
-  StoryShowModal.defaultProps = {
-    content: 'story content here', //need this so props aren't null
-    title: 'story title here',
-    // image: 'story image here',
-    story: {title: 'title', 'content': 'words words ----- word words words',
-    genres: ['genres here'], plots: [{title: "Halloween"}]},
-  }
-
-  export default StoryShowModal
+export default StoryShowModal
