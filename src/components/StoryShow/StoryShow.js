@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom'
 
 
 const StoryShow = (props) => {
-  console.log('StoryShow props ---->>>>>: ', props);
+  // console.log('StoryShow props ---->>>>>: ', props);
   console.log('StoryShow props.story.id: ', props.story.id);
-  console.log('StoryShow props.story.user: ', props.story.user);
+  // console.log('StoryShow props.story.user: ', props.story.user);
 
   // console.log('******** >>>>>>> StoryShow props... props.storyIdIsOpen:::: ', props.storyIdIsOpen)
 

@@ -26,7 +26,7 @@ const AllStories = (props) => {
         <OneStory
           handleUpdateStory={props.handleUpdateStory}
           handleDeleteStory={props.handleDeleteStory}
-          stories={props.stories}
+          userStories={filteredStories} //passing OneStory userStories, not all stories in database...
           user_id={props.user_id}
           storyShowIsModal={props.storyShowIsModal}
           openModal={props.openModal}
@@ -39,7 +39,7 @@ const AllStories = (props) => {
         {/* <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> */}
 
 
-        <p>AllStories mounts and renders OneStory, which contains eachStory</p>
+        <p className="center">AllStories mounts and renders OneStory, which contains eachStory</p>
       </div>
     )
   }

@@ -14,14 +14,11 @@ const OneStory = (props) => {
   console.log(`OneStory props: `, props);
 
   //debugger
-  //filtering stories by user_id... but should this be done via API instead??
-  const filteredStories = props.stories.filter(story => story.user_id === props.user_id)
-
-  const storyForModal = props.stories.find(story => story.id === props.storyIdIsOpen)
+  const storyForModal = props.userStories.find(story => story.id === props.storyIdIsOpen)
+  console.log('888888887777777---->>>>>> storyForModal is:::::', storyForModal)
 
 
-  // const eachStory = props.stories.map( (story) =>
-  const eachStory = filteredStories.map( (story) =>
+  const eachStory = props.userStories.map( (story) =>
 
   <div key={story.id ? story.id : "story.id here"} className="OneStory-orange">
     {/* <Modal trigger={<Button>Show Modal</Button>}> */}
