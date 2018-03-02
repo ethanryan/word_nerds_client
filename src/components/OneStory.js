@@ -103,16 +103,23 @@ const OneStory = (props) => {
         <div className='ui two buttons'>
           {/* <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`} */}
 
-          <Modal
+
+          <Button basic color='green' as={Link}
+            to={`/stories/${story.id}`}>View {story.title}
+          </Button>
+
+          {/* switch below... either show StoryShow, or show EditStoryForm */}
+          {/* {props.storyShowModalIsEditable ? <p>this is the modal edit form!!!! </p> : <p>this is the StoryShow-purple-modal</p>} */}
+
+          {/* <Modal
             open={props.storyShowIsModal}
             onClose={() => props.closeModal()}
             trigger={
-            <Button basic color='green' onClick={() => props.openModal()}
+            <Button basic color='green'
+              onClick={() => props.openModal()}
+              as={Link} to={`/stories/${story.id}`}
               >View</Button>
             }>
-
-            {/* switch below... either show StoryShow, or show EditStoryForm */}
-            {/* {props.storyShowModalIsEditable ? <p>this is the modal edit form!!!! </p> : <p>this is the StoryShow-purple-modal</p>} */}
 
             {props.storyShowModalIsEditable ?
 
@@ -138,7 +145,7 @@ const OneStory = (props) => {
               </div>
             }
 
-          </Modal>
+          </Modal> */}
 
           <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
             >Delete</Button>

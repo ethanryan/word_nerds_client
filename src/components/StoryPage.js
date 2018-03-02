@@ -9,7 +9,7 @@ import Metadata from './Metadata'
 import StoryShow from './StoryShow'
 
 // import { Grid, Button, Card } from 'semantic-ui-react'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Modal } from 'semantic-ui-react'
 
 // import { Switch, Route, Link } from 'react-router-dom'
 import { Switch, Route } from 'react-router-dom'
@@ -60,13 +60,15 @@ const StoryPage = (props) => {
                 exact path='/stories/:id'
                 render={({match}) => {
                   const story = props.stories.find( s => s.id === parseInt(match.params.id, 10))
-                  return <div className="StoryShow-purple">
-                    <StoryShow
-                      story={story}
-                      image={props.image}
-                      handleDeleteStory={props.handleDeleteStory}
-                    />
-                  </div>
+
+                    return <div className="StoryShow-purple">
+                      <StoryShow
+                        story={story}
+                        image={props.image}
+                        handleDeleteStory={props.handleDeleteStory}
+                      />
+                    </div>
+
                 }} />
 
                 <Route
