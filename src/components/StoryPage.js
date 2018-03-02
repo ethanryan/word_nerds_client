@@ -9,7 +9,7 @@ import Metadata from './Metadata'
 import StoryShow from './StoryShow'
 
 // import { Grid, Button, Card } from 'semantic-ui-react'
-import { Grid, Modal } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 // import { Switch, Route, Link } from 'react-router-dom'
 import { Switch, Route } from 'react-router-dom'
@@ -97,6 +97,7 @@ const StoryPage = (props) => {
                       closeModal={props.closeModal}
                       storyShowModalIsEditable={props.storyShowModalIsEditable}
                       toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
+                      storyIdIsOpen={props.storyIdIsOpen}
                     />} />
 
                     <Route

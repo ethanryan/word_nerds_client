@@ -33,6 +33,7 @@ const AllStories = (props) => {
           closeModal={props.closeModal}
           storyShowModalIsEditable={props.storyShowModalIsEditable}
           toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
+          storyIdIsOpen={props.storyIdIsOpen}
         />
 
         {/* <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> */}

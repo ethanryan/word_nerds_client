@@ -2,7 +2,8 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-import StoryShow from './StoryShow'
+// import StoryShow from './StoryShow'
+import StoryShowModal from './StoryShowModal'
 import EditStoryForm from './EditStoryForm'
 
 
@@ -16,6 +17,9 @@ const OneStory = (props) => {
   //debugger
   //filtering stories by user_id... but should this be done via API instead??
   const filteredStories = props.stories.filter(story => story.user_id === props.user_id)
+
+  const storyForModal = props.stories.find(story => story.id === props.storyIdIsOpen)
+
 
   // const eachStory = props.stories.map( (story) =>
   const eachStory = filteredStories.map( (story) =>
@@ -100,24 +104,30 @@ const OneStory = (props) => {
       </Card.Content>
 
       <Card.Content extra>
+
+        <Button basic color='green' as={Link}
+          to={`/stories/${story.id}`}>View {story.title}
+        </Button>
+
+        <br></br>
+        <br></br>
+
         <div className='ui two buttons'>
           {/* <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`} */}
 
 
-          <Button basic color='green' as={Link}
-            to={`/stories/${story.id}`}>View {story.title}
-          </Button>
 
           {/* switch below... either show StoryShow, or show EditStoryForm */}
           {/* {props.storyShowModalIsEditable ? <p>this is the modal edit form!!!! </p> : <p>this is the StoryShow-purple-modal</p>} */}
 
-          {/* <Modal
+          <Modal
             open={props.storyShowIsModal}
             onClose={() => props.closeModal()}
+            id={props.storyIdIsOpen} //passing id here...
             trigger={
             <Button basic color='green'
-              onClick={() => props.openModal()}
-              as={Link} to={`/stories/${story.id}`}
+              onClick={() => props.openModal(story.id)} //sending clicked story as argument here...
+              // as={Link} to={`/stories/${story.id}`}
               >View</Button>
             }>
 
@@ -134,18 +144,20 @@ const OneStory = (props) => {
               :
 
               <div className="StoryShow-purple-modal">
-                <StoryShow
+                <StoryShowModal
                   story={story}
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}
                   storyShowIsModal={props.storyShowIsModal}
                   storyShowModalIsEditable={props.storyShowModalIsEditable}
                   toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
+                  storyIdIsOpen={props.storyIdIsOpen} //passing id here...
+                  storyForModal={storyForModal}
                 />
               </div>
             }
 
-          </Modal> */}
+          </Modal>
 
           <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
             >Delete</Button>
