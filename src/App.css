@@ -184,11 +184,19 @@
   width: 100%;
 }
 
-.nerdy {
-  margin-top: 30px;
+.nerdy-login {
+  margin-top: 5%;
   margin-left: auto; /*this plus a width centers the gif*/
   margin-right: auto; /*this plus a width centers the gif*/
   width: 50%;
+  text-align: center;
+}
+
+.nerdy {
+  margin-top: 15%;
+  margin-left: auto; /*this plus a width centers the gif*/
+  margin-right: auto; /*this plus a width centers the gif*/
+  width: 70%;
   text-align: center;
 }
 
@@ -251,7 +259,7 @@ form span.error {
 .EditStoryForm-blue-modal {
   border: 2px solid blue;
   background: white;
-  padding: 15px 25px 15px 25px; 
+  padding: 15px 25px 15px 25px;
   /*top, right, bottom, left*/
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }

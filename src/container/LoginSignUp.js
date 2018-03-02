@@ -21,7 +21,7 @@ class LoginSignUp extends React.Component {
 
             <Grid.Column width={8}>
 
-              <div className="nerdy">
+              <div className="nerdy-login">
                 <img src={nerdy} className="nerdy" alt="nerdy gif"/>
 
                 <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
