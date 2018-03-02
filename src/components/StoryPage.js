@@ -6,7 +6,7 @@ import CreateStoryForm from './CreateStoryForm/CreateStoryForm'
 import EditStoryForm from './EditStoryForm'
 import AllStories from './AllStories'
 import Metadata from './Metadata'
-import StoryShow from './StoryShow'
+import StoryShow from './StoryShow/StoryShow'
 
 // import { Grid, Button, Card } from 'semantic-ui-react'
 import { Grid } from 'semantic-ui-react'

@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // import StoryShow from './StoryShow'
-import StoryShowModal from './StoryShowModal'
+import StoryShowModal from './StoryShow/StoryShowModal'
 import EditStoryForm from './EditStoryForm'
 
 
@@ -130,6 +130,8 @@ const OneStory = (props) => {
               // as={Link} to={`/stories/${story.id}`}
               >View</Button>
             }>
+
+            {props.storyShowModalIsEditable ? <p className="center">Edit Mode</p> : <p className="center">Read Only Mode</p>}
 
             {props.storyShowModalIsEditable ?
 
