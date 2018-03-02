@@ -2,8 +2,6 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-// import StoryShow from './StoryShow'
-import StoryShowModal from './StoryShow/StoryShowModal'
 import StoryShow from './StoryShow/StoryShow'
 import EditStoryForm from './EditStoryForm'
 
