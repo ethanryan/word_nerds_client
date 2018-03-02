@@ -29,7 +29,7 @@ class LoginSignUp extends React.Component {
 
 
               <div className="aboutWordNerds">
-                <Segment>
+                <Segment raised>
                   <p>
                     Word Nerds is a short story generator that creates a unique, 500-word short story with the click of a button.
                   </p>

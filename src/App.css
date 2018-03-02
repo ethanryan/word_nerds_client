@@ -58,6 +58,7 @@
 }
 
 .login-signup-link-options {
+  padding-top: 10%;
   text-align: center;
   background-color: rgba(246, 252, 255, 1); /* the nerd gif's light blue background color */
 }
@@ -185,15 +186,14 @@
 }
 
 .nerdy-login {
-  margin-top: 5%;
   margin-left: auto; /*this plus a width centers the gif*/
   margin-right: auto; /*this plus a width centers the gif*/
-  width: 50%;
+  width: 40%;
   text-align: center;
 }
 
 .nerdy {
-  margin-top: 15%;
+  margin-top: 25%;
   margin-left: auto; /*this plus a width centers the gif*/
   margin-right: auto; /*this plus a width centers the gif*/
   width: 70%;
