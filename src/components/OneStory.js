@@ -106,17 +106,15 @@ const OneStory = (props) => {
 
       <Card.Content extra>
 
-        <Button basic color='green' as={Link}
+        {/* <Button basic color='green' as={Link}
           to={`/stories/${story.id}`}>View {story.title}
         </Button>
 
         <br></br>
-        <br></br>
+        <br></br> */}
 
         <div className='ui two buttons'>
           {/* <Button basic color='green' as={Link} to={`/stories/${story.id}/edit`} */}
-
-
 
           {/* switch below... either show StoryShow, or show EditStoryForm */}
           {/* {props.storyShowModalIsEditable ? <p>this is the modal edit form!!!! </p> : <p>this is the StoryShow-purple-modal</p>} */}
@@ -135,7 +133,6 @@ const OneStory = (props) => {
             {props.storyShowModalIsEditable ? <p className="center">Edit Mode</p> : <p className="center">Read Only Mode</p>}
 
             {props.storyShowModalIsEditable ?
-
               <div className="EditStoryForm-blue-modal">
                 <EditStoryForm
                   story={storyForModal}
@@ -143,11 +140,8 @@ const OneStory = (props) => {
                   handleDeleteStory={props.handleDeleteStory}
                 />
               </div>
-
               :
-
               <div className="StoryShow-purple-modal">
-                {/* <StoryShowModal */}
                 <StoryShow
                   story={storyForModal} //storyForModal, not story, which is each story in filteredStories
                   handleUpdateStory={props.handleUpdateStory}
@@ -156,22 +150,17 @@ const OneStory = (props) => {
                   storyShowModalIsEditable={props.storyShowModalIsEditable}
                   toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
                   storyIdIsOpen={props.storyIdIsOpen} //passing id here...
-                  // storyForModal={storyForModal}
                 />
               </div>
             }
-
           </Modal>
 
           <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
             >Delete</Button>
           </div>
         </Card.Content>
-
       </Card>
     </div>
-
-
   )
 
   // console.log('hello from OneStory')
@@ -181,7 +170,7 @@ const OneStory = (props) => {
 
       <ul className="UL-no-padding center">{ eachStory.reverse() }</ul>
 
-      <p>each story can be clicked, which renders it in the EditStoryForm</p>
+      <p className="center">each story can be clicked, which renders it in the EditStoryForm</p>
 
     </div>
   )
