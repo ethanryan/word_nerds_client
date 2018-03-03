@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import StoryShow from './StoryShow/StoryShow'
-import EditStoryForm from './EditStoryForm'
+import EditStoryForm from './EditStoryForm/EditStoryForm'
 
 
 import { Card, Button, Modal } from 'semantic-ui-react'
