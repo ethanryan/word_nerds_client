@@ -282,16 +282,35 @@ form span.error {
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
 
-.App-purple {
-  border: 5px solid purple;
+.App-body-purple {
   background: rgba(246, 252, 255, 1); /* the nerd gif's light blue background color */
+  border: 5px solid purple;
+  display: flex; /* need this for sticky footer */
+  flex-direction: column;
+  min-height: 100vh;
+  /* vh is viewport height, so this is 100% of viewport for any screen size */
 }
 
-.App-footer {
-  background: purple;
-  text-align: center;
+.App-content {
+  flex: 1; /* need this for sticky footer */
+}
+
+.App-fixed-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: purple;
   color: yellow;
-  margin-top: 25%; /*to stick footer to bottom of page, for now... will fix this later*/
+  text-align: center;
+}
+
+.App-sticky-footer {
+  background: purple;
+  color: yellow;
+  margin-top: auto;
+  position: sticky;
+  text-align: center;
 }
 
 .EditStoryText-blue {

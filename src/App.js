@@ -8,19 +8,20 @@ import StoryContainer from './container/StoryContainer'
 class App extends Component {
   render() {
     return (
-      <div className="App-purple">
+      <div className="App-body-purple">
 
-        <StoryContainer />
+        <StoryContainer className="App-content"/>
         {/* <p>above is everything rendered from StoryContainer -- both forms</p> */}
 
         {/* <p>This is the App.js page.</p> */}
-        <div className="App-footer">
-        <span>WordNerds Story Generator</span>
-        </div>
+        
+        <footer id="footer" className="App-sticky-footer">
+          <span>WordNerds Story Generator</span>
+        </footer>
 
-    </div>
-  )
-}
+      </div>
+    )
+  }
 }
 
 export default App
