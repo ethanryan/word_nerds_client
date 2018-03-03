@@ -5,7 +5,7 @@ import nerdy from '../components/nerdy.gif'
 import CreateStoryForm from './CreateStoryForm/CreateStoryForm'
 import EditStoryForm from './EditStoryForm'
 import AllStories from './AllStories'
-import Metadata from './Metadata'
+import Metadata from './Metadata/Metadata'
 import StoryShow from './StoryShow/StoryShow'
 
 // import { Grid, Button, Card } from 'semantic-ui-react'
