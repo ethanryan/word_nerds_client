@@ -54,6 +54,7 @@ render() {
         <div className="center modal-trigger">
           <Segment>
             <Button primary>Create A Story</Button>
+            <Segment>Create a 500-word short story.</Segment>
           </Segment>
         </div>
       }>
