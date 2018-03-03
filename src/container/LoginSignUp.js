@@ -1,7 +1,7 @@
 import React from 'react'
 
-import SignUpForm from '../components/SignUpForm'
-import LoginForm from '../components/LoginForm'
+import SignUpForm from '../components/LoginSignUpForms/SignUpForm'
+import LoginForm from '../components/LoginSignUpForms/LoginForm'
 import nerdy from '../components/assets/nerdy.gif'
 
 import { Grid, Segment } from 'semantic-ui-react'
