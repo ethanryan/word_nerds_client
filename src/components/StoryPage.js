@@ -1,6 +1,6 @@
 import React from 'react'
 
-import nerdy from '../components/nerdy.gif'
+import nerdy from '../components/assets/nerdy.gif'
 
 import CreateStoryForm from './CreateStoryForm/CreateStoryForm'
 import EditStoryForm from './EditStoryForm'
