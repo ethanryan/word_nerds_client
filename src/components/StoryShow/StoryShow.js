@@ -12,12 +12,7 @@ const StoryShow = (props) => {
   // console.log('StoryShow props ---->>>>>: ', props);
   console.log('StoryShow props.story.id: ', props.story.id);
   // console.log('StoryShow props.story.user: ', props.story.user);
-
-  // console.log('******** >>>>>>> StoryShow props... props.activeModalStoryId:::: ', props.activeModalStoryId)
-
   // console.log('--=-=-=-=-=-=-= props.storyForModal::::', props.storyForModal)
-  // below console logs break page on refresh
-  // console.log('StoryShow props.story.user.name: ', props.story.user.name);
 
   // let CoolStoryBro = 'http://i1.kym-cdn.com/photos/images/facebook/000/061/294/1106514-cool_story_bro_super.jpg'
 

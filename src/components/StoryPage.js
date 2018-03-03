@@ -98,6 +98,7 @@ const StoryPage = (props) => {
                       storyShowModalIsEditable={props.storyShowModalIsEditable}
                       toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
                       activeModalStoryId={props.activeModalStoryId}
+                      indexOfStoryModal={props.indexOfStoryModal}
                     />} />
 
                     <Route

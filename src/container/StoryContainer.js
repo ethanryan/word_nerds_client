@@ -62,7 +62,8 @@ class StoryContainer extends Component {
       //updated from CreateStoryFormCreateCharacters...
 
       storyShowIsModal: false,
-      activeModalStoryId: '', //this will be a number...
+      activeModalStoryId: null, //this will be a number...
+      indexOfStoryModal: null, //this will be a number...
       storyShowModalIsEditable: false,
 
       image: '',
@@ -99,17 +100,20 @@ class StoryContainer extends Component {
     }) )
   }
 
-  openModal(id) {
-    var storyId = id
+  openModal(event, index, id) {
+    // console.log('StoryContainer ---- openModal, params are:::', event, index, id)
     this.setState({
       storyShowIsModal: true,
-      activeModalStoryId: storyId,
+      activeModalStoryId: id,
+      indexOfStoryModal: index,
     })
   }
 
   closeModal() {
     this.setState({
       storyShowIsModal: false,
+      activeModalStoryId: null, //reset this to null...
+      indexOfStoryModal: null, //reset this to null...
       storyShowModalIsEditable: false,
      })
   }
@@ -408,6 +412,7 @@ class StoryContainer extends Component {
           openModal={this.openModal.bind(this)}
           closeModal={this.closeModal.bind(this)}
           activeModalStoryId={this.state.activeModalStoryId}
+          indexOfStoryModal={this.state.indexOfStoryModal}
         />
       </div>
     )

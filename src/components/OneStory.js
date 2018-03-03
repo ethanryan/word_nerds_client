@@ -11,14 +11,14 @@ import { Card, Button, Modal } from 'semantic-ui-react'
 
 const OneStory = (props) => {
 
-  console.log(`OneStory props: `, props);
+  // console.log(`OneStory props: `, props);
 
   //debugger
   const storyForModal = props.userStories.find(story => story.id === props.activeModalStoryId)
-  console.log('OneStory---->>>>>> storyForModal is:::::', storyForModal)
+  // console.log('OneStory---->>>>>> storyForModal is:::::', storyForModal)
 
 
-  const eachStory = props.userStories.map( (story) =>
+  const eachStory = props.userStories.map( (story, index) =>
 
   <div key={story.id ? story.id : "story.id here"} className="OneStory-orange">
     {/* <Modal trigger={<Button>Show Modal</Button>}> */}
@@ -115,12 +115,13 @@ const OneStory = (props) => {
           {/* {props.storyShowModalIsEditable ? <p>this is the modal edit form!!!! </p> : <p>this is the StoryShow-purple-modal</p>} */}
 
           <Modal
-            open={props.storyShowIsModal}
+            open={props.indexOfStoryModal === index} //open takes boolean, if no match, modal won't open
             onClose={() => props.closeModal()}
             id={props.activeModalStoryId} //passing id here...
+
             trigger={
             <Button basic color='green'
-              onClick={() => props.openModal(story.id)} //sending clicked story as argument here...
+              onClick={(event) => props.openModal(event, index, story.id)} //sending clicked story as argument here...
               // as={Link} to={`/stories/${story.id}`}
               >View</Button>
             }>
@@ -144,7 +145,6 @@ const OneStory = (props) => {
                   storyShowIsModal={props.storyShowIsModal}
                   storyShowModalIsEditable={props.storyShowModalIsEditable}
                   toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
-                  activeModalStoryId={props.activeModalStoryId} //passing id here...
                 />
               </div>
             }
