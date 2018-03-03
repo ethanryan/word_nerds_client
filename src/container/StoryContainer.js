@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom'
 
 import * as api from '../api'
 
-import NavBar from '../components/NavBar'
-import NavBarLoginSignUp from '../components/NavBarLoginSignUp'
+import NavBar from '../components/NavBar/NavBar'
+import NavBarLoginSignUp from '../components/NavBar/NavBarLoginSignUp'
 import StoryPage from '../components/StoryPage'
 
 import LoginSignUp from '../container/LoginSignUp'
