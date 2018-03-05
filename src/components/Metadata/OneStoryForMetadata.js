@@ -51,7 +51,7 @@ class OneStoryForMetadata extends React.Component {
 
     return(
 
-      <div>
+      <div className="OneStory-forMetadata">
         <Table sortable celled fixed>
 
           <Table.Header>
@@ -141,7 +141,7 @@ class OneStoryForMetadata extends React.Component {
           </Table.Body>
 
         </Table>
-        <p className="center">Word Nerds Metadata</p>
+        {/* <p className="center">Word Nerds Metadata</p> */}
       </div>
     )
   }
