@@ -284,7 +284,7 @@ form span.error {
 
 .App-body-purple {
   background: rgba(246, 252, 255, 1); /* the nerd gif's light blue background color */
-  border: 5px solid purple;
+  /* border: 5px solid purple; */
   display: flex; /* need this for sticky footer */
   flex-direction: column;
   min-height: 100vh;
