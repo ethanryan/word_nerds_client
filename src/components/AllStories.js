@@ -2,7 +2,7 @@ import React from 'react'
 
 import OneStory from './OneStory'
 
-import { Loader, Segment } from 'semantic-ui-react'
+import { Card, Loader, Segment } from 'semantic-ui-react'
 
 const AllStories = (props) => {
 
@@ -14,35 +14,39 @@ const AllStories = (props) => {
 
     <div key={props.id} className="AllStories-green">
 
-      <h1 className="center">{props.username}'s stories</h1>
-      <h3 className="center">stories by: {props.username}</h3>
-      <h3 className="center">total stories: {filteredStories.length === 0 ?
-        <Segment>
-          <Loader active inline='centered' />
-        </Segment>
-        : filteredStories.length}
-      </h3>
-
-        <OneStory
-          handleUpdateStory={props.handleUpdateStory}
-          handleDeleteStory={props.handleDeleteStory}
-          userStories={filteredStories} //passing OneStory userStories, not all stories in database...
-          user_id={props.user_id}
-          storyShowIsModal={props.storyShowIsModal}
-          openModal={props.openModal}
-          closeModal={props.closeModal}
-          storyShowModalIsEditable={props.storyShowModalIsEditable}
-          toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
-          activeModalStoryId={props.activeModalStoryId}
-          indexOfStoryModal={props.indexOfStoryModal}
-        />
-
-        {/* <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> */}
-
-
-        <p className="center">AllStories mounts and renders OneStory, which contains eachStory</p>
+      <div className="AllStories-header">
+        <Card fluid>
+          <Card.Content>
+          <h1 className="center">{props.username}'s stories</h1>
+          <h3 className="center">total stories: {filteredStories.length === 0 ?
+            <Segment>
+              <Loader active inline='centered' />
+            </Segment>
+            : filteredStories.length}
+          </h3>
+        </Card.Content>
+        </Card>
       </div>
-    )
-  }
 
-  export default AllStories
+      <OneStory
+        handleUpdateStory={props.handleUpdateStory}
+        handleDeleteStory={props.handleDeleteStory}
+        userStories={filteredStories} //passing OneStory userStories, not all stories in database...
+        user_id={props.user_id}
+        storyShowIsModal={props.storyShowIsModal}
+        openModal={props.openModal}
+        closeModal={props.closeModal}
+        storyShowModalIsEditable={props.storyShowModalIsEditable}
+        toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
+        activeModalStoryId={props.activeModalStoryId}
+        indexOfStoryModal={props.indexOfStoryModal}
+      />
+
+      {/* <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> */}
+
+      {/* <p className="center">AllStories mounts and renders OneStory, which contains eachStory</p> */}
+    </div>
+  )
+}
+
+export default AllStories

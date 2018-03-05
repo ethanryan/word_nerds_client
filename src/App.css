@@ -11,9 +11,10 @@
 }
 
 .modal-trigger {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
   margin-top: 12%;
-  padding-left: 10%;
-  padding-right: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .floatLeft {
@@ -64,13 +65,14 @@
 }
 
 .OneStory-orange {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
   margin-bottom: 55px;
   /*white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
 
 .OneStory-forMetadata {
-  margin-bottom: 25px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  margin-bottom: 25px;
 }
 
 .summaryForMetadata-header {
@@ -84,13 +86,20 @@
   margin-bottom: 35px;
 }
 
+.AllStories-header {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  margin-top: 25px;
+  margin-bottom: 50px;
+  /*top right bottom left*/
+}
 
 .AllStories-green {
-  border: 2px solid green;
-  border-radius: 25px;
+  /* border: 2px solid green; */
+  /* border-radius: 25px; */
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
   background: white;
   margin: 5px 15px 50px 15px;
-  padding: 0px 10%;
+  padding: 2% 10% 2% 10%;
   /*top right bottom left*/
 }
 
