@@ -14,9 +14,9 @@ class App extends Component {
         {/* <p>above is everything rendered from StoryContainer -- both forms</p> */}
 
         {/* <p>This is the App.js page.</p> */}
-        
+
         <footer id="footer" className="App-sticky-footer">
-          <span>WordNerds Story Generator</span>
+          <span>WordNerds</span>
         </footer>
 
       </div>
