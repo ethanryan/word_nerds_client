@@ -19,17 +19,17 @@ const SummaryForMetadata = (props) => {
               Database Information
             </h4>
 
-            <h2>
-              Total stories: {props.stories.length}
-            </h2>
+            <p>
+              Total stories: <b>{props.stories.length}</b>
+            </p>
 
-            <h2>
-              Total users: {props.users.length}
-            </h2>
+            <p>
+              Total users: <b>{props.users.length}</b>
+            </p>
 
-            <h2>
-              Total plots: {props.plots.length}
-            </h2>
+            <p>
+              Total plots: <b>{props.plots.length}</b>
+            </p>
           </Card.Content>
         </Card>
       </div>
