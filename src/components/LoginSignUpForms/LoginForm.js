@@ -109,6 +109,7 @@ class LoginForm extends React.Component {
           content='Log In'
           type='submit'
           primary
+          fluid
           disabled={isDisabled}
         />
 

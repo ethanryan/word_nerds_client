@@ -129,6 +129,7 @@ class SignUp extends React.Component {
           content='Sign Up'
           color='green'
           type='submit'
+          fluid
           disabled={isDisabled} />
 
     </Form>
