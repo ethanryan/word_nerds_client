@@ -31,7 +31,7 @@ class StoryContainer extends Component {
       title: 'cool story title here',
       user: {
         id: 'user_id here',
-        name: 'user_name here'
+        name: 'user'
       },
       characters: {
         hero: {

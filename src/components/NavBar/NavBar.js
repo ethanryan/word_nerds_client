@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Menu } from 'semantic-ui-react'
+import { Menu, Icon } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom'
 
@@ -20,7 +20,7 @@ class NavBar extends Component {
       activeItem: pathname //default
     }
   }
-  
+
   componentWillReceiveProps(nextProps) { //need this lifecycle method to update navbar activeItem on refresh
     // console.log('NavBar nextProps is: ', nextProps)
     // console.log('NavBar nextProps.location.pathname is: ', nextProps.location.pathname)
@@ -83,7 +83,8 @@ class NavBar extends Component {
           <Menu.Menu position='right'>
 
             <Menu.Item>
-              {`User: ${this.props.current_user ? this.props.current_user : "current_user here"}`}
+              <Icon name='user circle' />
+              { `${this.props.current_user ? this.props.current_user : "user"}`}
               {/* {`User: ${current_user}`} */}
             </Menu.Item>
 
