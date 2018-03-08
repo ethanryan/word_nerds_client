@@ -8,8 +8,8 @@ import { Card, Segment } from 'semantic-ui-react'
 const CreateStoryForm = (props) => {
 
   return(
-    <div>
-      <div className="center modal-trigger">
+    <div className="center modal-trigger-wrapper">
+      <div className="modal-trigger">
         <Card fluid>
           <Card.Content>
             <CreateStoryFormModal

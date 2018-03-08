@@ -10,11 +10,19 @@
   text-align: center;
 }
 
-.modal-trigger {
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+.modal-trigger-wrapper {
+  /* border: 3px solid red; */
+  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */
   margin-top: 12%;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+.modal-trigger {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  /* margin-top: 12%; */
+  /* margin-left: 10%; */
+  /* margin-right: 10%; */
 }
 
 .floatLeft {
