@@ -53,13 +53,13 @@ render() {
 
     <div>
       <Modal trigger={
-        <Button primary fluid>Create A Story</Button>
+        <Button primary fluid>Create A Short Story</Button>
       }>
 
       <Form onSubmit={this.handleCreateStoryFormSubmit} className="CreateStoryFormModal-red">
 
         <Header as='h1' textAlign='center'>
-          Create a Story
+          Create a Short Story
         </Header>
 
         {/* <h1>user_id: {this.props.user_id}</h1> */}

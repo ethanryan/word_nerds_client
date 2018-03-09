@@ -10,7 +10,7 @@ describe ("sign in, create, read, edit, sign out", function() {
     .type('bob')
     cy.get('form').submit()
 
-    cy.get('.header').should('contain', 'Create a Story')
+    cy.get('.header').should('contain', 'Create a Short Story')
     cy.get('input:first').should('have.attr', 'placeholder', 'HERO')
     .type('Superman')
     cy.get('.primary').click()

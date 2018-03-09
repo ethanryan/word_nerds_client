@@ -59,7 +59,7 @@ render() {
       <Form onSubmit={this.handleCreateMiniStoryFormSubmit} className="CreateStoryFormModal-red">
 
         <Header as='h1' textAlign='center'>
-          Create a Story
+          Create a Mini Story
         </Header>
 
         {/* <h1>user_id: {this.props.user_id}</h1> */}

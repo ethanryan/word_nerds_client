@@ -55,7 +55,7 @@ describe ("enter username and login and submit form", function() {
     cy.get('#passwordInput').should('have.attr', 'placeholder', 'Password')
     .type('bob')
     cy.get('form').submit()
-    cy.get('.header').should('contain', 'Create a Story')
+    cy.get('.header').should('contain', 'Create a Short Story')
   })
 })
 
