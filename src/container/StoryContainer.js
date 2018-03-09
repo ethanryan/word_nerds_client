@@ -122,8 +122,8 @@ class StoryContainer extends Component {
     this.setState({ storyShowModalIsEditable: true })
   }
 
-  handleSubmit(genres, characters, user_id) { //adding genre as argument -- ER Jan 2018
-    api.createStory(genres, characters, user_id) //adding user_id as argument -- ER Nov 2017
+  handleSubmit(genres, characters, user_id, storyType) { //adding genre as argument -- ER Jan 2018
+    api.createStory(genres, characters, user_id, storyType) //adding user_id as argument -- ER Nov 2017
       .then( story => this.setState(
       prevState => ({
           stories: [...prevState.stories, story]

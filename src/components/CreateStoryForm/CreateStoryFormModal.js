@@ -16,6 +16,7 @@ class CreateStoryFormModal extends Component {
     // story: '',
     characters: this.props.characterProps,
     genreSelection: this.props.genreSelection, //chosen in CreateStoryFormSelectGenre, passed up to StoryContainer from there
+    storyType: 'story', //adding storyType...
   })
   this.handleCreateStoryFormSubmit = this.handleCreateStoryFormSubmit.bind(this)
 } //end of constructor
@@ -35,12 +36,13 @@ componentWillReceiveProps(nextProps) { //need this lifecycle method to update fi
 
 handleCreateStoryFormSubmit(event) {
   event.preventDefault()
+  const genres = this.props.genreSelection
   const characters = this.state.characters
   const user_id = this.props.user_id
-  const genres = this.props.genreSelection
+  const storyType = this.state.storyType //adding storyType...
   console.log('CreateStoryFormModal submitted this.state: ', this.state)
   // console.log('user_id is: ', user_id)
-  this.props.handleSubmit( genres, characters, user_id )
+  this.props.handleSubmit( genres, characters, user_id, storyType ) //adding storyType...
   this.setState({story: ''}) //this clears form onSubmit
 }
 

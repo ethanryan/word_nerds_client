@@ -1,6 +1,7 @@
 import React from 'react'
 
 import CreateStoryFormModal from './CreateStoryFormModal'
+import CreateMiniStoryFormModal from './CreateMiniStoryFormModal'
 
 import { Card, Segment } from 'semantic-ui-react'
 
@@ -13,7 +14,7 @@ const CreateStoryForm = (props) => {
       <div className="modal-trigger">
         <Card fluid>
           <Card.Content>
-            <CreateStoryFormModal
+            <CreateMiniStoryFormModal
               handleSubmit={props.handleSubmit}
               user_id={props.user_id}
               genreSelection={props.genreSelection}
@@ -38,11 +39,11 @@ const CreateStoryForm = (props) => {
             />
             {/* above will render trigger to button and modal inside trigger... */}
 
-            <Segment>Create a 500-word short story.</Segment>
+            <Segment>Create a 5 sentence mini story.</Segment>
           </Card.Content>
         </Card>
       </div>
-      
+
       <div className="modal-trigger">
         <Card fluid>
           <Card.Content>
