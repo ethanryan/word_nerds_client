@@ -89,7 +89,7 @@ class OneStoryForMetadata extends React.Component {
 
                 <Table.Cell>{title ? title : "title"}</Table.Cell>
 
-                <Table.Cell>{user.name ? user.name : "story creator"}</Table.Cell>
+                <Table.Cell>{user ? user.name : "story creator"}</Table.Cell>
 
                 <Table.Cell>{content ? content.split(' ').length : 0}</Table.Cell>
 
