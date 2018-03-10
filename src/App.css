@@ -339,6 +339,16 @@ form span.error {
 }
 
 
+/* blinking parts of sentence */
+span.blinkSubject {
+  animation: blinkSubject 4s ease-out -2s;
+}
+
+@keyframes blinkSubject {
+  to {
+    background-color: red;
+  }
+}
 
 /*--------- changing WordNerds on hover -----------*/
 

@@ -4,6 +4,8 @@ import SignUpForm from '../components/LoginSignUpForms/SignUpForm'
 import LoginForm from '../components/LoginSignUpForms/LoginForm'
 import nerdy from '../components/assets/nerdy.gif'
 
+import Sentence from '../components/Sentence/Sentence'
+
 import { Grid, Segment } from 'semantic-ui-react'
 
 import { Switch, Route, Link } from 'react-router-dom'
@@ -41,6 +43,9 @@ class LoginSignUp extends React.Component {
                     Everyone has a story to tell. Start telling yours today!
                   </p>
                 </Segment>
+
+                <Sentence />
+
               </div>
 
             </Grid.Column>
