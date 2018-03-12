@@ -43,9 +43,6 @@ class LoginSignUp extends React.Component {
                     Everyone has a story to tell. Start telling yours today!
                   </p>
                 </Segment>
-
-                <Sentence />
-
               </div>
 
             </Grid.Column>
@@ -75,6 +72,11 @@ class LoginSignUp extends React.Component {
                 />} />
 
               </Switch>
+
+              <div className="login-signup-sentence">
+                <Sentence />
+              </div>
+
             </Grid.Column>
           </Grid.Row>
         </Grid>

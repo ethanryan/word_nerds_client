@@ -200,6 +200,13 @@
   width: 100%;
 }
 
+.login-signup-sentence {
+  /* box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */
+  /* added 'raised' to add box-shadow around segment */
+  margin: 25px 15px 5px 15px;
+  /*top, right, bottom, left*/
+}
+
 .nerdy-login {
   margin-left: auto; /*this plus a width centers the gif*/
   margin-right: auto; /*this plus a width centers the gif*/

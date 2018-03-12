@@ -33,7 +33,7 @@ const Sentence = (props) => {
   return(
 
     <div key={props.id}>
-      <Segment>
+      <Segment raised>
 
         The <span id="subject" className="blinkSubject">nerd</span> <span id="verb" className="blinkVerb">tells</span>  <span id="object" className="blinkObject">the story.</span>
 
