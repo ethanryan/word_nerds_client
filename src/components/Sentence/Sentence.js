@@ -20,22 +20,10 @@ function replaceTargetWithRandomWord(target, randomWord) {
   target.replaceWith(clone)
 }
 
-function flipSubject() {
-  var target = document.getElementById('subject') //reaching into the DOM here, replace this line with state / props...
-  var randomSubject = getRandomWord(subjects)
-  replaceTargetWithRandomWord(target, randomSubject)
-}
-
-function flipVerb() {
-  var target = document.getElementById('verb') //reaching into the DOM here, replace this line with state / props...
-  var randomVerb = getRandomWord(verbs)
-  replaceTargetWithRandomWord(target, randomVerb)
-}
-
-function flipObject() {
-  var target = document.getElementById('object') //reaching into the DOM here, replace this line with state / props...
-  var randomObject = getRandomWord(objects)
-  replaceTargetWithRandomWord(target, randomObject)
+function flipWord(string, array) {
+  var target = document.getElementById(string) //reaching into the DOM here, replace this line with state / props...
+  var randomWord = getRandomWord(array)
+  replaceTargetWithRandomWord(target, randomWord)
 }
 
 
@@ -56,19 +44,19 @@ const Sentence = (props) => {
           content='Flip Subject'
           basic
           color='red'
-          onClick={() => { flipSubject() } }
+          onClick={() => { flipWord('subject', subjects) } }
         />
         <Button
           content='Flip Verb'
           basic
           color='yellow'
-          onClick={() => { flipVerb() } }
+          onClick={() => { flipWord('verb', verbs) } }
         />
         <Button
           content='Flip Object'
           basic
           color='green'
-          onClick={() => { flipObject() } }
+          onClick={() => { flipWord('object', objects) } }
         />
 
       </Segment>
