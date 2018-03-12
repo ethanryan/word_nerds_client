@@ -32,7 +32,7 @@ const Sentence = (props) => {
   // console.log('hello from Sentence')
   return(
 
-    <div key={props.id}>
+    <div key={props.id} className='center'>
       <Segment raised>
 
         The <span id="subject" className="blinkSubject">nerd</span> <span id="verb" className="blinkVerb">tells</span>  <span id="object" className="blinkObject">the story.</span>
@@ -40,24 +40,29 @@ const Sentence = (props) => {
         <br></br>
         <br></br>
 
-        <Button
-          content='Flip Subject'
-          basic
-          color='red'
-          onClick={() => { flipWord('subject', subjects) } }
-        />
-        <Button
-          content='Flip Verb'
-          basic
-          color='yellow'
-          onClick={() => { flipWord('verb', verbs) } }
-        />
-        <Button
-          content='Flip Object'
-          basic
-          color='green'
-          onClick={() => { flipWord('object', objects) } }
-        />
+        <div>
+          <Button
+            content='Flip Subject'
+            basic
+            mini
+            color='red'
+            onClick={() => { flipWord('subject', subjects) } }
+          />
+          <Button
+            content='Flip Verb'
+            basic
+            mini
+            color='yellow'
+            onClick={() => { flipWord('verb', verbs) } }
+          />
+          <Button
+            content='Flip Object'
+            basic
+            mini
+            color='green'
+            onClick={() => { flipWord('object', objects) } }
+          />
+        </div>
 
       </Segment>
     </div>
