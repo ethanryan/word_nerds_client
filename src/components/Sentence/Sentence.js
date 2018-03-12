@@ -12,14 +12,33 @@ let subjects = ["dog", "cat", "mouse", "lizard", "alien"]
 //   target.replaceWith(clone)
 // }
 
-function flipSubject() {
-  console.log('flipSubject clicked!')
-  var target = document.getElementById('noun') //reaching into the DOM here, replace this line with state / props...
-  var subject = subjects[Math.floor(Math.random() * subjects.length)];
+function getRandomSubject() {
+  var randomSubject = subjects[Math.floor(Math.random() * subjects.length)];
+  //console.log('randomSubject is: ', randomSubject)
+  return randomSubject
+}
+
+function replaceTargetWithRandomWord(target, randomWord) {
+  console.log('calling replaceTargetWithRandomWord with: ', target, randomWord)
   var clone = target.cloneNode(true)
-  clone.textContent = subject
+  clone.textContent = randomWord
   target.replaceWith(clone)
 }
+
+function flipSubject() {
+  console.log('flipSubject clicked!')
+  var target = document.getElementById('subject') //reaching into the DOM here, replace this line with state / props...
+  var randomSubject = getRandomSubject()
+  replaceTargetWithRandomWord(target, randomSubject)
+}
+// function flipSubject() {
+//   console.log('flipSubject clicked!')
+//   var target = document.getElementById('subject') //reaching into the DOM here, replace this line with state / props...
+//   var randomSubject = getRandomSubject()
+//   var clone = target.cloneNode(true)
+//   clone.textContent = randomSubject
+//   target.replaceWith(clone)
+// }
 
 const Sentence = (props) => {
 
@@ -29,7 +48,7 @@ const Sentence = (props) => {
     <div key={props.id}>
       <Segment>
 
-        The <span id="noun" className="blinkSubject">nerd</span> <span id="verb" className="blinkVerb">tells</span>  <span id="predicate" className="blinkObject">the story.</span>
+        The <span id="subject" className="blinkSubject">nerd</span> <span id="verb" className="blinkVerb">tells</span>  <span id="object" className="blinkObject">the story.</span>
 
         <br></br>
         <br></br>
