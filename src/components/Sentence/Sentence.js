@@ -4,18 +4,23 @@ import { Button, Segment } from 'semantic-ui-react'
 
 let subjects = ["dog", "cat", "mouse", "lizard", "alien"]
 
-// function flipNoun() {
-//   var target = document.getElementById('noun')
-//   var noun = nouns[Math.floor(Math.random() * nouns.length)];
-//   var clone = target.cloneNode(true)
-//   clone.textContent = noun
-//   target.replaceWith(clone)
-// }
+let verbs = ["eats", "sleeps with", "fucks", "kills", "likes", "loves", "tolerates"]
+
+let objects = ["the moon", "the house", "the sun", "the galaxy"]
 
 function getRandomSubject() {
-  var randomSubject = subjects[Math.floor(Math.random() * subjects.length)];
-  //console.log('randomSubject is: ', randomSubject)
+  var randomSubject = subjects[Math.floor(Math.random() * subjects.length)]
   return randomSubject
+}
+
+function getRandomVerb() {
+  var randomVerb = verbs[Math.floor(Math.random() * verbs.length)]
+  return randomVerb
+}
+
+function getRandomObject() {
+  var randomObject = objects[Math.floor(Math.random() * objects.length)]
+  return randomObject
 }
 
 function replaceTargetWithRandomWord(target, randomWord) {
@@ -26,19 +31,23 @@ function replaceTargetWithRandomWord(target, randomWord) {
 }
 
 function flipSubject() {
-  console.log('flipSubject clicked!')
   var target = document.getElementById('subject') //reaching into the DOM here, replace this line with state / props...
   var randomSubject = getRandomSubject()
   replaceTargetWithRandomWord(target, randomSubject)
 }
-// function flipSubject() {
-//   console.log('flipSubject clicked!')
-//   var target = document.getElementById('subject') //reaching into the DOM here, replace this line with state / props...
-//   var randomSubject = getRandomSubject()
-//   var clone = target.cloneNode(true)
-//   clone.textContent = randomSubject
-//   target.replaceWith(clone)
-// }
+
+function flipVerb() {
+  var target = document.getElementById('verb') //reaching into the DOM here, replace this line with state / props...
+  var randomVerb = getRandomVerb()
+  replaceTargetWithRandomWord(target, randomVerb)
+}
+
+function flipObject() {
+  var target = document.getElementById('object') //reaching into the DOM here, replace this line with state / props...
+  var randomObject = getRandomObject()
+  replaceTargetWithRandomWord(target, randomObject)
+}
+
 
 const Sentence = (props) => {
 
@@ -61,16 +70,16 @@ const Sentence = (props) => {
         />
         <Button
           content='Flip Verb'
+          basic
+          color='yellow'
+          onClick={() => { flipVerb() } }
         />
         <Button
           content='Flip Object'
+          basic
+          color='green'
+          onClick={() => { flipObject() } }
         />
-
-  {/*
-  <input type="button" class="flipButton flipVerb" data-target="verb" value="Flip Verb">
-  <input type="button" class="flipButton flipNoun" data-target="noun" value="Flip Noun">
-  <input type="button" class="flipButton flipPredicate" data-target="predicate" value="Flip Predicate"> */}
-
 
       </Segment>
     </div>

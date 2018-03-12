@@ -350,6 +350,27 @@ span.blinkSubject {
   }
 }
 
+span.blinkVerb {
+  animation: blinkVerb 4s ease-out -2s;
+  -webkit-animation: blinkVerb 4s ease-out -2s;
+}
+
+@keyframes blinkVerb {
+  to {
+    background-color: yellow;
+  }
+}
+
+span.blinkObject {
+  animation: blinkObject 4s ease-out -2s;
+}
+
+@keyframes blinkObject {
+  to {
+    background-color: limegreen;
+  }
+}
+
 /*--------- changing WordNerds on hover -----------*/
 
 /* changing WordNerds color on hover */
