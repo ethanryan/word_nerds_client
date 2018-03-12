@@ -8,19 +8,9 @@ let verbs = ["eats", "sleeps with", "fucks", "kills", "likes", "loves", "tolerat
 
 let objects = ["the moon", "the house", "the sun", "the galaxy"]
 
-function getRandomSubject() {
-  var randomSubject = subjects[Math.floor(Math.random() * subjects.length)]
-  return randomSubject
-}
-
-function getRandomVerb() {
-  var randomVerb = verbs[Math.floor(Math.random() * verbs.length)]
-  return randomVerb
-}
-
-function getRandomObject() {
-  var randomObject = objects[Math.floor(Math.random() * objects.length)]
-  return randomObject
+function getRandomWord(wordsArray) {
+  var randomWord = wordsArray[Math.floor(Math.random() * wordsArray.length)]
+  return randomWord
 }
 
 function replaceTargetWithRandomWord(target, randomWord) {
@@ -32,19 +22,19 @@ function replaceTargetWithRandomWord(target, randomWord) {
 
 function flipSubject() {
   var target = document.getElementById('subject') //reaching into the DOM here, replace this line with state / props...
-  var randomSubject = getRandomSubject()
+  var randomSubject = getRandomWord(subjects)
   replaceTargetWithRandomWord(target, randomSubject)
 }
 
 function flipVerb() {
   var target = document.getElementById('verb') //reaching into the DOM here, replace this line with state / props...
-  var randomVerb = getRandomVerb()
+  var randomVerb = getRandomWord(verbs)
   replaceTargetWithRandomWord(target, randomVerb)
 }
 
 function flipObject() {
   var target = document.getElementById('object') //reaching into the DOM here, replace this line with state / props...
-  var randomObject = getRandomObject()
+  var randomObject = getRandomWord(objects)
   replaceTargetWithRandomWord(target, randomObject)
 }
 
