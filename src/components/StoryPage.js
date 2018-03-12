@@ -7,6 +7,7 @@ import EditStoryForm from './EditStoryForm/EditStoryForm'
 import AllStories from './AllStories'
 import Metadata from './Metadata/Metadata'
 import StoryShow from './StoryShow/StoryShow'
+import Sentence from '../components/Sentence/Sentence'
 
 // import { Grid, Button, Card } from 'semantic-ui-react'
 import { Grid } from 'semantic-ui-react'
@@ -119,6 +120,9 @@ const StoryPage = (props) => {
                       <img src={nerdy} className="nerdy" alt="nerdy gif"/>
 
                       <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
+
+                      <Sentence />
+
                     </div>
 
                   </Grid.Column>

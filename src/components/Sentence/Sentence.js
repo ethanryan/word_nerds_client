@@ -24,7 +24,7 @@ function getRandomObject() {
 }
 
 function replaceTargetWithRandomWord(target, randomWord) {
-  console.log('calling replaceTargetWithRandomWord with: ', target, randomWord)
+  // console.log('calling replaceTargetWithRandomWord with: ', target, randomWord)
   var clone = target.cloneNode(true)
   clone.textContent = randomWord
   target.replaceWith(clone)
@@ -51,7 +51,7 @@ function flipObject() {
 
 const Sentence = (props) => {
 
-  console.log('hello from Sentence')
+  // console.log('hello from Sentence')
   return(
 
     <div key={props.id}>
