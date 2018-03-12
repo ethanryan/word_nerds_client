@@ -207,6 +207,11 @@
   /*top, right, bottom, left*/
 }
 
+.login-signup-storypage {
+  margin: 25px 15px 5px -25px;
+  /*top, right, bottom, left*/
+}
+
 .nerdy-login {
   margin-left: auto; /*this plus a width centers the gif*/
   margin-right: auto; /*this plus a width centers the gif*/
@@ -218,7 +223,18 @@
   margin-top: 25%;
   margin-left: auto; /*this plus a width centers the gif*/
   margin-right: auto; /*this plus a width centers the gif*/
-  width: 70%;
+  width: 80%;
+  text-align: center;
+}
+
+.nerdy-storypage {
+  /* margin-top: 25%; */
+  /* margin-left: auto; /*this plus a width centers the gif*/
+  /* margin-right: auto; /*this plus a width centers the gif*/
+  /* margin: 25% 4px 5px -4px; */
+  margin: 25% 0px 5px 0px;
+  /*top, right, bottom, left*/
+  width: 80%;
   text-align: center;
 }
 

@@ -116,13 +116,14 @@ const StoryPage = (props) => {
 
                   <Grid.Column width={4}>
 
-                    <div className="nerdy">
+                    <div className="nerdy-storypage">
                       <img src={nerdy} className="nerdy" alt="nerdy gif"/>
 
                       <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
+                    </div>
 
+                    <div className="login-signup-storypage">
                       <Sentence />
-
                     </div>
 
                   </Grid.Column>

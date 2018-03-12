@@ -42,23 +42,23 @@ const Sentence = (props) => {
 
         <div>
           <Button
-            content='Flip Subject'
+            content='Subject'
             basic
-            mini
+            compact
             color='red'
             onClick={() => { flipWord('subject', subjects) } }
           />
           <Button
-            content='Flip Verb'
+            content='Verb'
             basic
-            mini
+            compact
             color='yellow'
             onClick={() => { flipWord('verb', verbs) } }
           />
           <Button
-            content='Flip Object'
+            content='Object'
             basic
-            mini
+            compact
             color='green'
             onClick={() => { flipWord('object', objects) } }
           />
