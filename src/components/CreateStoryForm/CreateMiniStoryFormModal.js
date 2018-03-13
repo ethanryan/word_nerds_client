@@ -53,7 +53,7 @@ render() {
 
     <div>
       <Modal trigger={
-        <Button fluid>Create A Mini Story</Button>
+        <Button color='teal' fluid>Create A Mini Story</Button>
       }>
 
       <Form onSubmit={this.handleCreateMiniStoryFormSubmit} className="CreateStoryFormModal-red">
