@@ -16,7 +16,6 @@ const CreateStoryForm = (props) => {
         <div className="modal-trigger-description">
           <Card fluid>
             <Card.Content>
-              <Segment>
                 Create your story!
                 <ul>
                   <li>1. Choose a story type by clicking a button below.</li>
@@ -25,7 +24,6 @@ const CreateStoryForm = (props) => {
                   <li>4. Click the 'Submit' button.</li>
                   <li>5. Read, edit, and enjoy your story!</li>
                 </ul>
-              </Segment>
             </Card.Content>
           </Card>
         </div>
