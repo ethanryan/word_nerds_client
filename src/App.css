@@ -24,6 +24,10 @@
 .modal-trigger-description-list {
   display: inline-block;
   text-align: left;
+  /* left aligning text within centered element */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .modal-trigger {
