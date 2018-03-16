@@ -21,6 +21,11 @@
   margin-bottom: 5%;
 }
 
+.modal-trigger-description-list {
+  display: inline-block;
+  text-align: left;
+}
+
 .modal-trigger {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
   margin-bottom: 5%;

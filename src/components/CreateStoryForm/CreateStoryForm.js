@@ -17,13 +17,15 @@ const CreateStoryForm = (props) => {
           <Card fluid>
             <Card.Content>
                 Create your story!
-                <ul>
+                <div>
+                <ul className="modal-trigger-description-list">
                   <li>1. Choose a story type by clicking a button below.</li>
                   <li>2. Choose a genre on the provided form.</li>
                   <li>3. Give your characters names and genders.</li>
                   <li>4. Click the 'Submit' button.</li>
                   <li>5. Read, edit, and enjoy your story!</li>
                 </ul>
+              </div>
             </Card.Content>
           </Card>
         </div>
