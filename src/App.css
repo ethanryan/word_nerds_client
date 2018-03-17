@@ -363,7 +363,8 @@ form span.error {
 
 .App-sticky-footer {
   background: rgba(246, 252, 255, 1); /* the nerd gif's light blue background color */
-  color: gray;
+  /* color: gray; */
+  color: rgba(246, 252, 255, 1); /* making footer text invisible for now */
   margin-top: auto; /* need this for sticky footer */
   /* margin-top: 25%;  */ /* old way i was doing it before adding flex above for sticky footer */
   position: sticky;
