@@ -75,7 +75,7 @@ export function createStory(genres, characters, user_id, storyType) { //adding u
         storyType: [
           {
             name: storyType
-          }
+          },
         ], //doing this same as genres above...
         characters: [
           {

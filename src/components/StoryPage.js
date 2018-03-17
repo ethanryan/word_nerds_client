@@ -34,6 +34,7 @@ const StoryPage = (props) => {
               <Route exact path='/'
               render={() => <CreateStoryForm
                 handleSubmit={props.handleSubmit}
+                handleClearForm={props.handleClearForm}
                 user_id={props.user ? props.user.id : "props.user.id here"}
                 genreSelection={props.genreSelection} //this goes to CreateStoryForm
                 //below will be passed down to CreateStoryFormSelectGenre:

@@ -40,10 +40,10 @@ handleCreateMiniStoryFormSubmit(event) {
   const characters = this.state.characters
   const user_id = this.props.user_id
   const storyType = this.state.storyType
-  console.log('CreateStoryFormModal submitted this.state: ', this.state)
+  console.log('CreateStoryFormModal submitted:::: ', genres, characters, user_id, storyType)
   // console.log('user_id is: ', user_id)
   this.props.handleSubmit( genres, characters, user_id, storyType ) //adding storyType
-  this.setState({story: ''}) //this clears form onSubmit
+  this.props.handleClearForm()
 }
 
 

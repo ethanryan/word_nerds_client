@@ -132,6 +132,38 @@ class StoryContainer extends Component {
     )
     this.props.history.push(`/stories`) //redirect to all stories
   }
+  
+  handleClearForm() {
+    this.setState({
+      characters: {
+        hero: {
+          name: 'HERO', //default name...
+          gender: '',
+        },
+        shadow: {
+          name: 'SHADOW', //default name...
+          gender: '',
+        },
+        friend: {
+          name: 'FRIEND', //default name...
+          gender: '',
+        },
+        lover: {
+          name: 'LOVER', //default name...
+          gender: '',
+        },
+        mentor: {
+          name: 'MENTOR', //default name...
+          gender: '',
+        },
+        trickster: {
+          name: 'TRICKSTER', //default name...
+          gender: '',
+        },
+      },
+      genreSelection: 'random', //updated from CreateStoryFormSelectGenre... random is default...
+    })
+  }
 
   handleUpdateStory(updatedStory) {
     api.updateStory(updatedStory)
@@ -354,7 +386,10 @@ class StoryContainer extends Component {
     if(localStorage.getItem('jwt')) {
     // console.log('jwt: ', this.jwt)
     // console.log('props from StoryContainer: ', this.props)
-    console.log('state from StoryContainer: ', this.state)
+    console.log('0. state from StoryContainer: ', this.state)
+    console.log('0. StoryContainer state.characters: ', this.state.characters)
+    console.log('0. StoryContainer state.characters.hero: ', this.state.characters.hero)
+
     console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
     return(
       <div>
@@ -367,6 +402,7 @@ class StoryContainer extends Component {
         <StoryPage
           //props for CreateStoryForm
           handleSubmit={this.handleSubmit.bind(this)}
+          handleClearForm={this.handleClearForm.bind(this)}
           genreSelection={this.state.genreSelection}
           handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
           ///above so CreateStoryFormSelectGenre can send up selectedGenre to here, StoryContainer

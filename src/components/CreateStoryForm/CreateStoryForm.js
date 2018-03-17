@@ -37,6 +37,7 @@ const CreateStoryForm = (props) => {
             <Card.Content>
               <CreateMiniStoryFormModal
                 handleSubmit={props.handleSubmit}
+                handleClearForm={props.handleClearForm}
                 user_id={props.user_id}
                 genreSelection={props.genreSelection}
                 plots={props.plots}
@@ -70,6 +71,7 @@ const CreateStoryForm = (props) => {
             <Card.Content>
               <CreateStoryFormModal
                 handleSubmit={props.handleSubmit}
+                handleClearForm={props.handleClearForm}
                 user_id={props.user_id}
                 genreSelection={props.genreSelection}
                 plots={props.plots}

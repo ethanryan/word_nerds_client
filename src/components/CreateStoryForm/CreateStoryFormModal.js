@@ -23,7 +23,7 @@ class CreateStoryFormModal extends Component {
 
 
 componentWillReceiveProps(nextProps) { //need this lifecycle method to update filteredPlotsByTitle
-  // console.log('CreateStoryFormModal nextProps::::', nextProps)
+  console.log('CreateStoryFormModal nextProps::::', nextProps)
   if (this.props !== nextProps) {
     console.log("CreateStoryFormModal - props don't equal nextProps, so updating state with nextProps: ", nextProps)
     // console.log("CreateStoryFormModal - props don't equal nextProps -- updating state with nextProps.characterProps: ", nextProps.characterProps)
@@ -40,10 +40,11 @@ handleCreateStoryFormSubmit(event) {
   const characters = this.state.characters
   const user_id = this.props.user_id
   const storyType = this.state.storyType //adding storyType...
-  console.log('CreateStoryFormModal submitted this.state: ', this.state)
+  // console.log('CreateStoryFormModal submitted this.state: ', this.state)
+  console.log('CreateStoryFormModal submitted:::: ', genres, characters, user_id, storyType)
   // console.log('user_id is: ', user_id)
   this.props.handleSubmit( genres, characters, user_id, storyType ) //adding storyType...
-  this.setState({story: ''}) //this clears form onSubmit
+  this.props.handleClearForm()
 }
 
 
