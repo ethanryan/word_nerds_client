@@ -1,6 +1,8 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
 
+import { Loader, Segment } from 'semantic-ui-react'
+
 const SummaryForMetadata = (props) => {
 
   return(
@@ -18,18 +20,26 @@ const SummaryForMetadata = (props) => {
             <h4>
               Database Information
             </h4>
+            
+            {props.stories.length === 1 ?
+              <Segment>
+                <Loader active inline='centered' />
+              </Segment>
+              :
+              <div>
+              <p>
+                Total stories: <b>{props.stories.length}</b>
+              </p>
 
-            <p>
-              Total stories: <b>{props.stories.length}</b>
-            </p>
+              <p>
+                Total users: <b>{props.users.length}</b>
+              </p>
 
-            <p>
-              Total users: <b>{props.users.length}</b>
-            </p>
-
-            <p>
-              Total plots: <b>{props.plots.length}</b>
-            </p>
+              <p>
+                Total plots: <b>{props.plots.length}</b>
+              </p>
+            </div>
+            }
           </Card.Content>
         </Card>
       </div>
