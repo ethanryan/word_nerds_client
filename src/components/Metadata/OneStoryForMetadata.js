@@ -81,7 +81,7 @@ class OneStoryForMetadata extends React.Component {
                 Created
               </Table.HeaderCell>
               <Table.HeaderCell sorted={column === 'updated_at' ? direction : null} onClick={this.handleSort('updated_at')}>
-                Update
+                Updated
               </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
