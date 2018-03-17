@@ -8,7 +8,8 @@ import Sentence from '../components/Sentence/Sentence'
 
 import { Grid, Segment } from 'semantic-ui-react'
 
-import { Switch, Route, Link } from 'react-router-dom'
+// import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 class LoginSignUp extends React.Component {
 
@@ -50,11 +51,11 @@ class LoginSignUp extends React.Component {
 
             <Grid.Column width={8}>
 
-              <h1 className='login-signup-link-options'>
+              {/* <h1 className='login-signup-link-options'>
                 <Link to={`/login`} className='hoverYellow'>Login</Link>  |  <Link to={`/register`} className='hoverYellow'>Sign Up</Link>
-              </h1>
+              </h1> */}
 
-
+              <div className='login-signup-link-options'>
               <Switch>
 
                 <Route exact path='/register'
@@ -72,6 +73,7 @@ class LoginSignUp extends React.Component {
                 />} />
 
               </Switch>
+            </div>
 
               <div className="login-signup-sentence">
                 <Sentence />
