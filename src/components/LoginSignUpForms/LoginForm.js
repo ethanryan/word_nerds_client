@@ -86,7 +86,7 @@ class LoginForm extends React.Component {
                 id='usernameInput'
                 className={shouldMarkError('name') ? 'error' : ''}
                 placeholder='Username'
-                autoFocus
+                // autoFocus
                 value={this.state.name}
                 onChange={ e => this.handleChange('name', e.target.value)}
                 onBlur={this.handleBlur('name')}
