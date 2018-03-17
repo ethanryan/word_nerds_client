@@ -165,7 +165,7 @@ const OneStory = (props) => {
 
       <ul className="UL-no-padding center">{ eachStory.reverse() }</ul>
 
-      <p className="center">each story can be clicked, which renders it in the EditStoryForm</p>
+      {/* <p className="center">each story can be clicked, which renders it in the EditStoryForm</p> */}
 
     </div>
   )
