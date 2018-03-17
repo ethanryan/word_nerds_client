@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 import React from 'react'
 
-import { Table } from 'semantic-ui-react'
+import { Table, Loader, Segment } from 'semantic-ui-react'
 
 class OneStoryForMetadata extends React.Component {
   constructor(props) {
@@ -52,6 +52,12 @@ class OneStoryForMetadata extends React.Component {
     return(
 
       <div className="OneStory-forMetadata">
+        {this.props.stories.length === 1 ?
+          <Segment>
+            <Loader active inline='centered' />
+          </Segment>
+          :
+          <div>
         <Table sortable celled fixed>
 
           <Table.Header>
@@ -141,6 +147,8 @@ class OneStoryForMetadata extends React.Component {
           </Table.Body>
 
         </Table>
+      </div>}
+
         {/* <p className="center">Word Nerds Metadata</p> */}
       </div>
     )
