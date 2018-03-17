@@ -1,6 +1,9 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import { Form } from 'semantic-ui-react'
+
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -68,55 +71,57 @@ class LoginForm extends React.Component {
 
         <Form onSubmit={this.handleSubmit} className="LoginForm-orange">
 
-        <h1 className="center-h1">Returning User - Login Form</h1>
+          <h1 className="center-h1">Log in to Word Nerds</h1>
 
-        <Form.Field>
-        <div className={this.props.nameOrPasswordError === true ? 'nameOrPasswordError' : 'hidden'}
-          >Incorrect Username or Password.</div>
-        </Form.Field>
+          <p className="center">New to Word Nerds? <Link to={`/register`} className='hoverYellow'>Sign up now.</Link></p>
 
-        <Form.Field>
-          <label>Username</label>
-          <input
-            id='usernameInput'
-            className={shouldMarkError('name') ? 'error' : ''}
-            placeholder='Username'
-            autoFocus
-            value={this.state.name}
-            onChange={ e => this.handleChange('name', e.target.value)}
-            onBlur={this.handleBlur('name')}
-          />
-          <span className={shouldMarkError('name') ? 'error' : 'hidden'}
-            >invalid name</span>
-        </Form.Field>
+          <Form.Field>
+            <div className={this.props.nameOrPasswordError === true ? 'nameOrPasswordError' : 'hidden'}
+              >Incorrect Username or Password.</div>
+            </Form.Field>
+
+            <Form.Field>
+              <label>Username</label>
+              <input
+                id='usernameInput'
+                className={shouldMarkError('name') ? 'error' : ''}
+                placeholder='Username'
+                autoFocus
+                value={this.state.name}
+                onChange={ e => this.handleChange('name', e.target.value)}
+                onBlur={this.handleBlur('name')}
+              />
+              <span className={shouldMarkError('name') ? 'error' : 'hidden'}
+                >invalid name</span>
+              </Form.Field>
 
 
-        <Form.Field>
-          <label>Password</label>
-          <input
-            id='passwordInput'
-            className={shouldMarkError('password') ? 'error' : ''}
-            placeholder='Password'
-            value={this.state.password}
-            onChange={ e => this.handleChange('password', e.target.value)}
-            onBlur={this.handleBlur('password')}
-          />
-          <span className={shouldMarkError('password') ? 'error' : 'hidden'}
-            >invalid password</span>
-        </Form.Field>
+              <Form.Field>
+                <label>Password</label>
+                <input
+                  id='passwordInput'
+                  className={shouldMarkError('password') ? 'error' : ''}
+                  placeholder='Password'
+                  value={this.state.password}
+                  onChange={ e => this.handleChange('password', e.target.value)}
+                  onBlur={this.handleBlur('password')}
+                />
+                <span className={shouldMarkError('password') ? 'error' : 'hidden'}
+                  >invalid password</span>
+                </Form.Field>
 
-        <Form.Button
-          content='Log In'
-          type='submit'
-          primary
-          fluid
-          disabled={isDisabled}
-        />
+                <Form.Button
+                  content='Log In'
+                  type='submit'
+                  primary
+                  fluid
+                  disabled={isDisabled}
+                />
 
-    </Form>
-    </div>
-    )
-  }
-}
+              </Form>
+            </div>
+          )
+        }
+      }
 
-export default LoginForm
+      export default LoginForm
