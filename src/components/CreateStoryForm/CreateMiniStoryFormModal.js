@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import CreateStoryFormSelectGenre from './CreateStoryFormSelectGenre'
 import CreateStoryFormCreateCharacters from './CreateStoryFormCreateCharacters'
 
-import { Form, Header, Divider, Modal, Button } from 'semantic-ui-react'
+import { Form, Header, Modal, Button } from 'semantic-ui-react'
 
 class CreateStoryFormModal extends Component {
 
@@ -68,8 +68,6 @@ render() {
           plots={this.props.plots}
           handleGenreChange={this.props.handleGenreChange}
         />
-
-        <Divider />
 
         <CreateStoryFormCreateCharacters
           //refactor below!!! don't need all these functions, just one or two...

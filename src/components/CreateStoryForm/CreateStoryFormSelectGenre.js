@@ -174,8 +174,8 @@ render() {
 
             <br></br>
 
-            Total plots in database: {this.props.plots.length}
-            <br></br>
+            {/* Total plots in database: {this.props.plots.length}
+            <br></br> */}
           </Header>
 
           </div>

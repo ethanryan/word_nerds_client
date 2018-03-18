@@ -163,8 +163,10 @@
 
 .create-characters {
   background-color: lightyellow;
+  padding-top: 3%;
   padding-left: 5%;
   padding-right: 5%;
+  padding-bottom: 1%;
 }
 
 .genreSelection {
