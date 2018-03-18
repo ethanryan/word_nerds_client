@@ -11,9 +11,11 @@
 }
 
 .modal-trigger-wrapper {
-  padding-top: 5%;
-  padding-left: 10%;
-  padding-right: 10%;
+  background: white;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  margin: 5px 15px 50px 15px;
+  padding: 5% 10% 5% 10%;
+  /*top right bottom left*/
 }
 
 .modal-trigger-description {
@@ -32,7 +34,7 @@
 
 .modal-trigger {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-  margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 .floatLeft {

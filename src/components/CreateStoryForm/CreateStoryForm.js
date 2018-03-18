@@ -10,7 +10,7 @@ const CreateStoryForm = (props) => {
 
   return(
     <div className="center modal-trigger-wrapper">
-      <Segment>
+
 
         <div className="modal-trigger-description">
           <Card fluid>
@@ -100,7 +100,6 @@ const CreateStoryForm = (props) => {
           </Card>
         </div>
 
-      </Segment>
     </div>
   )
 }
