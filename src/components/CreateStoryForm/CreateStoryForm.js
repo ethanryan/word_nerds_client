@@ -20,7 +20,7 @@ const CreateStoryForm = (props) => {
               </Card.Header>
               <Card.Description>
                 <ul className="modal-trigger-description-list">
-                  <li>1. Choose a story type by clicking a button below.</li>
+                  <li>1. Click a button below.</li>
                   <li>2. Choose a genre.</li>
                   <li>3. Give your characters names and genders.</li>
                   <li>4. Click the 'Submit' button.</li>
