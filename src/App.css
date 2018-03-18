@@ -163,6 +163,8 @@
 
 .create-characters {
   background-color: lightyellow;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .genreSelection {
@@ -182,10 +184,14 @@
   /* padding-bottom: 5%; */
 }
 
-.CreateStoryForm-red .genderField {
-  /* background-color: yellow; */
-  padding-left: 20%;
+.genderField {
+  padding-left: 5%!important;
 }
+
+/* .CreateStoryForm-red .genderField {
+  background-color: yellow!important;
+  padding-left: 20%;
+} */
 
 .CreateStoryForm-red .gender-label {
   padding-left: 25%;
@@ -195,6 +201,10 @@
   padding-bottom: 0px;
   padding-left: 35%;
   /* background-color: pink; */
+}
+
+.summaryField {
+  padding-left: 5%!important;
 }
 
 .CreateStoryForm-red .summaryField {
