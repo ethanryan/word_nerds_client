@@ -113,10 +113,25 @@ const StoryShow = (props) => {
 
       {/* {props.storyShowIsModal ? <h1>this is a modal!!!</h1> : <h1>this ain't no modal yo</h1>} */}
 
-      Story Creator: { props.story.user ? props.story.user.name : "name here" }
-      Current user: .......
+      {props.story.user.name !== props.user.name ?
+        <Button color='green' compact disabled
+          >Story can only be edited by its creator.
+        </Button>
+        :
+        props.storyShowIsModal ?
+          <Button basic color='green'
+            onClick={() => { props.toggleStoryShowModalToEditable() }}
+            >Edit Story</Button>
+            :
+            <Link to={`/stories/${props.story.id}/edit`}>
+            <Button color='green' compact
+              >Edit Story
+            </Button>
+          </Link>
+      }
+      <br></br>
 
-      {props.storyShowIsModal ?
+      {/* {props.storyShowIsModal ?
         <Button basic color='green'
           onClick={() => { props.toggleStoryShowModalToEditable() }}
           >Edit Story</Button>
@@ -126,7 +141,7 @@ const StoryShow = (props) => {
             >Edit Story
           </Button>
         </Link>
-      }
+      } */}
 
     </div>
   )
@@ -136,8 +151,13 @@ StoryShow.defaultProps = {
   content: 'story content here', //need this so props aren't null
   title: 'story title here',
   // image: 'story image here',
-  story: {title: 'title', 'content': 'words words ----- word words words',
-  genres: ['genres here'], plots: [{title: "Halloween"}]},
+  story: {
+    title: 'title',
+    'content': 'words words ----- word words words',
+    genres: ['genres here'],
+    plots: [{title: "Halloween"}],
+    user: {name: 'username'},
+  },
 }
 
 export default StoryShow
