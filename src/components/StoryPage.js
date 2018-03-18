@@ -66,6 +66,7 @@ const StoryPage = (props) => {
                     return <div className="StoryShow-purple">
                       <StoryShow
                         story={story}
+                        user={props.user}
                         image={props.image}
                         handleDeleteStory={props.handleDeleteStory}
                       />

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 
 const StoryShow = (props) => {
-  // console.log('StoryShow props ---->>>>>: ', props);
+  console.log('StoryShow props ---->>>>>: ', props);
   console.log('StoryShow props.story.id: ', props.story.id);
   // console.log('StoryShow props.story.user: ', props.story.user);
   // console.log('--=-=-=-=-=-=-= props.storyForModal::::', props.storyForModal)
@@ -112,6 +112,9 @@ const StoryShow = (props) => {
       </Link> */}
 
       {/* {props.storyShowIsModal ? <h1>this is a modal!!!</h1> : <h1>this ain't no modal yo</h1>} */}
+
+      Story Creator: { props.story.user ? props.story.user.name : "name here" }
+      Current user: .......
 
       {props.storyShowIsModal ?
         <Button basic color='green'

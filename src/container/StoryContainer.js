@@ -132,7 +132,7 @@ class StoryContainer extends Component {
     )
     this.props.history.push(`/stories`) //redirect to all stories
   }
-  
+
   handleClearForm() {
     this.setState({
       characters: {
@@ -387,8 +387,8 @@ class StoryContainer extends Component {
     // console.log('jwt: ', this.jwt)
     // console.log('props from StoryContainer: ', this.props)
     console.log('0. state from StoryContainer: ', this.state)
-    console.log('0. StoryContainer state.characters: ', this.state.characters)
-    console.log('0. StoryContainer state.characters.hero: ', this.state.characters.hero)
+    // console.log('0. StoryContainer state.characters: ', this.state.characters)
+    // console.log('0. StoryContainer state.characters.hero: ', this.state.characters.hero)
 
     console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
     return(
