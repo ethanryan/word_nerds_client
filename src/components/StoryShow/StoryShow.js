@@ -113,6 +113,11 @@ const StoryShow = (props) => {
 
       {/* {props.storyShowIsModal ? <h1>this is a modal!!!</h1> : <h1>this ain't no modal yo</h1>} */}
 
+{props.story.user.name}
+<br></br>
+{props.user.name}
+<br></br>
+
       {props.story.user.name !== props.user.name ?
         <Button color='green' compact disabled
           >Story can only be edited by its creator.

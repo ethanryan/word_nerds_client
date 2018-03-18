@@ -139,6 +139,7 @@ const OneStory = (props) => {
               :
               <div className="StoryShow-purple-modal">
                 <StoryShow
+                  user={props.user}
                   story={storyForModal} //storyForModal, not story, which is each story in filteredStories
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}

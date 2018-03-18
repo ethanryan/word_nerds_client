@@ -7,9 +7,11 @@ import { Card, Loader, Segment } from 'semantic-ui-react'
 const AllStories = (props) => {
 
   ///add scrollToTop function here
-  const filteredStories = props.stories.filter(story => story.user_id === props.user_id)
+  // const filteredStories = props.stories.filter(story => story.user_id === props.user_id)
+  const filteredStories = props.stories.filter(story => story.user.id === props.user.id)
 
   // console.log('hello from AllStories')
+  console.log('AllStories props: ', props)
   return(
 
     <div key={props.id} className="AllStories-green">
@@ -17,7 +19,8 @@ const AllStories = (props) => {
       <div className="AllStories-header">
         <Card fluid>
           <Card.Content>
-          <h1 className="center">{props.username}'s stories</h1>
+          {/* <h1 className="center">{props.username}'s stories</h1> */}
+          <h1 className="center">{props.user.name}'s stories</h1>
 
           {filteredStories.length === 0 ?
             <Segment>
@@ -33,7 +36,8 @@ const AllStories = (props) => {
         handleUpdateStory={props.handleUpdateStory}
         handleDeleteStory={props.handleDeleteStory}
         userStories={filteredStories} //passing OneStory userStories, not all stories in database...
-        user_id={props.user_id}
+        user={props.user}
+        // user_id={props.user_id}
         storyShowIsModal={props.storyShowIsModal}
         openModal={props.openModal}
         closeModal={props.closeModal}

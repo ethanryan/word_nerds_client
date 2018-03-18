@@ -93,8 +93,9 @@ const StoryPage = (props) => {
                       handleUpdateStory={props.handleUpdateStory}
                       handleDeleteStory={props.handleDeleteStory}
                       stories={props.stories}
-                      username={props.user ? props.user.name : "props.user.name here"}
-                      user_id={props.user ? props.user.id : "props.user.id here"}
+                      user={props.user}
+                      // username={props.user ? props.user.name : "props.user.name here"}
+                      // user_id={props.user ? props.user.id : "props.user.id here"}
                       storyShowIsModal={props.storyShowIsModal}
                       openModal={props.openModal}
                       closeModal={props.closeModal}
