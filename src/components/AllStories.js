@@ -18,12 +18,13 @@ const AllStories = (props) => {
         <Card fluid>
           <Card.Content>
           <h1 className="center">{props.username}'s stories</h1>
-          <h3 className="center">total stories: {filteredStories.length === 0 ?
+
+          {filteredStories.length === 0 ?
             <Segment>
               <Loader active inline='centered' />
             </Segment>
-            : filteredStories.length}
-          </h3>
+            : <h3 className="center">total stories: {filteredStories.length}</h3>}
+
         </Card.Content>
         </Card>
       </div>
