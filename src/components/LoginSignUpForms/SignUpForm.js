@@ -77,7 +77,7 @@ class SignUp extends React.Component {
         <Form onSubmit={this.handleSubmit} className='SignUpForm-blue'>
 
           <h1 className='center-h1'>Join Word Nerds today.</h1>
-          
+
           <p className="center">Already use Word Nerds? <Link to={`/login`} className='hoverYellow'>Log in.</Link></p>
 
           <Form.Field>
@@ -119,6 +119,7 @@ class SignUp extends React.Component {
                   <label>Password</label>
                   <input
                     id='passwordInput'
+                    type='password'
                     className={shouldMarkError('password') ? 'error' : ''}
                     placeholder='Password'
                     value={this.state.password}

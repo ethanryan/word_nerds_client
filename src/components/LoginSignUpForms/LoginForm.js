@@ -100,6 +100,7 @@ class LoginForm extends React.Component {
                 <label>Password</label>
                 <input
                   id='passwordInput'
+                  type='password'
                   className={shouldMarkError('password') ? 'error' : ''}
                   placeholder='Password'
                   value={this.state.password}
