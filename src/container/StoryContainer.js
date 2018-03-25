@@ -387,6 +387,10 @@ class StoryContainer extends Component {
     // console.log('jwt: ', this.jwt)
     // console.log('props from StoryContainer: ', this.props)
     console.log('0. state from StoryContainer (signed in): ', this.state)
+
+    // console.log('0. console.table(this.state) is ----->>>>')
+    // console.table(this.state)
+    
     // console.log('0. StoryContainer state.characters: ', this.state.characters)
     // console.log('0. StoryContainer state.characters.hero: ', this.state.characters.hero)
 
