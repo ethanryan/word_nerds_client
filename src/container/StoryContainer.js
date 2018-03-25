@@ -386,11 +386,15 @@ class StoryContainer extends Component {
     if(localStorage.getItem('jwt')) {
     // console.log('jwt: ', this.jwt)
     // console.log('props from StoryContainer: ', this.props)
-    console.log('0. state from StoryContainer: ', this.state)
+    console.log('0. state from StoryContainer (signed in): ', this.state)
     // console.log('0. StoryContainer state.characters: ', this.state.characters)
     // console.log('0. StoryContainer state.characters.hero: ', this.state.characters.hero)
 
-    console.log('state.users.length 0 means NO INTERNET: ', this.state.users.length)
+    if(this.state.users.length === 0) {
+      console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+    } else {
+      console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+    }
     return(
       <div>
         <NavBar
@@ -454,8 +458,12 @@ class StoryContainer extends Component {
     )
   }
   else {
-    console.log('state from StoryContainer: ', this.state)
-    console.log('!!!! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+    console.log('state from StoryContainer (not signed in): ', this.state)
+    if(this.state.users.length === 0) {
+      console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+    } else {
+      console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+    }
     return(
       <div>
         <NavBarLoginSignUp />
