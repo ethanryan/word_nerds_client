@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import nerdy from '../assets/nerdy.gif'
-
 import CreateStoryFormSelectGenre from './CreateStoryFormSelectGenre'
 import CreateStoryFormCreateCharacters from './CreateStoryFormCreateCharacters'
 
@@ -54,67 +52,54 @@ render() {
   return(
 
     <div>
-      <Modal trigger={<Button>Scrolling Content Modal</Button>}>
-  <Modal.Header>Profile Picture</Modal.Header>
+      <Modal trigger={
+        <Button color='teal' fluid>Create A Mini Story</Button>
+      }>
 
-  <Modal.Content scrolling>
+      <Modal.Header>
+        <Header as='h1' textAlign='center'>
+          Create a Mini Story
+        </Header>
+      </Modal.Header>
 
-    <Modal.Description>
-      <Header>Modal Header</Header>
-      <p>This is an example of expanded content that will cause the modal's dimmer to scroll</p>
+      <Form onSubmit={this.handleCreateMiniStoryFormSubmit} className="CreateStoryFormModal-red">
 
-      <img src={nerdy} className="nerdy" alt="nerdy gif"/>
+        <Modal.Content scrolling>
 
-    </Modal.Description>
-  </Modal.Content>
-  <Modal.Actions>
-    <Button primary>
-      Proceed
-    </Button>
-  </Modal.Actions>
-</Modal>
-    </div>
+        {/* <h1>user_id: {this.props.user_id}</h1> */}
 
-  //   <div>
-  //     <Modal trigger={
-  //       <Button color='teal' fluid>Create A Mini Story</Button>
-  //     }>
-  //
-  //     <Form onSubmit={this.handleCreateMiniStoryFormSubmit} className="CreateStoryFormModal-red">
-  //
-  //       <Header as='h1' textAlign='center'>
-  //         Create a Mini Story
-  //       </Header>
-  //
-  //       {/* <h1>user_id: {this.props.user_id}</h1> */}
-  //
-  //       <CreateStoryFormSelectGenre
-  //         plots={this.props.plots}
-  //         handleGenreChange={this.props.handleGenreChange}
-  //       />
-  //
-  //       <CreateStoryFormCreateCharacters
-  //         //refactor below!!! don't need all these functions, just one or two...
-  //         handleHeroNameChange={this.props.handleHeroNameChange}
-  //         handleShadowNameChange={this.props.handleShadowNameChange}
-  //         handleFriendNameChange={this.props.handleFriendNameChange}
-  //         handleLoverNameChange={this.props.handleLoverNameChange}
-  //         handleMentorNameChange={this.props.handleMentorNameChange}
-  //         handleTricksterNameChange={this.props.handleTricksterNameChange}
-  //         //refactor below!!! don't need all these functions, just one or two...
-  //         handleHeroGenderChange={this.props.handleHeroGenderChange}
-  //         handleShadowGenderChange={this.props.handleShadowGenderChange}
-  //         handleFriendGenderChange={this.props.handleFriendGenderChange}
-  //         handleLoverGenderChange={this.props.handleLoverGenderChange}
-  //         handleMentorGenderChange={this.props.handleMentorGenderChange}
-  //         handleTricksterGenderChange={this.props.handleTricksterGenderChange}
-  //       />
-  //
-  //       <Form.Button content='Submit' type="submit" primary fluid/>
-  //
-  //     </Form>
-  //   </Modal>
-  // </div>
+        <CreateStoryFormSelectGenre
+          plots={this.props.plots}
+          handleGenreChange={this.props.handleGenreChange}
+        />
+
+        <CreateStoryFormCreateCharacters
+          //refactor below!!! don't need all these functions, just one or two...
+          handleHeroNameChange={this.props.handleHeroNameChange}
+          handleShadowNameChange={this.props.handleShadowNameChange}
+          handleFriendNameChange={this.props.handleFriendNameChange}
+          handleLoverNameChange={this.props.handleLoverNameChange}
+          handleMentorNameChange={this.props.handleMentorNameChange}
+          handleTricksterNameChange={this.props.handleTricksterNameChange}
+          //refactor below!!! don't need all these functions, just one or two...
+          handleHeroGenderChange={this.props.handleHeroGenderChange}
+          handleShadowGenderChange={this.props.handleShadowGenderChange}
+          handleFriendGenderChange={this.props.handleFriendGenderChange}
+          handleLoverGenderChange={this.props.handleLoverGenderChange}
+          handleMentorGenderChange={this.props.handleMentorGenderChange}
+          handleTricksterGenderChange={this.props.handleTricksterGenderChange}
+        />
+
+      </Modal.Content>
+      {/* everything within modal.content scrolls... */}
+
+      <Modal.Actions>
+        <Form.Button content='Submit' type="submit" primary fluid/>
+      </Modal.Actions>
+
+      </Form>
+    </Modal>
+  </div>
 )
 }
 }

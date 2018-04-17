@@ -57,11 +57,15 @@ render() {
         <Button primary fluid>Create A Short Story</Button>
       }>
 
-      <Form onSubmit={this.handleCreateStoryFormSubmit} className="CreateStoryFormModal-red">
-
+      <Modal.Header>
         <Header as='h1' textAlign='center'>
           Create a Short Story
         </Header>
+      </Modal.Header>
+
+      <Form onSubmit={this.handleCreateStoryFormSubmit} className="CreateStoryFormModal-red">
+
+        <Modal.Content scrolling>
 
         {/* <h1>user_id: {this.props.user_id}</h1> */}
 
@@ -87,7 +91,12 @@ render() {
           handleTricksterGenderChange={this.props.handleTricksterGenderChange}
         />
 
+      </Modal.Content>
+      {/* everything within modal.content scrolls... */}
+
+      <Modal.Actions>
         <Form.Button content='Submit' type="submit" primary fluid/>
+      </Modal.Actions>
 
       </Form>
     </Modal>
