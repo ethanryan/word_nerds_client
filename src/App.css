@@ -461,16 +461,18 @@ span.blinkObject {
 }
 
 
+/* responsive styling, placeholder for now */
 
-/*not using below class, can delete:*/
-/*not using below class, can delete:*/
-/*not using below class, can delete:*/
-.blinkProse {
-      animation: blinkProse 4s ease-out -2s;
-      -webkit-animation: blinkProse 4s ease-out -2s;
-    }
-    @keyframes blinkProse {
-      to {
-          background-color: #FF00FF;
-      }
-    }
+/* Tablets ----------- */
+@media screen and (max-width: 1024px) {
+  /* .LoginForm-orange {
+    background-color: red;
+  } */
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media screen and (max-width: 480px) {
+  /* .LoginForm-orange{
+    background-color: blue;
+  } */
+}
