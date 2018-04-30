@@ -23,8 +23,8 @@ const StoryPage = (props) => {
   return (
     <div>
 
-      <Grid>
-        <Grid.Row>
+      <Grid stackable centered columns={2}>
+        {/* <Grid.Row> */}
 
           <Grid.Column width={12}>
 
@@ -125,14 +125,14 @@ const StoryPage = (props) => {
                       <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
                     </div>
 
-                    <div className="login-signup-storypage">
+                    <div className="storypage-sentence">
                       <Sentence />
                     </div>
 
                   </Grid.Column>
 
 
-                </Grid.Row>
+                {/* </Grid.Row> */}
               </Grid>
 
             </div>

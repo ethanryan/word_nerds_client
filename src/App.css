@@ -233,7 +233,7 @@
   /*top, right, bottom, left*/
 }
 
-.login-signup-storypage {
+.storypage-sentence {
   margin: 25px 15px 5px -25px;
   /*top, right, bottom, left*/
 }
@@ -461,18 +461,30 @@ span.blinkObject {
 }
 
 
-/* responsive styling, placeholder for now */
+/* responsive styling, tablet placeholder for now */
 
 /* Tablets ----------- */
 @media screen and (max-width: 1024px) {
-  /* .LoginForm-orange {
-    background-color: red;
-  } */
+  /* tablet changes */
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) { */
+@media screen and (max-width: 767px) {
+  .storypage-sentence {
+    margin: 25px 15px 5px 15px;
+    /*top, right, bottom, left*/
+  }
+
   .nerdy {
-    margin-top: 5%;
+    margin-top: 0%;
+  }
+
+  .nerdy-storypage {
+    margin-top: 2%;
+    margin-left: auto; /*this plus a width centers the gif*/
+    margin-right: auto; /*this plus a width centers the gif*/
+    width: 50%;
+    text-align: center;
   }
 }
