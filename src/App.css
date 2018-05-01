@@ -12,6 +12,7 @@
 
 .modal-trigger-wrapper {
   background: white;
+  /* border: 5px solid red; */
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
   margin: 5px 15px 50px 15px;
   padding: 5% 10% 5% 10%;
@@ -215,9 +216,12 @@
   padding-left: 35%;
 }
 
-.CreateStoryForm-red .ui.form .fields .wide.field {
-  /* padding-left: 3%; */
-  /* background-color: black; */
+.ui.modal {
+  border: 5px solid red !important;
+  left: auto !important;
+  right: auto !important;
+  top: 50% !important;
+  /* margin-top: 0!important; */
 }
 
 .LoginSignUp-divs {
