@@ -52,7 +52,9 @@ render() {
   return(
 
     <div>
-      <Modal trigger={
+      <Modal
+        className="CreateStoryFormModal-fix-for-now"
+        trigger={
         <Button color='teal' fluid>Create A Mini Story</Button>
       }>
 

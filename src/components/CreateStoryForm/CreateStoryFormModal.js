@@ -54,7 +54,7 @@ render() {
 
     <div>
       <Modal
-        // className="CreateStoryFormModal-fuck"
+        className="CreateStoryFormModal-fix-for-now"
         trigger={
         <Button primary fluid>Create A Short Story</Button>
       }>

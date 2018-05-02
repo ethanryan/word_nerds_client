@@ -227,22 +227,13 @@
   display: flex !important;
 }
 
-.CreateStoryFormModal-fuck {
+.CreateStoryFormModal-fix-for-now {
   border: 10px solid green !important;
   left: 50% !important;
   top: 50% !important;
   transform: translate(-50%, -50%) !important;
   margin-top: 0 !important;
   align-items: center !important;
-}
-
-.ui.modal {
-  /* border: 5px solid red !important; */
-  /* left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 0 !important;
-  align-items: center; */
 }
 /* to fix modal off-center issue... */
 /* to fix modal off-center issue... */
