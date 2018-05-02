@@ -53,7 +53,9 @@ render() {
   return(
 
     <div>
-      <Modal trigger={
+      <Modal
+        // className="CreateStoryFormModal-fuck"
+        trigger={
         <Button primary fluid>Create A Short Story</Button>
       }>
 

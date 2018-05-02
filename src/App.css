@@ -216,13 +216,40 @@
   padding-left: 35%;
 }
 
-.ui.modal {
-  border: 5px solid red !important;
-  left: auto !important;
-  right: auto !important;
-  top: 50% !important;
-  /* margin-top: 0!important; */
+
+
+
+/* to fix modal off-center issue... */
+/* to fix modal off-center issue... */
+/* to fix modal off-center issue... */
+/* to fix modal off-center issue... */
+.ui.dimmer {
+  display: flex !important;
 }
+
+.CreateStoryFormModal-fuck {
+  border: 10px solid green !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin-top: 0 !important;
+  align-items: center !important;
+}
+
+.ui.modal {
+  /* border: 5px solid red !important; */
+  /* left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 0 !important;
+  align-items: center; */
+}
+/* to fix modal off-center issue... */
+/* to fix modal off-center issue... */
+/* to fix modal off-center issue... */
+/* to fix modal off-center issue... */
+
+
 
 .LoginSignUp-divs {
   margin: 0 auto; /*this plus a width centers the divs*/
