@@ -47,10 +47,12 @@ const AllStories = (props) => {
         indexOfStoryModal={props.indexOfStoryModal}
       />
 
-      <Button primary
+      <Button
+        primary
         onClick={props.scrollToTop}
-        >Scroll To Top</Button>
-
+        >Scroll To Top
+      </Button>
+      
       {/* <p className="center">AllStories mounts and renders OneStory, which contains eachStory</p> */}
     </div>
   )

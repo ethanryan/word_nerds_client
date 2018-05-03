@@ -413,7 +413,6 @@ class StoryContainer extends Component {
           location={this.props.location}
         />
         <StoryPage
-          //trying this:
           scrollToTop={this.scrollToTop.bind(this)}
           //props for CreateStoryForm
           handleSubmit={this.handleSubmit.bind(this)}

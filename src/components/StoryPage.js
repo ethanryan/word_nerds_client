@@ -109,6 +109,7 @@ const StoryPage = (props) => {
                     <Route
                       path='/metadata'
                       render={() => <Metadata
+                        scrollToTop={props.scrollToTop}
                         stories={props.stories}
                         plots={props.plots}
                         users={props.users}
