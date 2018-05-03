@@ -223,18 +223,18 @@
 /* to fix modal off-center issue... */
 /* to fix modal off-center issue... */
 /* to fix modal off-center issue... */
-.ui.dimmer {
+/* .ui.dimmer {
   display: flex !important;
-}
+} */
 
-.CreateStoryFormModal-fix-for-now {
-  border: 10px solid green !important;
+/* .CreateStoryFormModal-fix-for-now {
+  border: 5px solid green !important;
   left: 50% !important;
   top: 50% !important;
   transform: translate(-50%, -50%) !important;
   margin-top: 0 !important;
   align-items: center !important;
-}
+} */
 /* to fix modal off-center issue... */
 /* to fix modal off-center issue... */
 /* to fix modal off-center issue... */
