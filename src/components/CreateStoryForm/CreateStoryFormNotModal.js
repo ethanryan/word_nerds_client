@@ -45,6 +45,7 @@ handleCreateStoryFormSubmit(event) {
   // console.log('user_id is: ', user_id)
   this.props.handleSubmit( genres, characters, user_id, storyType ) //adding storyType...
   this.props.handleClearForm()
+  this.props.scrollToTop()
 }
 
 
