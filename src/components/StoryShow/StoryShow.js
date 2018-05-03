@@ -136,6 +136,13 @@ const StoryShow = (props) => {
             </Button>
           </Link>
       }
+
+      <Button
+        basic
+        onClick={() => props.closeModal()}
+        >Close
+      </Button>
+
       <br></br>
 
       {/* {props.storyShowIsModal ?
