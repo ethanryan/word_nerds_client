@@ -100,6 +100,11 @@ class StoryContainer extends Component {
     }) )
   }
 
+  scrollToTop() {
+    console.log('scrollToTop called...')
+    window.scrollTo(0, 0)
+  }
+
   openModal(event, index, id) {
     // console.log('StoryContainer ---- openModal, params are:::', event, index, id)
     this.setState({
@@ -390,7 +395,7 @@ class StoryContainer extends Component {
 
     // console.log('0. console.table(this.state) is ----->>>>')
     // console.table(this.state)
-    
+
     // console.log('0. StoryContainer state.characters: ', this.state.characters)
     // console.log('0. StoryContainer state.characters.hero: ', this.state.characters.hero)
 
@@ -408,6 +413,8 @@ class StoryContainer extends Component {
           location={this.props.location}
         />
         <StoryPage
+          //trying this:
+          scrollToTop={this.scrollToTop.bind(this)}
           //props for CreateStoryForm
           handleSubmit={this.handleSubmit.bind(this)}
           handleClearForm={this.handleClearForm.bind(this)}

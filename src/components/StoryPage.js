@@ -90,6 +90,7 @@ const StoryPage = (props) => {
                   <Route
                     path='/stories'
                     render={() => <AllStories
+                      scrollToTop={props.scrollToTop}
                       handleUpdateStory={props.handleUpdateStory}
                       handleDeleteStory={props.handleDeleteStory}
                       stories={props.stories}

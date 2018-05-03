@@ -2,7 +2,7 @@ import React from 'react'
 
 import OneStory from './OneStory'
 
-import { Card, Loader, Segment } from 'semantic-ui-react'
+import { Card, Loader, Segment, Button } from 'semantic-ui-react'
 
 const AllStories = (props) => {
 
@@ -47,7 +47,9 @@ const AllStories = (props) => {
         indexOfStoryModal={props.indexOfStoryModal}
       />
 
-      {/* <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> */}
+      <Button primary
+        onClick={props.scrollToTop}
+        >Scroll To Top</Button>
 
       {/* <p className="center">AllStories mounts and renders OneStory, which contains eachStory</p> */}
     </div>
