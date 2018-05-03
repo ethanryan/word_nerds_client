@@ -33,6 +33,7 @@ const StoryPage = (props) => {
             <Switch>
               <Route exact path='/'
               render={() => <CreateStoryForm
+                scrollToTop={props.scrollToTop}
                 handleSubmit={props.handleSubmit}
                 handleClearForm={props.handleClearForm}
                 user_id={props.user ? props.user.id : "props.user.id here"}
