@@ -1,7 +1,7 @@
 import React from 'react'
 
 import CreateStoryFormModal from './CreateStoryFormModal'
-import CreateMiniStoryFormModal from './CreateMiniStoryFormModal'
+// import CreateMiniStoryFormModal from './CreateMiniStoryFormModal'
 
 import { Card, Segment } from 'semantic-ui-react'
 
@@ -32,7 +32,7 @@ const CreateStoryForm = (props) => {
         </div>
 
 
-        <div className="modal-trigger">
+        {/* <div className="modal-trigger">
           <Card fluid>
             <Card.Content>
               <CreateMiniStoryFormModal
@@ -42,8 +42,6 @@ const CreateStoryForm = (props) => {
                 genreSelection={props.genreSelection}
                 plots={props.plots}
                 handleGenreChange={props.handleGenreChange}
-                //below will be passed down to CreateStoryFormCreateCharacters:
-                //refactor below!!! don't need all these functions, just one or two...
                 characterProps={props.characterProps}
                 handleHeroNameChange={props.handleHeroNameChange}
                 handleShadowNameChange={props.handleShadowNameChange}
@@ -51,7 +49,6 @@ const CreateStoryForm = (props) => {
                 handleLoverNameChange={props.handleLoverNameChange}
                 handleMentorNameChange={props.handleMentorNameChange}
                 handleTricksterNameChange={props.handleTricksterNameChange}
-                //refactor below!!! don't need all these functions, just one or two...
                 handleHeroGenderChange={props.handleHeroGenderChange}
                 handleShadowGenderChange={props.handleShadowGenderChange}
                 handleFriendGenderChange={props.handleFriendGenderChange}
@@ -59,12 +56,11 @@ const CreateStoryForm = (props) => {
                 handleMentorGenderChange={props.handleMentorGenderChange}
                 handleTricksterGenderChange={props.handleTricksterGenderChange}
               />
-              {/* above will render trigger to button and modal inside trigger... */}
 
               <Segment>Create a 5 sentence mini story.</Segment>
             </Card.Content>
           </Card>
-        </div>
+        </div> */}
 
         <div className="modal-trigger">
           <Card fluid>
