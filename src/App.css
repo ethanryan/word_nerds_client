@@ -10,6 +10,14 @@
   text-align: center;
 }
 
+.not-a-modal-wrapper {
+  background: white;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  margin: 1px 5px 1px 5px;
+  padding: 1% 2% 5% 2%;
+  /*top right bottom left*/
+}
+
 .modal-trigger-wrapper {
   background: white;
   /* border: 5px solid red; */

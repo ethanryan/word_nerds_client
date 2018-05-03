@@ -11,7 +11,7 @@ import { Card, Segment } from 'semantic-ui-react'
 const CreateStoryForm = (props) => {
 
   return(
-    <div className="center modal-trigger-wrapper">
+    <div className="center not-a-modal-wrapper">
 
         {/* <div className="modal-trigger-description">
           <Card fluid>
