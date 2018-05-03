@@ -1,6 +1,8 @@
 import React from 'react'
 
-import CreateStoryFormModal from './CreateStoryFormModal'
+import CreateStoryFormNotModal from './CreateStoryFormNotModal'
+
+// import CreateStoryFormModal from './CreateStoryFormModal'
 // import CreateMiniStoryFormModal from './CreateMiniStoryFormModal'
 
 import { Card, Segment } from 'semantic-ui-react'
@@ -11,8 +13,7 @@ const CreateStoryForm = (props) => {
   return(
     <div className="center modal-trigger-wrapper">
 
-
-        <div className="modal-trigger-description">
+        {/* <div className="modal-trigger-description">
           <Card fluid>
             <Card.Content>
               <Card.Header>
@@ -29,7 +30,7 @@ const CreateStoryForm = (props) => {
             </Card.Description>
             </Card.Content>
           </Card>
-        </div>
+        </div> */}
 
 
         {/* <div className="modal-trigger">
@@ -63,9 +64,9 @@ const CreateStoryForm = (props) => {
         </div> */}
 
         <div className="modal-trigger">
-          <Card fluid>
-            <Card.Content>
-              <CreateStoryFormModal
+          {/* <Card fluid> */}
+            {/* <Card.Content> */}
+              <CreateStoryFormNotModal
                 handleSubmit={props.handleSubmit}
                 handleClearForm={props.handleClearForm}
                 user_id={props.user_id}
@@ -91,9 +92,9 @@ const CreateStoryForm = (props) => {
               />
               {/* above will render trigger to button and modal inside trigger... */}
 
-              <Segment>Create a 500-word short story.</Segment>
-            </Card.Content>
-          </Card>
+              {/* <Segment>Create a 500-word short story.</Segment> */}
+            {/* </Card.Content> */}
+          {/* </Card> */}
         </div>
 
     </div>
