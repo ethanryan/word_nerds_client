@@ -139,6 +139,7 @@ const StoryShow = (props) => {
 
       <Button
         basic
+        floated='right'
         onClick={() => props.closeModal()}
         >Close
       </Button>
