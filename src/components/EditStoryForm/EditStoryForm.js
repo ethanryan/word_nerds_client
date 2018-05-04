@@ -184,24 +184,34 @@ handleRandomLastSentence() {
                   onClick={() => {this.props.handleDeleteStory(this.props.story.id)}}>Delete</Button>
                 </Button.Group> */}
 
-              <Button.Group>
-                <Form.Button
-                  content='Save Story'
-                  type="submit"
-                  primary compact/>
+                <Button.Group>
+                  <Form.Button
+                    content='Save Story'
+                    type="submit"
+                    primary compact
+                  />
 
-              <Form.Button color='purple'
-                  compact
-                  type="button"
-                  content='First Line'
-                  onClick={() => {this.handleRandomFirstSentence()}}/>
+                  <Form.Button color='purple'
+                    compact
+                    type="button"
+                    content='First Line'
+                    onClick={() => {this.handleRandomFirstSentence()}}
+                  />
 
-                <Form.Button color='orange'
-                  compact
-                  type="button"
-                  content='Last Line'
-                  onClick={() => {this.handleRandomLastSentence()}}/>
+                  <Form.Button color='orange'
+                    compact
+                    type="button"
+                    content='Last Line'
+                    onClick={() => {this.handleRandomLastSentence()}}
+                  />
                 </Button.Group>
+
+                <Button
+                  basic
+                  floated='right'
+                  onClick={() => this.props.closeModal()}
+                  >Cancel
+                </Button>
             </div>
 
           </Form>

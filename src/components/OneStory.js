@@ -132,6 +132,7 @@ const OneStory = (props) => {
               <div className="EditStoryForm-blue-modal">
                 <EditStoryForm
                   story={storyForModal}
+                  closeModal={props.closeModal}
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}
                 />
