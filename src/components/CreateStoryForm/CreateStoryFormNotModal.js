@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import CreateStoryFormSelectGenre from './CreateStoryFormSelectGenre'
 import CreateStoryFormCreateCharacters from './CreateStoryFormCreateCharacters'
 
-import { Form, Header, Modal, Button } from 'semantic-ui-react'
+// import { Form, Header, Modal, Button } from 'semantic-ui-react'
+import { Form, Header } from 'semantic-ui-react'
 
 class CreateStoryFormNotModal extends Component {
 

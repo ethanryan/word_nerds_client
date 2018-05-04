@@ -5,7 +5,7 @@ import CreateStoryFormNotModal from './CreateStoryFormNotModal'
 // import CreateStoryFormModal from './CreateStoryFormModal'
 // import CreateMiniStoryFormModal from './CreateMiniStoryFormModal'
 
-import { Card, Segment } from 'semantic-ui-react'
+// import { Card, Segment } from 'semantic-ui-react'
 
 
 const CreateStoryForm = (props) => {
