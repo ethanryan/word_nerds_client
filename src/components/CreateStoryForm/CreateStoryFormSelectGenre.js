@@ -38,6 +38,7 @@ handleGenreSelectionChange(event) {
   var sciFiPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 2)
   var actionPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 3)
   var dramaPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 4)
+  var fantasyPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 5)
   var comedyPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 6)
   var romancePlots = this.props.plots.filter(plotObject => plotObject.genre_id === 7)
   var randomPlots = this.props.plots.filter(plotObject => plotObject)
@@ -55,6 +56,9 @@ handleGenreSelectionChange(event) {
   }
   if (genreSelection === "drama") {
     this.setState({ filteredPlotsByGenre: dramaPlots.length, filteredPlotsByTitle: dramaPlots.map(object => object.title) })
+  }
+  if (genreSelection === "fantasy") {
+    this.setState({ filteredPlotsByGenre: fantasyPlots.length, filteredPlotsByTitle: fantasyPlots.map(object => object.title) })
   }
   if (genreSelection === "comedy") {
     this.setState({ filteredPlotsByGenre: comedyPlots.length, filteredPlotsByTitle: comedyPlots.map(object => object.title) })
@@ -110,13 +114,19 @@ render() {
                     checked={this.state.genreSelection === "action"}
                     onChange={this.handleGenreSelectionChange.bind(this)}
                   />
-                </Grid.Column>
-
-                <Grid.Column>
                   <Form.Field label="drama"
                     value="drama"
                     control="input" type="radio"
                     checked={this.state.genreSelection === "drama"}
+                    onChange={this.handleGenreSelectionChange.bind(this)}
+                  />
+                </Grid.Column>
+
+                <Grid.Column>
+                  <Form.Field label="fantasy"
+                    value="fantasy"
+                    control="input" type="radio"
+                    checked={this.state.genreSelection === "fantasy"}
                     onChange={this.handleGenreSelectionChange.bind(this)}
                   />
                   <Form.Field label="comedy"
@@ -131,16 +141,23 @@ render() {
                     checked={this.state.genreSelection === "romance"}
                     onChange={this.handleGenreSelectionChange.bind(this)}
                   />
+                  <Form.Field label="random"
+                    value="random"
+                    control="input" type="radio"
+                    checked={this.state.genreSelection === "random"}
+                    onChange={this.handleGenreSelectionChange.bind(this)}
+                  />
                 </Grid.Column>
               </Grid.Row>
 
 
-              <Form.Field label="random"
+              {/* <Form.Field label="random"
                 value="random"
                 control="input" type="radio"
                 checked={this.state.genreSelection === "random"}
                 onChange={this.handleGenreSelectionChange.bind(this)}
-              />
+              /> */}
+
 
             </Grid>
           </Form.Group>
@@ -165,7 +182,10 @@ render() {
                 .replace("Terminator", "🤖")
                 .replace("Die Hard", "🔫")
                 .replace("Thelma and Louise", "🚘")
+                .replace("The Last Unicorn - Wikipedia.rb", " //🤷🤷🤷// ")
                 .replace("Home Alone", "😂")
+                .replace("Frozen (2013 film) - Wikipedia.rb", " //🤷🤷🤷// ")
+                .replace("Toy Story - Wikipedia.rb", " //🤷🤷🤷// ")
                 .replace("Beauty and the Beast", "🦊")
                 .replace("La Strada", "💔")
                 .replace("The Piano", "💙")
