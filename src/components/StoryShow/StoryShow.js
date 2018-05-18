@@ -137,12 +137,16 @@ const StoryShow = (props) => {
           </Link>
       }
 
+      {props.storyShowIsModal ?
       <Button
         basic
         floated='right'
         onClick={() => props.closeModal()}
         >Close
       </Button>
+      :
+      null
+    }
 
       <br></br>
 
