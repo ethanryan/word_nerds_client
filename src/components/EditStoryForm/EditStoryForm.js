@@ -106,6 +106,7 @@ handleRandomLastSentence() {
   render() {
 
     console.log('render is called in EditStory ~~~~~~~~~~~ <<<<<<<<----------------000000000');
+    // console.log('EditStory this.props: ', this.props);
     // console.log('from EditStoryForm, this.state.input: ', this.state.input);
 
     // debugger
@@ -206,12 +207,16 @@ handleRandomLastSentence() {
                   />
                 </Button.Group>
 
+                {this.props.editStoryFormIsModal ?
                 <Button
                   basic
                   floated='right'
                   onClick={() => this.props.closeModal()}
                   >Cancel
                 </Button>
+                :
+                null
+              }
             </div>
 
           </Form>
