@@ -133,6 +133,7 @@ const OneStory = (props) => {
                 <EditStoryForm
                   story={storyForModal}
                   closeModal={props.closeModal}
+                  editStoryFormIsModal={props.storyShowIsModal} //boolean to show or not show Cancel / close modal button
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}
                 />
