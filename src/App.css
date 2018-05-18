@@ -168,11 +168,13 @@
 
 .CreateStoryFormSelectGenre {
   /* border: 2px solid blue; */
-  background-color: azure;
+  /* background-color: azure; */
+  background-color: #f6f6f6;
 }
 
 .create-characters {
-  background-color: lightyellow;
+  /* background-color: lightyellow; */
+  background-color: #e4e4e4;
   padding-top: 3%;
   padding-left: 5%;
   padding-right: 5%;
@@ -181,13 +183,15 @@
 
 .genreSelection {
   /* border: 1px dotted green; */
-  padding: 15px;
+  padding-left: 5%;
+  /* padding-right: 10%; */
 }
 
 .genreSelectionRow {
-  /*border: 1px solid blue;*/
-  margin-left: 35%;
-  margin-right: 35%;
+  /* border: 1px solid blue; */
+  max-width: 40%;
+  margin: 0 auto;
+  /* margin 0 auto plus max-width centers this */
 }
 
 /*.CreateStoryForm-red :not(.genderRadio) .field {*/
@@ -501,6 +505,13 @@ span.blinkObject {
 /* Smartphones (portrait and landscape) ----------- */
 /* @media screen and (max-width: 480px) { */
 @media screen and (max-width: 767px) {
+  .genreSelectionRow {
+    /* border: 1px solid blue; */
+    border: none;
+    max-width: 60%;
+    margin: 0 auto;
+  }
+
   .storypage-sentence {
     margin: 25px 15px 5px 15px;
     /*top, right, bottom, left*/
