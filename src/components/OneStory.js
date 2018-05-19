@@ -75,8 +75,14 @@ const OneStory = (props) => {
 
       </Card.Content>
 
+      {/* <Card.Content>
+        Paragraph order: {story.content ? story.paragraphs.map((paragraph) => {
+          return (paragraph.order) }).join(', ') : 0}
+      </Card.Content> */}
+
       <Card.Content>
-        Genres: {story.content ? story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
+        Genres: {story.content ? story.genres.map((genre) => {
+          return (genre.name) }).join(', ') : 0}
       </Card.Content>
 
       <Card.Content>
