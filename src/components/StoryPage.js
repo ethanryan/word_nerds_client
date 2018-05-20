@@ -41,6 +41,7 @@ const StoryPage = (props) => {
                 //below will be passed down to CreateStoryFormSelectGenre:
                 plots={props.plots}
                 handleGenreChange={props.handleGenreChange}
+                replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                 //below will be passed down to CreateStoryFormCreateCharacters:
                 //refactor below!!! don't need all these functions, just one or two...
                 characterProps={props.characterProps}
