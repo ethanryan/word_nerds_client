@@ -76,6 +76,7 @@ render() {
         <CreateStoryFormSelectGenre
           plots={this.props.plots}
           handleGenreChange={this.props.handleGenreChange}
+          replacePlotTitleWithEmoji={this.props.replacePlotTitleWithEmoji}
         />
 
         <CreateStoryFormCreateCharacters
