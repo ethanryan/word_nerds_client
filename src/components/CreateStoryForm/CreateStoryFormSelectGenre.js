@@ -173,22 +173,23 @@ render() {
 
             <div>{this.state.filteredPlotsByTitle ? this.state.filteredPlotsByTitle.map((plotTitle) => {
               return (
-                plotTitle
-                .replace("Halloween", "🔪")
-                .replace("Alien", "👽")
-                .replace("The Matrix", "⏰")
-                .replace("Star Wars", "🚀")
-                .replace("E.T.", "📞")
-                .replace("Terminator", "🤖")
-                .replace("Die Hard", "🔫")
-                .replace("Thelma and Louise", "🚘")
-                .replace("The Last Unicorn - Wikipedia.rb", " //🤷🤷🤷// ")
-                .replace("Home Alone", "😂")
-                .replace("Frozen (2013 film) - Wikipedia.rb", " //🤷🤷🤷// ")
-                .replace("Toy Story - Wikipedia.rb", " //🤷🤷🤷// ")
-                .replace("Beauty and the Beast", "🦊")
-                .replace("La Strada", "💔")
-                .replace("The Piano", "💙")
+                this.props.replacePlotTitleWithEmoji(plotTitle)
+                // plotTitle
+                // .replace("Halloween", "🔪")
+                // .replace("Alien", "👽")
+                // .replace("The Matrix", "⏰")
+                // .replace("Star Wars", "🚀")
+                // .replace("E.T.", "📞")
+                // .replace("Terminator", "🤖")
+                // .replace("Die Hard", "🔫")
+                // .replace("Thelma and Louise", "🚘")
+                // .replace("The Last Unicorn - Wikipedia.rb", " //🤷🤷🤷// ")
+                // .replace("Home Alone", "😂")
+                // .replace("Frozen (2013 film) - Wikipedia.rb", " //🤷🤷🤷// ")
+                // .replace("Toy Story - Wikipedia.rb", " //🤷🤷🤷// ")
+                // .replace("Beauty and the Beast", "🦊")
+                // .replace("La Strada", "💔")
+                // .replace("The Piano", "💙")
               )
             }).join('   ') : 0}</div>
 
