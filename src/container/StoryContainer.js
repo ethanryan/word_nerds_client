@@ -364,6 +364,29 @@ class StoryContainer extends Component {
   //abstract above functions into one function???????
   //abstract above functions into one function???????
 
+  replacePlotTitleWithEmoji(string) {
+    console.log('calling replacePlotTitlewithEmoji')
+    console.log('plotTitle is: ', string)
+    return (
+      string
+      .replace("Halloween", "🔪")
+      .replace("Alien", "👽")
+      .replace("The Matrix", "⏰")
+      .replace("Star Wars", "🚀")
+      .replace("E.T.", "📞")
+      .replace("Terminator", "🤖")
+      .replace("Die Hard", "🔫")
+      .replace("Thelma and Louise", "🚘")
+      .replace("The Last Unicorn - Wikipedia.rb", " //🤷🤷🤷// ")
+      .replace("Home Alone", "😂")
+      .replace("Frozen (2013 film) - Wikipedia.rb", " //🤷🤷🤷// ")
+      .replace("Toy Story - Wikipedia.rb", " //🤷🤷🤷// ")
+      .replace("Beauty and the Beast", "🦊")
+      .replace("La Strada", "💔")
+      .replace("The Piano", "💙")
+    )
+  }
+
 
   sortStoriesByUpdatedAt(storiesArray) {
     // console.log('0. container - storiesArray: ', storiesArray)
@@ -418,6 +441,7 @@ class StoryContainer extends Component {
           handleSubmit={this.handleSubmit.bind(this)}
           handleClearForm={this.handleClearForm.bind(this)}
           genreSelection={this.state.genreSelection}
+          replacePlotTitleWithEmoji={this.replacePlotTitleWithEmoji.bind(this)}
           handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
           ///above so CreateStoryFormSelectGenre can send up selectedGenre to here, StoryContainer
 
