@@ -365,8 +365,8 @@ class StoryContainer extends Component {
   //abstract above functions into one function???????
 
   replacePlotTitleWithEmoji(string) {
-    console.log('calling replacePlotTitlewithEmoji')
-    console.log('plotTitle is: ', string)
+    // console.log('calling replacePlotTitlewithEmoji')
+    // console.log('plotTitle is: ', string)
     return (
       string
       .replace("Halloween", "🔪")
@@ -378,8 +378,8 @@ class StoryContainer extends Component {
       .replace("Die Hard", "🔫")
       .replace("Thelma and Louise", "🚘")
       .replace("The Last Unicorn - Wikipedia.rb", " //🤷🤷🤷// ")
-      // .replace("Home Alone", "😂")
-      .replace("Home Alone", " Ahhhhhhhhhhhhhhhhhhhhhhhhhhhhh!!!!!! ")
+      .replace("Home Alone", "😂")
+      // .replace("Home Alone", " Ahhhhhhhhhhhhhhhhhhhhhhhhhhhhh!!!!!! ")
       .replace("Frozen (2013 film) - Wikipedia.rb", " //🤷🤷🤷// ")
       .replace("Toy Story - Wikipedia.rb", " //🤷🤷🤷// ")
       .replace("Beauty and the Beast", "🦊")
