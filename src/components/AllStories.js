@@ -37,6 +37,7 @@ const AllStories = (props) => {
         handleDeleteStory={props.handleDeleteStory}
         userStories={filteredStories} //passing OneStory userStories, not all stories in database...
         user={props.user}
+        replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
         // user_id={props.user_id}
         storyShowIsModal={props.storyShowIsModal}
         openModal={props.openModal}
@@ -52,7 +53,7 @@ const AllStories = (props) => {
         onClick={props.scrollToTop}
         >Scroll To Top
       </Button>
-      
+
       {/* <p className="center">AllStories mounts and renders OneStory, which contains eachStory</p> */}
     </div>
   )

@@ -72,19 +72,8 @@ const StoryShow = (props) => {
 
         Plots:  {props.story.content ? props.story.plots.map((plot) => {
           let plotTitle = plot.title
-          return (plotTitle
-            .replace("Halloween", "🔪")
-            .replace("Alien", "👽")
-            .replace("The Matrix", "⏰")
-            .replace("Star Wars", "🚀")
-            .replace("E.T.", "📞")
-            .replace("Terminator", "🤖")
-            .replace("Die Hard", "🔫")
-            .replace("Thelma and Louise", "🚘")
-            .replace("Home Alone", "😂")
-            .replace("Beauty and the Beast", "🦊")
-            .replace("La Strada", "💔")
-            .replace("The Piano", "💙")
+          return (
+            props.replacePlotTitleWithEmoji(plotTitle)
           )
         }).join('   ') : 0}
 

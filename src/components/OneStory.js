@@ -88,19 +88,8 @@ const OneStory = (props) => {
       <Card.Content>
         Plots:  {story.content ? story.plots.map((plot) => {
           let plotTitle = plot.title
-          return (plotTitle
-            .replace("Halloween", "🔪")
-            .replace("Alien", "👽")
-            .replace("The Matrix", "⏰")
-            .replace("Star Wars", "🚀")
-            .replace("E.T.", "📞")
-            .replace("Terminator", "🤖")
-            .replace("Die Hard", "🔫")
-            .replace("Thelma and Louise", "🚘")
-            .replace("Home Alone", "😂")
-            .replace("Beauty and the Beast", "🦊")
-            .replace("La Strada", "💔")
-            .replace("The Piano", "💙")
+          return (
+            props.replacePlotTitleWithEmoji(plotTitle)
           )
         }).join('   ') : 0}
       </Card.Content>
@@ -139,6 +128,7 @@ const OneStory = (props) => {
                 <EditStoryForm
                   story={storyForModal}
                   closeModal={props.closeModal}
+                  replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                   editStoryFormIsModal={props.storyShowIsModal} //boolean to show or not show Cancel / close modal button
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}
@@ -149,6 +139,7 @@ const OneStory = (props) => {
                 <StoryShow
                   closeModal={props.closeModal}
                   user={props.user}
+                  replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                   story={storyForModal} //storyForModal, not story, which is each story in filteredStories
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}
