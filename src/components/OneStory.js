@@ -30,7 +30,7 @@ const OneStory = (props) => {
         <Card.Header>
           Story Title:
           {/* <Link to={`/stories/${story.id}/edit`}> {story.title}</Link> */}
-          <Link to={`/stories/${story.id}`}> {story.title}</Link>
+          <Link to={`/stories/${story.id}`} onClick={props.scrollToTop}> {story.title}</Link>
 
         </Card.Header>
         <Card.Meta>
