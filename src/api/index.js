@@ -1,8 +1,11 @@
-// for local server rails api:
-//const baseUrl = 'http://localhost:3000'
+// for local server rails api, run `rails s` on backend, then run `npm start`:
+const baseUrl = 'http://localhost:3000'
 
 // for hosted heroku api:
-const baseUrl = 'https://word-nerds-api.herokuapp.com'
+// const baseUrl = 'https://word-nerds-api.herokuapp.com'
+//note: to run frontend locally, based on heroku-hosted api, run: heroku local web
+//will display app in browser at localhost:5000
+//(though i guess this is no different from running `npm start` with the heroku api as baseUrl)
 
 export function getStories() {
   return fetch(`${baseUrl}/stories`, {
