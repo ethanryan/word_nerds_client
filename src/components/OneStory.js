@@ -81,13 +81,11 @@ const OneStory = (props) => {
       </Card.Content> */}
 
       <Card.Content>
-        Genres: {story.content ? story.genres.map((genre) => {
-          return (genre.name) }).join(', ') : 0}
+        Genres: {story.story_genre_names ? story.story_genre_names : 0}
       </Card.Content>
 
       <Card.Content>
-        Plots:  {story.content ? story.plots.map((plot) => {
-          let plotTitle = plot.title
+        Plots:  {story.story_plot_titles ? story.story_plot_titles.split(", ").map((plotTitle) => {
           return (
             props.replacePlotTitleWithEmoji(plotTitle)
           )

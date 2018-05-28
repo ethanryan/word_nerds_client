@@ -118,7 +118,7 @@ handleRandomLastSentence() {
 
     let paragraphs = (this.state.input ? this.state.input.split('-----').join('\n\n') : "paragraphs will go here")
 
-    let genres = (this.props.story.genres ? this.props.story.genres.map((genre) => {return (genre.name) }).join(', ') : 0)
+    let genres = (this.props.story.story_genre_names ? this.props.story.story_genre_names : 0)
 
     return(
         <div>
@@ -137,13 +137,11 @@ handleRandomLastSentence() {
             Genres: {genres}
             <br></br>
             <br></br>
-
-            Plots:  {this.props.story.plots ? this.props.story.plots.map((plot) => {
-                    let plotTitle = plot.title
-                    return (
-                      this.props.replacePlotTitleWithEmoji(plotTitle)
-                    )
-                  }).join('   ') : 0}
+            Plots:  {this.props.story.story_plot_titles ? this.props.story.story_plot_titles.split(", ").map((plotTitle) => {
+              return (
+                this.props.replacePlotTitleWithEmoji(plotTitle)
+              )
+            }).join('   ') : 0}
             <br></br>
             <br></br>
 

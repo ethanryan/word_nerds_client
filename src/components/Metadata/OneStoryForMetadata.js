@@ -89,7 +89,7 @@ class OneStoryForMetadata extends React.Component {
 
           <Table.Body>
 
-            {_.map(data, ({ id, title, user, content, genres, plots, created_at, updated_at }) => (
+            {_.map(data, ({ id, title, user, content, story_genre_names, story_plot_titles, created_at, updated_at }) => (
 
               <Table.Row key={id ? id : "id"}>
 
@@ -99,10 +99,9 @@ class OneStoryForMetadata extends React.Component {
 
                 <Table.Cell>{content ? content.split(' ').length : 0}</Table.Cell>
 
-                <Table.Cell>{content ? genres.map((genre) => {return (genre.name) }).join(', ') : 0}</Table.Cell>
+                <Table.Cell>{story_genre_names ? story_genre_names : 0}</Table.Cell>
 
-                <Table.Cell>{content ? plots.map((plot) => {
-                  let plotTitle = plot.title
+                <Table.Cell>{story_plot_titles ? story_plot_titles.split(", ").map((plotTitle) => {
                   return (
                     this.props.replacePlotTitleWithEmoji(plotTitle)
                   )

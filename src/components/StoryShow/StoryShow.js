@@ -65,19 +65,16 @@ const StoryShow = (props) => {
         <br></br>
 
 
-        Genres: {props.story.content ? props.story.genres.map((genre) => {return (genre.name) }).join(', ') : 0}
+        Genres: {props.story.story_genre_names ? props.story.story_genre_names : 0}
         <br></br>
         <br></br>
 
 
-        Plots:  {props.story.content ? props.story.plots.map((plot) => {
-          let plotTitle = plot.title
+        Plots: {props.story.story_plot_titles ? props.story.story_plot_titles.split(", ").map((plotTitle) => {
           return (
             props.replacePlotTitleWithEmoji(plotTitle)
           )
         }).join('   ') : 0}
-
-
         <br></br>
         <br></br>
 
@@ -88,7 +85,7 @@ const StoryShow = (props) => {
         <br></br>
         <br></br>
 
-        {/* {props.story.content} */}
+
         {props.story.content ? props.story.content.split('-----').join('\n\n') : "story content will go here"}
         <br></br>
         <br></br>
