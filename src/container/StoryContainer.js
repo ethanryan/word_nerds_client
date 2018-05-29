@@ -376,7 +376,7 @@ class StoryContainer extends Component {
       .replace("E.T.", "📞")
       .replace("Terminator", "🤖")
       .replace("Die Hard", "🔫")
-      .replace("Mad Max 2 - Wikipedia.rb", " //🤷Mad Max🤷// ")
+      .replace("Mad Max 2", "🚚")
       .replace("Thelma and Louise", "🚘")
       .replace("The Match Factory Girl - Wikipedia.rb", " //🤷Match Factory🤷// ")
       .replace("The Last Unicorn - Wikipedia.rb", " //🤷Unicorn🤷// ")
