@@ -32,49 +32,52 @@ const StoryPage = (props) => {
 
           <Switch>
             <Route exact path='/'
-            render={() => <CreateStoryForm
-              scrollToTop={props.scrollToTop}
-              handleSubmit={props.handleSubmit}
-              handleClearForm={props.handleClearForm}
-              user_id={props.user ? props.user.id : "props.user.id here"}
-              genreSelection={props.genreSelection} //this goes to CreateStoryForm
-              //below will be passed down to CreateStoryFormSelectGenre:
-              plots={props.plots}
-              handleGenreChange={props.handleGenreChange}
-              replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
-              //below will be passed down to CreateStoryFormCreateCharacters:
-              //refactor below!!! don't need all these functions, just one or two...
-              characterProps={props.characterProps}
-              handleHeroNameChange={props.handleHeroNameChange}
-              handleShadowNameChange={props.handleShadowNameChange}
-              handleFriendNameChange={props.handleFriendNameChange}
-              handleLoverNameChange={props.handleLoverNameChange}
-              handleMentorNameChange={props.handleMentorNameChange}
-              handleTricksterNameChange={props.handleTricksterNameChange}
-              //refactor below!!! don't need all these functions, just one or two...
-              handleHeroGenderChange={props.handleHeroGenderChange}
-              handleShadowGenderChange={props.handleShadowGenderChange}
-              handleFriendGenderChange={props.handleFriendGenderChange}
-              handleLoverGenderChange={props.handleLoverGenderChange}
-              handleMentorGenderChange={props.handleMentorGenderChange}
-              handleTricksterGenderChange={props.handleTricksterGenderChange}
-            />}
+            render={() =>
+              <CreateStoryForm
+                scrollToTop={props.scrollToTop}
+                handleSubmit={props.handleSubmit}
+                handleClearForm={props.handleClearForm}
+                user_id={props.user ? props.user.id : "props.user.id here"}
+                genreSelection={props.genreSelection} //this goes to CreateStoryForm
+                //below will be passed down to CreateStoryFormSelectGenre:
+                plots={props.plots}
+                handleGenreChange={props.handleGenreChange}
+                replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
+                //below will be passed down to CreateStoryFormCreateCharacters:
+                //refactor below!!! don't need all these functions, just one or two...
+                characterProps={props.characterProps}
+                handleHeroNameChange={props.handleHeroNameChange}
+                handleShadowNameChange={props.handleShadowNameChange}
+                handleFriendNameChange={props.handleFriendNameChange}
+                handleLoverNameChange={props.handleLoverNameChange}
+                handleMentorNameChange={props.handleMentorNameChange}
+                handleTricksterNameChange={props.handleTricksterNameChange}
+                //refactor below!!! don't need all these functions, just one or two...
+                handleHeroGenderChange={props.handleHeroGenderChange}
+                handleShadowGenderChange={props.handleShadowGenderChange}
+                handleFriendGenderChange={props.handleFriendGenderChange}
+                handleLoverGenderChange={props.handleLoverGenderChange}
+                handleMentorGenderChange={props.handleMentorGenderChange}
+                handleTricksterGenderChange={props.handleTricksterGenderChange}
+              />
+            }
           />
 
           <Route
             exact path='/stories/:id'
             render={({match}) => {
               const story = props.stories.find( s => s.id === parseInt(match.params.id, 10))
-              return
-              <div className="StoryShow-purple">
-                <StoryShow
-                  story={story}
-                  user={props.user}
-                  image={props.image}
-                  replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
-                  handleDeleteStory={props.handleDeleteStory}
-                />
-              </div>
+              return (
+                <div className="StoryShow-purple">
+                  <StoryShow
+                    story={story}
+                    user={props.user}
+                    image={props.image}
+                    replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
+                    handleDeleteStory={props.handleDeleteStory}
+                  />
+                </div>
+              )
             }}
           />
 
@@ -82,48 +85,53 @@ const StoryPage = (props) => {
             path='/stories/:id/edit'
             render={({match}) => {
               const story = props.stories.find( s => s.id === parseInt(match.params.id, 10))
-              return
-              <div className="EditStoryForm-blue">
-                <EditStoryForm
-                  story={story}
-                  replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
-                  handleUpdateStory={props.handleUpdateStory}
-                  handleDeleteStory={props.handleDeleteStory}
-                />
-              </div>
+              return (
+                <div className="EditStoryForm-blue">
+                  <EditStoryForm
+                    story={story}
+                    replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
+                    handleUpdateStory={props.handleUpdateStory}
+                    handleDeleteStory={props.handleDeleteStory}
+                  />
+                </div>
+              )
             }}
           />
 
           <Route
             path='/stories'
-            render={() => <AllStories
-              scrollToTop={props.scrollToTop}
-              handleUpdateStory={props.handleUpdateStory}
-              handleDeleteStory={props.handleDeleteStory}
-              stories={props.stories}
-              replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
-              user={props.user}
-              // username={props.user ? props.user.name : "props.user.name here"}
-              // user_id={props.user ? props.user.id : "props.user.id here"}
-              storyShowIsModal={props.storyShowIsModal}
-              openModal={props.openModal}
-              closeModal={props.closeModal}
-              storyShowModalIsEditable={props.storyShowModalIsEditable}
-              toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
-              activeModalStoryId={props.activeModalStoryId}
-              indexOfStoryModal={props.indexOfStoryModal}
-            />}
+            render={() =>
+              <AllStories
+                scrollToTop={props.scrollToTop}
+                handleUpdateStory={props.handleUpdateStory}
+                handleDeleteStory={props.handleDeleteStory}
+                stories={props.stories}
+                replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
+                user={props.user}
+                // username={props.user ? props.user.name : "props.user.name here"}
+                // user_id={props.user ? props.user.id : "props.user.id here"}
+                storyShowIsModal={props.storyShowIsModal}
+                openModal={props.openModal}
+                closeModal={props.closeModal}
+                storyShowModalIsEditable={props.storyShowModalIsEditable}
+                toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
+                activeModalStoryId={props.activeModalStoryId}
+                indexOfStoryModal={props.indexOfStoryModal}
+              />
+            }
           />
 
           <Route
             path='/metadata'
-            render={() => <Metadata
-              scrollToTop={props.scrollToTop}
-              stories={props.stories}
-              replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
-              plots={props.plots}
-              users={props.users}
-            />}
+            render={() =>
+              <Metadata
+                scrollToTop={props.scrollToTop}
+                stories={props.stories}
+                replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
+                plots={props.plots}
+                users={props.users}
+              />
+            }
           />
 
         </Switch>
@@ -144,7 +152,7 @@ const StoryPage = (props) => {
 
       </Grid.Column>
 
-
+      
       {/* </Grid.Row> */}
     </Grid>
   </div>
