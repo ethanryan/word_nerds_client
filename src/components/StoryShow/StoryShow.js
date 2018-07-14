@@ -47,54 +47,48 @@ const StoryShow = (props) => {
             Title: { props.story.title ? props.story.title : 0 }
           </h2>
 
-          Edit this story:
-          <Link className='btn btn-primary'
-            to={`/stories/${props.story.id}/edit`}
-            > {props.story.title}</Link>
-            <br></br>
-            <br></br>
+          <p>
+            Edit this story:
+            <Link className='btn btn-primary'
+              to={`/stories/${props.story.id}/edit`}
+              > {props.story.title}</Link>
+            </p>
 
-            Story ID: { props.story.id ? props.story.id : "story ID here" }
-            <br></br>
-            <br></br>
+            <p>
+              Story ID: { props.story.id ? props.story.id : "story ID here" }
+            </p>
 
-            Story Creator: { props.story.user ? props.story.user.name : "name here" }
-            <br></br>
-            <br></br>
+            <p>
+              Story Creator: { props.story.user ? props.story.user.name : "name here" }
+            </p>
 
+            <p>
+              Word count: {props.story.content ? props.story.content.split(' ').length : 0}
+            </p>
 
-            Word count: {props.story.content ? props.story.content.split(' ').length : 0}
-            <br></br>
-            <br></br>
+            <p>
+              Genres: {props.story.story_genre_names ? props.story.story_genre_names : 0}
+            </p>
 
+            <p>
+              Plots: {props.story.story_plot_titles ? props.story.story_plot_titles.split(", ").map((plotTitle) => {
+                return (
+                  props.replacePlotTitleWithEmoji(plotTitle)
+                )
+              }).join('   ') : 0}
+            </p>
 
-            Genres: {props.story.story_genre_names ? props.story.story_genre_names : 0}
-            <br></br>
-            <br></br>
+            <p>
+              <strong>
+                Story content:
+              </strong>
+            </p>
 
-
-            Plots: {props.story.story_plot_titles ? props.story.story_plot_titles.split(", ").map((plotTitle) => {
-              return (
-                props.replacePlotTitleWithEmoji(plotTitle)
-              )
-            }).join('   ') : 0}
-            <br></br>
-            <br></br>
-
-            <strong>
-              Story content:
-            </strong>
-
-            <br></br>
-            <br></br>
-
-
-            {props.story.content ? props.story.content.split('-----').join('\n\n') : "story content will go here"}
-            <br></br>
-            <br></br>
+            <p>
+              {props.story.content ? props.story.content.split('-----').join('\n\n') : "story content will go here"}
+            </p>
 
             {/* Story ID: {props.story.id} */}
-            <br></br>
 
             {
               (props.story.user.name !== props.user.name) ?
