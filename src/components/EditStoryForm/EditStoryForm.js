@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Loader, Segment } from 'semantic-ui-react'
 
 // import Markov from './Markov'
 
@@ -81,26 +81,26 @@ class EditStoryForm extends Component {
   //     image: image.items[0].link
   //   }) )
   // }
-/////////////////////////////////////////
+  /////////////////////////////////////////
 
-handleRandomFirstSentence() {
-  let oneNoun = randomNouns[Math.floor(Math.random() * randomNouns.length)]
-  let oneVerb = randomVerbs[Math.floor(Math.random() * randomVerbs.length)]
-  let oneObject = randomObjects[Math.floor(Math.random() * randomObjects.length)]
-  let randomSentence = oneNoun + oneVerb + oneObject
+  handleRandomFirstSentence() {
+    let oneNoun = randomNouns[Math.floor(Math.random() * randomNouns.length)]
+    let oneVerb = randomVerbs[Math.floor(Math.random() * randomVerbs.length)]
+    let oneObject = randomObjects[Math.floor(Math.random() * randomObjects.length)]
+    let randomSentence = oneNoun + oneVerb + oneObject
 
-  // this.setState({input: randomSentence + " " + this.state.input}) //preserves changes, but adds new sentence to beginning
-  this.setState({input: randomSentence + " " + this.props.story.content}) //replaces first sentence, but renders original story, without user changes
-}
+    // this.setState({input: randomSentence + " " + this.state.input}) //preserves changes, but adds new sentence to beginning
+    this.setState({input: randomSentence + " " + this.props.story.content}) //replaces first sentence, but renders original story, without user changes
+  }
 
-handleRandomLastSentence() {
-  let oneNoun = randomNouns[Math.floor(Math.random() * randomNouns.length)]
-  let oneVerb = randomVerbs[Math.floor(Math.random() * randomVerbs.length)]
-  let oneObject = randomObjects[Math.floor(Math.random() * randomObjects.length)]
-  let randomSentence = oneNoun + oneVerb + oneObject
-  // console.log('random noun: ', oneNoun)  //.concat to input
-  this.setState({input: this.props.story.content + " " + randomSentence})
-}
+  handleRandomLastSentence() {
+    let oneNoun = randomNouns[Math.floor(Math.random() * randomNouns.length)]
+    let oneVerb = randomVerbs[Math.floor(Math.random() * randomVerbs.length)]
+    let oneObject = randomObjects[Math.floor(Math.random() * randomObjects.length)]
+    let randomSentence = oneNoun + oneVerb + oneObject
+    // console.log('random noun: ', oneNoun)  //.concat to input
+    this.setState({input: this.props.story.content + " " + randomSentence})
+  }
 
 
   render() {
@@ -121,29 +121,35 @@ handleRandomLastSentence() {
     let genres = (this.props.story.story_genre_names ? this.props.story.story_genre_names : 0)
 
     return(
-        <div>
-
+      <div>
+        {
+          (this.props.story.id) ?
           <Form id="EditStoryForm" onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
             <h3>Edit Story</h3>
-            Title: <span className="EditStoryText-blue"> {this.state.title}</span>
-            <br></br>
-            <br></br>
-            Story ID: <span className="EditStoryText-blue"> {this.props.story.id}</span>
-            <br></br>
-            <br></br>
-            Word count: <span className="EditStoryText-blue"> {wordCount}</span>
-            <br></br>
-            <br></br>
-            Genres: {genres}
-            <br></br>
-            <br></br>
-            Plots:  {this.props.story.story_plot_titles ? this.props.story.story_plot_titles.split(", ").map((plotTitle) => {
-              return (
-                this.props.replacePlotTitleWithEmoji(plotTitle)
-              )
-            }).join('   ') : 0}
-            <br></br>
-            <br></br>
+
+            <p>
+              Title: <span className="EditStoryText-blue"> {this.state.title}</span>
+            </p>
+
+            <p>
+              Story ID: <span className="EditStoryText-blue"> {this.props.story.id}</span>
+            </p>
+
+            <p>
+              Word count: <span className="EditStoryText-blue"> {wordCount}</span>
+            </p>
+
+            <p>
+              Genres: {genres}
+            </p>
+
+            <p>
+              Plots:  {this.props.story.story_plot_titles ? this.props.story.story_plot_titles.split(", ").map((plotTitle) => {
+                return (
+                  this.props.replacePlotTitleWithEmoji(plotTitle)
+                )
+              }).join('   ') : 0}
+            </p>
 
             <Form.Field label='Title'
               placeholder="title here"
@@ -153,47 +159,40 @@ handleRandomLastSentence() {
               onChange={this.handleTitleChange}
             />
 
-
             <Form.Field label='Edit Story'
               className="EditStoryForm-linebreaks"
               placeholder="this is where the story content goes for editing"
               control='textarea' rows='35'
               width={16}
-              // value={this.state.input} //value of textarea is state.input, coming from componentWillReceiveProps
               value={paragraphs}
               onChange={this.handleStoryChange}
             />
 
             <div>
-              {/* <Button.Group floated='right'>
-                <Button basic color='red'
+              <Button.Group>
+                <Form.Button
+                  content='Save Story'
+                  type="submit"
+                  primary compact
+                />
+
+                <Form.Button color='purple'
                   compact
-                  onClick={() => {this.props.handleDeleteStory(this.props.story.id)}}>Delete</Button>
-                </Button.Group> */}
+                  type="button"
+                  content='First Line'
+                  onClick={() => {this.handleRandomFirstSentence()}}
+                />
 
-                <Button.Group>
-                  <Form.Button
-                    content='Save Story'
-                    type="submit"
-                    primary compact
-                  />
+                <Form.Button color='orange'
+                  compact
+                  type="button"
+                  content='Last Line'
+                  onClick={() => {this.handleRandomLastSentence()}}
+                />
+              </Button.Group>
 
-                  <Form.Button color='purple'
-                    compact
-                    type="button"
-                    content='First Line'
-                    onClick={() => {this.handleRandomFirstSentence()}}
-                  />
-
-                  <Form.Button color='orange'
-                    compact
-                    type="button"
-                    content='Last Line'
-                    onClick={() => {this.handleRandomLastSentence()}}
-                  />
-                </Button.Group>
-
-                {this.props.editStoryFormIsModal ?
+              {
+                (this.props.editStoryFormIsModal) ?
                 <Button
                   basic
                   floated='right'
@@ -206,7 +205,12 @@ handleRandomLastSentence() {
             </div>
 
           </Form>
-        </div>
+          :
+          <Segment>
+            <Loader active inline='centered' />
+          </Segment>
+        }
+      </div>
     )
   }
 }
