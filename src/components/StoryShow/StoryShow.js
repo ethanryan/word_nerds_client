@@ -2,7 +2,7 @@ import React from 'react'
 
 // import { Image, Grid, Button } from 'semantic-ui-react'
 // import { Grid, Button, Modal } from 'semantic-ui-react'
-import { Grid, Button } from 'semantic-ui-react'
+import { Grid, Button, Loader, Segment } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom'
 
@@ -127,7 +127,9 @@ const StoryShow = (props) => {
             }
           </div>
           :
-          "Loading..."
+          <Segment>
+            <Loader active inline='centered' />
+          </Segment>
         }
       </div>
     )
