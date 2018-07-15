@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import HttpsRedirect from 'react-https-redirect';
+
 import './App.css'
 
 import StoryContainer from './container/StoryContainer'
@@ -8,6 +10,8 @@ import StoryContainer from './container/StoryContainer'
 class App extends Component {
   render() {
     return (
+      <HttpsRedirect>
+
       <div className="App-body-purple">
 
         <StoryContainer className="App-content"/>
@@ -20,6 +24,8 @@ class App extends Component {
         </footer>
 
       </div>
+    </HttpsRedirect>
+
     )
   }
 }
