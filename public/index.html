@@ -40,4 +40,13 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+
+  <script>
+  var host = "www.URL.com" || "URL.com";
+  if ((host == window.location.host) && (window.location.protocol != "https:")){
+    window.location.protocol = "https";
+  }
+  </script>
+
+
 </html>
