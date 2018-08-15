@@ -79,13 +79,14 @@ const CreateStoryForm = (props) => {
                 characterProps={props.characterProps}
 
                 handleCharacterNameChange={props.handleCharacterNameChange}
+                handleCharacterGenderChange={props.handleCharacterGenderChange}
                 //refactor below!!! don't need all these functions, just one or two...
-                handleHeroGenderChange={props.handleHeroGenderChange}
-                handleShadowGenderChange={props.handleShadowGenderChange}
-                handleFriendGenderChange={props.handleFriendGenderChange}
-                handleLoverGenderChange={props.handleLoverGenderChange}
-                handleMentorGenderChange={props.handleMentorGenderChange}
-                handleTricksterGenderChange={props.handleTricksterGenderChange}
+                // handleHeroGenderChange={props.handleHeroGenderChange}
+                // handleShadowGenderChange={props.handleShadowGenderChange}
+                // handleFriendGenderChange={props.handleFriendGenderChange}
+                // handleLoverGenderChange={props.handleLoverGenderChange}
+                // handleMentorGenderChange={props.handleMentorGenderChange}
+                // handleTricksterGenderChange={props.handleTricksterGenderChange}
               />
               {/* above will render trigger to button and modal inside trigger... */}
 

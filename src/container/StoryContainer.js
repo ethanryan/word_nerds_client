@@ -280,6 +280,16 @@ class StoryContainer extends Component {
     })
   }
 
+  handleCharacterGenderChange(characterGender, characterType) {
+    console.warn('handleCharacterNameChange -> characterGender is: ', characterGender)
+    console.warn('handleCharacterNameChange -> characterType is: ', characterType)
+    let characters = {...this.state.characters}
+    characters[characterType].gender = characterGender
+    this.setState({
+      characters
+    })
+  }
+
   // handleHeroNameChange(params) {
   //   let characters = {...this.state.characters}
   //   characters.hero.name = params
@@ -417,7 +427,7 @@ class StoryContainer extends Component {
         console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
       } else {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
-        console.warn('1. this.state: ', this.state)
+        console.warn('1. StoryContainer - this.state: ', this.state)
       }
       return(
         <HttpsRedirect>
@@ -447,12 +457,14 @@ class StoryContainer extends Component {
                 //refactor below!!!! just needs to be one or two functions for all character names and genders...
                 handleCharacterNameChange={this.handleCharacterNameChange.bind(this)}
 
-                handleHeroGenderChange={this.handleHeroGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                handleShadowGenderChange={this.handleShadowGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                handleFriendGenderChange={this.handleFriendGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                handleLoverGenderChange={this.handleLoverGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                handleMentorGenderChange={this.handleMentorGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                handleTricksterGenderChange={this.handleTricksterGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleCharacterGenderChange={this.handleCharacterGenderChange.bind(this)}
+
+                // handleHeroGenderChange={this.handleHeroGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                // handleShadowGenderChange={this.handleShadowGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                // handleFriendGenderChange={this.handleFriendGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                // handleLoverGenderChange={this.handleLoverGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                // handleMentorGenderChange={this.handleMentorGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                // handleTricksterGenderChange={this.handleTricksterGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
 
                 characterProps={this.state.characters} //pass all characters in one prop...
 

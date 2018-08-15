@@ -24,10 +24,9 @@ class CreateStoryFormNotModal extends Component {
 
 
 componentWillReceiveProps(nextProps) { //need this lifecycle method to update filteredPlotsByTitle
-  console.log('CreateStoryFormNotModal nextProps::::', nextProps)
+  // console.log('CreateStoryFormNotModal nextProps:', nextProps)
   if (this.props !== nextProps) {
-    console.log("CreateStoryFormNotModal - props don't equal nextProps, so updating state with nextProps: ", nextProps)
-    // console.log("CreateStoryFormNotModal - props don't equal nextProps -- updating state with nextProps.characterProps: ", nextProps.characterProps)
+    // console.log("CreateStoryFormNotModal - props don't equal nextProps, so updating state with nextProps: ", nextProps)
     this.setState({
       characters: nextProps.characterProps,
     })
@@ -81,13 +80,14 @@ render() {
         <CreateStoryFormCreateCharacters
           //refactor below!!! don't need all these functions, just one or two...
           handleCharacterNameChange={this.props.handleCharacterNameChange}
+          handleCharacterGenderChange={this.props.handleCharacterGenderChange}
           //refactor below!!! don't need all these functions, just one or two...
-          handleHeroGenderChange={this.props.handleHeroGenderChange}
-          handleShadowGenderChange={this.props.handleShadowGenderChange}
-          handleFriendGenderChange={this.props.handleFriendGenderChange}
-          handleLoverGenderChange={this.props.handleLoverGenderChange}
-          handleMentorGenderChange={this.props.handleMentorGenderChange}
-          handleTricksterGenderChange={this.props.handleTricksterGenderChange}
+          // handleHeroGenderChange={this.props.handleHeroGenderChange}
+          // handleShadowGenderChange={this.props.handleShadowGenderChange}
+          // handleFriendGenderChange={this.props.handleFriendGenderChange}
+          // handleLoverGenderChange={this.props.handleLoverGenderChange}
+          // handleMentorGenderChange={this.props.handleMentorGenderChange}
+          // handleTricksterGenderChange={this.props.handleTricksterGenderChange}
         />
 
       {/* </Modal.Content> */}

@@ -5,7 +5,7 @@ import { Form, Header, Divider } from 'semantic-ui-react'
 class CreateStoryFormCreateCharacters extends Component {
   constructor(props) {
     super(props)
-    console.log('**** props from CreateStoryFormCreateCharacters:', props)
+    console.log('CreateStoryFormCreateCharacters props:', props)
     // console.log('~~~~~~ props.characterProps from CreateStoryFormCreateCharacters:', props.characterProps)
     this.state=({
       hero: {
@@ -57,15 +57,17 @@ class CreateStoryFormCreateCharacters extends Component {
   }
 
   handleHeroGenderChange(event) {
-    const heroGender = event.target.value
+    const characterGender = event.target.value
+    const characterType = "hero"
     this.setState({
       hero: {
         name: this.state.hero.name,
-        gender: heroGender,
+        gender: characterGender,
         emoji: this.state.hero.emoji,
       },
     })
-    this.props.handleHeroGenderChange( heroGender ) //this will pass heroName up to state in StoryContainer
+    // this.props.handleHeroGenderChange( characterGender ) //this will pass heroName up to state in StoryContainer
+    this.props.handleCharacterGenderChange( characterGender, characterType ) //this will pass heroName up to state in StoryContainer
   }
 
   handleShadowNameChange(event) {
@@ -84,15 +86,18 @@ class CreateStoryFormCreateCharacters extends Component {
   }
 
   handleShadowGenderChange(event) {
-    const shadowGender = event.target.value
+    // const shadowGender = event.target.value
+    const characterGender = event.target.value
+    const characterType = "shadow"
     this.setState({
       shadow: {
         name: this.state.shadow.name,
-        gender: shadowGender,
+        gender: characterGender,
         emoji: this.state.shadow.emoji,
       },
     })
-    this.props.handleShadowGenderChange( shadowGender ) //this will pass heroName up to state in StoryContainer
+    // this.props.handleShadowGenderChange( shadowGender ) //this will pass heroName up to state in StoryContainer
+    this.props.handleCharacterGenderChange( characterGender, characterType ) //this will pass heroName up to state in StoryContainer
   }
 
   handleFriendNameChange(event) {
@@ -110,15 +115,18 @@ class CreateStoryFormCreateCharacters extends Component {
   }
 
   handleFriendGenderChange(event) {
-    const friendGender = event.target.value
+    // const friendGender = event.target.value
+    const characterGender = event.target.value
+    const characterType = "friend"
     this.setState({
       friend: {
         name: this.state.friend.name,
-        gender: friendGender,
+        gender: characterGender,
         emoji: this.state.friend.emoji,
       },
     })
-    this.props.handleFriendGenderChange( friendGender )
+    // this.props.handleFriendGenderChange( friendGender )
+    this.props.handleCharacterGenderChange( characterGender, characterType ) //this will pass heroName up to state in StoryContainer
   }
 
   handleLoverNameChange(event) {
@@ -136,15 +144,18 @@ class CreateStoryFormCreateCharacters extends Component {
   }
 
   handleLoverGenderChange(event) {
-    const loverGender = event.target.value
+    // const loverGender = event.target.value
+    const characterGender = event.target.value
+    const characterType = "lover"
     this.setState({
       lover: {
         name: this.state.lover.name,
-        gender: loverGender,
+        gender: characterGender,
         emoji: this.state.lover.emoji,
       },
     })
-    this.props.handleLoverGenderChange( loverGender )
+    // this.props.handleLoverGenderChange( loverGender )
+    this.props.handleCharacterGenderChange( characterGender, characterType ) //this will pass heroName up to state in StoryContainer
   }
 
   handleMentorNameChange(event) {
@@ -162,15 +173,18 @@ class CreateStoryFormCreateCharacters extends Component {
   }
 
   handleMentorGenderChange(event) {
-    const mentorGender = event.target.value
+    // const mentorGender = event.target.value
+    const characterGender = event.target.value
+    const characterType = "mentor"
     this.setState({
       mentor: {
         name: this.state.mentor.name,
-        gender: mentorGender,
+        gender: characterGender,
         emoji: this.state.mentor.emoji,
       },
     })
-    this.props.handleMentorGenderChange( mentorGender )
+    // this.props.handleMentorGenderChange( mentorGender )
+    this.props.handleCharacterGenderChange( characterGender, characterType ) //this will pass heroName up to state in StoryContainer
   }
 
   handleTricksterNameChange(event) {
@@ -188,27 +202,29 @@ class CreateStoryFormCreateCharacters extends Component {
   }
 
   handleTricksterGenderChange(event) {
-    const tricksterGender = event.target.value
+    // const tricksterGender = event.target.value
+    const characterGender = event.target.value
+    const characterType = "trickster"
     this.setState({
       trickster: {
         name: this.state.trickster.name,
-        gender: tricksterGender,
+        gender: characterGender,
         emoji: this.state.trickster.emoji,
       },
     })
-    this.props.handleTricksterGenderChange( tricksterGender )
+    // this.props.handleTricksterGenderChange( tricksterGender )
+    this.props.handleCharacterGenderChange( characterGender, characterType ) //this will pass heroName up to state in StoryContainer
   }
 
   render() {
-    console.log('!!!!! state from CreateStoryFormCreateCharacters:', this.state)
-    // console.log('!!!!! this.state.hero from CreateStoryFormCreateCharacters:', this.state.hero)
+    console.log('CreateStoryFormCreateCharacters, this.state:', this.state)
 
     return (
       <div className="create-characters">
         <Header as='h2' textAlign='center'>
           Create Characters
         </Header>
-        
+
         <Form.Group>
           <Form.Field label="Hero Name" placeholder="HERO"
             width={6}
