@@ -78,16 +78,8 @@ render() {
         />
 
         <CreateStoryFormCreateCharacters
-          //refactor below!!! don't need all these functions, just one or two...
           handleCharacterNameChange={this.props.handleCharacterNameChange}
           handleCharacterGenderChange={this.props.handleCharacterGenderChange}
-          //refactor below!!! don't need all these functions, just one or two...
-          // handleHeroGenderChange={this.props.handleHeroGenderChange}
-          // handleShadowGenderChange={this.props.handleShadowGenderChange}
-          // handleFriendGenderChange={this.props.handleFriendGenderChange}
-          // handleLoverGenderChange={this.props.handleLoverGenderChange}
-          // handleMentorGenderChange={this.props.handleMentorGenderChange}
-          // handleTricksterGenderChange={this.props.handleTricksterGenderChange}
         />
 
       {/* </Modal.Content> */}

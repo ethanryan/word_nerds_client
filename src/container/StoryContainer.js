@@ -257,19 +257,6 @@ class StoryContainer extends Component {
   }
 
 
-  //abstract below functions into one function???????
-  //abstract below functions into one function???????
-  //abstract below functions into one function???????
-  //abstract below functions into one function???????
-
-  //   hero: this.state.hero,
-  //   shadow: this.state.shadow,
-  //   friend: this.state.friend,
-  //   lover: this.state.lover,
-  //   mentor: this.state.mentor,
-  //   trickster: this.state.trickster
-
-  //NOTE: trying to abstract below 12 functions into 1 or 2 functions...
   handleCharacterNameChange(characterName, characterType) {
     console.warn('handleCharacterNameChange -> characterName is: ', characterName)
     console.warn('handleCharacterNameChange -> characterType is: ', characterType)
@@ -289,107 +276,6 @@ class StoryContainer extends Component {
       characters
     })
   }
-
-  // handleHeroNameChange(params) {
-  //   let characters = {...this.state.characters}
-  //   characters.hero.name = params
-  //   this.setState({
-  //     characters
-  //   })
-  // }
-
-  handleHeroGenderChange(params) {
-    let characters = {...this.state.characters}
-    characters.hero.gender = params
-    this.setState({
-      characters
-    })
-  }
-
-  // handleShadowNameChange(params) {
-  //   let characters = {...this.state.characters}
-  //   characters.shadow.name = params
-  //   this.setState({
-  //     characters
-  //   })
-  // }
-
-  handleShadowGenderChange(params) {
-    let characters = {...this.state.characters}
-    characters.shadow.gender = params
-    this.setState({
-      characters
-    })
-  }
-
-  // handleFriendNameChange(params) {
-  //   let characters = {...this.state.characters}
-  //   characters.friend.name = params
-  //   this.setState({
-  //     characters
-  //   })
-  // }
-
-  handleFriendGenderChange(params) {
-    let characters = {...this.state.characters}
-    characters.friend.gender = params
-    this.setState({
-      characters
-    })
-  }
-
-  // handleLoverNameChange(params) {
-  //   let characters = {...this.state.characters}
-  //   characters.lover.name = params
-  //   this.setState({
-  //     characters
-  //   })
-  // }
-
-  handleLoverGenderChange(params) {
-    let characters = {...this.state.characters}
-    characters.lover.gender = params
-    this.setState({
-      characters
-    })
-  }
-
-  // handleMentorNameChange(params) {
-  //   let characters = {...this.state.characters}
-  //   characters.mentor.name = params
-  //   this.setState({
-  //     characters
-  //   })
-  // }
-
-  handleMentorGenderChange(params) {
-    let characters = {...this.state.characters}
-    characters.mentor.gender = params
-    this.setState({
-      characters
-    })
-  }
-
-  // handleTricksterNameChange(params) {
-  //   let characters = {...this.state.characters}
-  //   characters.trickster.name = params
-  //   this.setState({
-  //     characters
-  //   })
-  // }
-
-  handleTricksterGenderChange(params) {
-    let characters = {...this.state.characters}
-    characters.trickster.gender = params
-    this.setState({
-      characters
-    })
-  }
-  //abstract above functions into one function???????
-  //abstract above functions into one function???????
-  //abstract above functions into one function???????
-  //abstract above functions into one function???????
-
 
   sortStoriesByUpdatedAt(storiesArray) {
     // console.log('0. container - storiesArray: ', storiesArray)
@@ -450,22 +336,8 @@ class StoryContainer extends Component {
                 handleClearForm={this.handleClearForm.bind(this)}
                 genreSelection={this.state.genreSelection}
                 handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
-                ///above so CreateStoryFormSelectGenre can send up selectedGenre to here, StoryContainer
-
-                //refactor below!!!! just needs to be one or two functions for all character names and genders...
-                //refactor below!!!! just needs to be one or two functions for all character names and genders...
-                //refactor below!!!! just needs to be one or two functions for all character names and genders...
                 handleCharacterNameChange={this.handleCharacterNameChange.bind(this)}
-
                 handleCharacterGenderChange={this.handleCharacterGenderChange.bind(this)}
-
-                // handleHeroGenderChange={this.handleHeroGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                // handleShadowGenderChange={this.handleShadowGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                // handleFriendGenderChange={this.handleFriendGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                // handleLoverGenderChange={this.handleLoverGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                // handleMentorGenderChange={this.handleMentorGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                // handleTricksterGenderChange={this.handleTricksterGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-
                 characterProps={this.state.characters} //pass all characters in one prop...
 
                 //props for EditStoryForm
