@@ -269,13 +269,24 @@ class StoryContainer extends Component {
   //   mentor: this.state.mentor,
   //   trickster: this.state.trickster
 
-  handleHeroNameChange(params) {
+  //NOTE: trying to abstract below 12 functions into 1 or 2 functions...
+  handleCharacterNameChange(characterName, characterType) {
+    console.warn('handleCharacterNameChange -> characterName is: ', characterName)
+    console.warn('handleCharacterNameChange -> characterType is: ', characterType)
     let characters = {...this.state.characters}
-    characters.hero.name = params
+    characters[characterType].name = characterName
     this.setState({
       characters
     })
   }
+
+  // handleHeroNameChange(params) {
+  //   let characters = {...this.state.characters}
+  //   characters.hero.name = params
+  //   this.setState({
+  //     characters
+  //   })
+  // }
 
   handleHeroGenderChange(params) {
     let characters = {...this.state.characters}
@@ -285,13 +296,13 @@ class StoryContainer extends Component {
     })
   }
 
-  handleShadowNameChange(params) {
-    let characters = {...this.state.characters}
-    characters.shadow.name = params
-    this.setState({
-      characters
-    })
-  }
+  // handleShadowNameChange(params) {
+  //   let characters = {...this.state.characters}
+  //   characters.shadow.name = params
+  //   this.setState({
+  //     characters
+  //   })
+  // }
 
   handleShadowGenderChange(params) {
     let characters = {...this.state.characters}
@@ -301,13 +312,13 @@ class StoryContainer extends Component {
     })
   }
 
-  handleFriendNameChange(params) {
-    let characters = {...this.state.characters}
-    characters.friend.name = params
-    this.setState({
-      characters
-    })
-  }
+  // handleFriendNameChange(params) {
+  //   let characters = {...this.state.characters}
+  //   characters.friend.name = params
+  //   this.setState({
+  //     characters
+  //   })
+  // }
 
   handleFriendGenderChange(params) {
     let characters = {...this.state.characters}
@@ -317,13 +328,13 @@ class StoryContainer extends Component {
     })
   }
 
-  handleLoverNameChange(params) {
-    let characters = {...this.state.characters}
-    characters.lover.name = params
-    this.setState({
-      characters
-    })
-  }
+  // handleLoverNameChange(params) {
+  //   let characters = {...this.state.characters}
+  //   characters.lover.name = params
+  //   this.setState({
+  //     characters
+  //   })
+  // }
 
   handleLoverGenderChange(params) {
     let characters = {...this.state.characters}
@@ -333,13 +344,13 @@ class StoryContainer extends Component {
     })
   }
 
-  handleMentorNameChange(params) {
-    let characters = {...this.state.characters}
-    characters.mentor.name = params
-    this.setState({
-      characters
-    })
-  }
+  // handleMentorNameChange(params) {
+  //   let characters = {...this.state.characters}
+  //   characters.mentor.name = params
+  //   this.setState({
+  //     characters
+  //   })
+  // }
 
   handleMentorGenderChange(params) {
     let characters = {...this.state.characters}
@@ -349,13 +360,13 @@ class StoryContainer extends Component {
     })
   }
 
-  handleTricksterNameChange(params) {
-    let characters = {...this.state.characters}
-    characters.trickster.name = params
-    this.setState({
-      characters
-    })
-  }
+  // handleTricksterNameChange(params) {
+  //   let characters = {...this.state.characters}
+  //   characters.trickster.name = params
+  //   this.setState({
+  //     characters
+  //   })
+  // }
 
   handleTricksterGenderChange(params) {
     let characters = {...this.state.characters}
@@ -406,6 +417,7 @@ class StoryContainer extends Component {
         console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
       } else {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        console.warn('1. this.state: ', this.state)
       }
       return(
         <HttpsRedirect>
@@ -433,12 +445,7 @@ class StoryContainer extends Component {
                 //refactor below!!!! just needs to be one or two functions for all character names and genders...
                 //refactor below!!!! just needs to be one or two functions for all character names and genders...
                 //refactor below!!!! just needs to be one or two functions for all character names and genders...
-                handleHeroNameChange={this.handleHeroNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                handleShadowNameChange={this.handleShadowNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                handleFriendNameChange={this.handleFriendNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                handleLoverNameChange={this.handleLoverNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                handleMentorNameChange={this.handleMentorNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-                handleTricksterNameChange={this.handleTricksterNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleCharacterNameChange={this.handleCharacterNameChange.bind(this)}
 
                 handleHeroGenderChange={this.handleHeroGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
                 handleShadowGenderChange={this.handleShadowGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters

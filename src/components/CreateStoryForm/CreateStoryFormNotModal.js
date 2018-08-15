@@ -80,12 +80,7 @@ render() {
 
         <CreateStoryFormCreateCharacters
           //refactor below!!! don't need all these functions, just one or two...
-          handleHeroNameChange={this.props.handleHeroNameChange}
-          handleShadowNameChange={this.props.handleShadowNameChange}
-          handleFriendNameChange={this.props.handleFriendNameChange}
-          handleLoverNameChange={this.props.handleLoverNameChange}
-          handleMentorNameChange={this.props.handleMentorNameChange}
-          handleTricksterNameChange={this.props.handleTricksterNameChange}
+          handleCharacterNameChange={this.props.handleCharacterNameChange}
           //refactor below!!! don't need all these functions, just one or two...
           handleHeroGenderChange={this.props.handleHeroGenderChange}
           handleShadowGenderChange={this.props.handleShadowGenderChange}

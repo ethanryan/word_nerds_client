@@ -45,12 +45,9 @@ const StoryPage = (props) => {
                 //below will be passed down to CreateStoryFormCreateCharacters:
                 //refactor below!!! don't need all these functions, just one or two...
                 characterProps={props.characterProps}
-                handleHeroNameChange={props.handleHeroNameChange}
-                handleShadowNameChange={props.handleShadowNameChange}
-                handleFriendNameChange={props.handleFriendNameChange}
-                handleLoverNameChange={props.handleLoverNameChange}
-                handleMentorNameChange={props.handleMentorNameChange}
-                handleTricksterNameChange={props.handleTricksterNameChange}
+
+                handleCharacterNameChange={props.handleCharacterNameChange}
+                
                 //refactor below!!! don't need all these functions, just one or two...
                 handleHeroGenderChange={props.handleHeroGenderChange}
                 handleShadowGenderChange={props.handleShadowGenderChange}
