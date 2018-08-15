@@ -6,6 +6,7 @@ import { Grid, Button, Loader, Segment } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom'
 
+import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
 
 
 const StoryShow = (props) => {
@@ -73,7 +74,7 @@ const StoryShow = (props) => {
             <p>
               Plots: {props.story.story_plot_titles ? props.story.story_plot_titles.split(", ").map((plotTitle) => {
                 return (
-                  props.replacePlotTitleWithEmoji(plotTitle)
+                  replacePlotTitleWithEmoji(plotTitle)
                 )
               }).join('   ') : 0}
             </p>

@@ -73,7 +73,7 @@ const StoryPage = (props) => {
                     story={story}
                     user={props.user}
                     image={props.image}
-                    replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
+                    // replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                     handleDeleteStory={props.handleDeleteStory}
                   />
                 </div>
@@ -152,7 +152,7 @@ const StoryPage = (props) => {
 
       </Grid.Column>
 
-      
+
       {/* </Grid.Row> */}
     </Grid>
   </div>
