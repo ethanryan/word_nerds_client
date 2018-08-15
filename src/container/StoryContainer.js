@@ -14,6 +14,7 @@ import LoginSignUp from '../container/LoginSignUp'
 
 import { Container, Dimmer, Loader } from 'semantic-ui-react'
 
+import replacePlotTitleWithEmoji from '../helpers/replacePlotTitleWithEmoji'
 
 class StoryContainer extends Component {
   constructor() {
@@ -370,33 +371,6 @@ class StoryContainer extends Component {
   //abstract above functions into one function???????
   //abstract above functions into one function???????
 
-  replacePlotTitleWithEmoji(string) {
-    // console.log('calling replacePlotTitlewithEmoji')
-    // console.log('plotTitle is: ', string)
-    return (
-      string
-      .replace("Halloween", "🔪")
-      .replace("Alien", "👽")
-      .replace("The Matrix", "⏰")
-      .replace("Star Wars", "🚀")
-      .replace("E.T.", "📞")
-      .replace("Terminator", "🤖")
-      .replace("Die Hard", "🔫")
-      .replace("Mad Max 2", "🚚")
-      .replace("Thelma and Louise", "🚘")
-      .replace("The Match Factory Girl", "🔥")
-      .replace("The Last Unicorn", "🦄")
-      .replace("The Princess Bride", "👸")
-      .replace("Home Alone", "😂")
-      // .replace("Home Alone", " Ahhhhhhhhhhhhhhhhhhhhhhhhhhhhh!!!!!! ")
-      .replace("Frozen", "⛄")
-      .replace("Toy Story", "🤠")
-      .replace("Beauty and the Beast", "🦊")
-      .replace("La Strada", "💔")
-      .replace("The Piano", "💙")
-    )
-  }
-
 
   sortStoriesByUpdatedAt(storiesArray) {
     // console.log('0. container - storiesArray: ', storiesArray)
@@ -442,6 +416,8 @@ class StoryContainer extends Component {
         {
           this.state.dataLoaded === true ?
           <div>
+
+
             <NavBar
               title="Word Nerds"
               // current_user={this.state.user ? this.state.user.name : "current_user here"}
@@ -456,7 +432,9 @@ class StoryContainer extends Component {
               handleSubmit={this.handleSubmit.bind(this)}
               handleClearForm={this.handleClearForm.bind(this)}
               genreSelection={this.state.genreSelection}
-              replacePlotTitleWithEmoji={this.replacePlotTitleWithEmoji.bind(this)}
+              // replacePlotTitleWithEmoji={this.replacePlotTitleWithEmoji.bind(this)}
+              replacePlotTitleWithEmoji={replacePlotTitleWithEmoji}
+
               handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
               ///above so CreateStoryFormSelectGenre can send up selectedGenre to here, StoryContainer
 
