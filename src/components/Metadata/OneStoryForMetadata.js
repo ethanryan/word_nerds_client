@@ -2,6 +2,8 @@ import _ from 'lodash'
 
 import React from 'react'
 
+import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
+
 import { Table, Loader, Segment } from 'semantic-ui-react'
 
 class OneStoryForMetadata extends React.Component {
@@ -103,7 +105,7 @@ class OneStoryForMetadata extends React.Component {
 
                 <Table.Cell>{story_plot_titles ? story_plot_titles.split(", ").map((plotTitle) => {
                   return (
-                    this.props.replacePlotTitleWithEmoji(plotTitle)
+                    replacePlotTitleWithEmoji(plotTitle)
                   )
                 }).join('   ') : 0}</Table.Cell>
 

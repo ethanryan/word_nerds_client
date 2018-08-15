@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import StoryShow from './StoryShow/StoryShow'
 import EditStoryForm from './EditStoryForm/EditStoryForm'
 
+import replacePlotTitleWithEmoji from '../helpers/replacePlotTitleWithEmoji'
 
 import { Card, Button, Modal } from 'semantic-ui-react'
 
@@ -87,7 +88,7 @@ const OneStory = (props) => {
       <Card.Content>
         Plots:  {story.story_plot_titles ? story.story_plot_titles.split(", ").map((plotTitle) => {
           return (
-            props.replacePlotTitleWithEmoji(plotTitle)
+            replacePlotTitleWithEmoji(plotTitle)
           )
         }).join('   ') : 0}
       </Card.Content>
@@ -126,7 +127,6 @@ const OneStory = (props) => {
                 <EditStoryForm
                   story={storyForModal}
                   closeModal={props.closeModal}
-                  replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                   editStoryFormIsModal={props.storyShowIsModal} //boolean to show or not show Cancel / close modal button
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}
@@ -137,7 +137,6 @@ const OneStory = (props) => {
                 <StoryShow
                   closeModal={props.closeModal}
                   user={props.user}
-                  replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                   story={storyForModal} //storyForModal, not story, which is each story in filteredStories
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}

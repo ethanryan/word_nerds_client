@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
+
 import { Form, Header, Grid } from 'semantic-ui-react'
 
 class CreateStoryFormSelectGenre extends Component {
@@ -173,10 +175,10 @@ render() {
 
             <div>{this.state.filteredPlotsByTitle ? this.state.filteredPlotsByTitle.map((plotTitle) => {
               return (
-                this.props.replacePlotTitleWithEmoji(plotTitle)
+                replacePlotTitleWithEmoji(plotTitle)
               )
             }).join('   ') : 0}</div>
-            
+
             <br></br>
 
             {/* Total plots in database: {this.props.plots.length}

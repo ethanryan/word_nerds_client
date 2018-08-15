@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
+
 import { Form, Button, Loader, Segment } from 'semantic-ui-react'
 
 // import Markov from './Markov'
@@ -144,9 +146,9 @@ class EditStoryForm extends Component {
             </p>
 
             <p>
-              Plots:  {this.props.story.story_plot_titles ? this.props.story.story_plot_titles.split(", ").map((plotTitle) => {
+              Plots: {this.props.story.story_plot_titles ? this.props.story.story_plot_titles.split(", ").map((plotTitle) => {
                 return (
-                  this.props.replacePlotTitleWithEmoji(plotTitle)
+                  replacePlotTitleWithEmoji(plotTitle)
                 )
               }).join('   ') : 0}
             </p>

@@ -42,7 +42,6 @@ const StoryPage = (props) => {
                 //below will be passed down to CreateStoryFormSelectGenre:
                 plots={props.plots}
                 handleGenreChange={props.handleGenreChange}
-                replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                 //below will be passed down to CreateStoryFormCreateCharacters:
                 //refactor below!!! don't need all these functions, just one or two...
                 characterProps={props.characterProps}
@@ -73,7 +72,6 @@ const StoryPage = (props) => {
                     story={story}
                     user={props.user}
                     image={props.image}
-                    // replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                     handleDeleteStory={props.handleDeleteStory}
                   />
                 </div>
@@ -89,7 +87,6 @@ const StoryPage = (props) => {
                 <div className="EditStoryForm-blue">
                   <EditStoryForm
                     story={story}
-                    replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                     handleUpdateStory={props.handleUpdateStory}
                     handleDeleteStory={props.handleDeleteStory}
                   />
@@ -106,7 +103,6 @@ const StoryPage = (props) => {
                 handleUpdateStory={props.handleUpdateStory}
                 handleDeleteStory={props.handleDeleteStory}
                 stories={props.stories}
-                replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                 user={props.user}
                 // username={props.user ? props.user.name : "props.user.name here"}
                 // user_id={props.user ? props.user.id : "props.user.id here"}
@@ -127,7 +123,6 @@ const StoryPage = (props) => {
               <Metadata
                 scrollToTop={props.scrollToTop}
                 stories={props.stories}
-                replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
                 plots={props.plots}
                 users={props.users}
               />

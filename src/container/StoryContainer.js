@@ -14,8 +14,6 @@ import LoginSignUp from '../container/LoginSignUp'
 
 import { Container, Dimmer, Loader } from 'semantic-ui-react'
 
-import replacePlotTitleWithEmoji from '../helpers/replacePlotTitleWithEmoji'
-
 class StoryContainer extends Component {
   constructor() {
     super()
@@ -432,8 +430,6 @@ class StoryContainer extends Component {
               handleSubmit={this.handleSubmit.bind(this)}
               handleClearForm={this.handleClearForm.bind(this)}
               genreSelection={this.state.genreSelection}
-              replacePlotTitleWithEmoji={replacePlotTitleWithEmoji}
-
               handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
               ///above so CreateStoryFormSelectGenre can send up selectedGenre to here, StoryContainer
 

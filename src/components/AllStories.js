@@ -38,7 +38,6 @@ const AllStories = (props) => {
         userStories={filteredStories} //passing OneStory userStories, not all stories in database...
         user={props.user}
         scrollToTop={props.scrollToTop}
-        replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
         // user_id={props.user_id}
         storyShowIsModal={props.storyShowIsModal}
         openModal={props.openModal}
