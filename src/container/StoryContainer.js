@@ -432,7 +432,6 @@ class StoryContainer extends Component {
               handleSubmit={this.handleSubmit.bind(this)}
               handleClearForm={this.handleClearForm.bind(this)}
               genreSelection={this.state.genreSelection}
-              // replacePlotTitleWithEmoji={this.replacePlotTitleWithEmoji.bind(this)}
               replacePlotTitleWithEmoji={replacePlotTitleWithEmoji}
 
               handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
