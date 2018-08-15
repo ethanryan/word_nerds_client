@@ -7,6 +7,8 @@ const baseUrl = 'https://word-nerds-api.herokuapp.com'
 //will display app in browser at localhost:5000
 //(though i guess this is no different from running `npm start` with the heroku api as baseUrl)
 
+//NOTE: put above line in .env file...
+
 export function getStories() {
   return fetch(`${baseUrl}/stories`, {
     headers: {
