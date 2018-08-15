@@ -125,7 +125,7 @@ class StoryContainer extends Component {
       activeModalStoryId: null, //reset this to null...
       indexOfStoryModal: null, //reset this to null...
       storyShowModalIsEditable: false,
-     })
+    })
   }
 
   toggleStoryShowModalToEditable() {
@@ -134,11 +134,10 @@ class StoryContainer extends Component {
 
   handleSubmit(genres, characters, user_id, storyType) { //adding genre as argument -- ER Jan 2018
     api.createStory(genres, characters, user_id, storyType) //adding user_id as argument -- ER Nov 2017
-      .then( story => this.setState(
+    .then( story => this.setState(
       prevState => ({
-          stories: [...prevState.stories, story]
-        })
-      )
+        stories: [...prevState.stories, story]
+      }) )
     )
     this.props.history.push(`/stories`) //redirect to all stories
   }
@@ -232,10 +231,11 @@ class StoryContainer extends Component {
 
   handleLogin(params) {
     // if (window.confirm(`Are you sure you want to login??? params are: name: ${params.name}, password: ${params.password}`))
-      this.setState({nameOrPasswordError: false}) //resetting the state
-      api.logIn(params) //calling logIn function in api/index.js
-      .then(response => {
-        if(response.user == null && response.error != null) { //if user doesn't exist, or if there is an error...
+    this.setState({nameOrPasswordError: false}) //resetting the state
+    api.logIn(params) //calling logIn function in api/index.js
+    .then(response => {
+      if(response.user == null && response.error != null) {
+        //if user doesn't exist, or if there is an error...
         this.setState({nameOrPasswordError: true}) //need to pass this down to LoginForm
         console.log("response error")
         return
@@ -394,123 +394,120 @@ class StoryContainer extends Component {
 
   render() {
     if(localStorage.getItem('jwt')) {
-    // console.log('jwt: ', this.jwt)
-    // console.log('props from StoryContainer: ', this.props)
-    console.log('0. state from StoryContainer (signed in): ', this.state)
+      // console.log('jwt: ', this.jwt)
+      // console.log('props from StoryContainer: ', this.props)
+      console.log('0. state from StoryContainer (signed in): ', this.state)
+      // console.log('0. console.table(this.state) is ----->>>>')
+      // console.table(this.state)
+      // console.log('0. StoryContainer state.characters: ', this.state.characters)
+      // console.log('0. StoryContainer state.characters.hero: ', this.state.characters.hero)
 
-    // console.log('0. console.table(this.state) is ----->>>>')
-    // console.table(this.state)
+      if(this.state.users.length === 0) {
+        console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+      } else {
+        console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+      }
+      return(
+        <HttpsRedirect>
+          {
+            this.state.dataLoaded === true ?
+            <div>
 
-    // console.log('0. StoryContainer state.characters: ', this.state.characters)
-    // console.log('0. StoryContainer state.characters.hero: ', this.state.characters.hero)
+              <NavBar
+                title="Word Nerds"
+                // current_user={this.state.user ? this.state.user.name : "current_user here"}
+                current_user={this.state.user.name}
+                logout={this.logout.bind(this)}
+                location={this.props.location}
+              />
 
-    if(this.state.users.length === 0) {
-      console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
-    } else {
-      console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+              <StoryPage
+                scrollToTop={this.scrollToTop.bind(this)}
+                //props for CreateStoryForm
+                handleSubmit={this.handleSubmit.bind(this)}
+                handleClearForm={this.handleClearForm.bind(this)}
+                genreSelection={this.state.genreSelection}
+                handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
+                ///above so CreateStoryFormSelectGenre can send up selectedGenre to here, StoryContainer
+
+                //refactor below!!!! just needs to be one or two functions for all character names and genders...
+                //refactor below!!!! just needs to be one or two functions for all character names and genders...
+                //refactor below!!!! just needs to be one or two functions for all character names and genders...
+                handleHeroNameChange={this.handleHeroNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleShadowNameChange={this.handleShadowNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleFriendNameChange={this.handleFriendNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleLoverNameChange={this.handleLoverNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleMentorNameChange={this.handleMentorNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleTricksterNameChange={this.handleTricksterNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+
+                handleHeroGenderChange={this.handleHeroGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleShadowGenderChange={this.handleShadowGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleFriendGenderChange={this.handleFriendGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleLoverGenderChange={this.handleLoverGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleMentorGenderChange={this.handleMentorGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+                handleTricksterGenderChange={this.handleTricksterGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+
+                characterProps={this.state.characters} //pass all characters in one prop...
+
+                //props for EditStoryForm
+                handleDeleteStory={this.handleDeleteStory.bind(this)}
+                handleUpdateStory={this.handleUpdateStory.bind(this)}
+                story={this.state.story}
+                title={this.state.title}
+                image={this.state.image}
+                user={this.state.user}
+
+                //props for AllStories
+                stories={this.state.stories}
+                plots={this.state.plots}
+                users={this.state.users}
+                storyShowIsModal={this.state.storyShowIsModal}
+                storyShowModalIsEditable={this.state.storyShowModalIsEditable}
+                toggleStoryShowModalToEditable={this.toggleStoryShowModalToEditable.bind(this)}
+                openModal={this.openModal.bind(this)}
+                closeModal={this.closeModal.bind(this)}
+                activeModalStoryId={this.state.activeModalStoryId}
+                indexOfStoryModal={this.state.indexOfStoryModal}
+              />
+            </div>
+            :
+            <div>
+              <Container>
+                <Dimmer active inverted>
+                  <Loader inverted size='massive'>
+                    Loading...
+                  </Loader>
+                </Dimmer>
+              </Container>
+            </div>
+          }
+        </HttpsRedirect>
+      )
     }
-    return(
-      <HttpsRedirect>
-        {
-          this.state.dataLoaded === true ?
+    else {
+      console.log('state from StoryContainer (not signed in): ', this.state)
+      if(this.state.users.length === 0) {
+        console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+      } else {
+        console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+      }
+      return(
+        <HttpsRedirect>
           <div>
+            <NavBarLoginSignUp />
 
-
-            <NavBar
-              title="Word Nerds"
-              // current_user={this.state.user ? this.state.user.name : "current_user here"}
-              current_user={this.state.user.name}
-              logout={this.logout.bind(this)}
-              location={this.props.location}
-            />
-
-            <StoryPage
-              scrollToTop={this.scrollToTop.bind(this)}
-              //props for CreateStoryForm
-              handleSubmit={this.handleSubmit.bind(this)}
-              handleClearForm={this.handleClearForm.bind(this)}
-              genreSelection={this.state.genreSelection}
-              handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
-              ///above so CreateStoryFormSelectGenre can send up selectedGenre to here, StoryContainer
-
-              //refactor below!!!! just needs to be one or two functions for all character names and genders...
-              //refactor below!!!! just needs to be one or two functions for all character names and genders...
-              //refactor below!!!! just needs to be one or two functions for all character names and genders...
-              handleHeroNameChange={this.handleHeroNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-              handleShadowNameChange={this.handleShadowNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-              handleFriendNameChange={this.handleFriendNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-              handleLoverNameChange={this.handleLoverNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-              handleMentorNameChange={this.handleMentorNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-              handleTricksterNameChange={this.handleTricksterNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-
-              handleHeroGenderChange={this.handleHeroGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-              handleShadowGenderChange={this.handleShadowGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-              handleFriendGenderChange={this.handleFriendGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-              handleLoverGenderChange={this.handleLoverGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-              handleMentorGenderChange={this.handleMentorGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-              handleTricksterGenderChange={this.handleTricksterGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-
-              characterProps={this.state.characters} //pass all characters in one prop...
-
-              //props for EditStoryForm
-              handleDeleteStory={this.handleDeleteStory.bind(this)}
-              handleUpdateStory={this.handleUpdateStory.bind(this)}
-              story={this.state.story}
-              title={this.state.title}
-              image={this.state.image}
-              user={this.state.user}
-
-              //props for AllStories
-              stories={this.state.stories}
-              plots={this.state.plots}
+            <LoginSignUp
+              handleLogin={this.handleLogin.bind(this)}
+              handleSignUp={this.handleSignUp.bind(this)}
+              nameOrPasswordError={this.state.nameOrPasswordError}
+              usernameExistsError={this.state.usernameExistsError}
               users={this.state.users}
-              storyShowIsModal={this.state.storyShowIsModal}
-              storyShowModalIsEditable={this.state.storyShowModalIsEditable}
-              toggleStoryShowModalToEditable={this.toggleStoryShowModalToEditable.bind(this)}
-              openModal={this.openModal.bind(this)}
-              closeModal={this.closeModal.bind(this)}
-              activeModalStoryId={this.state.activeModalStoryId}
-              indexOfStoryModal={this.state.indexOfStoryModal}
             />
           </div>
-          :
-          <div>
-            <Container>
-              <Dimmer active inverted>
-                <Loader inverted size='massive'>
-                  Loading...
-                </Loader>
-              </Dimmer>
-            </Container>
-          </div>
-        }
-      </HttpsRedirect>
-    )
-  }
-  else {
-    console.log('state from StoryContainer (not signed in): ', this.state)
-    if(this.state.users.length === 0) {
-      console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
-    } else {
-      console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        </HttpsRedirect>
+      )
     }
-    return(
-      <HttpsRedirect>
-      <div>
-        <NavBarLoginSignUp />
-
-        <LoginSignUp
-          handleLogin={this.handleLogin.bind(this)}
-          handleSignUp={this.handleSignUp.bind(this)}
-          nameOrPasswordError={this.state.nameOrPasswordError}
-          usernameExistsError={this.state.usernameExistsError}
-          users={this.state.users}
-        />
-      </div>
-    </HttpsRedirect>
-    )
-  }
-  }
-}
+  } //render
+} //class
 
 export default withRouter(StoryContainer)
