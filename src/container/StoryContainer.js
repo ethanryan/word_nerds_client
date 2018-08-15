@@ -29,6 +29,7 @@ class StoryContainer extends Component {
           user: 'user here'
         }
       ],
+      dataLoaded: false, //default value, set to true in componentDidMount, api.getCurrentUser
       story: 'cool story here',
       title: 'cool story title here',
       user: {
@@ -81,24 +82,25 @@ class StoryContainer extends Component {
 
   componentDidMount() {
     api.getStories()
-    .then( data => this.sortStoriesByUpdatedAt(data) ) //sorting stories by updated_at, calling function below
-    .then( data => this.setState({
+    .then(data => this.sortStoriesByUpdatedAt(data)) //sorting stories by updated_at, calling function below
+    .then(data => this.setState({
       stories: data
     }) )
 
     api.getPlots()
-    .then( data => this.setState({
+    .then(data => this.setState({
       plots: data
     }) )
 
     api.getUsers()
-    .then (user => this.setState({
-      users: user
+    .then(users => this.setState({
+      users: users
     }) )
 
     api.getCurrentUser()
-    .then (user => this.setState({
-      user: user.user
+    .then(user => this.setState({
+      user: user.user,
+      dataLoaded: true
     }) )
   }
 
@@ -435,68 +437,76 @@ class StoryContainer extends Component {
     }
     return(
       <HttpsRedirect>
-      <div>
-        <NavBar
-          title="Word Nerds"
-          current_user={this.state.user ? this.state.user.name : "current_user here"}
-          logout={this.logout.bind(this)}
-          location={this.props.location}
-        />
-        <StoryPage
-          scrollToTop={this.scrollToTop.bind(this)}
-          //props for CreateStoryForm
-          handleSubmit={this.handleSubmit.bind(this)}
-          handleClearForm={this.handleClearForm.bind(this)}
-          genreSelection={this.state.genreSelection}
-          replacePlotTitleWithEmoji={this.replacePlotTitleWithEmoji.bind(this)}
-          handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
-          ///above so CreateStoryFormSelectGenre can send up selectedGenre to here, StoryContainer
+        {
+          this.state.dataLoaded === true ?
+          <div>
+            <NavBar
+              title="Word Nerds"
+              // current_user={this.state.user ? this.state.user.name : "current_user here"}
+              current_user={this.state.user.name}
+              logout={this.logout.bind(this)}
+              location={this.props.location}
+            />
 
-          //refactor below!!!! just needs to be one or two functions for all character names and genders...
-          //   hero: this.state.hero,
-          //   shadow: this.state.shadow,
-          //   friend: this.state.friend,
-          //   lover: this.state.lover,
-          //   mentor: this.state.mentor,
-          //   trickster: this.state.trickster
-          handleHeroNameChange={this.handleHeroNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-          handleShadowNameChange={this.handleShadowNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-          handleFriendNameChange={this.handleFriendNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-          handleLoverNameChange={this.handleLoverNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-          handleMentorNameChange={this.handleMentorNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-          handleTricksterNameChange={this.handleTricksterNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+            <h1>hello world -- this.state.user.name is: {this.state.user.name}</h1>
+            <h1>hello world -- this.state.dataLoaded is: {this.state.dataLoaded === true ? "TRUE!" : "false..."}</h1>
 
-          handleHeroGenderChange={this.handleHeroGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-          handleShadowGenderChange={this.handleShadowGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-          handleFriendGenderChange={this.handleFriendGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-          handleLoverGenderChange={this.handleLoverGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-          handleMentorGenderChange={this.handleMentorGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
-          handleTricksterGenderChange={this.handleTricksterGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+            <StoryPage
+              scrollToTop={this.scrollToTop.bind(this)}
+              //props for CreateStoryForm
+              handleSubmit={this.handleSubmit.bind(this)}
+              handleClearForm={this.handleClearForm.bind(this)}
+              genreSelection={this.state.genreSelection}
+              replacePlotTitleWithEmoji={this.replacePlotTitleWithEmoji.bind(this)}
+              handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
+              ///above so CreateStoryFormSelectGenre can send up selectedGenre to here, StoryContainer
 
-          characterProps={this.state.characters} //pass all characters in one prop...
+              //refactor below!!!! just needs to be one or two functions for all character names and genders...
+              //refactor below!!!! just needs to be one or two functions for all character names and genders...
+              //refactor below!!!! just needs to be one or two functions for all character names and genders...
+              handleHeroNameChange={this.handleHeroNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+              handleShadowNameChange={this.handleShadowNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+              handleFriendNameChange={this.handleFriendNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+              handleLoverNameChange={this.handleLoverNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+              handleMentorNameChange={this.handleMentorNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+              handleTricksterNameChange={this.handleTricksterNameChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
 
-          //props for EditStoryForm
-          handleDeleteStory={this.handleDeleteStory.bind(this)}
-          handleUpdateStory={this.handleUpdateStory.bind(this)}
-          story={this.state.story}
-          title={this.state.title}
-          image={this.state.image}
-          user={this.state.user}
+              handleHeroGenderChange={this.handleHeroGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+              handleShadowGenderChange={this.handleShadowGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+              handleFriendGenderChange={this.handleFriendGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+              handleLoverGenderChange={this.handleLoverGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+              handleMentorGenderChange={this.handleMentorGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
+              handleTricksterGenderChange={this.handleTricksterGenderChange.bind(this)} //this will be for CreateStoryFormCreateCharacters
 
-          //props for AllStories
-          stories={this.state.stories}
-          plots={this.state.plots}
-          users={this.state.users}
-          storyShowIsModal={this.state.storyShowIsModal}
-          storyShowModalIsEditable={this.state.storyShowModalIsEditable}
-          toggleStoryShowModalToEditable={this.toggleStoryShowModalToEditable.bind(this)}
-          openModal={this.openModal.bind(this)}
-          closeModal={this.closeModal.bind(this)}
-          activeModalStoryId={this.state.activeModalStoryId}
-          indexOfStoryModal={this.state.indexOfStoryModal}
-        />
-      </div>
-    </HttpsRedirect>
+              characterProps={this.state.characters} //pass all characters in one prop...
+
+              //props for EditStoryForm
+              handleDeleteStory={this.handleDeleteStory.bind(this)}
+              handleUpdateStory={this.handleUpdateStory.bind(this)}
+              story={this.state.story}
+              title={this.state.title}
+              image={this.state.image}
+              user={this.state.user}
+
+              //props for AllStories
+              stories={this.state.stories}
+              plots={this.state.plots}
+              users={this.state.users}
+              storyShowIsModal={this.state.storyShowIsModal}
+              storyShowModalIsEditable={this.state.storyShowModalIsEditable}
+              toggleStoryShowModalToEditable={this.toggleStoryShowModalToEditable.bind(this)}
+              openModal={this.openModal.bind(this)}
+              closeModal={this.closeModal.bind(this)}
+              activeModalStoryId={this.state.activeModalStoryId}
+              indexOfStoryModal={this.state.indexOfStoryModal}
+            />
+          </div>
+          :
+          <h1>
+            LOADING DATA...
+          </h1>
+        }
+      </HttpsRedirect>
     )
   }
   else {
