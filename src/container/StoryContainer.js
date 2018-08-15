@@ -12,6 +12,8 @@ import StoryPage from '../components/StoryPage'
 
 import LoginSignUp from '../container/LoginSignUp'
 
+import { Container, Dimmer, Loader } from 'semantic-ui-react'
+
 
 class StoryContainer extends Component {
   constructor() {
@@ -448,9 +450,6 @@ class StoryContainer extends Component {
               location={this.props.location}
             />
 
-            <h1>hello world -- this.state.user.name is: {this.state.user.name}</h1>
-            <h1>hello world -- this.state.dataLoaded is: {this.state.dataLoaded === true ? "TRUE!" : "false..."}</h1>
-
             <StoryPage
               scrollToTop={this.scrollToTop.bind(this)}
               //props for CreateStoryForm
@@ -502,9 +501,15 @@ class StoryContainer extends Component {
             />
           </div>
           :
-          <h1>
-            LOADING DATA...
-          </h1>
+          <div>
+            <Container>
+              <Dimmer active inverted>
+                <Loader inverted size='massive'>
+                  Loading...
+                </Loader>
+              </Dimmer>
+            </Container>
+          </div>
         }
       </HttpsRedirect>
     )
