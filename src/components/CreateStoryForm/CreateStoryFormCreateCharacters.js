@@ -3,15 +3,11 @@ import React, { Component } from 'react'
 import { Header, Divider } from 'semantic-ui-react'
 
 import CreateCharactersFormGroup from './CreateCharactersFormGroup'
-// import CreateCharactersFormFieldName from './CreateCharactersFormFieldName'
-// import CreateCharactersFormFieldGender from './CreateCharactersFormFieldGender'
-// import CreateCharactersFormFieldSummary from './CreateCharactersFormFieldSummary'
 
 class CreateStoryFormCreateCharacters extends Component {
   constructor(props) {
     super(props)
     console.log('CreateStoryFormCreateCharacters props:', props)
-    // console.log('~~~~~~ props.characterProps from CreateStoryFormCreateCharacters:', props.characterProps)
     this.state=({
       hero: {
         name: 'HERO',
