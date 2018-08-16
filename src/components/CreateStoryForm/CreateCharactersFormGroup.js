@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import { Form } from 'semantic-ui-react'
 
@@ -6,34 +6,31 @@ import CreateCharactersFormFieldName from './CreateCharactersFormFieldName'
 import CreateCharactersFormFieldGender from './CreateCharactersFormFieldGender'
 import CreateCharactersFormFieldSummary from './CreateCharactersFormFieldSummary'
 
-class CreateCharactersFormGroup extends Component {
+const CreateCharactersFormGroup = (props) => {
+  // console.warn('CreateCharactersFormGroup, props is: ', props)
+  return(
+    <Form.Group>
+      <CreateCharactersFormFieldName
+        characterType={props.characterType}
+        placeholder={props.placeholder}
+        onChangeCharacterName={props.onChangeCharacterName}
+      />
 
-  render() {
-    console.warn('CreateCharactersFormGroup, this.props is: ', this.props)
-    return(
-      <Form.Group>
-        <CreateCharactersFormFieldName
-          characterType={this.props.characterType}
-          placeholder={this.props.placeholder}
-          onChangeCharacterName={this.props.onChangeCharacterName}
-        />
+      <CreateCharactersFormFieldGender
+        characterType={props.characterType}
+        placeholder={props.placeholder}
+        characterGender={props.characterGender}
+        onChangeCharacterGender={props.onChangeCharacterGender}
+      />
 
-        <CreateCharactersFormFieldGender
-          characterType={this.props.characterType}
-          placeholder={this.props.placeholder}
-          characterGender={this.props.characterGender}
-          onChangeCharacterGender={this.props.onChangeCharacterGender}
-        />
-
-        <CreateCharactersFormFieldSummary
-          placeholder={this.props.placeholder}
-          characterName={this.props.characterName}
-          characterEmoji={this.props.characterEmoji}
-          characterGender={this.props.characterGender}
-        />
-      </Form.Group>
-    )
-  }
+      <CreateCharactersFormFieldSummary
+        placeholder={props.placeholder}
+        characterName={props.characterName}
+        characterEmoji={props.characterEmoji}
+        characterGender={props.characterGender}
+      />
+    </Form.Group>
+  )
 }
 
 export default CreateCharactersFormGroup
