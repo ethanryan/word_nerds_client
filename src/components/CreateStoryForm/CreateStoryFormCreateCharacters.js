@@ -93,7 +93,6 @@ class CreateStoryFormCreateCharacters extends Component {
           <Form.Field label="Hero Name" placeholder="HERO" name="hero"
             width={6}
             control="input" type="text" key="heroName"
-            // onChange={this.handleHeroNameChange.bind(this)}
             onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
@@ -105,14 +104,12 @@ class CreateStoryFormCreateCharacters extends Component {
               value="male"
               control="input" type="radio" className="genderRadio"
               checked={this.state.hero.gender === "male"}
-              // onChange={this.handleHeroGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
             <Form.Field label="female" name="hero"
               value="female"
               control="input" type="radio" className="genderRadio"
               checked={this.state.hero.gender === "female"}
-              // onChange={this.handleHeroGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
           </Form.Field>
@@ -137,7 +134,6 @@ class CreateStoryFormCreateCharacters extends Component {
           <Form.Field label="Shadow Name" placeholder="SHADOW" name="shadow"
             width={6}
             control="input" type="text" key="shadowName"
-            // onChange={this.handleShadowNameChange.bind(this)}
             onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
@@ -149,14 +145,12 @@ class CreateStoryFormCreateCharacters extends Component {
               value="male"
               control="input" type="radio" className="genderRadio"
               checked={this.state.shadow.gender === "male"}
-              // onChange={this.handleShadowGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
             <Form.Field label="female" name="shadow"
               value="female"
               control="input" type="radio" className="genderRadio"
               checked={this.state.shadow.gender === "female"}
-              // onChange={this.handleShadowGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
           </Form.Field>
@@ -181,7 +175,6 @@ class CreateStoryFormCreateCharacters extends Component {
           <Form.Field label="Friend Name" placeholder="FRIEND" name="friend"
             width={6}
             control="input" type="text" key="friendName"
-            // onChange={this.handleFriendNameChange.bind(this)}
             onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
@@ -191,14 +184,12 @@ class CreateStoryFormCreateCharacters extends Component {
               value="male"
               control="input" type="radio" className="genderRadio"
               checked={this.state.friend.gender === "male"}
-              // onChange={this.handleFriendGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
             <Form.Field label="female" name="friend"
               value="female"
               control="input" type="radio" className="genderRadio"
               checked={this.state.friend.gender === "female"}
-              // onChange={this.handleFriendGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
           </Form.Field>
@@ -223,7 +214,6 @@ class CreateStoryFormCreateCharacters extends Component {
           <Form.Field label="Lover Name" placeholder="LOVER" name="lover"
             width={6}
             control="input" type="text" key="loverName"
-            // onChange={this.handleLoverNameChange.bind(this)}
             onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
@@ -235,14 +225,12 @@ class CreateStoryFormCreateCharacters extends Component {
               value="male"
               control="input" type="radio" className="genderRadio"
               checked={this.state.lover.gender === "male"}
-              // onChange={this.handleLoverGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
             <Form.Field label="female" name="lover"
               value="female"
               control="input" type="radio" className="genderRadio"
               checked={this.state.lover.gender === "female"}
-              // onChange={this.handleLoverGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
           </Form.Field>
@@ -268,7 +256,6 @@ class CreateStoryFormCreateCharacters extends Component {
           <Form.Field label="Mentor Name" placeholder="MENTOR" name="mentor"
             width={6}
             control="input" type="text" key="mentorName"
-            // onChange={this.handleMentorNameChange.bind(this)}
             onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
@@ -280,14 +267,12 @@ class CreateStoryFormCreateCharacters extends Component {
               value="male"
               control="input" type="radio" className="genderRadio"
               checked={this.state.mentor.gender === "male"}
-              // onChange={this.handleMentorGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
             <Form.Field label="female" name="mentor"
               value="female"
               control="input" type="radio" className="genderRadio"
               checked={this.state.mentor.gender === "female"}
-              // onChange={this.handleMentorGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
           </Form.Field>
@@ -312,7 +297,6 @@ class CreateStoryFormCreateCharacters extends Component {
           <Form.Field label="Trickster Name" placeholder="TRICKSTER" name="trickster"
             width={6}
             control="input" type="text" key="TricksterName"
-            // onChange={this.handleTricksterNameChange.bind(this)}
             onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
@@ -324,14 +308,12 @@ class CreateStoryFormCreateCharacters extends Component {
               value="male"
               control="input" type="radio" className="genderRadio"
               checked={this.state.trickster.gender === "male"}
-              // onChange={this.handleTricksterGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
             <Form.Field label="female" name="trickster"
               value="female"
               control="input" type="radio" className="genderRadio"
               checked={this.state.trickster.gender === "female"}
-              // onChange={this.handleTricksterGenderChange.bind(this)}
               onChange={this.handleCharacterGenderChangeLocally.bind(this)}
             />
           </Form.Field>
