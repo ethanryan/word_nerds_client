@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 
 import { Form, Header, Divider } from 'semantic-ui-react'
 
+import CreateCharactersFormGroup from './CreateCharactersFormGroup'
+// import CreateCharactersFormFieldName from './CreateCharactersFormFieldName'
+// import CreateCharactersFormFieldGender from './CreateCharactersFormFieldGender'
+// import CreateCharactersFormFieldSummary from './CreateCharactersFormFieldSummary'
+
 class CreateStoryFormCreateCharacters extends Component {
   constructor(props) {
     super(props)
@@ -53,8 +58,12 @@ class CreateStoryFormCreateCharacters extends Component {
     }
   }
 
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   handleCharacterNameChangeLocally(event) {
-    // console.warn('handleCharacterNameChangeLocally called, event is: ', event)
+    console.warn('handleCharacterNameChangeLocally called, event is: ', event)
     const characterName = event.target.value
     const characterType = event.target.name
     this.setState({
@@ -89,44 +98,42 @@ class CreateStoryFormCreateCharacters extends Component {
           Create Characters
         </Header>
 
-        <Form.Group>
-          <Form.Field label="Hero Name" placeholder="HERO" name="hero"
-            width={6}
-            control="input" type="text" key="heroName"
-            onChange={this.handleCharacterNameChangeLocally.bind(this)}
+
+        {/* abstracting below Form.Group */}
+        {/* <Form.Group> */}
+
+          <CreateCharactersFormGroup
+            characterEmoji={this.state["hero"].emoji}
+            characterGender={this.state["hero"].gender}
+            characterName={this.state["hero"].name}
+            characterType={"hero"}
+            onChangeCharacterGender={this.handleCharacterGenderChangeLocally.bind(this)}
+            onChangeCharacterName={this.handleCharacterNameChangeLocally.bind(this)}
+            placeholder={this.capitalizeFirstLetter("hero")}
           />
 
-          <Form.Field width={4} className="genderField">
-            <label className="gender-label">
-              Hero Gender
-            </label>
-            <Form.Field label="male" name="hero"
-              value="male"
-              control="input" type="radio" className="genderRadio"
-              checked={this.state.hero.gender === "male"}
-              onChange={this.handleCharacterGenderChangeLocally.bind(this)}
-            />
-            <Form.Field label="female" name="hero"
-              value="female"
-              control="input" type="radio" className="genderRadio"
-              checked={this.state.hero.gender === "female"}
-              onChange={this.handleCharacterGenderChangeLocally.bind(this)}
-            />
-          </Form.Field>
+          {/* <CreateCharactersFormFieldName
+            characterType={"hero"}
+            placeholder={this.capitalizeFirstLetter("hero")}
+            onChangeCharacterName={this.handleCharacterNameChangeLocally.bind(this)}
+          />
 
-          <Form.Field width={6} className="summaryField">
-            <label>
-              <span role="img" aria-label="emoji">
-                {(this.state.hero.name !== 'HERO') ? this.state.hero.emoji : null}
-              </span>
-              Hero Summary
-            </label>
+          <CreateCharactersFormFieldGender
+            characterType={"hero"}
+            placeholder={this.capitalizeFirstLetter("hero")}
+            characterGender={this.state["hero"].gender}
+            onChangeCharacterGender={this.handleCharacterGenderChangeLocally.bind(this)}
+          />
 
-            name: {this.state.hero.name}
-            <br></br>
-            gender: {this.state.hero.gender}
-          </Form.Field>
-        </Form.Group>
+          <CreateCharactersFormFieldSummary
+            placeholder={this.capitalizeFirstLetter("hero")}
+            characterName={this.state["hero"].name}
+            characterEmoji={this.state["hero"].emoji}
+            characterGender={this.state["hero"].gender}
+          /> */}
+
+        {/* </Form.Group> */}
+        {/* abstracting above Form.Group */}
 
         <Divider />
 
