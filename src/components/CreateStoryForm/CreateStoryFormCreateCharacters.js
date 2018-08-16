@@ -102,7 +102,7 @@ class CreateStoryFormCreateCharacters extends Component {
         {
           characterTypes.map(characterType => {
             return (
-              <div>
+              <div key={characterType}>
                 <CreateCharactersFormGroup
                   characterEmoji={this.state[characterType].emoji}
                   characterGender={this.state[characterType].gender}
