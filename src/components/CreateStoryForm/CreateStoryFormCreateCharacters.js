@@ -41,19 +41,48 @@ class CreateStoryFormCreateCharacters extends Component {
     })
   } //end of constructor
 
+  getEmojiForCharacterSummary(argument) {
+    switch(argument) {
+      case "hero": return <span role="img" aria-label="emoji">😄</span>;
+      case "shadow": return <span role="img" aria-label="emoji">😨</span>;
+      case "friend": return <span role="img" aria-label="emoji">😎</span>;
+      case "lover": return <span role="img" aria-label="emoji">😘</span>;
+      case "mentor": return <span role="img" aria-label="emoji">🤓</span>;
+      case "trickster": return <span role="img" aria-label="emoji">😜</span>;
+      default: console.error(`${argument} doesn't have a corresponding emoji...`);
+    }
+  }
 
-  handleHeroNameChange(event) {
+  handleCharacterNameChangeLocally(event) {
+    console.error('handleCharacterNameChangeLocally called, event is: ', event)
+    // console.error('handleCharacterNameChangeLocally called, event.target is: ', event.target)
+    // console.error('handleCharacterNameChangeLocally called, event.target.value is: ', event.target.value)
+    // console.error('handleCharacterNameChangeLocally called, event.target.name is: ', event.target.name)
     const characterName = event.target.value
-    const characterType = "hero"
+    const characterType = event.target.name
     this.setState({
-      hero: {
+      [characterType]: {
         name: characterName,
-        gender: this.state.hero.gender,
-        emoji: <span role="img" aria-label="emoji">😄</span>
+        gender: this.state[characterType].gender,
+        emoji: this.getEmojiForCharacterSummary(characterType)
       },
     })
     this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
   }
+
+
+  // handleHeroNameChange(event) {
+  //   const characterName = event.target.value
+  //   const characterType = "hero"
+  //   this.setState({
+  //     hero: {
+  //       name: characterName,
+  //       gender: this.state.hero.gender,
+  //       emoji: <span role="img" aria-label="emoji">😄</span>
+  //     },
+  //   })
+  //   this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
+  // }
 
   handleHeroGenderChange(event) {
     const characterGender = event.target.value
@@ -68,19 +97,18 @@ class CreateStoryFormCreateCharacters extends Component {
     this.props.handleCharacterGenderChange(characterGender, characterType) //this will pass heroName up to state in StoryContainer
   }
 
-  handleShadowNameChange(event) {
-    const characterName = event.target.value
-    const characterType = "shadow"
-    this.setState({
-      shadow: {
-        name: characterName,
-        gender: this.state.shadow.gender,
-        emoji: <span role="img" aria-label="emoji">😨</span>
-        // emoji: <span role="img" aria-label="emoji">😈</span>
-      },
-    })
-    this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
-  }
+  // handleShadowNameChange(event) {
+  //   const characterName = event.target.value
+  //   const characterType = "shadow"
+  //   this.setState({
+  //     shadow: {
+  //       name: characterName,
+  //       gender: this.state.shadow.gender,
+  //       emoji: <span role="img" aria-label="emoji">😨</span>
+  //     },
+  //   })
+  //   this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
+  // }
 
   handleShadowGenderChange(event) {
     const characterGender = event.target.value
@@ -95,18 +123,18 @@ class CreateStoryFormCreateCharacters extends Component {
     this.props.handleCharacterGenderChange(characterGender, characterType) //this will pass heroName up to state in StoryContainer
   }
 
-  handleFriendNameChange(event) {
-    const characterName = event.target.value
-    const characterType = "friend"
-    this.setState({
-      friend: {
-        name: characterName,
-        gender: this.state.friend.gender,
-        emoji: <span role="img" aria-label="emoji">😎</span>
-      },
-    })
-    this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
-  }
+  // handleFriendNameChange(event) {
+  //   const characterName = event.target.value
+  //   const characterType = "friend"
+  //   this.setState({
+  //     friend: {
+  //       name: characterName,
+  //       gender: this.state.friend.gender,
+  //       emoji: <span role="img" aria-label="emoji">😎</span>
+  //     },
+  //   })
+  //   this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
+  // }
 
   handleFriendGenderChange(event) {
     const characterGender = event.target.value
@@ -121,18 +149,18 @@ class CreateStoryFormCreateCharacters extends Component {
     this.props.handleCharacterGenderChange(characterGender, characterType) //this will pass heroName up to state in StoryContainer
   }
 
-  handleLoverNameChange(event) {
-    const characterName = event.target.value
-    const characterType = "lover"
-    this.setState({
-      lover: {
-        name: characterName,
-        gender: this.state.lover.gender,
-        emoji: <span role="img" aria-label="emoji">😘</span>
-      },
-    })
-    this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
-  }
+  // handleLoverNameChange(event) {
+  //   const characterName = event.target.value
+  //   const characterType = "lover"
+  //   this.setState({
+  //     lover: {
+  //       name: characterName,
+  //       gender: this.state.lover.gender,
+  //       emoji: <span role="img" aria-label="emoji">😘</span>
+  //     },
+  //   })
+  //   this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
+  // }
 
   handleLoverGenderChange(event) {
     const characterGender = event.target.value
@@ -147,18 +175,18 @@ class CreateStoryFormCreateCharacters extends Component {
     this.props.handleCharacterGenderChange(characterGender, characterType) //this will pass heroName up to state in StoryContainer
   }
 
-  handleMentorNameChange(event) {
-    const characterName = event.target.value
-    const characterType = "mentor"
-    this.setState({
-      mentor: {
-        name: characterName,
-        gender: this.state.mentor.gender,
-        emoji: <span role="img" aria-label="emoji">🤓</span>
-      },
-    })
-    this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
-  }
+  // handleMentorNameChange(event) {
+  //   const characterName = event.target.value
+  //   const characterType = "mentor"
+  //   this.setState({
+  //     mentor: {
+  //       name: characterName,
+  //       gender: this.state.mentor.gender,
+  //       emoji: <span role="img" aria-label="emoji">🤓</span>
+  //     },
+  //   })
+  //   this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
+  // }
 
   handleMentorGenderChange(event) {
     const characterGender = event.target.value
@@ -173,18 +201,18 @@ class CreateStoryFormCreateCharacters extends Component {
     this.props.handleCharacterGenderChange(characterGender, characterType) //this will pass heroName up to state in StoryContainer
   }
 
-  handleTricksterNameChange(event) {
-    const characterName = event.target.value
-    const characterType = "trickster"
-    this.setState({
-      trickster: {
-        name: characterName,
-        gender: this.state.trickster.gender,
-        emoji: <span role="img" aria-label="emoji">😜</span>
-      },
-    })
-    this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
-  }
+  // handleTricksterNameChange(event) {
+  //   const characterName = event.target.value
+  //   const characterType = "trickster"
+  //   this.setState({
+  //     trickster: {
+  //       name: characterName,
+  //       gender: this.state.trickster.gender,
+  //       emoji: <span role="img" aria-label="emoji">😜</span>
+  //     },
+  //   })
+  //   this.props.handleCharacterNameChange(characterName, characterType) //this will pass characterName and characterType up to state in StoryContainer
+  // }
 
   handleTricksterGenderChange(event) {
     const characterGender = event.target.value
@@ -209,10 +237,11 @@ class CreateStoryFormCreateCharacters extends Component {
         </Header>
 
         <Form.Group>
-          <Form.Field label="Hero Name" placeholder="HERO"
+          <Form.Field label="Hero Name" placeholder="HERO" name="hero"
             width={6}
             control="input" type="text" key="heroName"
-            onChange={this.handleHeroNameChange.bind(this)}
+            // onChange={this.handleHeroNameChange.bind(this)}
+            onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
           <Form.Field width={4} className="genderField">
@@ -250,10 +279,11 @@ class CreateStoryFormCreateCharacters extends Component {
         <Divider />
 
         <Form.Group>
-          <Form.Field label="Shadow Name" placeholder="SHADOW"
+          <Form.Field label="Shadow Name" placeholder="SHADOW" name="shadow"
             width={6}
             control="input" type="text" key="shadowName"
-            onChange={this.handleShadowNameChange.bind(this)}
+            // onChange={this.handleShadowNameChange.bind(this)}
+            onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
           <Form.Field width={4} className="genderField">
@@ -291,10 +321,11 @@ class CreateStoryFormCreateCharacters extends Component {
         <Divider />
 
         <Form.Group>
-          <Form.Field label="Friend Name" placeholder="FRIEND"
+          <Form.Field label="Friend Name" placeholder="FRIEND" name="friend"
             width={6}
             control="input" type="text" key="friendName"
-            onChange={this.handleFriendNameChange.bind(this)}
+            // onChange={this.handleFriendNameChange.bind(this)}
+            onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
           <Form.Field width={4} className="genderField">
@@ -330,10 +361,11 @@ class CreateStoryFormCreateCharacters extends Component {
         <Divider />
 
         <Form.Group>
-          <Form.Field label="Lover Name" placeholder="LOVER"
+          <Form.Field label="Lover Name" placeholder="LOVER" name="lover"
             width={6}
             control="input" type="text" key="loverName"
-            onChange={this.handleLoverNameChange.bind(this)}
+            // onChange={this.handleLoverNameChange.bind(this)}
+            onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
           <Form.Field width={4} className="genderField">
@@ -372,10 +404,11 @@ class CreateStoryFormCreateCharacters extends Component {
         <Divider />
 
         <Form.Group>
-          <Form.Field label="Mentor Name" placeholder="MENTOR"
+          <Form.Field label="Mentor Name" placeholder="MENTOR" name="mentor"
             width={6}
             control="input" type="text" key="mentorName"
-            onChange={this.handleMentorNameChange.bind(this)}
+            // onChange={this.handleMentorNameChange.bind(this)}
+            onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
           <Form.Field width={4} className="genderField">
@@ -413,10 +446,11 @@ class CreateStoryFormCreateCharacters extends Component {
         <Divider />
 
         <Form.Group>
-          <Form.Field label="Trickster Name" placeholder="TRICKSTER"
+          <Form.Field label="Trickster Name" placeholder="TRICKSTER" name="trickster"
             width={6}
             control="input" type="text" key="TricksterName"
-            onChange={this.handleTricksterNameChange.bind(this)}
+            // onChange={this.handleTricksterNameChange.bind(this)}
+            onChange={this.handleCharacterNameChangeLocally.bind(this)}
           />
 
           <Form.Field width={4} className="genderField">
