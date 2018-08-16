@@ -92,6 +92,8 @@ class CreateStoryFormCreateCharacters extends Component {
   render() {
     console.log('CreateStoryFormCreateCharacters, this.state:', this.state)
 
+    let characterTypes = ["hero", "shadow", "friend", "lover", "mentor", "trickster"]
+
     return (
       <div className="create-characters">
         <Header as='h2' textAlign='center'>
@@ -102,7 +104,26 @@ class CreateStoryFormCreateCharacters extends Component {
         {/* abstracting below Form.Group */}
         {/* <Form.Group> */}
 
-          <CreateCharactersFormGroup
+        {
+          characterTypes.map(characterType => {
+            return (
+              <div>
+                <CreateCharactersFormGroup
+                  characterEmoji={this.state[characterType].emoji}
+                  characterGender={this.state[characterType].gender}
+                  characterName={this.state[characterType].name}
+                  characterType={characterType}
+                  onChangeCharacterGender={this.handleCharacterGenderChangeLocally.bind(this)}
+                  onChangeCharacterName={this.handleCharacterNameChangeLocally.bind(this)}
+                  placeholder={this.capitalizeFirstLetter(characterType)}
+                />
+                <Divider />
+              </div>
+            )
+          })
+        }
+
+          {/* <CreateCharactersFormGroup
             characterEmoji={this.state["hero"].emoji}
             characterGender={this.state["hero"].gender}
             characterName={this.state["hero"].name}
@@ -110,7 +131,7 @@ class CreateStoryFormCreateCharacters extends Component {
             onChangeCharacterGender={this.handleCharacterGenderChangeLocally.bind(this)}
             onChangeCharacterName={this.handleCharacterNameChangeLocally.bind(this)}
             placeholder={this.capitalizeFirstLetter("hero")}
-          />
+          /> */}
 
           {/* <CreateCharactersFormFieldName
             characterType={"hero"}
@@ -135,7 +156,7 @@ class CreateStoryFormCreateCharacters extends Component {
         {/* </Form.Group> */}
         {/* abstracting above Form.Group */}
 
-        <Divider />
+        {/* <Divider />
 
         <Form.Group>
           <Form.Field label="Shadow Name" placeholder="SHADOW" name="shadow"
@@ -337,7 +358,7 @@ class CreateStoryFormCreateCharacters extends Component {
             <br></br>
             gender: {this.state.trickster.gender}
           </Form.Field>
-        </Form.Group>
+        </Form.Group> */}
       </div>
     )
   }
