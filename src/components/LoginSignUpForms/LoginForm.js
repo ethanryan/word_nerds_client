@@ -69,60 +69,76 @@ class LoginForm extends React.Component {
     return (
       <div className="LoginSignUp-divs">
 
-        <Form onSubmit={this.handleSubmit} className="LoginForm-orange">
+        <Form
+          onSubmit={this.handleSubmit}
+          className="LoginForm-orange">
 
-          <h1 className="center-h1">Log in to Word Nerds</h1>
+          <h1 className="center-h1">
+            Log in to Word Nerds
+          </h1>
 
-          <p className="center">New to Word Nerds? <Link to={`/register`} className='hoverYellow'>Sign up now.</Link></p>
+          <p className="center">
+            New to Word Nerds?
+            <Link
+              to={`/register`}
+              className='hoverYellow'>
+              Sign up now.
+            </Link>
+          </p>
 
           <Form.Field>
-            <div className={this.props.nameOrPasswordError === true ? 'nameOrPasswordError' : 'hidden'}
-              >Incorrect Username or Password.</div>
-            </Form.Field>
-
-            <Form.Field>
-              <label>Username</label>
-              <input
-                id='usernameInput'
-                className={shouldMarkError('name') ? 'error' : ''}
-                placeholder='Username'
-                // autoFocus
-                value={this.state.name}
-                onChange={ e => this.handleChange('name', e.target.value)}
-                onBlur={this.handleBlur('name')}
-              />
-              <span className={shouldMarkError('name') ? 'error' : 'hidden'}
-                >invalid name</span>
-              </Form.Field>
-
-
-              <Form.Field>
-                <label>Password</label>
-                <input
-                  id='passwordInput'
-                  type='password'
-                  className={shouldMarkError('password') ? 'error' : ''}
-                  placeholder='Password'
-                  value={this.state.password}
-                  onChange={ e => this.handleChange('password', e.target.value)}
-                  onBlur={this.handleBlur('password')}
-                />
-                <span className={shouldMarkError('password') ? 'error' : 'hidden'}
-                  >invalid password</span>
-                </Form.Field>
-
-                <Form.Button
-                  content='Log In'
-                  type='submit'
-                  primary
-                  fluid
-                  disabled={isDisabled}
-                />
-
-              </Form>
+            <div className={this.props.nameOrPasswordError === true ? 'nameOrPasswordError' : 'hidden'}>
+              Incorrect Username or Password.
             </div>
-          )
-        }
-      }
+          </Form.Field>
 
-      export default LoginForm
+          <Form.Field>
+            <label>
+              Username
+            </label>
+            <input
+              id='usernameInput'
+              className={shouldMarkError('name') ? 'error' : ''}
+              placeholder='Username'
+              // autoFocus
+              value={this.state.name}
+              onChange={ e => this.handleChange('name', e.target.value)}
+              onBlur={this.handleBlur('name')}
+            />
+            <span className={shouldMarkError('name') ? 'error' : 'hidden'}>
+              invalid name
+            </span>
+          </Form.Field>
+
+
+          <Form.Field>
+            <label>Password</label>
+            <input
+              id='passwordInput'
+              type='password'
+              className={shouldMarkError('password') ? 'error' : ''}
+              placeholder='Password'
+              value={this.state.password}
+              onChange={ e => this.handleChange('password', e.target.value)}
+              onBlur={this.handleBlur('password')}
+            />
+            <span className={shouldMarkError('password') ? 'error' : 'hidden'}>
+              invalid password
+            </span>
+          </Form.Field>
+
+          <Form.Button
+            content='Log In'
+            type='submit'
+            primary
+            fluid
+            disabled={isDisabled}
+          />
+
+        </Form>
+      </div>
+    )
+  }
+}
+
+export default LoginForm
