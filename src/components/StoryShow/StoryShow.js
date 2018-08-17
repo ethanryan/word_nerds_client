@@ -48,12 +48,17 @@ const StoryShow = (props) => {
             Title: { props.story.title ? props.story.title : 0 }
           </h2>
 
-          <p>
-            Edit this story:
-            <Link className='btn btn-primary'
-              to={`/stories/${props.story.id}/edit`}
-              > {props.story.title}</Link>
-            </p>
+          {
+            (props.story.user.name !== props.user.name) ?
+            <p style={{color: "red"}}>Story can only be edited by its creator.</p>
+            :
+            <p>
+              Edit this story:
+              <Link className='btn btn-primary'
+                to={`/stories/${props.story.id}/edit`}
+                > {props.story.title}</Link>
+              </p>
+            }
 
             <p>
               Story ID: { props.story.id ? props.story.id : "story ID here" }
