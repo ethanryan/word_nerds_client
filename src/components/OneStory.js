@@ -9,6 +9,20 @@ import replacePlotTitleWithEmoji from '../helpers/replacePlotTitleWithEmoji'
 
 import { Card, Button, Modal } from 'semantic-ui-react'
 
+function getDateTime(argument) {
+  // let thing = argument
+  return new Date(argument).toLocaleString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+    timeZoneName: 'short'
+  })
+}
+
 
 const OneStory = (props) => {
 
@@ -48,29 +62,41 @@ const OneStory = (props) => {
           </div>
 
           <div className="floatLeft">
-            Created: {story.created_at ? new Date(story.created_at).toLocaleString('en-US', {
-              weekday: 'short',
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric',
-              hour: 'numeric',
-              minute: 'numeric',
-              hour12: true,
-              timeZoneName: 'short'
-            }) : "story.created_at here, from OneStory"}
+            Created: {
+              story.created_at ?
+              getDateTime(story.created_at)
+            //   new Date(story.created_at).toLocaleString('en-US', {
+            //   weekday: 'short',
+            //   month: 'short',
+            //   day: 'numeric',
+            //   year: 'numeric',
+            //   hour: 'numeric',
+            //   minute: 'numeric',
+            //   hour12: true,
+            //   timeZoneName: 'short'
+            // })
+            : "story.created_at here, from OneStory"
+          }
 
             <br></br>
 
-            Updated: {story.updated_at ? new Date(story.updated_at).toLocaleString('en-US', {
-              weekday: 'short',
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric',
-              hour: 'numeric',
-              minute: 'numeric',
-              hour12: true,
-              timeZoneName: 'short'
-            }) : "story.updated_at here, from OneStory"}
+            Updated: {
+              story.updated_at
+              ?
+              getDateTime(story.updated_at)
+            //   new Date(story.updated_at).toLocaleString('en-US', {
+            //   weekday: 'short',
+            //   month: 'short',
+            //   day: 'numeric',
+            //   year: 'numeric',
+            //   hour: 'numeric',
+            //   minute: 'numeric',
+            //   hour12: true,
+            //   timeZoneName: 'short'
+            // })
+            :
+            "story.updated_at here, from OneStory"
+          }
           </div>
         </Card.Meta>
 
