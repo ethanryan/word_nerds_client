@@ -23,105 +23,91 @@ function getDateTime(argument) {
   })
 }
 
-
 const OneStory = (props) => {
 
   // console.log(`OneStory props: `, props);
-
   //debugger
   const storyForModal = props.userStories.find(story => story.id === props.activeModalStoryId)
   // console.log('OneStory---->>>>>> storyForModal is:::::', storyForModal)
 
-
   const eachStory = props.userStories.map( (story, index) =>
 
-  <div key={story.id ? story.id : "story.id here"} className="OneStory-orange">
-    {/* <Modal trigger={<Button>Show Modal</Button>}> */}
+  <div
+    key={story.id ? story.id : "story.id here"}
+    className="OneStory-orange"
+    >
+      {/* <Modal trigger={<Button>Show Modal</Button>}> */}
 
-    {/* <Modal.Header>This is a modal motherfucker</Modal.Header> */}
-    <Card fluid>
+      {/* <Modal.Header>This is a modal motherfucker</Modal.Header> */}
+      <Card fluid>
 
-      <Card.Content>
-        <Card.Header>
-          Story Title:
-          {/* <Link to={`/stories/${story.id}/edit`}> {story.title}</Link> */}
-          <Link to={`/stories/${story.id}`} onClick={props.scrollToTop}> {story.title}</Link>
+        <Card.Content>
+          <Card.Header>
+            Story Title:
+            {/* <Link to={`/stories/${story.id}/edit`}> {story.title}</Link> */}
+            <Link to={`/stories/${story.id}`} onClick={props.scrollToTop}> {story.title}</Link>
 
-        </Card.Header>
-        <Card.Meta>
-          Creator: {story.user ? story.user.name : "story.user.name here, from OneStory"}
-        </Card.Meta>
-      </Card.Content>
+          </Card.Header>
+          <Card.Meta>
+            Creator: {story.user ? story.user.name : "story.user.name here, from OneStory"}
+          </Card.Meta>
+        </Card.Content>
 
-      <Card.Content>
-        <Card.Meta>
-          <div className="floatRight">
-            Story ID: {story.id ? story.id : 0}
-            <br></br>
-            Word Count: {story.content ? story.content.split(' ').length : 0}
-          </div>
+        <Card.Content>
+          <Card.Meta>
+            <div className="floatRight">
+              Story ID: {story.id ? story.id : 0}
+              <br></br>
+              Word Count: {story.content ? story.content.split(' ').length : 0}
+            </div>
 
-          <div className="floatLeft">
-            Created: {
-              story.created_at ?
-              getDateTime(story.created_at)
-            //   new Date(story.created_at).toLocaleString('en-US', {
-            //   weekday: 'short',
-            //   month: 'short',
-            //   day: 'numeric',
-            //   year: 'numeric',
-            //   hour: 'numeric',
-            //   minute: 'numeric',
-            //   hour12: true,
-            //   timeZoneName: 'short'
-            // })
-            : "story.created_at here, from OneStory"
-          }
+            <div className="floatLeft">
+              Created:
+              {
+                story.created_at
+                ?
+                getDateTime(story.created_at)
+                :
+                "story.created_at here, from OneStory"
+              }
 
-            <br></br>
+              <br></br>
 
-            Updated: {
-              story.updated_at
-              ?
-              getDateTime(story.updated_at)
-            //   new Date(story.updated_at).toLocaleString('en-US', {
-            //   weekday: 'short',
-            //   month: 'short',
-            //   day: 'numeric',
-            //   year: 'numeric',
-            //   hour: 'numeric',
-            //   minute: 'numeric',
-            //   hour12: true,
-            //   timeZoneName: 'short'
-            // })
-            :
-            "story.updated_at here, from OneStory"
-          }
-          </div>
-        </Card.Meta>
+              Updated:
+              {
+                story.updated_at
+                ?
+                getDateTime(story.updated_at)
+                :
+                "story.updated_at here, from OneStory"
+              }
+            </div>
+          </Card.Meta>
 
-      </Card.Content>
+        </Card.Content>
 
-      {/* <Card.Content>
-        Paragraph order: {story.content ? story.paragraphs.map((paragraph) => {
+        {/* <Card.Content>
+          Paragraph order: {story.content ? story.paragraphs.map((paragraph) => {
           return (paragraph.order) }).join(', ') : 0}
-      </Card.Content> */}
+        </Card.Content> */}
 
-      <Card.Content>
-        Genres: {story.story_genre_names ? story.story_genre_names : 0}
-      </Card.Content>
+        <Card.Content>
+          Genres: {story.story_genre_names ? story.story_genre_names : 0}
+        </Card.Content>
 
-      <Card.Content>
-        Plots:  {story.story_plot_titles ? story.story_plot_titles.split(", ").map((plotTitle) => {
-          return (
-            replacePlotTitleWithEmoji(plotTitle)
-          )
-        }).join('   ') : 0}
-      </Card.Content>
+        <Card.Content>
+          Plots:  {
+            story.story_plot_titles ? story.story_plot_titles.split(", ").map((plotTitle) => {
+              return (
+                replacePlotTitleWithEmoji(plotTitle)
+              )
+            }).join('   ') : 0
+          }
+        </Card.Content>
 
-      <Card.Content extra>
+        <Card.Content extra>
 
-        {/* <Button basic color='green' as={Link}
+          {/* <Button basic color='green' as={Link}
           to={`/stories/${story.id}`}>View {story.title}
         </Button>
 
@@ -138,62 +124,69 @@ const OneStory = (props) => {
             open={props.indexOfStoryModal === index} //open takes boolean, if no match, modal won't open
             onClose={() => props.closeModal()}
             id={props.activeModalStoryId} //passing id here...
-
             trigger={
-            <Button basic color='green'
-              onClick={(event) => props.openModal(event, index, story.id)} //sending clicked story as argument here...
-              // as={Link} to={`/stories/${story.id}`}
-              >View</Button>
-            }>
+              <Button
+                basic color='green'
+                onClick={(event) => props.openModal(event, index, story.id)} //sending clicked story as argument here...
+                // as={Link} to={`/stories/${story.id}`}
+                >
+                  View
+                </Button>
+              }>
 
-            {props.storyShowModalIsEditable ? <p className="center">Edit Mode</p> : <p className="center">Read Only Mode</p>}
+              {
+                props.storyShowModalIsEditable ?
+                <p className="center">Edit Mode</p>
+                :
+                <p className="center">Read Only Mode</p>
+              }
 
-            {props.storyShowModalIsEditable ?
-              <div className="EditStoryForm-blue-modal">
-                <EditStoryForm
-                  story={storyForModal}
-                  closeModal={props.closeModal}
-                  editStoryFormIsModal={props.storyShowIsModal} //boolean to show or not show Cancel / close modal button
-                  handleUpdateStory={props.handleUpdateStory}
-                  handleDeleteStory={props.handleDeleteStory}
-                />
-              </div>
-              :
-              <div className="StoryShow-purple-modal">
-                <StoryShow
-                  closeModal={props.closeModal}
-                  user={props.user}
-                  story={storyForModal} //storyForModal, not story, which is each story in filteredStories
-                  handleUpdateStory={props.handleUpdateStory}
-                  handleDeleteStory={props.handleDeleteStory}
-                  storyShowIsModal={props.storyShowIsModal}
-                  storyShowModalIsEditable={props.storyShowModalIsEditable}
-                  toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
-                />
-              </div>
-            }
-          </Modal>
+              {
+                props.storyShowModalIsEditable ?
+                <div className="EditStoryForm-blue-modal">
+                  <EditStoryForm
+                    story={storyForModal}
+                    closeModal={props.closeModal}
+                    editStoryFormIsModal={props.storyShowIsModal} //boolean to show or not show Cancel / close modal button
+                    handleUpdateStory={props.handleUpdateStory}
+                    handleDeleteStory={props.handleDeleteStory}
+                  />
+                </div>
+                :
+                <div className="StoryShow-purple-modal">
+                  <StoryShow
+                    closeModal={props.closeModal}
+                    user={props.user}
+                    story={storyForModal} //storyForModal, not story, which is each story in filteredStories
+                    handleUpdateStory={props.handleUpdateStory}
+                    handleDeleteStory={props.handleDeleteStory}
+                    storyShowIsModal={props.storyShowIsModal}
+                    storyShowModalIsEditable={props.storyShowModalIsEditable}
+                    toggleStoryShowModalToEditable={props.toggleStoryShowModalToEditable}
+                  />
+                </div>
+              }
+            </Modal>
 
-          <Button basic color='red' onClick={() => {props.handleDeleteStory(story.id)}}
-            >Delete</Button>
-          </div>
-        </Card.Content>
-      </Card>
-    </div>
-  )
+            <Button
+              basic color='red'
+              onClick={() => {props.handleDeleteStory(story.id)}}
+              >
+                Delete
+              </Button>
+            </div>
+          </Card.Content>
+        </Card>
+      </div>
+    )
+    // console.log('hello from OneStory')
+    // console.log('filteredStories.length is', filteredStories.length)
+    return(
+      <div>
+        <ul className="UL-no-padding center">{ eachStory.reverse() }</ul>
+        {/* <p className="center">each story can be clicked, which renders it in the EditStoryForm</p> */}
+      </div>
+    )
+  }
 
-  // console.log('hello from OneStory')
-  // console.log('filteredStories.length is', filteredStories.length)
-  return(
-    <div>
-
-      <ul className="UL-no-padding center">{ eachStory.reverse() }</ul>
-
-      {/* <p className="center">each story can be clicked, which renders it in the EditStoryForm</p> */}
-
-    </div>
-  )
-
-}
-
-export default OneStory
+  export default OneStory
