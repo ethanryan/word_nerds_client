@@ -2,6 +2,8 @@ import _ from 'lodash'
 
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
 
 import { Table, Loader, Segment } from 'semantic-ui-react'
@@ -95,7 +97,19 @@ class OneStoryForMetadata extends React.Component {
 
               <Table.Row key={id ? id : "id"}>
 
-                <Table.Cell>{title ? title : "title"}</Table.Cell>
+                <Table.Cell>
+                  {
+                    title
+                    ?
+                    <Link to={`/stories/${id}`}
+                    // onClick={props.scrollToTop}
+                    >
+                      {title}
+                    </Link>
+                    :
+                    "title"
+                  }
+                </Table.Cell>
 
                 <Table.Cell>{user ? user.name : "story creator"}</Table.Cell>
 
