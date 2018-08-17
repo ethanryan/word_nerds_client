@@ -101,8 +101,9 @@ class OneStoryForMetadata extends React.Component {
                   {
                     title
                     ?
-                    <Link to={`/stories/${id}`}
-                    // onClick={props.scrollToTop}
+                    <Link
+                      to={`/stories/${id}`}
+                      onClick={this.props.scrollToTop}
                     >
                       {title}
                     </Link>
