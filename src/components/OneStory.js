@@ -6,22 +6,9 @@ import StoryShow from './StoryShow/StoryShow'
 import EditStoryForm from './EditStoryForm/EditStoryForm'
 
 import replacePlotTitleWithEmoji from '../helpers/replacePlotTitleWithEmoji'
+import getDateTime from '../helpers/getDateTime'
 
 import { Card, Button, Modal } from 'semantic-ui-react'
-
-function getDateTime(argument) {
-  // let thing = argument
-  return new Date(argument).toLocaleString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-    timeZoneName: 'short'
-  })
-}
 
 const OneStory = (props) => {
 
