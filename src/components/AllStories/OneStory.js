@@ -2,11 +2,11 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-import StoryShow from './StoryShow/StoryShow'
-import EditStoryForm from './EditStoryForm/EditStoryForm'
+import StoryShow from '../StoryShow/StoryShow'
+import EditStoryForm from '../EditStoryForm/EditStoryForm'
 
-import replacePlotTitleWithEmoji from '../helpers/replacePlotTitleWithEmoji'
-import getDateTime from '../helpers/getDateTime'
+import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
+import getDateTime from '../../helpers/getDateTime'
 
 import { Card, Button, Modal } from 'semantic-ui-react'
 

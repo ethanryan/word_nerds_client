@@ -1,6 +1,6 @@
 import React from 'react'
 
-import OneStory from '../OneStory'
+import OneStory from './OneStory'
 
 import { Card, Loader, Segment, Button } from 'semantic-ui-react'
 
