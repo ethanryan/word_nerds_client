@@ -8,22 +8,17 @@ import Metadata from '../Metadata/Metadata'
 import StoryShow from '../StoryShow/StoryShow'
 import RightSideBar from './RightSideBar'
 
-// import { Grid, Button, Card } from 'semantic-ui-react'
 import { Grid } from 'semantic-ui-react'
 
-// import { Switch, Route, Link } from 'react-router-dom'
 import { Switch, Route } from 'react-router-dom'
 
-
 const StoryPage = (props) => {
+  //NOTE: rename StoryPage to HomePage? or RoutesPage? want to eventually have scripts as well as stories...
   // console.log('StoryPage props: ', props);
-
-
   return (
     <div>
 
       <Grid stackable centered columns={2}>
-        {/* <Grid.Row> */}
 
         <Grid.Column width={12}>
 
@@ -31,9 +26,11 @@ const StoryPage = (props) => {
 
           <Switch>
             <Route
-              exact path='/' //NOTE: want to make this path /create/story ... then will also have /create/script and other create options.
+              exact path='/'
               render={() =>
                 <CreatePage
+                  //NOTE: CreatePage will render button that links to CreateStoryForm, at /stories/create
+                  //NOTE: CreatePage will also have button that links to CreateScriptForm, at /scripts/create, as well as other create options eventually...
                   scrollToTop={props.scrollToTop}
                   handleSubmit={props.handleSubmit}
                   handleClearForm={props.handleClearForm}
