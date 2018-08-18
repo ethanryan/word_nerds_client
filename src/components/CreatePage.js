@@ -6,28 +6,30 @@ import { Container, Card, Divider } from 'semantic-ui-react'
 
 
 const CreatePage = (props) => {
-
+  
   return(
-    <div className="CreatePage-style">
+    <div className="center CreatePage-style">
 
       <Container>
 
-        <Card fluid>
-          <Card.Content>
-            <Card.Header>
+        <div className="create-page-description">
+          <Card fluid>
+            <Card.Content>
+              <Card.Header>
                 <b>Create Your Story</b>
-            </Card.Header>
-            <Card.Description>
-              <ul className="modal-trigger-description-list">
-                <li>1. Click a button below.</li>
-                <li>2. Choose a genre.</li>
-                <li>3. Give your characters names and genders.</li>
-                <li>4. Click the 'Submit' button.</li>
-                <li>5. Read, edit, and enjoy your story!</li>
-              </ul>
-          </Card.Description>
-          </Card.Content>
-        </Card>
+              </Card.Header>
+              <Card.Description>
+                <ul className="create-page-description-list">
+                  <li>1. Click a button below.</li>
+                  <li>2. Choose a genre.</li>
+                  <li>3. Give your characters names and genders.</li>
+                  <li>4. Click the 'Submit' button.</li>
+                  <li>5. Read, edit, and enjoy your story!</li>
+                </ul>
+              </Card.Description>
+            </Card.Content>
+          </Card>
+        </div>
 
         <Link
           to={`/stories/create`}>

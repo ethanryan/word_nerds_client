@@ -13,26 +13,6 @@ const CreateStoryForm = (props) => {
   return(
     <div className="center not-a-modal-wrapper">
 
-        {/* <div className="modal-trigger-description">
-          <Card fluid>
-            <Card.Content>
-              <Card.Header>
-                  <b>Create Your Story</b>
-              </Card.Header>
-              <Card.Description>
-                <ul className="modal-trigger-description-list">
-                  <li>1. Click a button below.</li>
-                  <li>2. Choose a genre.</li>
-                  <li>3. Give your characters names and genders.</li>
-                  <li>4. Click the 'Submit' button.</li>
-                  <li>5. Read, edit, and enjoy your story!</li>
-                </ul>
-            </Card.Description>
-            </Card.Content>
-          </Card>
-        </div> */}
-
-
         {/* <div className="modal-trigger">
           <Card fluid>
             <Card.Content>

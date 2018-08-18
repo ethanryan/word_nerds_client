@@ -27,12 +27,12 @@
   /*top right bottom left*/
 }
 
-.modal-trigger-description {
+.create-page-description {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
   margin-bottom: 5%;
 }
 
-.modal-trigger-description-list {
+.create-page-description-list {
   display: inline-block;
   text-align: left;
   /* left aligning text within centered element */
