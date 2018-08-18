@@ -1,7 +1,7 @@
 import React from 'react'
 
 import CreateStoryForm from './CreateStoryForm/CreateStoryForm'
-import CreatePage from './CreatePage'
+import CreatePage from './CreatePage/CreatePage'
 import EditStoryForm from './EditStoryForm/EditStoryForm'
 import AllStories from './AllStories/AllStories'
 import Metadata from './Metadata/Metadata'
