@@ -156,28 +156,26 @@ const StoryPage = (props) => {
 )
 } //end of StoryPage
 
-//////
-
-StoryPage.defaultProps = {
-  story: 'story content here', //need this so props aren't null
-  title: 'story title here',
-  // image: 'story image here',
-  genres: 'story genres here',
-  plots: 'story plots here',
-  user_id: 'user_id here',
-  stories: [
-    {
-      characters: 'story characters StoryPage defaultProps',
-      content: 'words words ----- word words words',
-      genres: [{one_genre: 'story genres here'}],
-      id: 'story ID here',
-      paragraphs: 'story paragraphs here',
-      plots: [{title: 'Halloween'}],
-      title: 'title here',
-      user: {name: 'username here'}
-    },
-  ]
-}
+// StoryPage.defaultProps = {
+//   story: 'story content here', //need this so props aren't null
+//   title: 'story title here',
+//   // image: 'story image here',
+//   genres: 'story genres here',
+//   plots: 'story plots here',
+//   user_id: 'user_id here',
+//   stories: [
+//     {
+//       characters: 'story characters StoryPage defaultProps',
+//       content: 'words words ----- word words words',
+//       genres: [{one_genre: 'story genres here'}],
+//       id: 'story ID here',
+//       paragraphs: 'story paragraphs here',
+//       plots: [{title: 'Halloween'}],
+//       title: 'title here',
+//       user: {name: 'username here'}
+//     },
+//   ]
+// }
 
 
 export default StoryPage
