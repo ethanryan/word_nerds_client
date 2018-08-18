@@ -120,6 +120,33 @@
   /*top right bottom left*/
 }
 
+.CreatePage-style {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  background: white;
+  margin: 5px 15px 50px 15px;
+  padding: 20% 20% 20% 20%;
+  /*top right bottom left*/
+}
+
+#create-story-button {
+  background-color: white!important;
+  border: 2px solid blue!important;
+  border-radius: .28571429rem;
+  color: blue!important;
+  cursor: pointer;
+  font-size: 1.42857143rem;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-weight: 400;
+  margin: 0 .25em 0 0;
+  padding: .78571429em 1.5em .78571429em;
+  width: 100%;
+}
+
+#create-story-button:hover {
+  background-color: blue!important;
+  color: white!important;
+}
+
 .AllStories-green {
   /* border: 2px solid green; */
   /* border-radius: 25px; */
