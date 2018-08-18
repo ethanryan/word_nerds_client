@@ -1,6 +1,7 @@
 import React from 'react'
 
 import CreateStoryForm from './CreateStoryForm/CreateStoryForm'
+import CreatePage from './CreatePage'
 import EditStoryForm from './EditStoryForm/EditStoryForm'
 import AllStories from './AllStories'
 import Metadata from './Metadata/Metadata'
@@ -32,11 +33,11 @@ const StoryPage = (props) => {
             <Route
               exact path='/' //NOTE: want to make this path /create/story ... then will also have /create/script and other create options.
               render={() =>
-                <CreateStoryForm
+                <CreatePage
                   scrollToTop={props.scrollToTop}
                   handleSubmit={props.handleSubmit}
                   handleClearForm={props.handleClearForm}
-                  user_id={props.user ? props.user.id : "props.user.id here"}
+                  user_id={props.user.id}
                   genreSelection={props.genreSelection} //this goes to CreateStoryForm
                   //below will be passed down to CreateStoryFormSelectGenre:
                   plots={props.plots}
@@ -46,6 +47,28 @@ const StoryPage = (props) => {
                   handleCharacterNameChange={props.handleCharacterNameChange}
                   handleCharacterGenderChange={props.handleCharacterGenderChange}
                 />
+              }
+          />
+
+          <Route
+            exact path='/stories/create'
+            render={() =>
+              <div>
+                <CreateStoryForm
+                  scrollToTop={props.scrollToTop}
+                  handleSubmit={props.handleSubmit}
+                  handleClearForm={props.handleClearForm}
+                  user_id={props.user.id}
+                  genreSelection={props.genreSelection} //this goes to CreateStoryForm
+                  //below will be passed down to CreateStoryFormSelectGenre:
+                  plots={props.plots}
+                  handleGenreChange={props.handleGenreChange}
+                  //below will be passed down to CreateStoryFormCreateCharacters:
+                  characterProps={props.characterProps}
+                  handleCharacterNameChange={props.handleCharacterNameChange}
+                  handleCharacterGenderChange={props.handleCharacterGenderChange}
+                />
+              </div>
             }
           />
 
