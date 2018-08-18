@@ -1,13 +1,11 @@
 import React from 'react'
 
-import nerdy from '../components/assets/nerdy.gif'
-
 import CreateStoryForm from './CreateStoryForm/CreateStoryForm'
 import EditStoryForm from './EditStoryForm/EditStoryForm'
 import AllStories from './AllStories'
 import Metadata from './Metadata/Metadata'
 import StoryShow from './StoryShow/StoryShow'
-import Sentence from '../components/Sentence/Sentence'
+import RightSideBar from './RightSideBar'
 
 // import { Grid, Button, Card } from 'semantic-ui-react'
 import { Grid } from 'semantic-ui-react'
@@ -124,15 +122,7 @@ const StoryPage = (props) => {
 
       <Grid.Column width={4}>
 
-        <div className="nerdy-storypage">
-          <img src={nerdy} className="nerdy" alt="nerdy gif"/>
-
-          <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
-        </div>
-
-        <div className="storypage-sentence">
-          <Sentence />
-        </div>
+        <RightSideBar />
 
       </Grid.Column>
 
