@@ -1,8 +1,8 @@
 import React from 'react'
 
-import nerdy from '../components/assets/nerdy.gif'
+import nerdy from '../../components/assets/nerdy.gif'
 
-import Sentence from '../components/Sentence/Sentence'
+import Sentence from '../../components/Sentence/Sentence'
 
 const RightSideBar = (props) => {
 

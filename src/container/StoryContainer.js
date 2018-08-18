@@ -8,7 +8,7 @@ import * as api from '../api'
 
 import NavBar from '../components/NavBar/NavBar'
 import NavBarLoginSignUp from '../components/NavBar/NavBarLoginSignUp'
-import StoryPage from '../components/StoryPage'
+import StoryPage from '../components/StoryPage/StoryPage'
 
 import LoginSignUp from '../container/LoginSignUp'
 

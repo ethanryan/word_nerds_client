@@ -1,11 +1,11 @@
 import React from 'react'
 
-import CreateStoryForm from './CreateStoryForm/CreateStoryForm'
-import CreatePage from './CreatePage/CreatePage'
-import EditStoryForm from './EditStoryForm/EditStoryForm'
-import AllStories from './AllStories/AllStories'
-import Metadata from './Metadata/Metadata'
-import StoryShow from './StoryShow/StoryShow'
+import CreateStoryForm from '../CreateStoryForm/CreateStoryForm'
+import CreatePage from '../CreatePage/CreatePage'
+import EditStoryForm from '../EditStoryForm/EditStoryForm'
+import AllStories from '../AllStories/AllStories'
+import Metadata from '../Metadata/Metadata'
+import StoryShow from '../StoryShow/StoryShow'
 import RightSideBar from './RightSideBar'
 
 // import { Grid, Button, Card } from 'semantic-ui-react'
