@@ -6,7 +6,7 @@ import { Container, Card, Divider } from 'semantic-ui-react'
 
 
 const CreatePage = (props) => {
-  
+
   return(
     <div className="center CreatePage-style">
 
@@ -32,7 +32,7 @@ const CreatePage = (props) => {
         </div>
 
         <Link
-          to={`/stories/create`}>
+          to={`/stories/create/short-story`}>
           <button id="create-story-button">
             Create A Short Story
           </button>

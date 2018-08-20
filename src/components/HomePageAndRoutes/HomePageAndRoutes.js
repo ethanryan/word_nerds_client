@@ -45,7 +45,7 @@ const HomePageAndRoutes = (props) => {
             />
 
             <Route
-              exact path='/stories/create'
+              exact path='/stories/create/short-story'
               render={() =>
                 <div>
                   <CreateStoryForm
