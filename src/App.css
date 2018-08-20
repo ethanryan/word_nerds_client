@@ -139,6 +139,7 @@
   font-weight: 400;
   margin: 0 .25em 0 0;
   padding: .78571429em 1.5em .78571429em;
+  transition-duration: 0.4s;
   width: 100%;
 }
 
