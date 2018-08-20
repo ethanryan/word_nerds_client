@@ -9,7 +9,7 @@ const RightSideBar = (props) => {
   return(
     <div>
 
-      <div className="nerdy-storypage">
+      <div className="nerdy-HomePageAndRoutes">
         <img src={nerdy}
           className="nerdy"
           alt="nerdy gif"
@@ -20,7 +20,7 @@ const RightSideBar = (props) => {
         </h1>
       </div>
 
-      <div className="storypage-sentence">
+      <div className="HomePageAndRoutes-sentence">
         <Sentence />
       </div>
 

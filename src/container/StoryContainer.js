@@ -8,7 +8,7 @@ import * as api from '../api'
 
 import NavBar from '../components/NavBar/NavBar'
 import NavBarLoginSignUp from '../components/NavBar/NavBarLoginSignUp'
-import StoryPage from '../components/StoryPage/StoryPage'
+import HomePageAndRoutes from '../components/HomePageAndRoutes/HomePageAndRoutes'
 
 import LoginSignUp from '../container/LoginSignUp'
 
@@ -329,7 +329,7 @@ class StoryContainer extends Component {
                 location={this.props.location}
               />
 
-              <StoryPage
+              <HomePageAndRoutes
                 scrollToTop={this.scrollToTop.bind(this)}
                 //props for CreateStoryForm
                 handleSubmit={this.handleSubmit.bind(this)}

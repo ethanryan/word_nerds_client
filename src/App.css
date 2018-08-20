@@ -295,7 +295,7 @@
   /*top, right, bottom, left*/
 }
 
-.storypage-sentence {
+.HomePageAndRoutes-sentence {
   margin: 25px 15px 5px -25px;
   /*top, right, bottom, left*/
 }
@@ -315,7 +315,7 @@
   text-align: center;
 }
 
-.nerdy-storypage {
+.nerdy-HomePageAndRoutes {
   /* margin-top: 25%; */
   /* margin-left: auto; /*this plus a width centers the gif*/
   /* margin-right: auto; /*this plus a width centers the gif*/
@@ -540,7 +540,7 @@ span.blinkObject {
     margin: 0 auto;
   }
 
-  .storypage-sentence {
+  .HomePageAndRoutes-sentence {
     margin: 25px 15px 5px 15px;
     /*top, right, bottom, left*/
   }
@@ -549,7 +549,7 @@ span.blinkObject {
     margin-top: 0%;
   }
 
-  .nerdy-storypage {
+  .nerdy-HomePageAndRoutes {
     margin-top: 2%;
     margin-left: auto; /*this plus a width centers the gif*/
     margin-right: auto; /*this plus a width centers the gif*/

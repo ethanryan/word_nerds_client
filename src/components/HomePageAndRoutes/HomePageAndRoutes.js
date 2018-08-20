@@ -12,9 +12,9 @@ import { Grid } from 'semantic-ui-react'
 
 import { Switch, Route } from 'react-router-dom'
 
-const StoryPage = (props) => {
-  //NOTE: rename StoryPage to HomePage? or RoutesPage? want to eventually have scripts as well as stories...
-  // console.log('StoryPage props: ', props);
+const HomePageAndRoutes = (props) => {
+  //NOTE: rename HomePageAndRoutes to HomePage? or RoutesPage? want to eventually have scripts as well as stories...
+  // console.log('HomePageAndRoutes props: ', props);
   return (
     <div>
 
@@ -22,7 +22,7 @@ const StoryPage = (props) => {
 
         <Grid.Column width={12}>
 
-          {/* <all the switches within StoryPage, forms, show, index, etc.../> */}
+          {/* <all the switches within HomePageAndRoutes, forms, show, index, etc.../> */}
 
           <Switch>
             <Route
@@ -151,9 +151,9 @@ const StoryPage = (props) => {
     </Grid>
   </div>
 )
-} //end of StoryPage
+} //end of HomePageAndRoutes
 
-// StoryPage.defaultProps = {
+// HomePageAndRoutes.defaultProps = {
 //   story: 'story content here', //need this so props aren't null
 //   title: 'story title here',
 //   // image: 'story image here',
@@ -162,7 +162,7 @@ const StoryPage = (props) => {
 //   user_id: 'user_id here',
 //   stories: [
 //     {
-//       characters: 'story characters StoryPage defaultProps',
+//       characters: 'story characters HomePageAndRoutes defaultProps',
 //       content: 'words words ----- word words words',
 //       genres: [{one_genre: 'story genres here'}],
 //       id: 'story ID here',
@@ -175,4 +175,4 @@ const StoryPage = (props) => {
 // }
 
 
-export default StoryPage
+export default HomePageAndRoutes
