@@ -6,8 +6,6 @@ import StoryShowSummary from '../StoryShow/StoryShowSummary'
 
 import { Header, Form, Divider, Button, Loader, Segment } from 'semantic-ui-react'
 
-// import Markov from './Markov'
-
 // var randomNouns = ["dog", "cat", "mouse", "chair", "glass"]
 // var randomVerbs = ["runs", "kills", "eats", "sleeps", "destroys"]
 
@@ -70,29 +68,11 @@ class EditStoryForm extends Component {
     this.setState({input: ''})
   }
 
-  // componentDidMount() {
-  //   let cx = `018050256633849340962:zvrqetqkh78`
-  //   let query = this.state.title
-  //   let googleAPIkey = 'AIzaSyDPtQPW0z01peIpOp7tpzIRHtbSG3M11m4'
-  //
-  //   fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&cx=${cx}&searchType=image&key=${googleAPIkey}`, {
-  //     method: 'GET',
-  //   })
-  //   .then (response => response.json() )
-  //   // console.log('response from google api:', this.response )
-  //
-  //   .then (image => this.setState({
-  //     image: image.items[0].link
-  //   }) )
-  // }
-  /////////////////////////////////////////
-
   handleRandomFirstSentence() {
     let oneNoun = randomNouns[Math.floor(Math.random() * randomNouns.length)]
     let oneVerb = randomVerbs[Math.floor(Math.random() * randomVerbs.length)]
     let oneObject = randomObjects[Math.floor(Math.random() * randomObjects.length)]
     let randomSentence = oneNoun + oneVerb + oneObject
-
     // this.setState({input: randomSentence + " " + this.state.input}) //preserves changes, but adds new sentence to beginning
     this.setState({input: randomSentence + " " + this.props.story.content}) //replaces first sentence, but renders original story, without user changes
   }
@@ -115,10 +95,7 @@ class EditStoryForm extends Component {
 
     // debugger
 
-    // let str = (this.state.input ? this.state.input : "whatever null stringface")
-
     let wordCount = (this.state.input ? this.state.input.split(' ').length : 0)
-    // let wordCount = (this.state.input.split(' ').length)
 
     let paragraphs = (this.state.input ? this.state.input.split('-----').join('\n\n') : "paragraphs will go here")
 
@@ -138,30 +115,8 @@ class EditStoryForm extends Component {
             <h3>Edit Story</h3>
 
             <Header as='h1'>
-              <span className="EditStoryText-blue">{this.state.title}</span>
+              <span>{this.state.title}</span>
             </Header>
-
-            {/*
-
-            <p>
-              Story ID: <span className="EditStoryText-blue"> {this.props.story.id}</span>
-            </p>
-
-            <p>
-              Word count: <span className="EditStoryText-blue"> {wordCount}</span>
-            </p>
-
-            <p>
-              Genres: {genres}
-            </p>
-
-            <p>
-              Plots: {this.props.story.story_plot_titles ? this.props.story.story_plot_titles.split(", ").map((plotTitle) => {
-                return (
-                  replacePlotTitleWithEmoji(plotTitle)
-                )
-              }).join('   ') : 0}
-            </p> */}
 
             <StoryShowSummary
               story_id={this.props.story.id}
@@ -172,8 +127,6 @@ class EditStoryForm extends Component {
             />
 
             <Divider section />
-            {/* <Divider /> */}
-            {/* <Divider hidden /> */}
 
             <Form.Field label='Title'
               placeholder="title here"

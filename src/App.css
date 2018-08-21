@@ -446,11 +446,6 @@ form span.error {
   text-align: center;
 }
 
-.EditStoryText-blue {
-  color: blue;
-}
-
-
 /* blinking parts of sentence */
 span.blinkSubject {
   animation: blinkSubject 4s ease-out -2s;
