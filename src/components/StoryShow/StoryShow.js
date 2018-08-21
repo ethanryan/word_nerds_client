@@ -1,8 +1,10 @@
 import React from 'react'
 
+import StoryShowSummary from '../StoryShow/StoryShowSummary'
+
 // import { Image, Grid, Button } from 'semantic-ui-react'
 // import { Grid, Button, Modal } from 'semantic-ui-react'
-import { Grid, Button, Loader, Segment } from 'semantic-ui-react'
+import { Divider, Grid, Button, Loader, Segment } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom'
 
@@ -22,6 +24,16 @@ const StoryShow = (props) => {
   // let GoogleImage = (<gcse:search></gcse:search>)
   // let GoogleImageHere = (<gcseSearch>pic here</gcseSearch>)
   // let GoogleImageHere = (<gcseSearch>{this.props.image}</gcseSearch>)
+
+  let wordCount = (props.story.content ? props.story.content.split(' ').length : 0)
+
+  let genres = (props.story.story_genre_names ? props.story.story_genre_names : 0)
+
+  let plots = (props.story.story_plot_titles ? props.story.story_plot_titles.split(", ").map((plotTitle) => {
+    return (
+      replacePlotTitleWithEmoji(plotTitle)
+    )
+  }).join('   ') : 0)
 
   return(
     <div>
@@ -60,29 +72,15 @@ const StoryShow = (props) => {
               </p>
             }
 
-            <p>
-              Story ID: { props.story.id ? props.story.id : "story ID here" }
-            </p>
+            <StoryShowSummary
+              story_id={props.story.id}
+              storyCreator={props.story.user.name}
+              wordCount={wordCount}
+              genres={genres}
+              plots={plots}
+            />
 
-            <p>
-              Story Creator: { props.story.user ? props.story.user.name : "name here" }
-            </p>
-
-            <p>
-              Word count: {props.story.content ? props.story.content.split(' ').length : 0}
-            </p>
-
-            <p>
-              Genres: {props.story.story_genre_names ? props.story.story_genre_names : 0}
-            </p>
-
-            <p>
-              Plots: {props.story.story_plot_titles ? props.story.story_plot_titles.split(", ").map((plotTitle) => {
-                return (
-                  replacePlotTitleWithEmoji(plotTitle)
-                )
-              }).join('   ') : 0}
-            </p>
+            <Divider section />
 
             <p>
               <strong>

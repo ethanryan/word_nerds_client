@@ -110,7 +110,7 @@ class EditStoryForm extends Component {
   render() {
 
     console.log('render is called in EditStory ~~~~~~~~~~~ <<<<<<<<----------------000000000');
-    // console.log('EditStory this.props: ', this.props);
+    console.log('EditStory this.props: ', this.props);
     // console.log('from EditStoryForm, this.state.input: ', this.state.input);
 
     // debugger
@@ -165,7 +165,7 @@ class EditStoryForm extends Component {
 
             <StoryShowSummary
               story_id={this.props.story.id}
-              // storyCreator={this.}
+              storyCreator={this.props.story.user.name}
               wordCount={wordCount}
               genres={genres}
               plots={plots}

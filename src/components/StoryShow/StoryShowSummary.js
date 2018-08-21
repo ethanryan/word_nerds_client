@@ -1,14 +1,6 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
-
-import StoryShow from '../StoryShow/StoryShow'
-import EditStoryForm from '../EditStoryForm/EditStoryForm'
-
-import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
-import getDateTime from '../../helpers/getDateTime'
-
-import { Segment, Card, Button, Modal } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 
 const StoryShowSummary = (props) => {
 
@@ -17,6 +9,10 @@ const StoryShowSummary = (props) => {
       <Segment>
       <p>
         Story ID: <span className="EditStoryText-blue"> {props.story_id}</span>
+      </p>
+
+      <p>
+        Story Creator: <span>{props.storyCreator}</span>
       </p>
 
       <p>
