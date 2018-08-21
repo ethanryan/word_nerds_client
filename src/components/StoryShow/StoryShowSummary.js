@@ -10,7 +10,7 @@ import getDateTime from '../../helpers/getDateTime'
 
 import { Segment, Card, Button, Modal } from 'semantic-ui-react'
 
-const OneStoryMetadata = (props) => {
+const StoryShowSummary = (props) => {
 
   return(
     <div>
@@ -35,4 +35,4 @@ const OneStoryMetadata = (props) => {
   )
 }
 
-export default OneStoryMetadata
+export default StoryShowSummary

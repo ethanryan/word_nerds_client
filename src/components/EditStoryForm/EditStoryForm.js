@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
 
-import OneStoryMetadata from '../AllStories/OneStoryMetadata'
+import StoryShowSummary from '../StoryShow/StoryShowSummary'
 
 import { Header, Form, Divider, Button, Loader, Segment } from 'semantic-ui-react'
 
@@ -163,8 +163,9 @@ class EditStoryForm extends Component {
               }).join('   ') : 0}
             </p> */}
 
-            <OneStoryMetadata
+            <StoryShowSummary
               story_id={this.props.story.id}
+              // storyCreator={this.}
               wordCount={wordCount}
               genres={genres}
               plots={plots}
