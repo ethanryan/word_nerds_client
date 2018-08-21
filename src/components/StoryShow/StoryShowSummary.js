@@ -8,7 +8,7 @@ const StoryShowSummary = (props) => {
     <div>
       <Segment>
       <p>
-        Story ID: <span className="EditStoryText-blue"> {props.story_id}</span>
+        Story ID: <span> {props.story_id}</span>
       </p>
 
       <p>
@@ -16,7 +16,7 @@ const StoryShowSummary = (props) => {
       </p>
 
       <p>
-        Word count: <span className="EditStoryText-blue"> {props.wordCount}</span>
+        Word count: <span> {props.wordCount}</span>
       </p>
 
       <p>
