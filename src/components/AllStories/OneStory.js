@@ -23,12 +23,12 @@ const OneStory = (props) => {
     key={story.id ? story.id : "story.id here"}
     className="OneStory-orange"
     >
-      
+
       <Card fluid>
 
         <Card.Content>
           <Card.Header>
-            Story Title:
+            Story Title:&nbsp;
             <Link
               to={`/stories/${story.id}`}
               onClick={props.scrollToTop}>
