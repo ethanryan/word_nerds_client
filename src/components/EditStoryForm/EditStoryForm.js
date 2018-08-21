@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 
 import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
 
-import { Form, Button, Loader, Segment } from 'semantic-ui-react'
+import OneStoryMetadata from '../AllStories/OneStoryMetadata'
+
+import { Header, Form, Divider, Button, Loader, Segment } from 'semantic-ui-react'
 
 // import Markov from './Markov'
 
@@ -122,6 +124,12 @@ class EditStoryForm extends Component {
 
     let genres = (this.props.story.story_genre_names ? this.props.story.story_genre_names : 0)
 
+    let plots = (this.props.story.story_plot_titles ? this.props.story.story_plot_titles.split(", ").map((plotTitle) => {
+      return (
+        replacePlotTitleWithEmoji(plotTitle)
+      )
+    }).join('   ') : 0)
+
     return(
       <div>
         {
@@ -129,9 +137,11 @@ class EditStoryForm extends Component {
           <Form id="EditStoryForm" onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
             <h3>Edit Story</h3>
 
-            <p>
-              Title: <span className="EditStoryText-blue"> {this.state.title}</span>
-            </p>
+            <Header as='h1'>
+              <span className="EditStoryText-blue">{this.state.title}</span>
+            </Header>
+
+            {/*
 
             <p>
               Story ID: <span className="EditStoryText-blue"> {this.props.story.id}</span>
@@ -151,7 +161,18 @@ class EditStoryForm extends Component {
                   replacePlotTitleWithEmoji(plotTitle)
                 )
               }).join('   ') : 0}
-            </p>
+            </p> */}
+
+            <OneStoryMetadata
+              story_id={this.props.story.id}
+              wordCount={wordCount}
+              genres={genres}
+              plots={plots}
+            />
+
+            <Divider section />
+            {/* <Divider /> */}
+            {/* <Divider hidden /> */}
 
             <Form.Field label='Title'
               placeholder="title here"
