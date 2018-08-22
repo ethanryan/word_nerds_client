@@ -47,6 +47,7 @@ const StoryShow = (props) => {
               </Link>
             </p>
           }
+          {/* NOTE: above acts weird in modal view, if use clicks this link from modal view... */}
 
           <StoryShowSummary
             story_id={props.story.id}

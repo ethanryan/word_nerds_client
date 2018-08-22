@@ -152,8 +152,8 @@ class EditStoryForm extends Component {
                 <Button
                   basic
                   floated='right'
-                  onClick={() => this.props.closeModal()}
-                  >Cancel
+                  onClick={() => this.props.closeModal()}>
+                  Cancel
                 </Button>
                 :
                 null
