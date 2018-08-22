@@ -31,7 +31,6 @@ const OneStory = (props) => {
 
           <div className='ui two buttons'>
             {/* switch below... either show StoryShow, or show EditStoryForm */}
-            {/* {props.storyShowModalIsEditable ? <p>this is the modal edit form!!!! </p> : <p>this is the StoryShow-purple-modal</p>} */}
 
             <Modal
               open={props.indexOfStoryModal === index} //open takes boolean, if no match, modal won't open
@@ -46,16 +45,16 @@ const OneStory = (props) => {
                 </Button>
               }>
 
-              {
-                props.storyShowModalIsEditable ?
-                <p className="center">
-                  Edit Mode
-                </p>
-                :
-                <p className="center">
-                  Read Only Mode
-                </p>
-              }
+              <p className="center">
+                {
+                  props.storyShowModalIsEditable ?
+                  "Edit Mode"
+                  :
+                  "Read Only Mode"
+                }
+              </p>
+
+              {/* {props.storyShowModalIsEditable ? <p>this is the modal edit form!!!! </p> : <p>this is the StoryShow-purple-modal</p>} */}
 
               {
                 props.storyShowModalIsEditable ?

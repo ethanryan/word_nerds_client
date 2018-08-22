@@ -17,6 +17,32 @@ const StoryShow = (props) => {
 
   let genres = (props.story.story_genre_names ? props.story.story_genre_names : 0)
 
+  let conditionIfStoryShowIsModal = (
+    (props.story.user.name !== props.user.name) ?
+    <p style={{color: 'red'}}>
+      Story can only be edited by its creator.
+    </p>
+    :
+    <p>
+      Click below to edit.
+    </p>
+  )
+
+  let conditionIfStoryShowIsNotModal = (
+    (props.story.user.name !== props.user.name) ?
+    <p style={{color: "red"}}>
+      Story can only be edited by its creator.
+    </p>
+    :
+    <p>
+      Edit this story:&nbsp;
+      <Link className='btn btn-primary'
+        to={`/stories/${props.story.id}/edit`}>
+        {props.story.title}
+      </Link>
+    </p>
+  )
+
   let plots = (props.story.story_plot_titles ? props.story.story_plot_titles.split(", ").map((plotTitle) => {
     return (
       replacePlotTitleWithEmoji(plotTitle)
@@ -33,21 +59,14 @@ const StoryShow = (props) => {
             <span>{props.story.title}</span>
           </Header>
 
+          {/* {props.storyShowIsModal ? "storyShowIsModal is TRUE!!!!" : "storyShowIsModal is False...."} */}
+
           {
-            (props.story.user.name !== props.user.name) ?
-            <p style={{color: "red"}}>
-              Story can only be edited by its creator.
-            </p>
+            props.storyShowIsModal ?
+            conditionIfStoryShowIsModal
             :
-            <p>
-              Edit this story:&nbsp;
-              <Link className='btn btn-primary'
-                to={`/stories/${props.story.id}/edit`}>
-                {props.story.title}
-              </Link>
-            </p>
+            conditionIfStoryShowIsNotModal
           }
-          {/* NOTE: above acts weird in modal view, if use clicks this link from modal view... */}
 
           <StoryShowSummary
             story_id={props.story.id}
