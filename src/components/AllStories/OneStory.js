@@ -1,12 +1,9 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
-
 import StoryShow from '../StoryShow/StoryShow'
 import EditStoryForm from '../EditStoryForm/EditStoryForm'
 
-import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
-import getDateTime from '../../helpers/getDateTime'
+import OneStorySummary from './OneStorySummary'
 
 import { Card, Button, Modal } from 'semantic-ui-react'
 
@@ -26,62 +23,9 @@ const OneStory = (props) => {
 
       <Card fluid>
 
-        <Card.Content>
-          <Card.Header>
-            Story Title:&nbsp;
-            <Link
-              to={`/stories/${story.id}`}
-              onClick={props.scrollToTop}>
-              {story.title}
-            </Link>
-
-          </Card.Header>
-          <Card.Meta>
-            Creator: {story.user ? story.user.name : "story.user.name here, from OneStory"}
-          </Card.Meta>
-        </Card.Content>
-
-        <Card.Content>
-          <Card.Meta>
-            <div className="floatRight">
-              <p>
-                Story ID:
-                &nbsp;{story.id ? story.id : 0}
-              </p>
-              <p>
-                Word Count:&nbsp;
-                {story.content ? story.content.split(' ').length : 0}
-              </p>
-            </div>
-
-            <div className="floatLeft">
-              <p>
-                Created:&nbsp;
-                {story.created_at ? getDateTime(story.created_at) : "story.created_at here"}
-              </p>
-              <p>
-                Updated:&nbsp;
-                {story.updated_at ? getDateTime(story.updated_at) : "story.updated_at here"}
-              </p>
-            </div>
-          </Card.Meta>
-
-        </Card.Content>
-
-        <Card.Content>
-          Genres: {story.story_genre_names ? story.story_genre_names : 0}
-        </Card.Content>
-
-        <Card.Content>
-          Plots:
-          {
-            story.story_plot_titles ? story.story_plot_titles.split(", ").map((plotTitle) => {
-              return (
-                replacePlotTitleWithEmoji(plotTitle)
-              )
-            }).join('   ') : 0
-          }
-        </Card.Content>
+        <OneStorySummary
+          story={story}
+        />
 
         <Card.Content extra>
 
