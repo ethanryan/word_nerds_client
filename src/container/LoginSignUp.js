@@ -18,15 +18,23 @@ class LoginSignUp extends React.Component {
 
     return(
       <div>
-        
-        <Grid stackable reversed='mobile' columns={2}>
+
+        <Grid
+          stackable reversed='mobile'
+          columns={2}>
 
           <Grid.Column width={8}>
 
             <div className="nerdy-login">
-              <img src={nerdy} className="nerdy" alt="nerdy gif"/>
+              <img
+                src={nerdy}
+                className="nerdy"
+                alt="nerdy gif"
+              />
 
-              <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
+              <h1 className="hoverYellow pulse-grow">
+                Word Nerds
+              </h1>
             </div>
 
 
@@ -57,33 +65,35 @@ class LoginSignUp extends React.Component {
           <div className='login-signup-link-options'>
             <Switch>
 
-              <Route exact path='/register'
-              render={() => <SignUpForm
-                users={this.props.users} //delete this after improving newUsername validation...
+              <Route
+                exact path='/register'
+                render={() => <SignUpForm
+                  users={this.props.users} //delete this after improving newUsername validation...
+                  handleSignUp={this.props.handleSignUp}
+                  usernameExistsError={this.props.usernameExistsError}
+                />} />
 
-                handleSignUp={this.props.handleSignUp}
-                usernameExistsError={this.props.usernameExistsError}
-              />} />
+                <Route
+                  path='/'
+                  render={() => <LoginForm
+                    handleLogin={this.props.handleLogin}
+                    nameOrPasswordError={this.props.nameOrPasswordError}
+                  />}
+                />
 
-              <Route path='/'
-              render={() => <LoginForm
-                handleLogin={this.props.handleLogin}
-                nameOrPasswordError={this.props.nameOrPasswordError}
-              />} />
+              </Switch>
+            </div>
 
-            </Switch>
-          </div>
+            <div className="login-signup-sentence">
+              <Sentence />
+            </div>
 
-          <div className="login-signup-sentence">
-            <Sentence />
-          </div>
+          </Grid.Column>
+        </Grid>
 
-        </Grid.Column>
-      </Grid>
-
-    </div>
-  )
-}
+      </div>
+    )
+  }
 }
 
 export default LoginSignUp

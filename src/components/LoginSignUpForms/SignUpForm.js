@@ -21,7 +21,6 @@ class SignUp extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-
   validate(email, username, password) {
     // true means invalid, so our conditions got reversed
     return {
@@ -74,73 +73,92 @@ class SignUp extends React.Component {
     return (
       <div className='LoginSignUp-divs'>
 
-        <Form onSubmit={this.handleSubmit} className='SignUpForm-blue'>
+        <Form
+          onSubmit={this.handleSubmit}
+          className='SignUpForm-blue'>
 
-          <h1 className='center-h1'>Join Word Nerds today.</h1>
+          <h1 className='center-h1'>
+            Join Word Nerds today.
+          </h1>
 
-          <p className="center">Already use Word Nerds? <Link to={`/login`} className='hoverYellow'>Log in.</Link></p>
+          <p className="center">
+            Already use Word Nerds?
+            <Link
+              to={`/login`}
+              className='hoverYellow'>
+              Log in.
+            </Link>
+          </p>
 
           <Form.Field>
-            <div className={this.props.usernameExistsError === true ? 'usernameExistsError' : 'hidden'}
-              >Username already taken. Must have unique username.</div>
-            </Form.Field>
+            <div className={this.props.usernameExistsError === true ? 'usernameExistsError' : 'hidden'}>
+              Username already taken. Must have unique username.
+            </div>
+          </Form.Field>
 
-            <Form.Field>
-              <label>Email Address</label>
-              <input
-                id='emailAddressInput'
-                className={shouldMarkError('email') ? 'error' : ''}
-                placeholder='Email Address'
-                autoFocus
-                value={this.state.email}
-                onChange={ e => this.handleChange('email', e.target.value)}
-                onBlur={this.handleBlur('email')}
-              />
-              <span className={shouldMarkError('email') ? 'error' : 'hidden'}
-                >invalid email</span>
-              </Form.Field>
+          <Form.Field>
+            <label>
+              Email Address
+            </label>
+            <input
+              id='emailAddressInput'
+              className={shouldMarkError('email') ? 'error' : ''}
+              placeholder='Email Address'
+              autoFocus
+              value={this.state.email}
+              onChange={ e => this.handleChange('email', e.target.value)}
+              onBlur={this.handleBlur('email')}
+            />
+            <span className={shouldMarkError('email') ? 'error' : 'hidden'}>
+              invalid email
+            </span>
+          </Form.Field>
 
-              <Form.Field>
-                <label>Username</label>
-                <input
-                  id='usernameInput'
-                  className={shouldMarkError('username') ? 'error' : ''}
-                  placeholder='Username'
-                  value={this.state.username}
-                  onChange={ e => this.handleChange('username', e.target.value)}
-                  onBlur={this.handleBlur('username')}
-                />
-                <span className={shouldMarkError('username') ? 'error' : 'hidden'}
-                  >invalid username</span>
-                </Form.Field>
+          <Form.Field>
+            <label>Username</label>
+            <input
+              id='usernameInput'
+              className={shouldMarkError('username') ? 'error' : ''}
+              placeholder='Username'
+              value={this.state.username}
+              onChange={ e => this.handleChange('username', e.target.value)}
+              onBlur={this.handleBlur('username')}
+            />
+            <span
+              className={shouldMarkError('username') ? 'error' : 'hidden'}>
+              invalid username
+            </span>
+          </Form.Field>
 
+          <Form.Field>
+            <label>Password</label>
+            <input
+              id='passwordInput'
+              type='password'
+              className={shouldMarkError('password') ? 'error' : ''}
+              placeholder='Password'
+              value={this.state.password}
+              onChange={ e => this.handleChange('password', e.target.value)}
+              onBlur={this.handleBlur('password')}
+            />
+            <span
+              className={shouldMarkError('password') ? 'error' : 'hidden'}>
+              invalid password
+            </span>
+          </Form.Field>
 
-                <Form.Field>
-                  <label>Password</label>
-                  <input
-                    id='passwordInput'
-                    type='password'
-                    className={shouldMarkError('password') ? 'error' : ''}
-                    placeholder='Password'
-                    value={this.state.password}
-                    onChange={ e => this.handleChange('password', e.target.value)}
-                    onBlur={this.handleBlur('password')}
-                  />
-                  <span className={shouldMarkError('password') ? 'error' : 'hidden'}
-                    >invalid password</span>
-                  </Form.Field>
+          <Form.Button
+            content='Sign Up'
+            color='green'
+            type='submit'
+            fluid
+            disabled={isDisabled}
+          />
 
-                  <Form.Button
-                    content='Sign Up'
-                    color='green'
-                    type='submit'
-                    fluid
-                    disabled={isDisabled} />
+        </Form>
+      </div>
+    )
+  }
+}
 
-                  </Form>
-                </div>
-              )
-            }
-          }
-
-          export default SignUp
+export default SignUp

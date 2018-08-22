@@ -1,0 +1,25 @@
+export default function replacePlotTitleWithEmoji(string) {
+  // console.log('calling replacePlotTitlewithEmoji')
+  // console.log('plotTitle is: ', string)
+  return (
+    string
+    .replace("Halloween", "🔪")
+    .replace("Alien", "👽")
+    .replace("The Matrix", "⏰")
+    .replace("Star Wars", "🚀")
+    .replace("E.T.", "📞")
+    .replace("Terminator", "🤖")
+    .replace("Die Hard", "🔫")
+    .replace("Mad Max 2", "🚚")
+    .replace("Thelma and Louise", "🚘")
+    .replace("The Match Factory Girl", "🔥")
+    .replace("The Last Unicorn", "🦄")
+    .replace("The Princess Bride", "👸")
+    .replace("Home Alone", "😂")
+    .replace("Frozen", "⛄")
+    .replace("Toy Story", "🤠")
+    .replace("Beauty and the Beast", "🦊")
+    .replace("La Strada", "💔")
+    .replace("The Piano", "💙")
+  )
+}

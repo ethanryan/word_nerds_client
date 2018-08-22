@@ -20,7 +20,7 @@ const Metadata = (props) => {
 
       <OneStoryForMetadata
         stories={props.stories}
-        replacePlotTitleWithEmoji={props.replacePlotTitleWithEmoji}
+        scrollToTop={props.scrollToTop}
       />
 
       <Button
