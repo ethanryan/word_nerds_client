@@ -90,6 +90,8 @@ class StoryContainer extends Component {
     this.toggleStoryShowModalToEditable = this.toggleStoryShowModalToEditable.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
 
@@ -400,8 +402,8 @@ class StoryContainer extends Component {
             <NavBarLoginSignUp />
 
             <LoginSignUp
-              handleLogin={this.handleLogin.bind(this)}
-              handleSignUp={this.handleSignUp.bind(this)}
+              handleLogin={this.handleLogin}
+              handleSignUp={this.handleSignUp}
               nameOrPasswordError={this.state.nameOrPasswordError}
               usernameExistsError={this.state.usernameExistsError}
               users={this.state.users}
