@@ -40,6 +40,8 @@ class CreateStoryFormCreateCharacters extends Component {
         emoji: ''
       },
     })
+    this.handleCharacterGenderChangeLocally = this.handleCharacterGenderChangeLocally.bind(this);
+    this.handleCharacterNameChangeLocally = this.handleCharacterNameChangeLocally.bind(this);
   } //end of constructor
 
   getEmojiForCharacterSummary(argument) {
@@ -104,8 +106,8 @@ class CreateStoryFormCreateCharacters extends Component {
                   characterGender={this.state[characterType].gender}
                   characterName={this.state[characterType].name}
                   characterType={characterType}
-                  onChangeCharacterGender={this.handleCharacterGenderChangeLocally.bind(this)}
-                  onChangeCharacterName={this.handleCharacterNameChangeLocally.bind(this)}
+                  onChangeCharacterGender={this.handleCharacterGenderChangeLocally}
+                  onChangeCharacterName={this.handleCharacterNameChangeLocally}
                   placeholder={this.capitalizeFirstLetter(characterType)}
                 />
                 <Divider />
