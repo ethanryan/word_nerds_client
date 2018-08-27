@@ -37,7 +37,8 @@ class CreateStoryFormSelectGenre extends Component {
   handleGenreSelectionChange(event) {
     const genreSelection = event.target.value
     // console.log('--->>> CreateStoryFormSelectGenre: genreSelection is: ', genreSelection)
-    ////not DRY!!!! refactor below....
+    ////NOTE: not DRY!!!! refactor below....
+    //NOTE: use switch, like getEmojiForCharacterSummary(argument) in CreateStoryFormCreateCharacters...
     var horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
     var sciFiPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 2)
     var actionPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 3)
