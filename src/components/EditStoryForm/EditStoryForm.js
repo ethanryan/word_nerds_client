@@ -17,8 +17,9 @@ class EditStoryForm extends Component {
       title: props.story.title,
       // image: '' //adding this
     }
-    this.handleStoryChange = this.handleStoryChange.bind(this)
-    this.handleTitleChange = this.handleTitleChange.bind(this)
+    this.handleStoryChange = this.handleStoryChange.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleEditStoryFormSubmit = this.handleEditStoryFormSubmit.bind(this);
   }
 
   componentWillReceiveProps(props) { //need this lifecycle method to edit text in textarea
@@ -90,7 +91,7 @@ class EditStoryForm extends Component {
       <div>
         {
           (this.props.story.id) ?
-          <Form id="EditStoryForm" onSubmit={this.handleEditStoryFormSubmit.bind(this)}>
+          <Form id="EditStoryForm" onSubmit={this.handleEditStoryFormSubmit}>
             <h3>Edit Story</h3>
 
             <Header as='h1'>

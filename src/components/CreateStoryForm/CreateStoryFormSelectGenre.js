@@ -21,6 +21,7 @@ class CreateStoryFormSelectGenre extends Component {
       filteredPlotsByTitle: this.props.plots.filter(plotObject => plotObject).map(object => object.title)
       //default for now... 0 is false, so won't break trying to render
     })
+    this.handleGenreSelectionChange = this.handleGenreSelectionChange.bind(this);
   } //end of constructor
 
   componentWillReceiveProps(nextProps) { //need this lifecycle method to update filteredPlotsByTitle
@@ -36,7 +37,8 @@ class CreateStoryFormSelectGenre extends Component {
   handleGenreSelectionChange(event) {
     const genreSelection = event.target.value
     // console.log('--->>> CreateStoryFormSelectGenre: genreSelection is: ', genreSelection)
-    ////not DRY!!!! refactor below....
+    ////NOTE: not DRY!!!! refactor below....
+    //NOTE: use switch, like getEmojiForCharacterSummary(argument) in CreateStoryFormCreateCharacters...
     var horrorPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 1)
     var sciFiPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 2)
     var actionPlots = this.props.plots.filter(plotObject => plotObject.genre_id === 3)
@@ -103,25 +105,25 @@ class CreateStoryFormSelectGenre extends Component {
                     value="horror"
                     control="input" type="radio"
                     checked={this.state.genreSelection === "horror"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
+                    onChange={this.handleGenreSelectionChange}
                   />
                   <Form.Field label="sci-fi"
                     value="scifi"
                     control="input" type="radio"
                     checked={this.state.genreSelection === "scifi"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
+                    onChange={this.handleGenreSelectionChange}
                   />
                   <Form.Field label="action"
                     value="action"
                     control="input" type="radio"
                     checked={this.state.genreSelection === "action"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
+                    onChange={this.handleGenreSelectionChange}
                   />
                   <Form.Field label="drama"
                     value="drama"
                     control="input" type="radio"
                     checked={this.state.genreSelection === "drama"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
+                    onChange={this.handleGenreSelectionChange}
                   />
                 </Grid.Column>
 
@@ -130,25 +132,25 @@ class CreateStoryFormSelectGenre extends Component {
                     value="fantasy"
                     control="input" type="radio"
                     checked={this.state.genreSelection === "fantasy"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
+                    onChange={this.handleGenreSelectionChange}
                   />
                   <Form.Field label="comedy"
                     value="comedy"
                     control="input" type="radio"
                     checked={this.state.genreSelection === "comedy"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
+                    onChange={this.handleGenreSelectionChange}
                   />
                   <Form.Field label="romance"
                     value="romance"
                     control="input" type="radio"
                     checked={this.state.genreSelection === "romance"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
+                    onChange={this.handleGenreSelectionChange}
                   />
                   <Form.Field label="random"
                     value="random"
                     control="input" type="radio"
                     checked={this.state.genreSelection === "random"}
-                    onChange={this.handleGenreSelectionChange.bind(this)}
+                    onChange={this.handleGenreSelectionChange}
                   />
                 </Grid.Column>
               </Grid.Row>
@@ -158,7 +160,7 @@ class CreateStoryFormSelectGenre extends Component {
               value="random"
               control="input" type="radio"
               checked={this.state.genreSelection === "random"}
-              onChange={this.handleGenreSelectionChange.bind(this)}
+              onChange={this.handleGenreSelectionChange}
             /> */}
 
 

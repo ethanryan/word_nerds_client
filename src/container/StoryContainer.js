@@ -78,6 +78,20 @@ class StoryContainer extends Component {
       nameOrPasswordError: false,
       usernameExistsError: false,
     }
+    this.logout = this.logout.bind(this);
+    this.scrollToTop = this.scrollToTop.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClearForm = this.handleClearForm.bind(this);
+    this.handleGenreChange = this.handleGenreChange.bind(this);
+    this.handleCharacterNameChange = this.handleCharacterNameChange.bind(this);
+    this.handleCharacterGenderChange = this.handleCharacterGenderChange.bind(this);
+    this.handleDeleteStory = this.handleDeleteStory.bind(this);
+    this.handleUpdateStory = this.handleUpdateStory.bind(this);
+    this.toggleStoryShowModalToEditable = this.toggleStoryShowModalToEditable.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
 
@@ -325,24 +339,24 @@ class StoryContainer extends Component {
                 title="Word Nerds"
                 // current_user={this.state.user ? this.state.user.name : "current_user here"}
                 current_user={this.state.user.name}
-                logout={this.logout.bind(this)}
+                logout={this.logout}
                 location={this.props.location}
               />
 
               <HomePageAndRoutes
-                scrollToTop={this.scrollToTop.bind(this)}
+                scrollToTop={this.scrollToTop}
                 //props for CreateStoryForm
-                handleSubmit={this.handleSubmit.bind(this)}
-                handleClearForm={this.handleClearForm.bind(this)}
+                handleSubmit={this.handleSubmit}
+                handleClearForm={this.handleClearForm}
                 genreSelection={this.state.genreSelection}
-                handleGenreChange={this.handleGenreChange.bind(this)} //this will be for CreateStoryFormSelectGenre
-                handleCharacterNameChange={this.handleCharacterNameChange.bind(this)}
-                handleCharacterGenderChange={this.handleCharacterGenderChange.bind(this)}
+                handleGenreChange={this.handleGenreChange} //this will be for CreateStoryFormSelectGenre
+                handleCharacterNameChange={this.handleCharacterNameChange}
+                handleCharacterGenderChange={this.handleCharacterGenderChange}
                 characterProps={this.state.characters} //pass all characters in one prop...
 
                 //props for EditStoryForm
-                handleDeleteStory={this.handleDeleteStory.bind(this)}
-                handleUpdateStory={this.handleUpdateStory.bind(this)}
+                handleDeleteStory={this.handleDeleteStory}
+                handleUpdateStory={this.handleUpdateStory}
                 story={this.state.story}
                 title={this.state.title}
                 image={this.state.image}
@@ -354,9 +368,9 @@ class StoryContainer extends Component {
                 users={this.state.users}
                 storyShowIsModal={this.state.storyShowIsModal}
                 storyShowModalIsEditable={this.state.storyShowModalIsEditable}
-                toggleStoryShowModalToEditable={this.toggleStoryShowModalToEditable.bind(this)}
-                openModal={this.openModal.bind(this)}
-                closeModal={this.closeModal.bind(this)}
+                toggleStoryShowModalToEditable={this.toggleStoryShowModalToEditable}
+                openModal={this.openModal}
+                closeModal={this.closeModal}
                 activeModalStoryId={this.state.activeModalStoryId}
                 indexOfStoryModal={this.state.indexOfStoryModal}
               />
@@ -388,8 +402,8 @@ class StoryContainer extends Component {
             <NavBarLoginSignUp />
 
             <LoginSignUp
-              handleLogin={this.handleLogin.bind(this)}
-              handleSignUp={this.handleSignUp.bind(this)}
+              handleLogin={this.handleLogin}
+              handleSignUp={this.handleSignUp}
               nameOrPasswordError={this.state.nameOrPasswordError}
               usernameExistsError={this.state.usernameExistsError}
               users={this.state.users}
