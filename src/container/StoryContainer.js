@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-import HttpsRedirect from 'react-https-redirect'
-
 import { withRouter } from 'react-router-dom'
 
 import * as api from '../api'
@@ -330,7 +328,7 @@ class StoryContainer extends Component {
         console.warn('1. StoryContainer - this.state: ', this.state)
       }
       return(
-        <HttpsRedirect>
+        <div>
           {
             this.state.dataLoaded === true ?
             <div>
@@ -386,7 +384,7 @@ class StoryContainer extends Component {
               </Container>
             </div>
           }
-        </HttpsRedirect>
+          </div>
       )
     }
     else {
@@ -397,7 +395,6 @@ class StoryContainer extends Component {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
       }
       return(
-        <HttpsRedirect>
           <div>
             <NavBarLoginSignUp />
 
@@ -409,7 +406,6 @@ class StoryContainer extends Component {
               users={this.state.users}
             />
           </div>
-        </HttpsRedirect>
       )
     }
   } //render
