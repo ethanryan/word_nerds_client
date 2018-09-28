@@ -8,6 +8,8 @@ import NavBar from '../components/NavBar/NavBar'
 import NavBarLoginSignUp from '../components/NavBar/NavBarLoginSignUp'
 import HomePageAndRoutes from '../components/HomePageAndRoutes/HomePageAndRoutes'
 
+import sortStoriesByUpdatedAt from '../helpers/sortStoriesByUpdatedAt'
+
 import Greeting from '../components/ConsoleGreeting/Greeting'
 
 import LoginSignUp from '../container/LoginSignUp'
@@ -97,7 +99,7 @@ class StoryContainer extends Component {
 
   componentDidMount() {
     api.getStories()
-    .then(data => this.sortStoriesByUpdatedAt(data)) //sorting stories by updated_at, calling function below
+    .then(data => sortStoriesByUpdatedAt(data)) //sorting stories by updated_at, calling function below
     .then(data => this.setState({
       stories: data
     }) )
@@ -190,7 +192,7 @@ class StoryContainer extends Component {
 
   handleUpdateStory(updatedStory) {
     api.updateStory(updatedStory)
-    .then( data => this.sortStoriesByUpdatedAt(data) ) //sorting stories by updated_at, with function below
+    .then( data => sortStoriesByUpdatedAt(data) )
     .then( data => this.setState({
       stories: data
     }) )
@@ -290,19 +292,6 @@ class StoryContainer extends Component {
       characters
     })
   }
-
-  sortStoriesByUpdatedAt(storiesArray) {
-    // console.log('0. container - storiesArray: ', storiesArray)
-    var newArray = storiesArray.slice(0) //clone, cuz sort mutates
-    var sortedStories = newArray.sort(function(a, b) {
-      var dateA = new Date(a.updated_at)
-      var dateB = new Date(b.updated_at)
-      return dateA - dateB //sort stories by updated_at, first to last
-    });
-    // console.log('1. container - result sorted by updated_at: ', sortedStories)
-    return sortedStories
-  }
-
 
   logout() {
     this.setState({
