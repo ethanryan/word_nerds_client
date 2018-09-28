@@ -8,6 +8,8 @@ import NavBar from '../components/NavBar/NavBar'
 import NavBarLoginSignUp from '../components/NavBar/NavBarLoginSignUp'
 import HomePageAndRoutes from '../components/HomePageAndRoutes/HomePageAndRoutes'
 
+import Greeting from '../components/ConsoleGreeting/Greeting'
+
 import LoginSignUp from '../container/LoginSignUp'
 
 import MassiveLoader from '../components/Loaders/MassiveLoader'
@@ -319,8 +321,6 @@ class StoryContainer extends Component {
       if(this.state.users.length === 0) {
         console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
       } else {
-        console.info(`Hi ${this.state.user.name} you sexy beast!`) //not overwriting console.info...
-
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
         console.warn('1. StoryContainer - (signed in) - this.state: ', this.state)
       }
@@ -335,6 +335,10 @@ class StoryContainer extends Component {
                 current_user={this.state.user.name}
                 logout={this.logout}
                 location={this.props.location}
+              />
+
+              <Greeting
+                current_user={this.state.user.name}
               />
 
               <HomePageAndRoutes
