@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-import HttpsRedirect from 'react-https-redirect'
-
 import { withRouter } from 'react-router-dom'
 
 import * as api from '../api'
@@ -12,7 +10,7 @@ import HomePageAndRoutes from '../components/HomePageAndRoutes/HomePageAndRoutes
 
 import LoginSignUp from '../container/LoginSignUp'
 
-import { Container, Dimmer, Loader } from 'semantic-ui-react'
+import MassiveLoader from '../components/Loaders/MassiveLoader'
 
 class StoryContainer extends Component {
   constructor() {
@@ -319,25 +317,21 @@ class StoryContainer extends Component {
       // console.log('props from StoryContainer: ', this.props)
       console.log('0. state from StoryContainer (signed in): ', this.state)
       // console.log('0. console.table(this.state) is ----->>>>')
-      // console.table(this.state)
-      // console.log('0. StoryContainer state.characters: ', this.state.characters)
-      // console.log('0. StoryContainer state.characters.hero: ', this.state.characters.hero)
 
       if(this.state.users.length === 0) {
-        console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        console.error('0. 0. state.users.length is 0, no user data yet: ', this.state.users.length)
       } else {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
         console.warn('1. StoryContainer - this.state: ', this.state)
       }
       return(
-        <HttpsRedirect>
+        <div>
           {
             this.state.dataLoaded === true ?
             <div>
 
               <NavBar
                 title="Word Nerds"
-                // current_user={this.state.user ? this.state.user.name : "current_user here"}
                 current_user={this.state.user.name}
                 logout={this.logout}
                 location={this.props.location}
@@ -376,40 +370,36 @@ class StoryContainer extends Component {
               />
             </div>
             :
-            <div>
-              <Container>
-                <Dimmer active inverted>
-                  <Loader inverted size='massive'>
-                    Loading...
-                  </Loader>
-                </Dimmer>
-              </Container>
-            </div>
+            <MassiveLoader />
           }
-        </HttpsRedirect>
+          </div>
       )
     }
     else {
       console.log('state from StoryContainer (not signed in): ', this.state)
       if(this.state.users.length === 0) {
-        console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
       } else {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
       }
       return(
-        <HttpsRedirect>
           <div>
             <NavBarLoginSignUp />
 
-            <LoginSignUp
-              handleLogin={this.handleLogin}
-              handleSignUp={this.handleSignUp}
-              nameOrPasswordError={this.state.nameOrPasswordError}
-              usernameExistsError={this.state.usernameExistsError}
-              users={this.state.users}
-            />
+            {
+              (this.state.users.length === 0) ?
+              <MassiveLoader />
+              :
+              <LoginSignUp
+                handleLogin={this.handleLogin}
+                handleSignUp={this.handleSignUp}
+                nameOrPasswordError={this.state.nameOrPasswordError}
+                usernameExistsError={this.state.usernameExistsError}
+                users={this.state.users}
+              />
+            }
+            
           </div>
-        </HttpsRedirect>
       )
     }
   } //render
