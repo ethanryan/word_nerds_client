@@ -398,13 +398,25 @@ class StoryContainer extends Component {
           <div>
             <NavBarLoginSignUp />
 
-            <LoginSignUp
-              handleLogin={this.handleLogin}
-              handleSignUp={this.handleSignUp}
-              nameOrPasswordError={this.state.nameOrPasswordError}
-              usernameExistsError={this.state.usernameExistsError}
-              users={this.state.users}
-            />
+            {
+              (this.state.users.length === 0) ?
+              <Container>
+                <Dimmer active inverted>
+                  <Loader inverted size='massive'>
+                    Loading...
+                  </Loader>
+                </Dimmer>
+              </Container>
+              :
+              <LoginSignUp
+                handleLogin={this.handleLogin}
+                handleSignUp={this.handleSignUp}
+                nameOrPasswordError={this.state.nameOrPasswordError}
+                usernameExistsError={this.state.usernameExistsError}
+                users={this.state.users}
+              />
+            }
+
           </div>
       )
     }
