@@ -387,23 +387,21 @@ class StoryContainer extends Component {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
       }
       return(
-          <div>
-            <NavBarLoginSignUp />
-
-            {
-              (this.state.users.length === 0) ?
-              <MassiveLoader />
-              :
-              <LoginSignUp
-                handleLogin={this.handleLogin}
-                handleSignUp={this.handleSignUp}
-                nameOrPasswordError={this.state.nameOrPasswordError}
-                usernameExistsError={this.state.usernameExistsError}
-                users={this.state.users}
-              />
-            }
-
-          </div>
+        <div>
+          <NavBarLoginSignUp />
+          {
+            (this.state.users.length === 0) ?
+            <MassiveLoader />
+            :
+            <LoginSignUp
+              handleLogin={this.handleLogin}
+              handleSignUp={this.handleSignUp}
+              nameOrPasswordError={this.state.nameOrPasswordError}
+              usernameExistsError={this.state.usernameExistsError}
+              users={this.state.users}
+            />
+          }
+        </div>
       )
     }
   } //render

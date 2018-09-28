@@ -22,6 +22,7 @@ function getFriendlyMessage(nameString) {
   return randomMessage
 }
 
+
 class Greeting extends React.PureComponent { //PureComponent only renders once...
   render() {
     // console.info("%cThis is green text on a yellow background.", "color:green; background-color:yellow");
