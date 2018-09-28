@@ -314,16 +314,25 @@ class StoryContainer extends Component {
   render() {
     if(localStorage.getItem('jwt')) {
       // console.log('jwt: ', this.jwt)
-      // console.log('props from StoryContainer: ', this.props)
-      console.log('0. state from StoryContainer (signed in): ', this.state)
       // console.log('0. console.table(this.state) is ----->>>>')
 
       if(this.state.users.length === 0) {
-        console.error('0. 0. state.users.length is 0, no user data yet: ', this.state.users.length)
+        console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
       } else {
+
+        // if (process.env.NODE_ENV === 'production') {
+        if (process.env.NODE_ENV === 'development') { //NOTE: doing this here, in StoryContainer render, so i have access to state...
+          if (this.state.dataLoaded === true) {
+            console.log(`Hi ${this.state.user.name}!`)
+          }
+          console.log = function(){}; //overwriting console.logs with an empty function, so all console.logs now do nothing...
+          console.warn = function(){};
+          console.error = function(){};
+        }
+        console.info(`Hi ${this.state.user.name} you sexy beast!`) //not overwriting console.info...
+
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
-        console.warn('1. StoryContainer - this.state: ', this.state)
-        console.log(`hi there ${this.state.user.name}!`)
+        console.warn('1. StoryContainer - (signed in) - this.state: ', this.state)
       }
       return(
         <div>
