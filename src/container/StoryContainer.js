@@ -322,7 +322,7 @@ class StoryContainer extends Component {
       // console.log('0. StoryContainer state.characters.hero: ', this.state.characters.hero)
 
       if(this.state.users.length === 0) {
-        console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        console.error('0. 0. state.users.length is 0, no user data yet: ', this.state.users.length)
       } else {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
         console.warn('1. StoryContainer - this.state: ', this.state)
@@ -390,7 +390,7 @@ class StoryContainer extends Component {
     else {
       console.log('state from StoryContainer (not signed in): ', this.state)
       if(this.state.users.length === 0) {
-        console.error('0. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
       } else {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
       }
