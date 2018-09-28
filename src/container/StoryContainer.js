@@ -10,7 +10,8 @@ import HomePageAndRoutes from '../components/HomePageAndRoutes/HomePageAndRoutes
 
 import LoginSignUp from '../container/LoginSignUp'
 
-import { Container, Dimmer, Loader } from 'semantic-ui-react'
+// import { Container, Dimmer, Loader } from 'semantic-ui-react'
+import MassiveLoader from '../components/Loaders/MassiveLoader'
 
 class StoryContainer extends Component {
   constructor() {
@@ -374,15 +375,16 @@ class StoryContainer extends Component {
               />
             </div>
             :
-            <div>
-              <Container>
-                <Dimmer active inverted>
-                  <Loader inverted size='massive'>
-                    Loading...
-                  </Loader>
-                </Dimmer>
-              </Container>
-            </div>
+            <MassiveLoader />
+            // <div>
+            //   <Container>
+            //     <Dimmer active inverted>
+            //       <Loader inverted size='massive'>
+            //         Loading...
+            //       </Loader>
+            //     </Dimmer>
+            //   </Container>
+            // </div>
           }
           </div>
       )
@@ -400,13 +402,14 @@ class StoryContainer extends Component {
 
             {
               (this.state.users.length === 0) ?
-              <Container>
-                <Dimmer active inverted>
-                  <Loader inverted size='massive'>
-                    Loading...
-                  </Loader>
-                </Dimmer>
-              </Container>
+              <MassiveLoader />
+              // <Container>
+              //   <Dimmer active inverted>
+              //     <Loader inverted size='massive'>
+              //       Loading...
+              //     </Loader>
+              //   </Dimmer>
+              // </Container>
               :
               <LoginSignUp
                 handleLogin={this.handleLogin}
