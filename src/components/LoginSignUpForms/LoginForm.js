@@ -78,11 +78,11 @@ class LoginForm extends React.Component {
           </h1>
 
           <p className="center">
-            New to Word Nerds?
+            New to Word Nerds?{` `}
             <Link
               to={`/register`}
               className='hoverYellow'>
-              Sign up now.
+               Sign up now.
             </Link>
           </p>
 

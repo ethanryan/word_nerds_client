@@ -82,7 +82,7 @@ class SignUp extends React.Component {
           </h1>
 
           <p className="center">
-            Already use Word Nerds?
+            Already use Word Nerds?{` `}
             <Link
               to={`/login`}
               className='hoverYellow'>
