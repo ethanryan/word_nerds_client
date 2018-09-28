@@ -323,6 +323,7 @@ class StoryContainer extends Component {
       } else {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
         console.warn('1. StoryContainer - this.state: ', this.state)
+        console.log(`hi there ${this.state.user.name}!`)
       }
       return(
         <div>
@@ -398,7 +399,7 @@ class StoryContainer extends Component {
                 users={this.state.users}
               />
             }
-            
+
           </div>
       )
     }
