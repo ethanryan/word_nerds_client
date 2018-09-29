@@ -8,6 +8,10 @@ import NavBar from '../components/NavBar/NavBar'
 import NavBarLoginSignUp from '../components/NavBar/NavBarLoginSignUp'
 import HomePageAndRoutes from '../components/HomePageAndRoutes/HomePageAndRoutes'
 
+import sortStoriesByUpdatedAt from '../helpers/sortStoriesByUpdatedAt'
+
+import Greeting from '../components/ConsoleGreeting/Greeting'
+
 import LoginSignUp from '../container/LoginSignUp'
 
 import MassiveLoader from '../components/Loaders/MassiveLoader'
@@ -95,7 +99,7 @@ class StoryContainer extends Component {
 
   componentDidMount() {
     api.getStories()
-    .then(data => this.sortStoriesByUpdatedAt(data)) //sorting stories by updated_at, calling function below
+    .then(data => sortStoriesByUpdatedAt(data)) //sorting stories by updated_at, calling function below
     .then(data => this.setState({
       stories: data
     }) )
@@ -188,7 +192,7 @@ class StoryContainer extends Component {
 
   handleUpdateStory(updatedStory) {
     api.updateStory(updatedStory)
-    .then( data => this.sortStoriesByUpdatedAt(data) ) //sorting stories by updated_at, with function below
+    .then( data => sortStoriesByUpdatedAt(data) )
     .then( data => this.setState({
       stories: data
     }) )
@@ -289,19 +293,6 @@ class StoryContainer extends Component {
     })
   }
 
-  sortStoriesByUpdatedAt(storiesArray) {
-    // console.log('0. container - storiesArray: ', storiesArray)
-    var newArray = storiesArray.slice(0) //clone, cuz sort mutates
-    var sortedStories = newArray.sort(function(a, b) {
-      var dateA = new Date(a.updated_at)
-      var dateB = new Date(b.updated_at)
-      return dateA - dateB //sort stories by updated_at, first to last
-    });
-    // console.log('1. container - result sorted by updated_at: ', sortedStories)
-    return sortedStories
-  }
-
-
   logout() {
     this.setState({
       user: null
@@ -314,15 +305,13 @@ class StoryContainer extends Component {
   render() {
     if(localStorage.getItem('jwt')) {
       // console.log('jwt: ', this.jwt)
-      // console.log('props from StoryContainer: ', this.props)
-      console.log('0. state from StoryContainer (signed in): ', this.state)
       // console.log('0. console.table(this.state) is ----->>>>')
 
       if(this.state.users.length === 0) {
-        console.error('0. 0. state.users.length is 0, no user data yet: ', this.state.users.length)
+        console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
       } else {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
-        console.warn('1. StoryContainer - this.state: ', this.state)
+        console.warn('1. StoryContainer - (signed in) - this.state: ', this.state)
       }
       return(
         <div>
@@ -335,6 +324,10 @@ class StoryContainer extends Component {
                 current_user={this.state.user.name}
                 logout={this.logout}
                 location={this.props.location}
+              />
+
+              <Greeting
+                current_user={this.state.user.name}
               />
 
               <HomePageAndRoutes
@@ -383,23 +376,21 @@ class StoryContainer extends Component {
         console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
       }
       return(
-          <div>
-            <NavBarLoginSignUp />
-
-            {
-              (this.state.users.length === 0) ?
-              <MassiveLoader />
-              :
-              <LoginSignUp
-                handleLogin={this.handleLogin}
-                handleSignUp={this.handleSignUp}
-                nameOrPasswordError={this.state.nameOrPasswordError}
-                usernameExistsError={this.state.usernameExistsError}
-                users={this.state.users}
-              />
-            }
-            
-          </div>
+        <div>
+          <NavBarLoginSignUp />
+          {
+            (this.state.users.length === 0) ?
+            <MassiveLoader />
+            :
+            <LoginSignUp
+              handleLogin={this.handleLogin}
+              handleSignUp={this.handleSignUp}
+              nameOrPasswordError={this.state.nameOrPasswordError}
+              usernameExistsError={this.state.usernameExistsError}
+              users={this.state.users}
+            />
+          }
+        </div>
       )
     }
   } //render
