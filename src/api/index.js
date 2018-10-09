@@ -54,7 +54,7 @@ export function getCurrentUser() {
     mode: 'cors',
     method: 'GET',
   })
-  .then (response => response.json() ) //NOTE: this is how i originally had this...
+  .then (response => response.json() ) //NOTE: this is how i originally had this... fix this!
   // .then(res => console.log('response: ', res))
 
   // .then(res => {
