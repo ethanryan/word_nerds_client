@@ -32,7 +32,7 @@ class StoryContainer extends Component {
           user: 'user here'
         }
       ],
-      dataLoaded: false, //default value, set to true in componentDidMount, api.getCurrentUser
+      currentUserDataLoaded: false, //default value, set to true in componentDidMount, api.getCurrentUser
       story: 'cool story here',
       title: 'cool story title here',
       user: {
@@ -114,11 +114,14 @@ class StoryContainer extends Component {
       users: users
     }) )
 
-    api.getCurrentUser()
-    .then(user => this.setState({
-      user: user.user,
-      dataLoaded: true
-    }) )
+    // if(localStorage.getItem('jwt')) { //does this make sense? --> eliminates 500 error, but then we can't login...
+      api.getCurrentUser()
+      .then(user => this.setState({
+        user: user.user,
+        currentUserDataLoaded: true
+      }) )
+    // }
+
   }
 
   scrollToTop() {
@@ -316,7 +319,7 @@ class StoryContainer extends Component {
       return(
         <div>
           {
-            this.state.dataLoaded === true ?
+            this.state.currentUserDataLoaded === true ?
             <div>
 
               <NavBar
