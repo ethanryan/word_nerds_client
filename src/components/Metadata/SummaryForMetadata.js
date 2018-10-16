@@ -1,7 +1,6 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
 
-import { Loader, Segment } from 'semantic-ui-react'
+import { Card, Loader, Segment } from 'semantic-ui-react'
 
 const SummaryForMetadata = (props) => {
 
@@ -9,7 +8,7 @@ const SummaryForMetadata = (props) => {
     <div>
 
       <div className="summaryForMetadata center">
-        <Card fluid >
+        <Card fluid>
           <Card.Header>
             <h3 className="summaryForMetadata-header">
               WordNerds Metadata
@@ -20,33 +19,33 @@ const SummaryForMetadata = (props) => {
             <h4>
               Database Information
             </h4>
-            
-            {props.stories.length === 1 ?
+
+            {
+              (props.stories.length === 1) ?
               <Segment>
                 <Loader active inline='centered' />
               </Segment>
               :
               <div>
-              <p>
-                Total stories: <b>{props.stories.length}</b>
-              </p>
+                <p>
+                  Total stories: <b>{props.stories.length}</b>
+                </p>
 
-              <p>
-                Total users: <b>{props.users.length}</b>
-              </p>
+                <p>
+                  Total users: <b>{props.userCount}</b>
+                </p>
 
-              <p>
-                Total plots: <b>{props.plots.length}</b>
-              </p>
-            </div>
+                <p>
+                  Total plots: <b>{props.plots.length}</b>
+                </p>
+              </div>
             }
+
           </Card.Content>
         </Card>
       </div>
-
     </div>
   )
-
 }
 
 export default SummaryForMetadata

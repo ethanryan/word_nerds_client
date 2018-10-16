@@ -7,14 +7,13 @@ import * as api from '../api'
 import NavBar from '../components/NavBar/NavBar'
 import NavBarLoginSignUp from '../components/NavBar/NavBarLoginSignUp'
 import HomePageAndRoutes from '../components/HomePageAndRoutes/HomePageAndRoutes'
+import Greeting from '../components/ConsoleGreeting/Greeting'
+import MassiveLoader from '../components/Loaders/MassiveLoader'
 
 import sortStoriesByUpdatedAt from '../helpers/sortStoriesByUpdatedAt'
 
-import Greeting from '../components/ConsoleGreeting/Greeting'
-
 import LoginSignUp from '../container/LoginSignUp'
 
-import MassiveLoader from '../components/Loaders/MassiveLoader'
 
 class StoryContainer extends Component {
   constructor() {
@@ -311,13 +310,9 @@ class StoryContainer extends Component {
     if(localStorage.getItem('jwt')) {
       // console.log('jwt: ', this.jwt)
       // console.log('0. console.table(this.state) is ----->>>>')
-
       if(this.state.plotsReceivedFromAPI === false) {
-        // console.error('0. state.userCount.length is 0, no user data yet: ', this.state.userCount.length)
         console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
       } else {
-        // console.warn('1. HEY YO! state.userCount.length 0 means NO INTERNET: ', this.state.userCount.length)
-        // console.warn('1. HEY YO! state.plots.length 0 means NO INTERNET: ', this.state.plots.length)
         console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
         console.warn('1. StoryContainer - (signed in) - this.state: ', this.state)
       }
@@ -381,10 +376,8 @@ class StoryContainer extends Component {
     else {
       console.log('state from StoryContainer (not signed in): ', this.state)
       if(this.state.plotsReceivedFromAPI === false) {
-        // console.warn('0. state.userCount.length is 0, no user data yet: ', this.state.userCount.length)
         console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
       } else {
-        // console.warn('1. HEY YO! state.userCount.length 0 means NO INTERNET: ', this.state.userCount.length)
         console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
       }
       return(
