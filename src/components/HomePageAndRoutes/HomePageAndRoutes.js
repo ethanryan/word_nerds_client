@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Switch, Route } from 'react-router-dom'
+
 import CreateStoryForm from '../CreateStoryForm/CreateStoryForm'
 import CreatePage from '../CreatePage/CreatePage'
 import EditStoryForm from '../EditStoryForm/EditStoryForm'
@@ -10,7 +12,6 @@ import RightSideBar from './RightSideBar'
 
 import { Grid } from 'semantic-ui-react'
 
-import { Switch, Route } from 'react-router-dom'
 
 //want to eventually have scripts as well as stories, so renamed this from StoryPage...
 const HomePageAndRoutes = (props) => {
@@ -128,7 +129,7 @@ const HomePageAndRoutes = (props) => {
                   scrollToTop={props.scrollToTop}
                   stories={props.stories}
                   plots={props.plots}
-                  users={props.users}
+                  userCount={props.userCount}
                 />
               }
             />
