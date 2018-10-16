@@ -392,7 +392,6 @@ class StoryContainer extends Component {
               handleSignUp={this.handleSignUp}
               nameOrPasswordError={this.state.nameOrPasswordError}
               usernameExistsError={this.state.usernameExistsError}
-              userCount={this.state.userCount}
             />
           }
         </div>
