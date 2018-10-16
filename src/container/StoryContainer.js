@@ -77,7 +77,7 @@ class StoryContainer extends Component {
       plotsReceivedFromAPI: false,
       genres: [],
       genreSelection: 'random', //updated from CreateStoryFormSelectGenre... random is default...
-      users: null, //this will be a number that gets updated by api call...
+      userCount: null, //this will be a number that gets updated by api call...
       nameOrPasswordError: false,
       usernameExistsError: false,
     }
@@ -112,8 +112,8 @@ class StoryContainer extends Component {
     }) )
 
     api.getUsers()
-    .then(users => this.setState({
-      users: users
+    .then(userCount => this.setState({
+      userCount: userCount
     }) )
 
     // if(localStorage.getItem('jwt')) { //does this make sense? --> eliminates 500 error, but then we can't login...
@@ -313,10 +313,10 @@ class StoryContainer extends Component {
       // console.log('0. console.table(this.state) is ----->>>>')
 
       if(this.state.plotsReceivedFromAPI === false) {
-        // console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
+        // console.error('0. state.userCount.length is 0, no user data yet: ', this.state.userCount.length)
         console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
       } else {
-        // console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        // console.warn('1. HEY YO! state.userCount.length 0 means NO INTERNET: ', this.state.userCount.length)
         // console.warn('1. HEY YO! state.plots.length 0 means NO INTERNET: ', this.state.plots.length)
         console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
         console.warn('1. StoryContainer - (signed in) - this.state: ', this.state)
@@ -358,7 +358,7 @@ class StoryContainer extends Component {
                 user={this.state.user}
 
                 //props for Metadata
-                users={this.state.users}
+                userCount={this.state.userCount}
 
                 //props for AllStories
                 stories={this.state.stories}
@@ -381,17 +381,17 @@ class StoryContainer extends Component {
     else {
       console.log('state from StoryContainer (not signed in): ', this.state)
       if(this.state.plotsReceivedFromAPI === false) {
-        // console.warn('0. state.users.length is 0, no user data yet: ', this.state.users.length)
+        // console.warn('0. state.userCount.length is 0, no user data yet: ', this.state.userCount.length)
         console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
       } else {
-        // console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        // console.warn('1. HEY YO! state.userCount.length 0 means NO INTERNET: ', this.state.userCount.length)
         console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
       }
       return(
         <div>
           <NavBarLoginSignUp />
           {
-            (this.state.plotsReceivedFromAPI === false) ? //plots instead of users...
+            (this.state.plotsReceivedFromAPI === false) ? //plots instead of userCount...
             <MassiveLoader />
             :
             <LoginSignUp
@@ -399,7 +399,7 @@ class StoryContainer extends Component {
               handleSignUp={this.handleSignUp}
               nameOrPasswordError={this.state.nameOrPasswordError}
               usernameExistsError={this.state.usernameExistsError}
-              users={this.state.users}
+              userCount={this.state.userCount}
             />
           }
         </div>
