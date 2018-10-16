@@ -111,7 +111,7 @@ class StoryContainer extends Component {
       plotsReceivedFromAPI: true
     }) )
 
-    api.getUsers()
+    api.getUserCount()
     .then(userCount => this.setState({
       userCount: userCount
     }) )

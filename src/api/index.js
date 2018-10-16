@@ -31,7 +31,7 @@ export function getPlots() {
   }).then( response => response.json() )
 }
 
-export function getUsers() {
+export function getUserCount() {
   return fetch(`${baseUrl}/users`, {
     headers: {
       'Accept': 'application/json',
@@ -55,7 +55,6 @@ export function getCurrentUser() {
     method: 'GET',
   })
   .then (response => response.json() ) //NOTE: this is how i originally had this... fix this!
-  // .then(res => console.log('response: ', res))
 
   // .then(res => {
   //   if(res.ok) {
