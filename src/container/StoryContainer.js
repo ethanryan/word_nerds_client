@@ -74,9 +74,10 @@ class StoryContainer extends Component {
 
       image: '',
       plots: [],
+      plotsReceivedFromAPI: false,
       genres: [],
       genreSelection: 'random', //updated from CreateStoryFormSelectGenre... random is default...
-      users: [],
+      users: null, //this will be a number that gets updated by api call...
       nameOrPasswordError: false,
       usernameExistsError: false,
     }
@@ -106,7 +107,8 @@ class StoryContainer extends Component {
 
     api.getPlots()
     .then(data => this.setState({
-      plots: data
+      plots: data,
+      plotsReceivedFromAPI: true
     }) )
 
     api.getUsers()
@@ -310,16 +312,19 @@ class StoryContainer extends Component {
       // console.log('jwt: ', this.jwt)
       // console.log('0. console.table(this.state) is ----->>>>')
 
-      if(this.state.users.length === 0) {
-        console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
+      if(this.state.plotsReceivedFromAPI === false) {
+        // console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
+        console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
       } else {
-        console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        // console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        // console.warn('1. HEY YO! state.plots.length 0 means NO INTERNET: ', this.state.plots.length)
+        console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
         console.warn('1. StoryContainer - (signed in) - this.state: ', this.state)
       }
       return(
         <div>
           {
-            this.state.currentUserDataLoaded === true ?
+            (this.state.currentUserDataLoaded === true) ?
             <div>
 
               <NavBar
@@ -352,10 +357,12 @@ class StoryContainer extends Component {
                 image={this.state.image}
                 user={this.state.user}
 
+                //props for Metadata
+                users={this.state.users}
+
                 //props for AllStories
                 stories={this.state.stories}
                 plots={this.state.plots}
-                users={this.state.users}
                 storyShowIsModal={this.state.storyShowIsModal}
                 storyShowModalIsEditable={this.state.storyShowModalIsEditable}
                 toggleStoryShowModalToEditable={this.toggleStoryShowModalToEditable}
@@ -373,16 +380,18 @@ class StoryContainer extends Component {
     }
     else {
       console.log('state from StoryContainer (not signed in): ', this.state)
-      if(this.state.users.length === 0) {
-        console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
+      if(this.state.plotsReceivedFromAPI === false) {
+        // console.warn('0. state.users.length is 0, no user data yet: ', this.state.users.length)
+        console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
       } else {
-        console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        // console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
+        console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
       }
       return(
         <div>
           <NavBarLoginSignUp />
           {
-            (this.state.users.length === 0) ?
+            (this.state.plotsReceivedFromAPI === false) ? //plots instead of users...
             <MassiveLoader />
             :
             <LoginSignUp
