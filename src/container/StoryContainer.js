@@ -35,8 +35,10 @@ class StoryContainer extends Component {
       story: 'cool story here',
       title: 'cool story title here',
       user: {
-        id: 'user_id here',
-        name: 'user'
+        // id: 'user_id here',
+        // name: 'user'
+        id: '', //default
+        name: '' //default
       },
       characters: {
         hero: {
@@ -94,6 +96,7 @@ class StoryContainer extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
+    this.logStateAndDataStatus = this.logStateAndDataStatus.bind(this);
   }
 
 
@@ -115,14 +118,23 @@ class StoryContainer extends Component {
       userCount: userCount
     }) )
 
-    // if(localStorage.getItem('jwt')) { //does this make sense? --> eliminates 500 error, but then we can't login...
+    if(localStorage.getItem('jwt')) { //wrapping in conditional to eliminate 500 error
       api.getCurrentUser()
-      .then(user => this.setState({
-        user: user.user,
+      .then(response => this.setState({
+        user: response.user,
         currentUserDataLoaded: true
       }) )
-    // }
+    }
 
+  } //componentDidMount
+
+  logStateAndDataStatus() {
+    if(this.state.plotsReceivedFromAPI === false) {
+      console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
+    } else {
+      console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
+      console.warn('1. StoryContainer - this.state: ', this.state)
+    }
   }
 
   scrollToTop() {
@@ -236,13 +248,13 @@ class StoryContainer extends Component {
     .then(response => {
       if(response.error != null) { //if user already exists, or if there is an error...
         this.setState({usernameExistsError: true})
-        console.log("response error from handleSignUp")
         console.log("response.error from handleSignUp: ", response.error)
         return
       }
       localStorage.setItem('jwt', response.token)
       this.setState({
-        user: response.user
+        user: response.user,
+        currentUserDataLoaded: true
       })
       this.props.history.push('/')
     })
@@ -262,7 +274,8 @@ class StoryContainer extends Component {
       }
       localStorage.setItem("jwt", response.token)
       this.setState({
-        user: response.user //this needs to be in StoryContainer
+        user: response.user, //this needs to be in StoryContainer
+        currentUserDataLoaded: true
       })
       this.props.history.push('/')
     })
@@ -288,8 +301,8 @@ class StoryContainer extends Component {
   }
 
   handleCharacterGenderChange(characterGender, characterType) {
-    console.warn('handleCharacterNameChange -> characterGender is: ', characterGender)
-    console.warn('handleCharacterNameChange -> characterType is: ', characterType)
+    console.warn('handleCharacterGenderChange -> characterGender is: ', characterGender)
+    console.warn('handleCharacterGenderChange -> characterType is: ', characterType)
     let characters = {...this.state.characters}
     characters[characterType].gender = characterGender
     this.setState({
@@ -299,7 +312,8 @@ class StoryContainer extends Component {
 
   logout() {
     this.setState({
-      user: null
+      user: null,
+      currentUserDataLoaded: false
     })
     localStorage.clear()
     // console.log('logout', this.state.current_user)
@@ -307,19 +321,16 @@ class StoryContainer extends Component {
 
 
   render() {
-    if(localStorage.getItem('jwt')) {
+    this.logStateAndDataStatus()
+    if(localStorage.getItem('jwt')) { //if signed in...
       // console.log('jwt: ', this.jwt)
       // console.log('0. console.table(this.state) is ----->>>>')
-      if(this.state.plotsReceivedFromAPI === false) {
-        console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
-      } else {
-        console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
-        console.warn('1. StoryContainer - (signed in) - this.state: ', this.state)
-      }
+      // console.warn('state from StoryContainer - (signed in): ', this.state)
       return(
         <div>
           {
             (this.state.currentUserDataLoaded === true) ?
+            // ((this.state.user.name) && (this.state.plotsReceivedFromAPI === true)) ?
             <div>
 
               <NavBar
@@ -374,12 +385,7 @@ class StoryContainer extends Component {
       )
     }
     else {
-      console.log('state from StoryContainer (not signed in): ', this.state)
-      if(this.state.plotsReceivedFromAPI === false) {
-        console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
-      } else {
-        console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
-      }
+      // console.log('state from StoryContainer (not signed in): ', this.state)
       return(
         <div>
           <NavBarLoginSignUp />
