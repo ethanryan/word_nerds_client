@@ -11,6 +11,7 @@ import Greeting from '../components/ConsoleGreeting/Greeting'
 import MassiveLoader from '../components/Loaders/MassiveLoader'
 
 import sortStoriesByUpdatedAt from '../helpers/sortStoriesByUpdatedAt'
+import getDefaultCharactersObject from '../helpers/getDefaultCharactersObject'
 
 import LoginSignUp from '../container/LoginSignUp'
 
@@ -99,6 +100,7 @@ class StoryContainer extends Component {
   }
 
 
+
   componentDidMount() {
     api.getStories()
     .then(data => sortStoriesByUpdatedAt(data)) //sorting stories by updated_at, calling function below
@@ -169,35 +171,7 @@ class StoryContainer extends Component {
   }
 
   handleClearForm() {
-    this.setState({
-      characters: {
-        hero: {
-          name: 'HERO', //default name...
-          gender: '',
-        },
-        shadow: {
-          name: 'SHADOW', //default name...
-          gender: '',
-        },
-        friend: {
-          name: 'FRIEND', //default name...
-          gender: '',
-        },
-        lover: {
-          name: 'LOVER', //default name...
-          gender: '',
-        },
-        mentor: {
-          name: 'MENTOR', //default name...
-          gender: '',
-        },
-        trickster: {
-          name: 'TRICKSTER', //default name...
-          gender: '',
-        },
-      },
-      genreSelection: 'random', //updated from CreateStoryFormSelectGenre... random is default...
-    })
+    this.setState(getDefaultCharactersObject)
   }
 
   handleUpdateStory(updatedStory) {
