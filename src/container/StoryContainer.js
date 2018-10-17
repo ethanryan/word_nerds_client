@@ -83,7 +83,6 @@ class StoryContainer extends Component {
       usernameExistsError: false,
     }
     this.logout = this.logout.bind(this);
-    this.scrollToTop = this.scrollToTop.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
     this.handleGenreChange = this.handleGenreChange.bind(this);
@@ -135,11 +134,6 @@ class StoryContainer extends Component {
       console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
       console.warn('1. StoryContainer - this.state: ', this.state)
     }
-  }
-
-  scrollToTop() {
-    console.log('scrollToTop called...')
-    window.scrollTo(0, 0)
   }
 
   openModal(event, index, id) {
@@ -345,7 +339,6 @@ class StoryContainer extends Component {
               />
 
               <HomePageAndRoutes
-                scrollToTop={this.scrollToTop}
                 //props for CreateStoryForm
                 handleSubmit={this.handleSubmit}
                 handleClearForm={this.handleClearForm}

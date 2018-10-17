@@ -29,7 +29,6 @@ const HomePageAndRoutes = (props) => {
                 <CreatePage
                   //NOTE: CreatePage will render button that links to CreateStoryForm, at /stories/create
                   //NOTE: CreatePage will also have button that links to CreateScriptForm, at /scripts/create, as well as other create options eventually...
-                  scrollToTop={props.scrollToTop}
                   handleSubmit={props.handleSubmit}
                   handleClearForm={props.handleClearForm}
                   user_id={props.user.id}
@@ -50,7 +49,6 @@ const HomePageAndRoutes = (props) => {
               render={() =>
                 <div>
                   <CreateStoryForm
-                    scrollToTop={props.scrollToTop}
                     handleSubmit={props.handleSubmit}
                     handleClearForm={props.handleClearForm}
                     user_id={props.user.id}
@@ -104,7 +102,6 @@ const HomePageAndRoutes = (props) => {
               path='/stories'
               render={() =>
                 <AllStories
-                  scrollToTop={props.scrollToTop}
                   handleUpdateStory={props.handleUpdateStory}
                   handleDeleteStory={props.handleDeleteStory}
                   stories={props.stories}
@@ -126,7 +123,6 @@ const HomePageAndRoutes = (props) => {
               path='/metadata'
               render={() =>
                 <Metadata
-                  scrollToTop={props.scrollToTop}
                   stories={props.stories}
                   plots={props.plots}
                   userCount={props.userCount}

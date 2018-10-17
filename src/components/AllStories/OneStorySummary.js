@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
 import getDateTime from '../../helpers/getDateTime'
+import scrollToTop from '../../helpers/scrollToTop'
 
 import { Card } from 'semantic-ui-react'
 
@@ -17,7 +18,7 @@ const OneStorySummary = (props) => {
             Story Title:&nbsp;
             <Link
               to={`/stories/${props.story.id}`}
-              onClick={props.scrollToTop}>
+              onClick={scrollToTop}>
               {props.story.title}
             </Link>
           </Card.Header>
