@@ -31,7 +31,7 @@ export function getPlots() {
   }).then( response => response.json() )
 }
 
-export function getUsers() {
+export function getUserCount() {
   return fetch(`${baseUrl}/users`, {
     headers: {
       'Accept': 'application/json',
@@ -54,21 +54,7 @@ export function getCurrentUser() {
     mode: 'cors',
     method: 'GET',
   })
-  .then (response => response.json() ) //NOTE: this is how i originally had this...
-  // .then(res => console.log('response: ', res))
-
-  // .then(res => {
-  //   if(res.ok) {
-  //     // return res;
-  //     console.log('88888888888>>>>>>> res is: ', res )
-  //     return res.json(); //this is wrong...
-  //   } else {
-  //     // throw Error(`Request rejected with status ${res.status}`);
-  //     console.log(`999999999------->>> Request for current_user ejected with status ${res.status}`);
-  //     return false
-  //   }
-  // })
-  // .catch( error => console.log(error) )
+  .then (response => response.json() )
 }
 
 export function createStory(genres, characters, user_id, storyType) { //adding user_id as argument -- ER Nov 2017

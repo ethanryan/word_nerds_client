@@ -1,21 +1,19 @@
 import React from 'react'
 
+import { Switch, Route } from 'react-router-dom'
+
 import SignUpForm from '../components/LoginSignUpForms/SignUpForm'
 import LoginForm from '../components/LoginSignUpForms/LoginForm'
-import nerdy from '../components/assets/nerdy.gif'
-
 import Sentence from '../components/Sentence/Sentence'
+import nerdy from '../components/assets/nerdy.gif'
 
 import { Grid, Segment } from 'semantic-ui-react'
 
-// import { Switch, Route, Link } from 'react-router-dom'
-import { Switch, Route } from 'react-router-dom'
 
 class LoginSignUp extends React.Component {
 
   render() {
     // console.log('LogInSignUp props', this.props)
-
     return(
       <div>
 
@@ -57,21 +55,16 @@ class LoginSignUp extends React.Component {
 
 
           <Grid.Column width={8}>
+            <div className='login-signup-link-options'>
+              <Switch>
 
-            {/* <h1 className='login-signup-link-options'>
-            <Link to={`/login`} className='hoverYellow'>Login</Link>  |  <Link to={`/register`} className='hoverYellow'>Sign Up</Link>
-          </h1> */}
-
-          <div className='login-signup-link-options'>
-            <Switch>
-
-              <Route
-                exact path='/register'
-                render={() => <SignUpForm
-                  users={this.props.users} //delete this after improving newUsername validation...
-                  handleSignUp={this.props.handleSignUp}
-                  usernameExistsError={this.props.usernameExistsError}
-                />} />
+                <Route
+                  exact path='/register'
+                  render={() => <SignUpForm
+                    handleSignUp={this.props.handleSignUp}
+                    usernameExistsError={this.props.usernameExistsError}
+                  />}
+                />
 
                 <Route
                   path='/'

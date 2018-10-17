@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
+import scrollToTop from '../../helpers/scrollToTop'
+
 import { Container, Card, Divider } from 'semantic-ui-react'
 
 
@@ -32,7 +34,8 @@ const CreatePage = (props) => {
         </div>
 
         <Link
-          to={`/stories/create/short-story`}>
+          to={`/stories/create/short-story`}
+          onClick={scrollToTop}>
           <button id="create-story-button">
             Create A Short Story
           </button>

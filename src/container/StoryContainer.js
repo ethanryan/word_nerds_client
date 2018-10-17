@@ -7,14 +7,14 @@ import * as api from '../api'
 import NavBar from '../components/NavBar/NavBar'
 import NavBarLoginSignUp from '../components/NavBar/NavBarLoginSignUp'
 import HomePageAndRoutes from '../components/HomePageAndRoutes/HomePageAndRoutes'
+import Greeting from '../components/ConsoleGreeting/Greeting'
+import MassiveLoader from '../components/Loaders/MassiveLoader'
 
 import sortStoriesByUpdatedAt from '../helpers/sortStoriesByUpdatedAt'
-
-import Greeting from '../components/ConsoleGreeting/Greeting'
+import getDefaultCharactersObject from '../helpers/getDefaultCharactersObject'
 
 import LoginSignUp from '../container/LoginSignUp'
 
-import MassiveLoader from '../components/Loaders/MassiveLoader'
 
 class StoryContainer extends Component {
   constructor() {
@@ -36,8 +36,10 @@ class StoryContainer extends Component {
       story: 'cool story here',
       title: 'cool story title here',
       user: {
-        id: 'user_id here',
-        name: 'user'
+        // id: 'user_id here',
+        // name: 'user'
+        id: '', //default
+        name: '' //default
       },
       characters: {
         hero: {
@@ -74,14 +76,14 @@ class StoryContainer extends Component {
 
       image: '',
       plots: [],
+      plotsReceivedFromAPI: false,
       genres: [],
       genreSelection: 'random', //updated from CreateStoryFormSelectGenre... random is default...
-      users: [],
+      userCount: null, //this will be a number that gets updated by api call...
       nameOrPasswordError: false,
       usernameExistsError: false,
     }
     this.logout = this.logout.bind(this);
-    this.scrollToTop = this.scrollToTop.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
     this.handleGenreChange = this.handleGenreChange.bind(this);
@@ -94,7 +96,9 @@ class StoryContainer extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
+    this.logStateAndDataStatus = this.logStateAndDataStatus.bind(this);
   }
+
 
 
   componentDidMount() {
@@ -106,27 +110,32 @@ class StoryContainer extends Component {
 
     api.getPlots()
     .then(data => this.setState({
-      plots: data
+      plots: data,
+      plotsReceivedFromAPI: true
     }) )
 
-    api.getUsers()
-    .then(users => this.setState({
-      users: users
+    api.getUserCount()
+    .then(userCount => this.setState({
+      userCount: userCount
     }) )
 
-    // if(localStorage.getItem('jwt')) { //does this make sense? --> eliminates 500 error, but then we can't login...
+    if(localStorage.getItem('jwt')) { //wrapping in conditional to eliminate 500 error
       api.getCurrentUser()
-      .then(user => this.setState({
-        user: user.user,
+      .then(response => this.setState({
+        user: response.user,
         currentUserDataLoaded: true
       }) )
-    // }
+    }
 
-  }
+  } //componentDidMount
 
-  scrollToTop() {
-    console.log('scrollToTop called...')
-    window.scrollTo(0, 0)
+  logStateAndDataStatus() {
+    if(this.state.plotsReceivedFromAPI === false) {
+      console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
+    } else {
+      console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
+      console.warn('1. StoryContainer - this.state: ', this.state)
+    }
   }
 
   openModal(event, index, id) {
@@ -162,35 +171,7 @@ class StoryContainer extends Component {
   }
 
   handleClearForm() {
-    this.setState({
-      characters: {
-        hero: {
-          name: 'HERO', //default name...
-          gender: '',
-        },
-        shadow: {
-          name: 'SHADOW', //default name...
-          gender: '',
-        },
-        friend: {
-          name: 'FRIEND', //default name...
-          gender: '',
-        },
-        lover: {
-          name: 'LOVER', //default name...
-          gender: '',
-        },
-        mentor: {
-          name: 'MENTOR', //default name...
-          gender: '',
-        },
-        trickster: {
-          name: 'TRICKSTER', //default name...
-          gender: '',
-        },
-      },
-      genreSelection: 'random', //updated from CreateStoryFormSelectGenre... random is default...
-    })
+    this.setState(getDefaultCharactersObject) //NOTE: and genreSelection!
   }
 
   handleUpdateStory(updatedStory) {
@@ -235,13 +216,13 @@ class StoryContainer extends Component {
     .then(response => {
       if(response.error != null) { //if user already exists, or if there is an error...
         this.setState({usernameExistsError: true})
-        console.log("response error from handleSignUp")
         console.log("response.error from handleSignUp: ", response.error)
         return
       }
       localStorage.setItem('jwt', response.token)
       this.setState({
-        user: response.user
+        user: response.user,
+        currentUserDataLoaded: true
       })
       this.props.history.push('/')
     })
@@ -261,7 +242,8 @@ class StoryContainer extends Component {
       }
       localStorage.setItem("jwt", response.token)
       this.setState({
-        user: response.user //this needs to be in StoryContainer
+        user: response.user, //this needs to be in StoryContainer
+        currentUserDataLoaded: true
       })
       this.props.history.push('/')
     })
@@ -277,8 +259,7 @@ class StoryContainer extends Component {
 
 
   handleCharacterNameChange(characterName, characterType) {
-    console.warn('handleCharacterNameChange -> characterName is: ', characterName)
-    console.warn('handleCharacterNameChange -> characterType is: ', characterType)
+    // console.log('handleCharacterNameChange -> characterName and characterType is: ', characterName, characterType)
     let characters = {...this.state.characters}
     characters[characterType].name = characterName
     this.setState({
@@ -287,8 +268,7 @@ class StoryContainer extends Component {
   }
 
   handleCharacterGenderChange(characterGender, characterType) {
-    console.warn('handleCharacterNameChange -> characterGender is: ', characterGender)
-    console.warn('handleCharacterNameChange -> characterType is: ', characterType)
+    // console.log('handleCharacterGenderChange -> characterGender and characterType is: ', characterGender, characterType)
     let characters = {...this.state.characters}
     characters[characterType].gender = characterGender
     this.setState({
@@ -298,7 +278,8 @@ class StoryContainer extends Component {
 
   logout() {
     this.setState({
-      user: null
+      user: null,
+      currentUserDataLoaded: false
     })
     localStorage.clear()
     // console.log('logout', this.state.current_user)
@@ -306,20 +287,16 @@ class StoryContainer extends Component {
 
 
   render() {
-    if(localStorage.getItem('jwt')) {
+    this.logStateAndDataStatus()
+    if(localStorage.getItem('jwt')) { //if signed in...
       // console.log('jwt: ', this.jwt)
       // console.log('0. console.table(this.state) is ----->>>>')
-
-      if(this.state.users.length === 0) {
-        console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
-      } else {
-        console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
-        console.warn('1. StoryContainer - (signed in) - this.state: ', this.state)
-      }
+      // console.warn('state from StoryContainer - (signed in): ', this.state)
       return(
         <div>
           {
-            this.state.currentUserDataLoaded === true ?
+            (this.state.currentUserDataLoaded === true) ?
+            // ((this.state.user.name) && (this.state.plotsReceivedFromAPI === true)) ?
             <div>
 
               <NavBar
@@ -334,7 +311,6 @@ class StoryContainer extends Component {
               />
 
               <HomePageAndRoutes
-                scrollToTop={this.scrollToTop}
                 //props for CreateStoryForm
                 handleSubmit={this.handleSubmit}
                 handleClearForm={this.handleClearForm}
@@ -352,10 +328,12 @@ class StoryContainer extends Component {
                 image={this.state.image}
                 user={this.state.user}
 
+                //props for Metadata
+                userCount={this.state.userCount}
+
                 //props for AllStories
                 stories={this.state.stories}
                 plots={this.state.plots}
-                users={this.state.users}
                 storyShowIsModal={this.state.storyShowIsModal}
                 storyShowModalIsEditable={this.state.storyShowModalIsEditable}
                 toggleStoryShowModalToEditable={this.toggleStoryShowModalToEditable}
@@ -372,17 +350,12 @@ class StoryContainer extends Component {
       )
     }
     else {
-      console.log('state from StoryContainer (not signed in): ', this.state)
-      if(this.state.users.length === 0) {
-        console.error('0. state.users.length is 0, no user data yet: ', this.state.users.length)
-      } else {
-        console.warn('1. HEY YO! state.users.length 0 means NO INTERNET: ', this.state.users.length)
-      }
+      // console.log('state from StoryContainer (not signed in): ', this.state)
       return(
         <div>
           <NavBarLoginSignUp />
           {
-            (this.state.users.length === 0) ?
+            (this.state.plotsReceivedFromAPI === false) ? //plots instead of userCount...
             <MassiveLoader />
             :
             <LoginSignUp
@@ -390,7 +363,6 @@ class StoryContainer extends Component {
               handleSignUp={this.handleSignUp}
               nameOrPasswordError={this.state.nameOrPasswordError}
               usernameExistsError={this.state.usernameExistsError}
-              users={this.state.users}
             />
           }
         </div>

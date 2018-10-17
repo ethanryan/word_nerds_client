@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
 import getDateTime from '../../helpers/getDateTime'
+import scrollToTop from '../../helpers/scrollToTop'
 
 import { Table, Loader, Segment } from 'semantic-ui-react'
 
@@ -98,7 +99,7 @@ class OneStoryForMetadata extends React.Component {
                           ?
                           <Link
                             to={`/stories/${id}`}
-                            onClick={this.props.scrollToTop}
+                            onClick={scrollToTop}
                             >
                               {title}
                             </Link>

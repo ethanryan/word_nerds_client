@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import CreateStoryFormSelectGenre from './CreateStoryFormSelectGenre'
 import CreateStoryFormCreateCharacters from './CreateStoryFormCreateCharacters'
 
+import scrollToTop from '../../helpers/scrollToTop'
+
 // import { Form, Header, Modal, Button } from 'semantic-ui-react'
 import { Form, Header } from 'semantic-ui-react'
 
@@ -46,7 +48,7 @@ class CreateStoryFormNotModal extends Component {
     // console.log('user_id is: ', user_id)
     this.props.handleSubmit( genres, characters, user_id, storyType ) //adding storyType...
     this.props.handleClearForm()
-    this.props.scrollToTop()
+    scrollToTop()
   }
 
 

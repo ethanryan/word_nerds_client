@@ -2,6 +2,8 @@ import React from 'react'
 
 import OneStory from './OneStory'
 
+import scrollToTop from '../../helpers/scrollToTop'
+
 import { Card, Loader, Segment, Button } from 'semantic-ui-react'
 
 const AllStories = (props) => {
@@ -40,7 +42,6 @@ const AllStories = (props) => {
         handleDeleteStory={props.handleDeleteStory}
         userStories={filteredStories} //passing OneStory userStories, not all stories in database...
         user={props.user}
-        scrollToTop={props.scrollToTop}
         storyShowIsModal={props.storyShowIsModal}
         openModal={props.openModal}
         closeModal={props.closeModal}
@@ -52,7 +53,7 @@ const AllStories = (props) => {
 
       <Button
         primary
-        onClick={props.scrollToTop}>
+        onClick={scrollToTop}>
         Scroll To Top
       </Button>
 

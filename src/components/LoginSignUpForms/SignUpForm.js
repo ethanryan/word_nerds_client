@@ -44,7 +44,7 @@ class SignUp extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log('handleSubmit called from SignUpForm')
+    // console.log('handleSubmit called from SignUpForm')
     e.preventDefault()
     if ( !this.canBeSubmitted() ) {
       return //if the form can't be submitted, return to the page

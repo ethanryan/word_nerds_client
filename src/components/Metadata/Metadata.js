@@ -3,6 +3,8 @@ import React from 'react'
 import OneStoryForMetadata from './OneStoryForMetadata'
 import SummaryForMetadata from './SummaryForMetadata'
 
+import scrollToTop from '../../helpers/scrollToTop'
+
 import { Button } from 'semantic-ui-react'
 
 const Metadata = (props) => {
@@ -15,20 +17,17 @@ const Metadata = (props) => {
       <SummaryForMetadata
         stories={props.stories}
         plots={props.plots}
-        users={props.users}
+        userCount={props.userCount}
       />
 
       <OneStoryForMetadata
         stories={props.stories}
-        scrollToTop={props.scrollToTop}
       />
 
-      <Button
-        primary
-        onClick={props.scrollToTop}
-        >Scroll To Top
+      <Button primary
+        onClick={scrollToTop}>
+        Scroll To Top
       </Button>
-
 
     </div>
   )

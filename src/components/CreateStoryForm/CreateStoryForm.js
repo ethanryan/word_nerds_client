@@ -47,7 +47,6 @@ const CreateStoryForm = (props) => {
           {/* <Card fluid> */}
             {/* <Card.Content> */}
               <CreateStoryFormNotModal
-                scrollToTop={props.scrollToTop}
                 handleSubmit={props.handleSubmit}
                 handleClearForm={props.handleClearForm}
                 user_id={props.user_id}
