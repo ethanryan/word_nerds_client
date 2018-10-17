@@ -1,4 +1,4 @@
 export default function helloWorld() {
-  console.error('helloWorld called...')
+  console.log('helloWorld called...')
   return "Hello World!!!!"
 }

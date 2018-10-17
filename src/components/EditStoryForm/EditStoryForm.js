@@ -44,8 +44,7 @@ class EditStoryForm extends Component {
   }
 
   handleEditStoryFormSubmit(event) {
-    console.log('handleEditStoryFormSubmit called ---------->><><><><><><>')
-    console.log('event is: ', event)
+    console.log('handleEditStoryFormSubmit called, event is: ', event)
     event.preventDefault()
     const updatedStory = {
       input: this.state.input,
@@ -70,7 +69,6 @@ class EditStoryForm extends Component {
 
 
   render() {
-    // console.log('render is called in EditStory');
     console.log('EditStory this.props: ', this.props);
     // console.log('from EditStoryForm, this.state.input: ', this.state.input);
     // debugger

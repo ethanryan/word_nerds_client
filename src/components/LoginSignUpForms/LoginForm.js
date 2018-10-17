@@ -42,7 +42,7 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log('hangleSubmit called from LoginForm')
+    // console.log('handleSubmit called from LoginForm')
     e.preventDefault()
     this.props.handleLogin(this.state) //passing state as parms to handleLogin in StoryContainer
   }

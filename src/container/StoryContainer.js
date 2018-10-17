@@ -259,8 +259,7 @@ class StoryContainer extends Component {
 
 
   handleCharacterNameChange(characterName, characterType) {
-    console.warn('handleCharacterNameChange -> characterName is: ', characterName)
-    console.warn('handleCharacterNameChange -> characterType is: ', characterType)
+    // console.log('handleCharacterNameChange -> characterName and characterType is: ', characterName, characterType)
     let characters = {...this.state.characters}
     characters[characterType].name = characterName
     this.setState({
@@ -269,8 +268,7 @@ class StoryContainer extends Component {
   }
 
   handleCharacterGenderChange(characterGender, characterType) {
-    console.warn('handleCharacterGenderChange -> characterGender is: ', characterGender)
-    console.warn('handleCharacterGenderChange -> characterType is: ', characterType)
+    // console.log('handleCharacterGenderChange -> characterGender and characterType is: ', characterGender, characterType)
     let characters = {...this.state.characters}
     characters[characterType].gender = characterGender
     this.setState({
