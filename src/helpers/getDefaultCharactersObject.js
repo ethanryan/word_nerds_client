@@ -28,5 +28,5 @@ export default function getDefaultCharactersObject() {
     },
     genreSelection: 'random', //updated from CreateStoryFormSelectGenre... random is default...
   }
-  return defaultCharactersObject
+  return defaultCharactersObject //NOTE: and genreSelection!
 }

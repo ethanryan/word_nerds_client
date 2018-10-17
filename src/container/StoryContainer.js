@@ -171,7 +171,7 @@ class StoryContainer extends Component {
   }
 
   handleClearForm() {
-    this.setState(getDefaultCharactersObject)
+    this.setState(getDefaultCharactersObject) //NOTE: and genreSelection!
   }
 
   handleUpdateStory(updatedStory) {
