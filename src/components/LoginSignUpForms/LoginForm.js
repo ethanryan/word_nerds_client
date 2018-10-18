@@ -21,6 +21,9 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+
+//NOTE: update SignUpForm with same refactors as in LoginForm, and add note about what is and is not allowed for username!!!
+//NOTE: adding note so it makes more sense when html popup says "Please match the requested format."
   validateFormInputs(name, password) {
     // true means invalid
     //NOTE: fixing this, making it so if condition is met, input is INVALD
