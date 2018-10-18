@@ -21,12 +21,21 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  validate(name, password) {
-    // true means invalid, so our conditions got reversed
-    return {
-      name: name.length === 0, //true if username is empty
-      password: password.length === 0, //true if password is empty
+  validateFormInputs(name, password) {
+    // true means invalid
+    //NOTE: fixing this, making it so if condition is met, input is INVALD
+    // return {
+    //   name: name.length === 0, //true if username is empty
+    //   password: password.length === 0, //true if password is empty
+    // }
+    let nameIsInvalid = (name.length === 0) //TRUE if username is empty (AKA if name.length is zero, nameIsInValid is true...)
+    let passwordIsInvalid = (password.length === 0) //TRUE if password is empty
+    let errorObject = {
+      name: nameIsInvalid, //true if username is empty
+      password: passwordIsInvalid, //true if password is empty
     }
+    console.log('validateFormInputs called, errorObject is: ', errorObject)
+    return errorObject
   }
 
   handleChange(prop, value) {
@@ -48,29 +57,39 @@ class LoginForm extends React.Component {
       return //if the form can't be submitted, return to the page
     }
     //NOTE: commenting out below to see result of canBeSubmitted in log....
-    this.props.handleLogin(this.state) //passing state as parms to handleLogin in StoryContainer
+    // this.props.handleLogin(this.state) //passing state as parms to handleLogin in StoryContainer
+  }
+
+  checkIfDisabled(errorsObject) {
+    let trueOrFalse = Object.keys(errorsObject).some(eachKey => errorsObject[eachKey]) //true or false... true if any errors[key] equals true
+    // console.warn('777777 >>>>>> checkIfDisabled, trueOrFalse is: ', trueOrFalse)
+    return trueOrFalse
   }
 
   canBeSubmitted() {
-    const errors = this.validate(this.state.name, this.state.password)
-    console.log('------>>>>>> LoginForm, canBeSubmitted, errors: ', errors)
+    const errors = this.validateFormInputs(this.state.name, this.state.password)
     const isDisabled = Object.keys(errors).some(x => errors[x])
-    console.log('------>>>>>> LoginForm, canBeSubmitted, isDisabled: ', isDisabled)
-    console.log('------>>>>>> LoginForm, canBeSubmitted, !isDisabled: ', !isDisabled)
     return !isDisabled
   }
 
   render() {
-    console.log('LoginForm state: ', this.state)
-    console.log('LoginForm props: ', this.props)
+    // console.log('LoginForm state: ', this.state)
+    // console.log('LoginForm props: ', this.props)
 
-    const errors = this.validate(this.state.name, this.state.password)
-    const isDisabled = Object.keys(errors).some(x => errors[x])
+    const errorsObject = this.validateFormInputs(this.state.name, this.state.password)
+    // console.log('------>>>>>> render, errorsObject: ', errorsObject)
+    // const isDisabled = Object.keys(errorsObject).some(x => errorsObject[x]) //true or false
+    const isDisabled = this.checkIfDisabled(errorsObject)
 
     const shouldMarkError = (field) => {
-      const hasError = errors[field]
+      console.warn('000. shouldMarkError, field: ', field)
+      const hasError = errorsObject[field]
+      console.warn('shouldMarkError, hasError: ', hasError)
       const shouldShow = this.state.touched[field]
-      return hasError ? shouldShow : false
+      console.warn('shouldMarkError, shouldShow: ', shouldShow)
+      let result = hasError ? shouldShow : false
+      console.log('shouldMarkError, field and result is: ', field, result)
+      return result
     }
 
     return (
