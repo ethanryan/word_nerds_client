@@ -10,8 +10,8 @@ class LoginForm extends React.Component {
     // console.log('LoginForm props: ', props);
     super(props)
     this.state = {
-      name: '',
-      password: '',
+      name: '', //default
+      password: '', //default
 
       touched: {
         name: false,
@@ -42,20 +42,27 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit(e) {
-    // console.log('handleSubmit called from LoginForm')
+    console.log('handleSubmit called from LoginForm')
     e.preventDefault()
+    if ( !this.canBeSubmitted() ) {
+      return //if the form can't be submitted, return to the page
+    }
+    //NOTE: commenting out below to see result of canBeSubmitted in log....
     this.props.handleLogin(this.state) //passing state as parms to handleLogin in StoryContainer
   }
 
   canBeSubmitted() {
     const errors = this.validate(this.state.name, this.state.password)
+    console.log('------>>>>>> LoginForm, canBeSubmitted, errors: ', errors)
     const isDisabled = Object.keys(errors).some(x => errors[x])
+    console.log('------>>>>>> LoginForm, canBeSubmitted, isDisabled: ', isDisabled)
+    console.log('------>>>>>> LoginForm, canBeSubmitted, !isDisabled: ', !isDisabled)
     return !isDisabled
   }
 
   render() {
-    // console.log('LoginForm state: ', this.state)
-    // console.log('LoginForm props: ', this.props)
+    console.log('LoginForm state: ', this.state)
+    console.log('LoginForm props: ', this.props)
 
     const errors = this.validate(this.state.name, this.state.password)
     const isDisabled = Object.keys(errors).some(x => errors[x])
