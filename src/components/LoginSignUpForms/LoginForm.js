@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
     //   name: name.length === 0, //true if username is empty
     //   password: password.length === 0, //true if password is empty
     // }
-    let nameIsInvalid = (name.length === 0) //TRUE if username is empty (AKA if name.length is zero, nameIsInValid is true...)
+    let nameIsInvalid = (name.length < 2 || name.length > 15) //TRUE if username is empty OR greater than 15 characters (AKA if name.length is zero, nameIsInValid is true...)
     let passwordIsInvalid = (password.length === 0) //TRUE if password is empty
     let errorObject = {
       name: nameIsInvalid, //true if username is empty
@@ -57,7 +57,7 @@ class LoginForm extends React.Component {
       return //if the form can't be submitted, return to the page
     }
     //NOTE: commenting out below to see result of canBeSubmitted in log....
-    // this.props.handleLogin(this.state) //passing state as parms to handleLogin in StoryContainer
+    this.props.handleLogin(this.state) //passing state as parms to handleLogin in StoryContainer
   }
 
   checkIfDisabled(errorsObject) {
@@ -130,6 +130,9 @@ class LoginForm extends React.Component {
               value={this.state.name}
               onChange={ e => this.handleChange('name', e.target.value)}
               onBlur={this.handleBlur('name')}
+              // pattern="[A-Za-z\s]+"
+              // pattern="[a-zA-Z][a-zA-Z0-9-_.]{1,20}"
+              pattern="[a-zA-Z][a-zA-Z0-9-_\.]{3,15}"
             />
             <span className={shouldMarkError('name') ? 'error' : 'hidden'}>
               invalid name
