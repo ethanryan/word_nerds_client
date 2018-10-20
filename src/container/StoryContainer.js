@@ -131,9 +131,9 @@ class StoryContainer extends Component {
 
   logStateAndDataStatus() {
     if(this.state.plotsReceivedFromAPI === false) {
-      console.warn('0. no plot data yet, this.state.plotsReceivedFromAPI is: ', this.state.plotsReceivedFromAPI)
+      console.warn('%c 0. no plot data yet, this.state.plotsReceivedFromAPI is: ', 'color: red', this.state.plotsReceivedFromAPI)
     } else {
-      console.warn('1. HEY YO! this.state.plotsReceivedFromAPI: ', this.state.plotsReceivedFromAPI)
+      console.warn('%c 1. plot data received! this.state.plotsReceivedFromAPI is: ', 'color: green', this.state.plotsReceivedFromAPI)
       console.warn('1. StoryContainer - this.state: ', this.state)
     }
   }
