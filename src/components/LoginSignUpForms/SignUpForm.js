@@ -21,13 +21,27 @@ class SignUp extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  validate(email, username, password) {
-    // true means invalid, so our conditions got reversed
-    return {
-      email: email.length === 0, //true if email is empty
-      username: username.length === 0, //true if username is empty
-      password: password.length === 0, //true if password is empty
-    };
+  // validate(email, username, password) {
+  //   // true means invalid, so our conditions got reversed
+  //   return {
+  //     email: email.length === 0, //true if email is empty
+  //     username: username.length === 0, //true if username is empty
+  //     password: password.length === 0, //true if password is empty
+  //   };
+  // }
+
+  validateFormInputs(email, username, password) {
+    //NOTE: if conditions below are met, input is INVALD
+    let emailIsInvalid = (email.length === 0)
+    let usernameIsInvalid = (username.length < 3 || username.length > 15) //TRUE if username is empty OR greater than 15 characters (AKA if username.length is zero, usernameIsInValid is true...)
+    let passwordIsInvalid = (password.length === 0) //TRUE if password is empty
+    let errorObject = {
+      email: emailIsInvalid, //true if invalid
+      username: usernameIsInvalid, //true if invalid
+      password: passwordIsInvalid, //true if invalid
+    }
+    console.log('validateFormInputs called, errorObject is: ', errorObject)
+    return errorObject
   }
 
   handleChange(prop, value) {
@@ -52,22 +66,35 @@ class SignUp extends React.Component {
     this.props.handleSignUp(this.state) //passing state as parms to handleSignUp in StoryContainer
   }
 
+  checkIfDisabled(errorsObject) {
+    let trueOrFalse = Object.keys(errorsObject).some(eachKey => errorsObject[eachKey]) //true or false... true if any errors[key] equals true
+    return trueOrFalse
+  }
+
+  // canBeSubmitted() {
+  //   const errors = this.validate(this.state.email, this.state.username, this.state.password)
+  //   const isDisabled = Object.keys(errors).some(x => errors[x])
+  //   return !isDisabled
+  // }
+
   canBeSubmitted() {
-    const errors = this.validate(this.state.email, this.state.username, this.state.password)
-    const isDisabled = Object.keys(errors).some(x => errors[x])
+    const errorsObject = this.validateFormInputs(this.state.email, this.state.username, this.state.password)
+    // const isDisabled = Object.keys(errors).some(x => errors[x])
+    const isDisabled = this.checkIfDisabled(errorsObject)
     return !isDisabled
   }
 
   render() {
     // console.log('props from SignUpForm: ', this.props)
     // console.log('state from SignUpForm: ', this.state)
-    const errors = this.validate(this.state.email, this.state.username, this.state.password)
-    const isDisabled = Object.keys(errors).some(x => errors[x])
+    const errorsObject = this.validateFormInputs(this.state.email, this.state.username, this.state.password)
+    const isDisabled = this.checkIfDisabled(errorsObject)
 
     const shouldMarkError = (field) => {
-      const hasError = errors[field]
+      const hasError = errorsObject[field]
       const shouldShow = this.state.touched[field]
-      return hasError ? shouldShow : false
+      let result = hasError ? shouldShow : false
+      return result
     }
 
     return (
