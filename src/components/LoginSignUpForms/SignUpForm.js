@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { Form } from 'semantic-ui-react'
 
+
 class SignUp extends React.Component {
   constructor(props) {
     super(props)
@@ -11,7 +12,6 @@ class SignUp extends React.Component {
       email: '',
       username: '',
       password: '',
-
       touched: {
         email: false,
         username: false,
@@ -20,15 +20,6 @@ class SignUp extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-
-  // validate(email, username, password) {
-  //   // true means invalid, so our conditions got reversed
-  //   return {
-  //     email: email.length === 0, //true if email is empty
-  //     username: username.length === 0, //true if username is empty
-  //     password: password.length === 0, //true if password is empty
-  //   };
-  // }
 
   validateFormInputs(email, username, password) {
     //NOTE: if conditions below are met, input is INVALD
@@ -50,7 +41,6 @@ class SignUp extends React.Component {
     })
   }
 
-
   handleBlur = (field) => (evt) => {
     this.setState({
       touched: { ...this.state.touched, [field]: true },
@@ -71,15 +61,8 @@ class SignUp extends React.Component {
     return trueOrFalse
   }
 
-  // canBeSubmitted() {
-  //   const errors = this.validate(this.state.email, this.state.username, this.state.password)
-  //   const isDisabled = Object.keys(errors).some(x => errors[x])
-  //   return !isDisabled
-  // }
-
   canBeSubmitted() {
     const errorsObject = this.validateFormInputs(this.state.email, this.state.username, this.state.password)
-    // const isDisabled = Object.keys(errors).some(x => errors[x])
     const isDisabled = this.checkIfDisabled(errorsObject)
     return !isDisabled
   }
@@ -150,8 +133,7 @@ class SignUp extends React.Component {
               value={this.state.username}
               onChange={(e) => this.handleChange('username', e.target.value)}
               onBlur={this.handleBlur('username')}
-              pattern="[a-zA-Z][a-zA-Z0-9-_]+" //NOTE: need + sign at the end of pattern!
-              //Only letters (either case), numbers, and the underscore.
+              pattern="[a-zA-Z][a-zA-Z0-9-_]+" //NOTE: need + sign at the end of pattern! Only letters (either case), numbers, and the underscore.
               title="A username can only contain letters (upper and lowercase), numbers, and the underscore. Username must start with a letter and must be between 3 and 15 characters long."
             />
             <span

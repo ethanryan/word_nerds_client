@@ -12,7 +12,6 @@ class LoginForm extends React.Component {
     this.state = {
       username: '', //default
       password: '', //default
-
       touched: {
         username: false,
         password: false,
@@ -21,7 +20,6 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-//NOTE: update SignUpForm with same refactors as in LoginForm, and add pattern and title attributes to username input field!
   validateFormInputs(username, password) {
     //NOTE: if conditions below are met, input is INVALD
     let usernameIsInvalid = (username.length < 3 || username.length > 15) //TRUE if username is empty OR greater than 15 characters (AKA if username.length is zero, usernameIsInValid is true...)
@@ -61,7 +59,6 @@ class LoginForm extends React.Component {
 
   canBeSubmitted() {
     const errorsObject = this.validateFormInputs(this.state.username, this.state.password)
-    // const isDisabled = Object.keys(errors).some(x => errors[x])
     const isDisabled = this.checkIfDisabled(errorsObject)
     return !isDisabled
   }
@@ -73,13 +70,9 @@ class LoginForm extends React.Component {
     const isDisabled = this.checkIfDisabled(errorsObject)
 
     const shouldMarkError = (field) => {
-      // console.warn('000. shouldMarkError, field: ', field)
       const hasError = errorsObject[field]
-      // console.warn('shouldMarkError, hasError: ', hasError)
       const shouldShow = this.state.touched[field]
-      // console.warn('shouldMarkError, shouldShow: ', shouldShow)
       let result = hasError ? shouldShow : false
-      // console.log('shouldMarkError, field and result is: ', field, result)
       return result
     }
 
@@ -121,8 +114,7 @@ class LoginForm extends React.Component {
               value={this.state.username}
               onChange={(e) => this.handleChange('username', e.target.value)}
               onBlur={this.handleBlur('username')}
-              pattern="[a-zA-Z][a-zA-Z0-9-_]+" //NOTE: need + sign at the end of pattern!
-              //Only letters (either case), numbers, and the underscore.
+              pattern="[a-zA-Z][a-zA-Z0-9-_]+" //NOTE: need + sign at the end of pattern! Only letters (either case), numbers, and the underscore.
               title="A username can only contain letters (upper and lowercase), numbers, and the underscore. Username must start with a letter and must be between 3 and 15 characters long."
             />
             <span className={shouldMarkError('username') ? 'error' : 'hidden'}>
