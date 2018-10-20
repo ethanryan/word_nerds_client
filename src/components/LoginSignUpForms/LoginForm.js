@@ -10,11 +10,11 @@ class LoginForm extends React.Component {
     // console.log('LoginForm props: ', props);
     super(props)
     this.state = {
-      name: '', //default
+      username: '', //default
       password: '', //default
 
       touched: {
-        name: false,
+        username: false,
         password: false,
       },
     }
@@ -22,12 +22,12 @@ class LoginForm extends React.Component {
   }
 
 //NOTE: update SignUpForm with same refactors as in LoginForm, and add pattern and title attributes to username input field!
-  validateFormInputs(name, password) {
+  validateFormInputs(username, password) {
     //NOTE: if conditions below are met, input is INVALD
-    let nameIsInvalid = (name.length < 3 || name.length > 15) //TRUE if username is empty OR greater than 15 characters (AKA if name.length is zero, nameIsInValid is true...)
+    let usernameIsInvalid = (username.length < 3 || username.length > 15) //TRUE if username is empty OR greater than 15 characters (AKA if username.length is zero, usernameIsInValid is true...)
     let passwordIsInvalid = (password.length === 0) //TRUE if password is empty
     let errorObject = {
-      name: nameIsInvalid, //true if invalid
+      username: usernameIsInvalid, //true if invalid
       password: passwordIsInvalid, //true if invalid
     }
     // console.log('validateFormInputs called, errorObject is: ', errorObject)
@@ -60,7 +60,7 @@ class LoginForm extends React.Component {
   }
 
   canBeSubmitted() {
-    const errorsObject = this.validateFormInputs(this.state.name, this.state.password)
+    const errorsObject = this.validateFormInputs(this.state.username, this.state.password)
     // const isDisabled = Object.keys(errors).some(x => errors[x])
     const isDisabled = this.checkIfDisabled(errorsObject)
     return !isDisabled
@@ -69,7 +69,7 @@ class LoginForm extends React.Component {
   render() {
     // console.log('LoginForm state: ', this.state)
     // console.log('LoginForm props: ', this.props)
-    const errorsObject = this.validateFormInputs(this.state.name, this.state.password)
+    const errorsObject = this.validateFormInputs(this.state.username, this.state.password)
     const isDisabled = this.checkIfDisabled(errorsObject)
 
     const shouldMarkError = (field) => {
@@ -104,7 +104,7 @@ class LoginForm extends React.Component {
           </p>
 
           <Form.Field>
-            <div className={(this.props.nameOrPasswordError === true) ? 'nameOrPasswordError' : 'hidden'}>
+            <div className={(this.props.usernameOrPasswordError === true) ? 'usernameOrPasswordError' : 'hidden'}>
               Incorrect Username or Password.
             </div>
           </Form.Field>
@@ -115,18 +115,18 @@ class LoginForm extends React.Component {
             </label>
             <input
               id='usernameInput'
-              className={shouldMarkError('name') ? 'error' : ''}
+              className={shouldMarkError('username') ? 'error' : ''}
               placeholder='Username'
               // autoFocus
-              value={this.state.name}
-              onChange={ e => this.handleChange('name', e.target.value)}
-              onBlur={this.handleBlur('name')}
+              value={this.state.username}
+              onChange={(e) => this.handleChange('username', e.target.value)}
+              onBlur={this.handleBlur('username')}
               pattern="[a-zA-Z][a-zA-Z0-9-_]+" //NOTE: need + sign at the end of pattern!
               //Only letters (either case), numbers, and the underscore.
               title="A username can only contain letters (upper and lowercase), numbers, and the underscore. Username must start with a letter and must be between 3 and 15 characters long."
             />
-            <span className={shouldMarkError('name') ? 'error' : 'hidden'}>
-              invalid name
+            <span className={shouldMarkError('username') ? 'error' : 'hidden'}>
+              invalid username
             </span>
           </Form.Field>
 

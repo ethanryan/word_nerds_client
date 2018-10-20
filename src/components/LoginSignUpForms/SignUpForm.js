@@ -121,8 +121,11 @@ class SignUp extends React.Component {
               className={shouldMarkError('username') ? 'error' : ''}
               placeholder='Username'
               value={this.state.username}
-              onChange={ e => this.handleChange('username', e.target.value)}
+              onChange={(e) => this.handleChange('username', e.target.value)}
               onBlur={this.handleBlur('username')}
+              pattern="[a-zA-Z][a-zA-Z0-9-_]+" //NOTE: need + sign at the end of pattern!
+              //Only letters (either case), numbers, and the underscore.
+              title="A username can only contain letters (upper and lowercase), numbers, and the underscore. Username must start with a letter and must be between 3 and 15 characters long."
             />
             <span
               className={shouldMarkError('username') ? 'error' : 'hidden'}>

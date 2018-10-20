@@ -80,7 +80,7 @@ class StoryContainer extends Component {
       genres: [],
       genreSelection: 'random', //updated from CreateStoryFormSelectGenre... random is default...
       userCount: null, //this will be a number that gets updated by api call...
-      nameOrPasswordError: false,
+      usernameOrPasswordError: false,
       usernameExistsError: false,
     }
     this.logout = this.logout.bind(this);
@@ -231,12 +231,12 @@ class StoryContainer extends Component {
 
   handleLogin(params) {
     // if (window.confirm(`Are you sure you want to login??? params are: name: ${params.name}, password: ${params.password}`))
-    this.setState({nameOrPasswordError: false}) //resetting the state
+    this.setState({usernameOrPasswordError: false}) //resetting the state
     api.logIn(params) //calling logIn function in api/index.js
     .then(response => {
       if(response.user == null && response.error != null) {
         //if user doesn't exist, or if there is an error...
-        this.setState({nameOrPasswordError: true}) //need to pass this down to LoginForm
+        this.setState({usernameOrPasswordError: true}) //need to pass this down to LoginForm
         console.log("response error")
         return
       }
@@ -361,7 +361,7 @@ class StoryContainer extends Component {
             <LoginSignUp
               handleLogin={this.handleLogin}
               handleSignUp={this.handleSignUp}
-              nameOrPasswordError={this.state.nameOrPasswordError}
+              usernameOrPasswordError={this.state.usernameOrPasswordError}
               usernameExistsError={this.state.usernameExistsError}
             />
           }

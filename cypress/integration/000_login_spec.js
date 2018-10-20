@@ -76,25 +76,25 @@ describe ("user can't submit login form without entering username and password",
 
 
 describe ("user can't submit login form without entering valid username and password", function() {
-  it('displays nameOrPasswordError when user does not exist', function() {
+  it('displays usernameOrPasswordError when user does not exist', function() {
     cy.visit(myApp)
     cy.get('#usernameInput').should('have.attr', 'placeholder', 'Username')
     .type('wrong username')
     cy.get('#passwordInput').should('have.attr', 'placeholder', 'Password')
     .type('wrong password')
     cy.get('form').submit()
-    cy.get('.nameOrPasswordError').should('contain', 'Incorrect Username or Password.')
+    cy.get('.usernameOrPasswordError').should('contain', 'Incorrect Username or Password.')
   })
 })
 
 describe ("user can't submit login form without entering valid password for specific username", function() {
-  it('displays nameOrPasswordError error when user enters wrong password', function() {
+  it('displays usernameOrPasswordError error when user enters wrong password', function() {
     cy.visit(myApp)
     cy.get('#usernameInput').should('have.attr', 'placeholder', 'Username')
     .type('sammy')
     cy.get('#passwordInput').should('have.attr', 'placeholder', 'Password')
     .type('bob')
     cy.get('form').submit()
-    cy.get('.nameOrPasswordError').should('contain', 'Incorrect Username or Password.')
+    cy.get('.usernameOrPasswordError').should('contain', 'Incorrect Username or Password.')
   })
 })
