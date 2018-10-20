@@ -21,23 +21,16 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-
-//NOTE: update SignUpForm with same refactors as in LoginForm, and add note about what is and is not allowed for username!!!
-//NOTE: adding note so it makes more sense when html popup says "Please match the requested format."
+//NOTE: update SignUpForm with same refactors as in LoginForm, and add pattern and title attributes to username input field!
   validateFormInputs(name, password) {
-    // true means invalid
-    //NOTE: fixing this, making it so if condition is met, input is INVALD
-    // return {
-    //   name: name.length === 0, //true if username is empty
-    //   password: password.length === 0, //true if password is empty
-    // }
-    let nameIsInvalid = (name.length < 2 || name.length > 15) //TRUE if username is empty OR greater than 15 characters (AKA if name.length is zero, nameIsInValid is true...)
+    //NOTE: if conditions below are met, input is INVALD
+    let nameIsInvalid = (name.length < 3 || name.length > 15) //TRUE if username is empty OR greater than 15 characters (AKA if name.length is zero, nameIsInValid is true...)
     let passwordIsInvalid = (password.length === 0) //TRUE if password is empty
     let errorObject = {
-      name: nameIsInvalid, //true if username is empty
-      password: passwordIsInvalid, //true if password is empty
+      name: nameIsInvalid, //true if invalid
+      password: passwordIsInvalid, //true if invalid
     }
-    console.log('validateFormInputs called, errorObject is: ', errorObject)
+    // console.log('validateFormInputs called, errorObject is: ', errorObject)
     return errorObject
   }
 
@@ -54,44 +47,39 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log('handleSubmit called from LoginForm')
     e.preventDefault()
     if ( !this.canBeSubmitted() ) {
       return //if the form can't be submitted, return to the page
     }
-    //NOTE: commenting out below to see result of canBeSubmitted in log....
     this.props.handleLogin(this.state) //passing state as parms to handleLogin in StoryContainer
   }
 
   checkIfDisabled(errorsObject) {
     let trueOrFalse = Object.keys(errorsObject).some(eachKey => errorsObject[eachKey]) //true or false... true if any errors[key] equals true
-    // console.warn('777777 >>>>>> checkIfDisabled, trueOrFalse is: ', trueOrFalse)
     return trueOrFalse
   }
 
   canBeSubmitted() {
-    const errors = this.validateFormInputs(this.state.name, this.state.password)
-    const isDisabled = Object.keys(errors).some(x => errors[x])
+    const errorsObject = this.validateFormInputs(this.state.name, this.state.password)
+    // const isDisabled = Object.keys(errors).some(x => errors[x])
+    const isDisabled = this.checkIfDisabled(errorsObject)
     return !isDisabled
   }
 
   render() {
     // console.log('LoginForm state: ', this.state)
     // console.log('LoginForm props: ', this.props)
-
     const errorsObject = this.validateFormInputs(this.state.name, this.state.password)
-    // console.log('------>>>>>> render, errorsObject: ', errorsObject)
-    // const isDisabled = Object.keys(errorsObject).some(x => errorsObject[x]) //true or false
     const isDisabled = this.checkIfDisabled(errorsObject)
 
     const shouldMarkError = (field) => {
-      console.warn('000. shouldMarkError, field: ', field)
+      // console.warn('000. shouldMarkError, field: ', field)
       const hasError = errorsObject[field]
-      console.warn('shouldMarkError, hasError: ', hasError)
+      // console.warn('shouldMarkError, hasError: ', hasError)
       const shouldShow = this.state.touched[field]
-      console.warn('shouldMarkError, shouldShow: ', shouldShow)
+      // console.warn('shouldMarkError, shouldShow: ', shouldShow)
       let result = hasError ? shouldShow : false
-      console.log('shouldMarkError, field and result is: ', field, result)
+      // console.log('shouldMarkError, field and result is: ', field, result)
       return result
     }
 
@@ -116,7 +104,7 @@ class LoginForm extends React.Component {
           </p>
 
           <Form.Field>
-            <div className={this.props.nameOrPasswordError === true ? 'nameOrPasswordError' : 'hidden'}>
+            <div className={(this.props.nameOrPasswordError === true) ? 'nameOrPasswordError' : 'hidden'}>
               Incorrect Username or Password.
             </div>
           </Form.Field>
@@ -133,9 +121,9 @@ class LoginForm extends React.Component {
               value={this.state.name}
               onChange={ e => this.handleChange('name', e.target.value)}
               onBlur={this.handleBlur('name')}
-              // pattern="[A-Za-z\s]+"
-              // pattern="[a-zA-Z][a-zA-Z0-9-_.]{1,20}"
-              pattern="[a-zA-Z][a-zA-Z0-9-_\.]{3,15}"
+              pattern="[a-zA-Z][a-zA-Z0-9-_]+" //NOTE: need + sign at the end of pattern!
+              //Only letters (either case), numbers, and the underscore.
+              title="A username can only contain letters (upper and lowercase), numbers, and the underscore. Username must start with a letter and must be between 3 and 15 characters long."
             />
             <span className={shouldMarkError('name') ? 'error' : 'hidden'}>
               invalid name
