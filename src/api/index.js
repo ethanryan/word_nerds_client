@@ -156,7 +156,11 @@ export function logIn(params) {
       'Content-Type': 'application/json'
     },
     method: 'POST',
-    body: JSON.stringify(params)
+    // body: JSON.stringify(params) //NOTE: argument is not nested, like it is in signUp function below
+    body: JSON.stringify({
+        name: params.username, //this is name on backend (not username)
+        password: params.password
+    })
   }).then( res => res.json() )
 }
 
