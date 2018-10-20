@@ -232,7 +232,23 @@ class StoryContainer extends Component {
   handleLogin(params) {
     // if (window.confirm(`Are you sure you want to login??? params are: name: ${params.name}, password: ${params.password}`))
     this.setState({usernameOrPasswordError: false}) //resetting the state
-    api.logIn(params) //calling logIn function in api/index.js
+    console.warn('77777 >>>> handleLogin - params are: ', params)
+    console.warn('77777 >>>> handleLogin - params are: ', params)
+    console.warn('77777 >>>> handleLogin - params are: ', params)
+    //NOTE: using this function to rename 'username' key to 'name' key, because api.logIn is expecting 'name' as a key in our params object, to send to backend...
+    let renameProp = (
+      oldProp,
+      newProp,
+      { [oldProp]: old, ...others }
+    ) => ({
+      [newProp]: old,
+      ...others
+    }) //NOTE: this funtion via: https://medium.com/front-end-hacking/immutably-rename-object-keys-in-javascript-5f6353c7b6dd
+    let newParams = renameProp('username', 'name', params) //creating newParams object from params object, using function above....
+    console.log('99: now params is: ', params)
+    console.log('99: and newParams is: ', newParams)
+    // api.logIn(params) //calling logIn function in api/index.js
+    api.logIn(newParams) //calling logIn function in api/index.js
     .then(response => {
       if(response.user == null && response.error != null) {
         //if user doesn't exist, or if there is an error...
