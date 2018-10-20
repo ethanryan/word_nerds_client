@@ -108,7 +108,7 @@ class SignUp extends React.Component {
             Join Word Nerds today.
           </h1>
 
-          <p className="center">
+          <p className="center call-to-action">
             Already use Word Nerds?{` `}
             <Link
               to={`/login`}

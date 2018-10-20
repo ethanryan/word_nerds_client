@@ -94,7 +94,7 @@ class LoginForm extends React.Component {
             Log in to Word Nerds
           </h1>
 
-          <p className="center">
+          <p className="center call-to-action">
             New to Word Nerds?{` `}
             <Link
               to={`/register`}
