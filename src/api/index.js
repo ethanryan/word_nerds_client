@@ -1,8 +1,8 @@
 // for local server rails api, run `rails s` on backend, then run `npm start`:
-//const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://localhost:3000'
 
 // for hosted heroku api:
-const baseUrl = process.env.REACT_APP_BASE_URL
+// const baseUrl = process.env.REACT_APP_BASE_URL
 //note: to run frontend locally, based on heroku-hosted api, run: heroku local web
 //will display app in browser at localhost:5000
 //(though i guess this is no different from running `npm start` with the heroku api as baseUrl)
@@ -57,7 +57,7 @@ export function getCurrentUser() {
   .then (response => response.json() )
 }
 
-export function createStory(genres, characters, user_id, storyType) { //adding user_id as argument -- ER Nov 2017
+export function createStory(genres, characters, user_id, user_name, storyType) { //adding user_id as argument -- ER Nov 2017
   return fetch(`${baseUrl}/stories`, {
     headers: {
       'Accept': 'application/json',
@@ -75,6 +75,7 @@ export function createStory(genres, characters, user_id, storyType) { //adding u
           },
           ], //making this an array of genres -- ER Jan 2018
         user_id: user_id, //current user_id here instead of 1
+        user_name: user_name, //adding user_name -- ER October 2018
         storyType: [
           {
             name: storyType
