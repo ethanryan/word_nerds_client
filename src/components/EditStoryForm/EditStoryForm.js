@@ -98,7 +98,8 @@ class EditStoryForm extends Component {
 
             <StoryShowSummary
               story_id={this.props.story.id}
-              storyCreator={this.props.story.user.name}
+              // storyCreator={this.props.story.user.name}
+              storyCreator={this.props.story.user_name}
               wordCount={wordCount}
               genres={genres}
               plots={plots}
