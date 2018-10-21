@@ -42,11 +42,12 @@ class CreateStoryFormNotModal extends Component {
     const genres = this.props.genreSelection
     const characters = this.state.characters
     const user_id = this.props.user_id
+    const user_name = this.props.user_name
     const storyType = this.state.storyType //adding storyType...
     // console.log('CreateStoryFormNotModal submitted this.state: ', this.state)
-    console.log('CreateStoryFormNotModal submitted:::: ', genres, characters, user_id, storyType)
+    console.log('CreateStoryFormNotModal submitted:::: ', genres, characters, user_id, user_name, storyType)
     // console.log('user_id is: ', user_id)
-    this.props.handleSubmit( genres, characters, user_id, storyType ) //adding storyType...
+    this.props.handleSubmit( genres, characters, user_id, user_name, storyType ) //adding storyType...
     this.props.handleClearForm()
     scrollToTop()
   }
