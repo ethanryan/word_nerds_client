@@ -50,6 +50,7 @@ const CreateStoryForm = (props) => {
                 handleSubmit={props.handleSubmit}
                 handleClearForm={props.handleClearForm}
                 user_id={props.user_id}
+                user_name={props.user_name}
                 genreSelection={props.genreSelection}
                 plots={props.plots}
                 handleGenreChange={props.handleGenreChange}
