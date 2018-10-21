@@ -47,7 +47,7 @@ class OneStoryForMetadata extends React.Component {
 
   render() {
     const { column, data, direction } = this.state
-    // console.log('in OneStoryForMetadata, this.state.data is: ', this.state.data)
+    console.log('in OneStoryForMetadata, this.state.data is: ', this.state.data)
     return(
       <div className="OneStory-forMetadata">
         {
@@ -64,7 +64,7 @@ class OneStoryForMetadata extends React.Component {
                   <Table.HeaderCell sorted={column === 'title' ? direction : null} onClick={this.handleSort('title')}>
                     Title
                   </Table.HeaderCell>
-                  <Table.HeaderCell sorted={column === 'user' ? direction : null} onClick={this.handleSort('user.name')}>
+                  <Table.HeaderCell sorted={column === 'user_name' ? direction : null} onClick={this.handleSort('user_name')}>
                     Creator
                   </Table.HeaderCell>
                   <Table.HeaderCell sorted={column === 'content' ? direction : null} onClick={this.handleSort('content.length')}>
@@ -89,7 +89,7 @@ class OneStoryForMetadata extends React.Component {
               <Table.Body>
 
                 {
-                  _.map(data, ({ id, title, user, content, story_genre_names, story_plot_titles, created_at, updated_at }) => (
+                  _.map(data, ({ id, title, user_name, content, story_genre_names, story_plot_titles, created_at, updated_at }) => (
 
                     <Table.Row key={id ? id : "id"}>
 
@@ -108,7 +108,7 @@ class OneStoryForMetadata extends React.Component {
                           }
                         </Table.Cell>
 
-                        <Table.Cell>{user ? user.name : "story creator"}</Table.Cell>
+                        <Table.Cell>{user_name ? user_name : "story creator"}</Table.Cell>
 
                         <Table.Cell>{content ? content.split(' ').length : 0}</Table.Cell>
 

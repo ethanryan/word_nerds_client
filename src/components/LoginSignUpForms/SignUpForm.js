@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { Form } from 'semantic-ui-react'
 
+
 class SignUp extends React.Component {
   constructor(props) {
     super(props)
@@ -11,7 +12,6 @@ class SignUp extends React.Component {
       email: '',
       username: '',
       password: '',
-
       touched: {
         email: false,
         username: false,
@@ -21,13 +21,18 @@ class SignUp extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  validate(email, username, password) {
-    // true means invalid, so our conditions got reversed
-    return {
-      email: email.length === 0, //true if email is empty
-      username: username.length === 0, //true if username is empty
-      password: password.length === 0, //true if password is empty
-    };
+  validateFormInputs(email, username, password) {
+    //NOTE: if conditions below are met, input is INVALD
+    let emailIsInvalid = (email.length === 0)
+    let usernameIsInvalid = (username.length < 3 || username.length > 15) //TRUE if username is empty OR greater than 15 characters (AKA if username.length is zero, usernameIsInValid is true...)
+    let passwordIsInvalid = (password.length === 0) //TRUE if password is empty
+    let errorObject = {
+      email: emailIsInvalid, //true if invalid
+      username: usernameIsInvalid, //true if invalid
+      password: passwordIsInvalid, //true if invalid
+    }
+    console.log('validateFormInputs called, errorObject is: ', errorObject)
+    return errorObject
   }
 
   handleChange(prop, value) {
@@ -35,7 +40,6 @@ class SignUp extends React.Component {
       [prop]: value
     })
   }
-
 
   handleBlur = (field) => (evt) => {
     this.setState({
@@ -52,22 +56,28 @@ class SignUp extends React.Component {
     this.props.handleSignUp(this.state) //passing state as parms to handleSignUp in StoryContainer
   }
 
+  checkIfDisabled(errorsObject) {
+    let trueOrFalse = Object.keys(errorsObject).some(eachKey => errorsObject[eachKey]) //true or false... true if any errors[key] equals true
+    return trueOrFalse
+  }
+
   canBeSubmitted() {
-    const errors = this.validate(this.state.email, this.state.username, this.state.password)
-    const isDisabled = Object.keys(errors).some(x => errors[x])
+    const errorsObject = this.validateFormInputs(this.state.email, this.state.username, this.state.password)
+    const isDisabled = this.checkIfDisabled(errorsObject)
     return !isDisabled
   }
 
   render() {
     // console.log('props from SignUpForm: ', this.props)
     // console.log('state from SignUpForm: ', this.state)
-    const errors = this.validate(this.state.email, this.state.username, this.state.password)
-    const isDisabled = Object.keys(errors).some(x => errors[x])
+    const errorsObject = this.validateFormInputs(this.state.email, this.state.username, this.state.password)
+    const isDisabled = this.checkIfDisabled(errorsObject)
 
     const shouldMarkError = (field) => {
-      const hasError = errors[field]
+      const hasError = errorsObject[field]
       const shouldShow = this.state.touched[field]
-      return hasError ? shouldShow : false
+      let result = hasError ? shouldShow : false
+      return result
     }
 
     return (
@@ -81,7 +91,7 @@ class SignUp extends React.Component {
             Join Word Nerds today.
           </h1>
 
-          <p className="center">
+          <p className="center call-to-action">
             Already use Word Nerds?{` `}
             <Link
               to={`/login`}
@@ -102,11 +112,13 @@ class SignUp extends React.Component {
             </label>
             <input
               id='emailAddressInput'
+              type='email'
+              required
               className={shouldMarkError('email') ? 'error' : ''}
               placeholder='Email Address'
               autoFocus
               value={this.state.email}
-              onChange={ e => this.handleChange('email', e.target.value)}
+              onChange={(e) => this.handleChange('email', e.target.value)}
               onBlur={this.handleBlur('email')}
             />
             <span className={shouldMarkError('email') ? 'error' : 'hidden'}>
@@ -121,8 +133,10 @@ class SignUp extends React.Component {
               className={shouldMarkError('username') ? 'error' : ''}
               placeholder='Username'
               value={this.state.username}
-              onChange={ e => this.handleChange('username', e.target.value)}
+              onChange={(e) => this.handleChange('username', e.target.value)}
               onBlur={this.handleBlur('username')}
+              pattern="[a-zA-Z][a-zA-Z0-9-_]+" //NOTE: need + sign at the end of pattern! Only letters (either case), numbers, and the underscore.
+              title="A username can only contain letters (upper and lowercase), numbers, and the underscore. Username must start with a letter and must be between 3 and 15 characters long."
             />
             <span
               className={shouldMarkError('username') ? 'error' : 'hidden'}>
@@ -138,7 +152,7 @@ class SignUp extends React.Component {
               className={shouldMarkError('password') ? 'error' : ''}
               placeholder='Password'
               value={this.state.password}
-              onChange={ e => this.handleChange('password', e.target.value)}
+              onChange={(e) => this.handleChange('password', e.target.value)}
               onBlur={this.handleBlur('password')}
             />
             <span

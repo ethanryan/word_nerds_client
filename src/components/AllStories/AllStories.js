@@ -8,7 +8,8 @@ import { Card, Loader, Segment, Button } from 'semantic-ui-react'
 
 const AllStories = (props) => {
 
-  const filteredStories = props.stories.filter(story => story.user.id === props.user.id)
+  // const filteredStories = props.stories.filter(story => story.user.id === props.user.id)
+  const filteredStories = props.stories.filter(story => story.user_id === props.user.id)
 
   console.log('AllStories props: ', props)
   return(

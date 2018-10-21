@@ -9,14 +9,16 @@ import { Link } from 'react-router-dom'
 import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
 
 const StoryShow = (props) => {
-  // console.log('StoryShow props: ', props);
+  console.log('StoryShow props: ', props);
 
   let wordCount = (props.story.content ? props.story.content.split(' ').length : 0)
 
   let genres = (props.story.story_genre_names ? props.story.story_genre_names : 0)
 
   let conditionIfStoryShowIsModal = (
-    (props.story.user.name !== props.user.name) ?
+    // (props.story.user.name !== props.user.name) ?
+    // (props.story.user_id !== props.user.id) ? //using user_id instead of of user...
+    (props.story.user_name !== props.user.name) ?
     <p style={{color: 'red'}}>
       Story can only be edited by its creator.
     </p>
@@ -27,7 +29,9 @@ const StoryShow = (props) => {
   )
 
   let conditionIfStoryShowIsNotModal = (
-    (props.story.user.name !== props.user.name) ?
+    // (props.story.user.name !== props.user.name) ?
+    // (props.story.user_id !== props.user.id) ? //using user_id instead of of user...
+    (props.story.user_name !== props.user.name) ? 
     <p style={{color: "red"}}>
       Story can only be edited by its creator.
     </p>
@@ -68,7 +72,8 @@ const StoryShow = (props) => {
 
           <StoryShowSummary
             story_id={props.story.id}
-            storyCreator={props.story.user.name}
+            // storyCreator={props.story.user.name}
+            storyCreator={props.story.user_name}
             wordCount={wordCount}
             genres={genres}
             plots={plots}
@@ -91,7 +96,8 @@ const StoryShow = (props) => {
           </p>
 
           {
-            (props.story.user.name !== props.user.name) ?
+            // (props.story.user.name !== props.user.name) ?
+            (props.story.user_name !== props.user.name) ?
             <Button color='green' compact disabled>
               Story can only be edited by its creator.
             </Button>

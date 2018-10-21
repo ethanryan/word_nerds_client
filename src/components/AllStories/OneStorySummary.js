@@ -25,10 +25,10 @@ const OneStorySummary = (props) => {
           <Card.Meta>
             Creator:&nbsp;
             {
-              props.story.user ?
-              props.story.user.name
+              props.story.user_name ?
+              props.story.user_name
               :
-              "story.user.name here, from OneStorySummary"
+              "story.user_name here, from OneStorySummary"
             }
           </Card.Meta>
         </Card.Content>

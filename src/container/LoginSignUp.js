@@ -70,7 +70,7 @@ class LoginSignUp extends React.Component {
                   path='/'
                   render={() => <LoginForm
                     handleLogin={this.props.handleLogin}
-                    nameOrPasswordError={this.props.nameOrPasswordError}
+                    usernameOrPasswordError={this.props.usernameOrPasswordError}
                   />}
                 />
 

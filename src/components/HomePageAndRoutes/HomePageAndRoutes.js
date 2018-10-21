@@ -52,6 +52,7 @@ const HomePageAndRoutes = (props) => {
                     handleSubmit={props.handleSubmit}
                     handleClearForm={props.handleClearForm}
                     user_id={props.user.id}
+                    user_name={props.user.name}
                     genreSelection={props.genreSelection} //this goes to CreateStoryForm
                     //below will be passed down to CreateStoryFormSelectGenre:
                     plots={props.plots}
