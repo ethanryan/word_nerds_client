@@ -112,11 +112,13 @@ class SignUp extends React.Component {
             </label>
             <input
               id='emailAddressInput'
+              type='email'
+              required
               className={shouldMarkError('email') ? 'error' : ''}
               placeholder='Email Address'
               autoFocus
               value={this.state.email}
-              onChange={ e => this.handleChange('email', e.target.value)}
+              onChange={(e) => this.handleChange('email', e.target.value)}
               onBlur={this.handleBlur('email')}
             />
             <span className={shouldMarkError('email') ? 'error' : 'hidden'}>
@@ -150,7 +152,7 @@ class SignUp extends React.Component {
               className={shouldMarkError('password') ? 'error' : ''}
               placeholder='Password'
               value={this.state.password}
-              onChange={ e => this.handleChange('password', e.target.value)}
+              onChange={(e) => this.handleChange('password', e.target.value)}
               onBlur={this.handleBlur('password')}
             />
             <span
