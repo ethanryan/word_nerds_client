@@ -95,13 +95,13 @@ const StoryShow = (props) => {
             }
           </p>
 
-          <p>
+          <div>
             {
               props.story.content ?
               <div dangerouslySetInnerHTML={{__html: props.story.content}} /> :
               "story content will go here"
             }
-          </p>
+          </div>
 
           {
             // (props.story.user.name !== props.user.name) ?
