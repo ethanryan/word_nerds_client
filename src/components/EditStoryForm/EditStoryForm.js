@@ -56,8 +56,16 @@ class EditStoryForm extends Component {
     })
   }
 
-  handleStoryChange(event) {
-    const story = event.target.value
+  // handleStoryChange(event) {
+  //   const story = event.target.value
+  //   this.setState({
+  //     input: story
+  //   })
+  // }
+
+  handleStoryChange(updatedStory) {
+    // console.log("EditStoryForm, handleStoryChange called! ---> updatedStory is: ", updatedStory)
+    const story = updatedStory
     this.setState({
       input: story
     })
@@ -136,10 +144,8 @@ class EditStoryForm extends Component {
               onChange={this.handleTitleChange}
             />
 
-            <QuillTextEditor />
-
             <Form.Field label='Edit Story'
-              className="EditStoryForm-linebreaks" //NOTE: what is this???
+              // className="EditStoryForm-linebreaks" //NOTE: what is this???
               // placeholder="this is where the story content goes for editing"
               // control='textarea' rows='35'
               // width={16}
@@ -147,24 +153,10 @@ class EditStoryForm extends Component {
               // onChange={this.handleStoryChange}
             />
 
-            <div
-            contentEditable="true"
-            dangerouslySetInnerHTML={{__html: paragraphs}}
-            // onInput={this.handleStoryChange}
-            // onInput={function(e) {
-            onInput={function(event) {
-              console.log("woohoo!, event is: ",  event);
-              console.log("event.target.value is: ", event.target.value)
-            }}
+            <QuillTextEditor
+              storyContent={paragraphs}
+              handleStoryChange={this.handleStoryChange}
             />
-
-              <div className='field'
-              // contentEditable="true"
-              // dangerouslySetInnerHTML={{__html: paragraphs}}
-              // control='textarea' rows='35'
-              // value={paragraphs}
-              // onChange={this.handleStoryChange}
-              />
 
             <div>
               <Button.Group>
