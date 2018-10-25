@@ -382,6 +382,11 @@ form span.error {
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
 
+/* for QuillTextEditor... */
+.ql-toolbar {
+  background: azure;
+}
+
 .EditStoryForm-linebreaks {
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
