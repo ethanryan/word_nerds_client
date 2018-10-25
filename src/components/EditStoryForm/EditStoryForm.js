@@ -10,23 +10,6 @@ import { Header, Form, Divider, Button, Loader, Segment } from 'semantic-ui-reac
 import QuillTextEditor from '../Quill/QuillTextEditor'
 
 
-
-// import 'quill/dist/quill.snow.css';
-//
-// import Quill from 'quill/core';
-// import Toolbar from 'quill/modules/toolbar';
-// import Snow from 'quill/themes/snow'; //snow works, but need to import and register formats, and replace icons...
-//
-// import Bold from 'quill/formats/bold';
-// import Italic from 'quill/formats/italic';
-// // import Header from 'quill/formats/header';
-// import Underline from 'quill/formats/underline';
-// import Link from 'quill/formats/link';
-// import List, { ListItem } from 'quill/formats/list';
-//
-// import Icons from 'quill/ui/icons';
-
-
 class EditStoryForm extends Component {
 
   constructor(props) {

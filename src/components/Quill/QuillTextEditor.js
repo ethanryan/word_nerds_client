@@ -36,20 +36,13 @@ class QuillTextEditor extends React.Component {
     //NOTE: above is same as dangerouslySetInnerHTML! it is a dangerous practice. need to make sure my html doesn't contain any malicious scripts within it, like JavaScript or PHP or whatever.
 
     window.quill.on('text-change', () => {
-      console.log('Text change!');
+      // console.log('Text change!');
       var editor = document.getElementsByClassName('ql-editor')
       let storyContent = editor[0].innerHTML
       console.log('storyContent is: ', storyContent)
 
       this.props.handleStoryChange(storyContent)
     });
-
-    // window.quill.insertText(0, 'hello world...') //NOTE: trying this... 0 is index...
-    // window.quill.setContents([
-    //   // { insert: 'Hello ' },
-    //   { insert: this.props.value },
-    //   { insert: '\n' } //NOTE: need to end this on a new line, per Quill documentation...
-    // ])
 
   } //componentDidMount
 
