@@ -46,6 +46,21 @@ class QuillTextEditor extends React.Component {
 
   } //componentDidMount
 
+  // componentDidUpdate(prevProps) { // Typical usage (don't forget to compare props):
+  //   if (this.props.userID !== prevProps.userID) {
+  //     this.fetchData(this.props.userID);
+  //   }
+  // }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.storyContent !== prevProps.storyContent) { //NOTE: if storyContent changes, for example, from new random last sentence, updated the story in the Quill editor...
+      // console.warn("PROPS ARE DIFFERENT!!!!")
+      var htmlToInsert = this.props.storyContent //getting this from EditStoryForm...
+      var editor = document.getElementsByClassName('ql-editor')
+      editor[0].innerHTML = htmlToInsert //NOTE: using vanilla JavaScript to replace the innerHTML with our story content...
+    }
+  }
+
   render() {
     console.log('in QuillTextEditor, this.props is: ', this.props)
     return (
