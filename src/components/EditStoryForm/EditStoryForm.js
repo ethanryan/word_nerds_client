@@ -5,7 +5,7 @@ import getRandomSentence from '../../helpers/getRandomSentence'
 
 import StoryShowSummary from '../StoryShow/StoryShowSummary'
 
-import { Header, Form, Divider, Button, Loader, Segment } from 'semantic-ui-react'
+import { Header, Form, Divider, Button, Loader, Segment, TextArea } from 'semantic-ui-react'
 
 class EditStoryForm extends Component {
 
@@ -75,7 +75,8 @@ class EditStoryForm extends Component {
 
     let wordCount = (this.state.input ? this.state.input.split(' ').length : 0)
 
-    let paragraphs = (this.state.input ? this.state.input.split('-----').join('\n\n') : "paragraphs will go here")
+    // let paragraphs = (this.state.input ? this.state.input.split('-----').join('\n\n') : "paragraphs will go here")
+    let paragraphs = (this.state.input ? this.state.input : "paragraphs will go here")
 
     let genres = (this.props.story.story_genre_names ? this.props.story.story_genre_names : 0)
 
@@ -116,13 +117,32 @@ class EditStoryForm extends Component {
             />
 
             <Form.Field label='Edit Story'
-              className="EditStoryForm-linebreaks"
-              placeholder="this is where the story content goes for editing"
-              control='textarea' rows='35'
-              width={16}
-              value={paragraphs}
-              onChange={this.handleStoryChange}
+              className="EditStoryForm-linebreaks" //NOTE: what is this???
+              // placeholder="this is where the story content goes for editing"
+              // control='textarea' rows='35'
+              // width={16}
+              // value={paragraphs}
+              // onChange={this.handleStoryChange}
             />
+
+            <div
+            contentEditable="true"
+            dangerouslySetInnerHTML={{__html: paragraphs}}
+            // onInput={this.handleStoryChange}
+            // onInput={function(e) {
+            onInput={function(event) {
+              console.log("woohoo!, event is: ",  event);
+              console.log("event.target.value is: ", event.target.value)
+            }}
+            />
+
+              <div className='field'
+              // contentEditable="true"
+              // dangerouslySetInnerHTML={{__html: paragraphs}}
+              // control='textarea' rows='35'
+              // value={paragraphs}
+              // onChange={this.handleStoryChange}
+              />
 
             <div>
               <Button.Group>
