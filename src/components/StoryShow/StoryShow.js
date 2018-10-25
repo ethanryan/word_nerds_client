@@ -31,7 +31,7 @@ const StoryShow = (props) => {
   let conditionIfStoryShowIsNotModal = (
     // (props.story.user.name !== props.user.name) ?
     // (props.story.user_id !== props.user.id) ? //using user_id instead of of user...
-    (props.story.user_name !== props.user.name) ? 
+    (props.story.user_name !== props.user.name) ?
     <p style={{color: "red"}}>
       Story can only be edited by its creator.
     </p>
@@ -73,7 +73,7 @@ const StoryShow = (props) => {
           <StoryShowSummary
             story_id={props.story.id}
             // storyCreator={props.story.user.name}
-            storyCreator={props.story.user_name}
+            storyCreator={props.story.user_name.substring(0, 15)}
             wordCount={wordCount}
             genres={genres}
             plots={plots}
