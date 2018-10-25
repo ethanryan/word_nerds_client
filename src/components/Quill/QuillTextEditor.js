@@ -3,6 +3,7 @@ import React from 'react';
 class QuillTextEditor extends React.Component {
 
   componentDidMount() {
+    console.log('QuillTextEditor, componentDidMount...')
 
     var toolbarOptions = [
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],        // custom dropdown
@@ -25,11 +26,35 @@ class QuillTextEditor extends React.Component {
         toolbar: toolbarOptions,
       },
       theme: 'snow',
-      placeholder: "Write something awesome..."
+      placeholder: "Write something awesome...",
     });
+
+    // var htmlToInsert = "<p>here is some <strong>awesome</strong> text</p><p>mo FUCKA</p>"
+    var htmlToInsert = this.props.storyContent //getting this from EditStoryForm...
+    var editor = document.getElementsByClassName('ql-editor')
+    editor[0].innerHTML = htmlToInsert //NOTE: using vanilla JavaScript to replace the innerHTML with our story content...
+    //NOTE: above is same as dangerouslySetInnerHTML! it is a dangerous practice. need to make sure my html doesn't contain any malicious scripts within it, like JavaScript or PHP or whatever.
+
+    window.quill.on('text-change', () => {
+      console.log('Text change!');
+      var editor = document.getElementsByClassName('ql-editor')
+      let storyContent = editor[0].innerHTML
+      console.log('storyContent is: ', storyContent)
+
+      this.props.handleStoryChange(storyContent)
+    });
+
+    // window.quill.insertText(0, 'hello world...') //NOTE: trying this... 0 is index...
+    // window.quill.setContents([
+    //   // { insert: 'Hello ' },
+    //   { insert: this.props.value },
+    //   { insert: '\n' } //NOTE: need to end this on a new line, per Quill documentation...
+    // ])
+
   } //componentDidMount
 
   render() {
+    console.log('in QuillTextEditor, this.props is: ', this.props)
     return (
       <div>
           <div id="QuillTextEditor-container">
