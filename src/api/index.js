@@ -1,8 +1,8 @@
 // for local server rails api, run `rails s` on backend, then run `npm start`:
-// const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://localhost:3000'
 
 // for hosted heroku api:
-const baseUrl = process.env.REACT_APP_BASE_URL
+// const baseUrl = process.env.REACT_APP_BASE_URL
 //note: to run frontend locally, based on heroku-hosted api, run: heroku local web
 //will display app in browser at localhost:5000
 //(though i guess this is no different from running `npm start` with the heroku api as baseUrl)
