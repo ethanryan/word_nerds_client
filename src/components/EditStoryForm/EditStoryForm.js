@@ -70,6 +70,7 @@ class EditStoryForm extends Component {
   handleRandomFirstSentence() {
     console.log('in EditStoryForm, handleRandomFirstSentence called.....')
     let randomSentence = getRandomSentence()
+    console.warn('randomSentence is: ', randomSentence)
     // this.setState({input: randomSentence + " " + this.state.input}) //preserves changes, but adds new sentence to beginning
     this.setState({input: `<p>${randomSentence}</p>${this.props.story.content}`}) //replaces first sentence, but renders original story, without user changes
   }
@@ -77,6 +78,7 @@ class EditStoryForm extends Component {
   handleRandomLastSentence() {
     console.log('in EditStoryForm, handleRandomLastSentence called.....')
     let randomSentence = getRandomSentence()
+    console.warn('randomSentence is: ', randomSentence)
     // this.setState({input: this.props.story.content + " " + randomSentence})
     this.setState({input: `${this.props.story.content}<p>${randomSentence}</p>`})
   }
