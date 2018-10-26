@@ -73,7 +73,7 @@ const StoryShow = (props) => {
           <StoryShowSummary
             story_id={props.story.id}
             // storyCreator={props.story.user.name}
-            storyCreator={props.story.user_name}
+            storyCreator={props.story.user_name.substring(0, 15)}
             wordCount={wordCount}
             genres={genres}
             plots={plots}
