@@ -89,11 +89,19 @@ const StoryShow = (props) => {
 
           <p>
             {
-              props.story.content ?
-              props.story.content.split('-----').join('\n\n') :
-              "story content will go here"
+              // props.story.content ?
+              // props.story.content.split('-----').join('\n\n') :
+              // "story content will go here"
             }
           </p>
+
+          <div>
+            {
+              props.story.content ?
+              <div dangerouslySetInnerHTML={{__html: props.story.content}} /> :
+              "story content will go here"
+            }
+          </div>
 
           {
             // (props.story.user.name !== props.user.name) ?

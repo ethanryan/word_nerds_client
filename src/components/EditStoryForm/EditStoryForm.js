@@ -7,6 +7,9 @@ import StoryShowSummary from '../StoryShow/StoryShowSummary'
 
 import { Header, Form, Divider, Button, Loader, Segment } from 'semantic-ui-react'
 
+import QuillTextEditor from '../Quill/QuillTextEditor'
+
+
 class EditStoryForm extends Component {
 
   constructor(props) {
@@ -36,8 +39,16 @@ class EditStoryForm extends Component {
     })
   }
 
-  handleStoryChange(event) {
-    const story = event.target.value
+  // handleStoryChange(event) {
+  //   const story = event.target.value
+  //   this.setState({
+  //     input: story
+  //   })
+  // }
+
+  handleStoryChange(updatedStory) {
+    // console.log("EditStoryForm, handleStoryChange called! ---> updatedStory is: ", updatedStory)
+    const story = updatedStory
     this.setState({
       input: story
     })
@@ -57,25 +68,31 @@ class EditStoryForm extends Component {
   }
 
   handleRandomFirstSentence() {
+    console.log('in EditStoryForm, handleRandomFirstSentence called.....')
     let randomSentence = getRandomSentence()
+    console.warn('randomSentence is: ', randomSentence)
     // this.setState({input: randomSentence + " " + this.state.input}) //preserves changes, but adds new sentence to beginning
-    this.setState({input: randomSentence + " " + this.props.story.content}) //replaces first sentence, but renders original story, without user changes
+    this.setState({input: `<p>${randomSentence}</p>${this.props.story.content}`}) //replaces first sentence, but renders original story, without user changes
   }
 
   handleRandomLastSentence() {
+    console.log('in EditStoryForm, handleRandomLastSentence called.....')
     let randomSentence = getRandomSentence()
-    this.setState({input: this.props.story.content + " " + randomSentence})
+    console.warn('randomSentence is: ', randomSentence)
+    // this.setState({input: this.props.story.content + " " + randomSentence})
+    this.setState({input: `${this.props.story.content}<p>${randomSentence}</p>`})
   }
 
 
   render() {
-    console.log('EditStory this.props: ', this.props);
+    // console.log('EditStoryForm this.props: ', this.props);
     // console.log('from EditStoryForm, this.state.input: ', this.state.input);
     // debugger
 
     let wordCount = (this.state.input ? this.state.input.split(' ').length : 0)
 
-    let paragraphs = (this.state.input ? this.state.input.split('-----').join('\n\n') : "paragraphs will go here")
+    // let paragraphs = (this.state.input ? this.state.input.split('-----').join('\n\n') : "paragraphs will go here")
+    let storyContent = (this.state.input ? this.state.input : "storyContent will go here")
 
     let genres = (this.props.story.story_genre_names ? this.props.story.story_genre_names : 0)
 
@@ -116,12 +133,17 @@ class EditStoryForm extends Component {
             />
 
             <Form.Field label='Edit Story'
-              className="EditStoryForm-linebreaks"
-              placeholder="this is where the story content goes for editing"
-              control='textarea' rows='35'
-              width={16}
-              value={paragraphs}
-              onChange={this.handleStoryChange}
+              // className="EditStoryForm-linebreaks" //NOTE: what is this???
+              // placeholder="this is where the story content goes for editing"
+              // control='textarea' rows='35'
+              // width={16}
+              // value={paragraphs}
+              // onChange={this.handleStoryChange}
+            />
+
+            <QuillTextEditor
+              storyContent={storyContent}
+              handleStoryChange={this.handleStoryChange}
             />
 
             <div>
@@ -132,19 +154,22 @@ class EditStoryForm extends Component {
                   primary compact
                 />
 
-                <Form.Button color='purple'
-                  compact
-                  type="button"
-                  content='First Line'
-                  onClick={() => {this.handleRandomFirstSentence()}}
-                />
-
-                <Form.Button color='orange'
-                  compact
-                  type="button"
-                  content='Last Line'
-                  onClick={() => {this.handleRandomLastSentence()}}
-                />
+              {
+                // <Form.Button color='purple'
+                //   compact
+                //   type="button"
+                //   content='First Line'
+                //   onClick={() => {this.handleRandomFirstSentence()}}
+                // />
+                //
+                // <Form.Button color='orange'
+                //   compact
+                //   type="button"
+                //   content='Last Line'
+                //   onClick={() => {this.handleRandomLastSentence()}}
+                // />
+              }
+              
               </Button.Group>
 
               {
