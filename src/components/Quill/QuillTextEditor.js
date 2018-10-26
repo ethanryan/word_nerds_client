@@ -3,7 +3,7 @@ import React from 'react';
 class QuillTextEditor extends React.Component {
 
   componentDidMount() {
-    console.log('QuillTextEditor, componentDidMount...')
+    // console.log('QuillTextEditor, componentDidMount...')
 
     var toolbarOptions = [
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],        // custom dropdown
@@ -32,15 +32,15 @@ class QuillTextEditor extends React.Component {
     // var htmlToInsert = "<p>here is some <strong>awesome</strong> text</p><p>mo FUCKA</p>"
     var htmlToInsert = this.props.storyContent //getting this from EditStoryForm...
     var editor = document.getElementsByClassName('ql-editor')
-    editor[0].innerHTML = htmlToInsert //NOTE: using vanilla JavaScript to replace the innerHTML with our story content...
+    // editor[0].innerHTML = `${htmlToInsert}<p><br></p>` //NOTE: using vanilla JavaScript to replace the innerHTML with our story content... and adding extra para to the end...
+    editor[0].innerHTML = `${htmlToInsert}` //NOTE: using vanilla JavaScript to replace the innerHTML with our story content... and adding extra para to the end...
     //NOTE: above is same as dangerouslySetInnerHTML! it is a dangerous practice. need to make sure my html doesn't contain any malicious scripts within it, like JavaScript or PHP or whatever.
 
     window.quill.on('text-change', () => {
       // console.log('Text change!');
       var editor = document.getElementsByClassName('ql-editor')
       let storyContent = editor[0].innerHTML
-      console.log('storyContent is: ', storyContent)
-
+      // console.log('in QuillTextEditor, storyContent is: ', storyContent)
       this.props.handleStoryChange(storyContent)
     });
 
@@ -54,10 +54,10 @@ class QuillTextEditor extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.storyContent !== prevProps.storyContent) { //NOTE: if storyContent changes, for example, from new random last sentence, updated the story in the Quill editor...
-      // console.warn("PROPS ARE DIFFERENT!!!!")
-      var htmlToInsert = this.props.storyContent //getting this from EditStoryForm...
-      var editor = document.getElementsByClassName('ql-editor')
-      editor[0].innerHTML = htmlToInsert //NOTE: using vanilla JavaScript to replace the innerHTML with our story content...
+      console.warn("PROPS ARE DIFFERENT!!!!")
+      // var htmlToInsert = this.props.storyContent //getting this from EditStoryForm...
+      // var editor = document.getElementsByClassName('ql-editor')
+      // editor[0].innerHTML = htmlToInsert //NOTE: using vanilla JavaScript to replace the innerHTML with our story content...
     }
   }
 
