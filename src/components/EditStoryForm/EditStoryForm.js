@@ -68,14 +68,14 @@ class EditStoryForm extends Component {
   }
 
   handleRandomFirstSentence() {
-    // console.log('in EditStoryForm, handleRandomFirstSentence called.....')
+    console.log('in EditStoryForm, handleRandomFirstSentence called.....')
     let randomSentence = getRandomSentence()
     // this.setState({input: randomSentence + " " + this.state.input}) //preserves changes, but adds new sentence to beginning
     this.setState({input: `<p>${randomSentence}</p>${this.props.story.content}`}) //replaces first sentence, but renders original story, without user changes
   }
 
   handleRandomLastSentence() {
-    // console.log('in EditStoryForm, handleRandomLastSentence called.....')
+    console.log('in EditStoryForm, handleRandomLastSentence called.....')
     let randomSentence = getRandomSentence()
     // this.setState({input: this.props.story.content + " " + randomSentence})
     this.setState({input: `${this.props.story.content}<p>${randomSentence}</p>`})
@@ -90,7 +90,7 @@ class EditStoryForm extends Component {
     let wordCount = (this.state.input ? this.state.input.split(' ').length : 0)
 
     // let paragraphs = (this.state.input ? this.state.input.split('-----').join('\n\n') : "paragraphs will go here")
-    let paragraphs = (this.state.input ? this.state.input : "paragraphs will go here")
+    let storyContent = (this.state.input ? this.state.input : "storyContent will go here")
 
     let genres = (this.props.story.story_genre_names ? this.props.story.story_genre_names : 0)
 
@@ -140,7 +140,7 @@ class EditStoryForm extends Component {
             />
 
             <QuillTextEditor
-              storyContent={paragraphs}
+              storyContent={storyContent}
               handleStoryChange={this.handleStoryChange}
             />
 
