@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Quill from 'quill';
+
+
 function getStoryContent() {
   var editor = document.getElementsByClassName('ql-editor') //this returns an HTMLCollection...
   let storyContent = editor[0].innerHTML
@@ -28,7 +31,8 @@ class QuillTextEditor extends React.Component {
       ['clean']                                         // remove formatting button
     ];
 
-    window.quill = new window.Quill('#editor', { //NOTE: must be window.quill...
+    // window.quill = new window.Quill('#editor', { //NOTE: must be window.quill...
+    let quill = new Quill('#editor', { //NOTE: must be window.quill...
       modules: {
         toolbar: toolbarOptions,
       },
@@ -38,7 +42,7 @@ class QuillTextEditor extends React.Component {
 
     this.setStoryContentAsHTML() //in componentDidMount, setStoryContentAsHTML...
 
-    window.quill.on('text-change', () => {
+    quill.on('text-change', () => {
       // console.log('Text change!');
       // var editor = document.getElementsByClassName('ql-editor') //this returns an HTMLCollection...
       // let storyContent = editor[0].innerHTML
