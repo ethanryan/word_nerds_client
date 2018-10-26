@@ -154,19 +154,22 @@ class EditStoryForm extends Component {
                   primary compact
                 />
 
-                <Form.Button color='purple'
-                  compact
-                  type="button"
-                  content='First Line'
-                  onClick={() => {this.handleRandomFirstSentence()}}
-                />
-
-                <Form.Button color='orange'
-                  compact
-                  type="button"
-                  content='Last Line'
-                  onClick={() => {this.handleRandomLastSentence()}}
-                />
+              {
+                // <Form.Button color='purple'
+                //   compact
+                //   type="button"
+                //   content='First Line'
+                //   onClick={() => {this.handleRandomFirstSentence()}}
+                // />
+                //
+                // <Form.Button color='orange'
+                //   compact
+                //   type="button"
+                //   content='Last Line'
+                //   onClick={() => {this.handleRandomLastSentence()}}
+                // />
+              }
+              
               </Button.Group>
 
               {
