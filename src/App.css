@@ -387,6 +387,11 @@ form span.error {
   background: azure;
 }
 
+.ql-editor p {
+  margin: 0 0 1em;
+  /* keeping paragraphs consistant across StoryShow and EditStoryForm */
+}
+
 .EditStoryForm-linebreaks {
   white-space: pre-wrap; /*this is to preserve line breaks added by users*/
 }
