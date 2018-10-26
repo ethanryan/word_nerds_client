@@ -1,6 +1,13 @@
 import React from 'react';
 
+function getStoryContent() {
+  var editor = document.getElementsByClassName('ql-editor') //this returns an HTMLCollection...
+  let storyContent = editor[0].innerHTML
+  return storyContent
+}
+
 class QuillTextEditor extends React.Component {
+
 
   componentDidMount() {
     // console.log('QuillTextEditor, componentDidMount...')
@@ -38,8 +45,9 @@ class QuillTextEditor extends React.Component {
 
     window.quill.on('text-change', () => {
       // console.log('Text change!');
-      var editor = document.getElementsByClassName('ql-editor')
-      let storyContent = editor[0].innerHTML
+      // var editor = document.getElementsByClassName('ql-editor') //this returns an HTMLCollection...
+      // let storyContent = editor[0].innerHTML
+      let storyContent = getStoryContent()
       // console.log('in QuillTextEditor, storyContent is: ', storyContent)
       this.props.handleStoryChange(storyContent)
     });

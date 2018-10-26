@@ -83,7 +83,7 @@ class EditStoryForm extends Component {
 
 
   render() {
-    console.log('EditStory this.props: ', this.props);
+    // console.log('EditStoryForm this.props: ', this.props);
     // console.log('from EditStoryForm, this.state.input: ', this.state.input);
     // debugger
 
