@@ -6,6 +6,8 @@ import { Header, Divider, Button, Loader, Segment } from 'semantic-ui-react'
 
 import { Link } from 'react-router-dom'
 
+import QuillReadOnly from '../Quill/QuillReadOnly'
+
 import replacePlotTitleWithEmoji from '../../helpers/replacePlotTitleWithEmoji'
 
 const StoryShow = (props) => {
@@ -97,11 +99,15 @@ const StoryShow = (props) => {
 
           <div>
             {
-              props.story.content ?
-              <div dangerouslySetInnerHTML={{__html: props.story.content}} /> :
-              "story content will go here"
+              // props.story.content ?
+              // <div dangerouslySetInnerHTML={{__html: props.story.content}} /> :
+              // "story content will go here"
             }
           </div>
+
+          <QuillReadOnly
+            storyContent={props.story.content}
+          />
 
           {
             // (props.story.user.name !== props.user.name) ?
