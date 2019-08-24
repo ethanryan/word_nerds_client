@@ -1,29 +1,21 @@
 import React from 'react'
-
-import nerdy from '../../components/assets/nerdy.gif'
-
+import nerdyMP4 from '../../components/assets/nerdy.mp4'
 import Sentence from '../../components/Sentence/Sentence'
 
-const RightSideBar = (props) => {
-
-  return(
+const RightSideBar = props => {
+  return (
     <div>
-
       <div className="nerdy-HomePageAndRoutes">
-        <img src={nerdy}
-          className="nerdy"
-          alt="nerdy gif"
-        />
+        <video autoPlay loop muted playsInline>
+          <source src={nerdyMP4} type="video/mp4" />
+        </video>
 
-        <h1 className="hoverYellow pulse-grow">
-          Word Nerds
-        </h1>
+        <h1 className="hoverYellow pulse-grow">Word Nerds</h1>
       </div>
 
       <div className="HomePageAndRoutes-sentence">
         <Sentence />
       </div>
-
     </div>
   )
 }
