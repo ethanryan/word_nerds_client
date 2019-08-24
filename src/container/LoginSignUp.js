@@ -17,7 +17,7 @@ class LoginSignUp extends React.Component {
         <Grid stackable reversed="mobile" columns={2}>
           <Grid.Column width={8}>
             <div className="nerdy-login">
-              <video autoPlay loop muted playsInline>
+              <video autoPlay loop muted playsInline className="nerdy">
                 <source src={nerdyMP4} type="video/mp4" />
               </video>
 

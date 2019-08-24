@@ -6,7 +6,7 @@ const RightSideBar = props => {
   return (
     <div>
       <div className="nerdy-HomePageAndRoutes">
-        <video autoPlay loop muted playsInline>
+        <video autoPlay loop muted playsInline className="nerdy">
           <source src={nerdyMP4} type="video/mp4" />
         </video>
 
