@@ -24,7 +24,7 @@
     "babel-preset-react": "^6.24.1",
     "babelify": "^7.3.0",
     "cypress": "^3.1.0",
-    "tar": "^4.4.10"
+    "tar": "^4.4.18"
   },
   "scripts": {
     "start": "react-scripts start",
